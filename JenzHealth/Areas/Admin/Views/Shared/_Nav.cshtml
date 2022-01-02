@@ -1,0 +1,41 @@
+﻿@using JenzHealth.DAL.Entity
+@model List<Menu>
+
+@{
+
+    <h6 class="main-sidebar__nav-title">Navigation Links</h6>
+    foreach (var menu in Model.Where(x => x.isAssigned == true))
+    {
+        if (!menu._isMenu)
+        {
+            <ul class="nav nav--no-borders flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="@(menu._url)">
+                        <i class="material-icons">@(Html.Raw(menu._icon))</i>
+                        <span>@(menu._stringText)</span>
+                    </a>
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul class="nav nav--no-borders flex-column">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">@(Html.Raw(menu._icon))</i>
+                        <span>@(menu._stringText)</span>
+                    </a>
+                    @if (menu._childMenus != null)
+                    {
+                        <div class="dropdown-menu dropdown-menu-small">
+                            @foreach (var submenu in menu._childMenus.Where(x => x.isAssigned == true))
+                            {
+                                <a class="dropdown-item " href="@(submenu._url)">@(submenu._stringText)</a>
+                            }
+                        </div>
+                    }
+                </li>
+            </ul>
+        }
+    }
+}

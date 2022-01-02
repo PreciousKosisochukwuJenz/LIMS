@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Manage Users";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">User management</span>
+        <h3 class="page-title">Manage users</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Active Users
+                    <button class="btn btn-primary fa-pull-right" data-toggle="modal"
+                            data-target="#Create">
+                        <i class="material-icons">add</i> Add User
+                    </button>
+                </h6>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="table mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">User name</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in ViewBag.Users)
+                        {
+                            <tr>
+                                <td>@row.Firstname</td>
+                                <td>@row.Lastname</td>
+                                <td>@row.Username</td>
+                                <td>@row.Email</td>
+                                <td>@row.Role</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-accent" onclick="Edit(@row.Id)" data-toggle="modal" data-target="#Edit">
+                                        <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger" onclick="Prompt(@row.Id)">
+                                        <i class="dropdown-icon lnr-trash"> </i><span>Delete</span>
+                                    </button>
+                                    @if (row.IsActive == true)
+                                    {
+                                        <button type="button" class="btn btn-outline-warning" onclick="Deactivate(@row.Id)">
+                                            <i class="dropdown-icon ion-android-close"> </i><span>Deactivate</span>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-outline-java" onclick="Activate(@row.Id)">
+                                            <i class="dropdown-icon ion-android-done-all"> </i><span>Activate</span>
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/User.js"></script>
+}
+@Html.Partial("_EditUser")
+@Html.Partial("_CreateUser")
