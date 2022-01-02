@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d11dd37d-76fd-48ce-8fb4-ab5ad2321236": {
+      "ProjectGuid": "d11dd37d-76fd-48ce-8fb4-ab5ad2321236",
+      "DisplayName": "JenzHealth",
+      "ColorIndex": 0
+    },
+    "94ced815-7dcf-4e12-8bee-c93b15102692": {
+      "ProjectGuid": "94ced815-7dcf-4e12-8bee-c93b15102692",
+      "DisplayName": "JenzHealth.DAL",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

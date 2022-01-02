@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JenzHealth", "JenzHealth\JenzHealth.csproj", "{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JenzHealth.DAL", "JenzHealth.DAL\JenzHealth.DAL.csproj", "{94CED815-7DCF-4E12-8BEE-C93B15102692}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CED815-7DCF-4E12-8BEE-C93B15102692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CED815-7DCF-4E12-8BEE-C93B15102692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CED815-7DCF-4E12-8BEE-C93B15102692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CED815-7DCF-4E12-8BEE-C93B15102692}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B2C527D-8C04-4809-A1DC-7F6CF80B86F1}
+	EndGlobalSection
+EndGlobal

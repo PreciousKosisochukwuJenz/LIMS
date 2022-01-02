@@ -1,0 +1,376 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D11DD37D-76FD-48CE-8FB4-AB5AD2321236}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JenzHealth</RootNamespace>
+    <AssemblyName>JenzHealth</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44388</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.13\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Scripts\Customer.js" />
+    <Content Include="Areas\Admin\Scripts\Priviledge.js" />
+    <Content Include="Areas\Admin\Scripts\RevenueDepartment.js" />
+    <Content Include="Areas\Admin\Scripts\Role.js" />
+    <Content Include="Areas\Admin\Scripts\ServiceDepartment.js" />
+    <Content Include="Areas\Admin\Scripts\Template.js" />
+    <Content Include="Areas\Admin\Scripts\User.js" />
+    <Content Include="Areas\Admin\Scripts\Vendor.js" />
+    <Content Include="Content\css\all.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\extras.1.3.1.min.css" />
+    <Content Include="Content\css\shards-dashboards.1.3.1.min.css" />
+    <Content Include="Content\images\background.jpg" />
+    <Content Include="Content\images\Labrole.jpg" />
+    <Content Include="Content\images\Logo.jpg" />
+    <Content Include="Content\images\user.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Ajax.jquery.min.js" />
+    <Content Include="Scripts\app-analytics-overview.1.3.1.min.js" />
+    <Content Include="Scripts\bootstrap-tagsinput.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\buttons.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\dropzone.min.js" />
+    <Content Include="Scripts\extras.1.3.1.min.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery.sharrre.min.js" />
+    <Content Include="Scripts\jsTree3\.gitignore" />
+    <Content Include="Scripts\jsTree3\Custom.js" />
+    <Content Include="Scripts\jsTree3\demo\basic\index.html" />
+    <Content Include="Scripts\jsTree3\dist\jstree.js" />
+    <Content Include="Scripts\jsTree3\dist\jstree.min.js" />
+    <Content Include="Scripts\jsTree3\dist\themes\default-dark\32px.png" />
+    <Content Include="Scripts\jsTree3\dist\themes\default-dark\40px.png" />
+    <Content Include="Scripts\jsTree3\dist\themes\default-dark\style.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default-dark\style.min.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default-dark\throbber.gif" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\32px.png" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\40px.png" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\jstree.bundle.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\jstree.bundle.rtl.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\style.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\style.min.css" />
+    <Content Include="Scripts\jsTree3\dist\themes\default\throbber.gif" />
+    <Content Include="Scripts\jsTree3\gruntfile.js" />
+    <Content Include="Scripts\jsTree3\src\intro.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.changed.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.checkbox.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.conditionalselect.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.contextmenu.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.dnd.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.massload.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.search.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.sort.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.state.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.types.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.unique.js" />
+    <Content Include="Scripts\jsTree3\src\jstree.wholerow.js" />
+    <Content Include="Scripts\jsTree3\src\misc.js" />
+    <Content Include="Scripts\jsTree3\src\outro.js" />
+    <Content Include="Scripts\jsTree3\src\sample.js" />
+    <Content Include="Scripts\jsTree3\src\themes\default-dark\32px.png" />
+    <Content Include="Scripts\jsTree3\src\themes\default-dark\40px.png" />
+    <Content Include="Scripts\jsTree3\src\themes\default-dark\style.css" />
+    <Content Include="Scripts\jsTree3\src\themes\default-dark\throbber.gif" />
+    <Content Include="Scripts\jsTree3\src\themes\default\32px.png" />
+    <Content Include="Scripts\jsTree3\src\themes\default\40px.png" />
+    <Content Include="Scripts\jsTree3\src\themes\default\style.css" />
+    <Content Include="Scripts\jsTree3\src\themes\default\throbber.gif" />
+    <Content Include="Scripts\jsTree3\src\vakata-jstree.js" />
+    <Content Include="Scripts\jsTree3\test\unit\index.html" />
+    <Content Include="Scripts\jsTree3\test\unit\libs\qunit.css" />
+    <Content Include="Scripts\jsTree3\test\unit\libs\qunit.js" />
+    <Content Include="Scripts\jsTree3\test\unit\test.js" />
+    <Content Include="Scripts\jsTree3\test\visual\desktop\index.html" />
+    <Content Include="Scripts\jsTree3\test\visual\mobile\index.html" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\desktop\.png" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\desktop\desktop.png" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\desktop\home.png" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\mobile\.png" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\mobile\home.png" />
+    <Content Include="Scripts\jsTree3\test\visual\screenshots\mobile\mobile.png" />
+    <Content Include="Scripts\loader.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Previewer.js" />
+    <Content Include="Scripts\quill.min.js" />
+    <Content Include="Scripts\shards-dashboards.1.3.1.min.js" />
+    <Content Include="Scripts\shards.min.js" />
+    <Content Include="Scripts\SweetAlert.js" />
+    <Content Include="Scripts\Validation.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\CompressFilter.cs" />
+    <Compile Include="App_Start\ETagAttribute.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NoCacheConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Compile Include="App_Start\SearchBotFilter.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\URIHandler.cs" />
+    <Compile Include="App_Start\WhiteSpaceFilterAttribute.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Components\Nav.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApplicationSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SeedController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Helpers\CustomData.cs" />
+    <Compile Include="Areas\Admin\Helpers\CustomDecrypt.cs" />
+    <Compile Include="Areas\Admin\Helpers\CustomEncrypt.cs" />
+    <Compile Include="Areas\Admin\Helpers\CustomSerializer.cs" />
+    <Compile Include="Areas\Admin\Helpers\Generator.cs" />
+    <Compile Include="Areas\Admin\Helpers\HtmlConverter.cs" />
+    <Compile Include="Areas\Admin\Interfaces\IApplicationSettingsService.cs" />
+    <Compile Include="Areas\Admin\Interfaces\ICustomerService.cs" />
+    <Compile Include="Areas\Admin\Interfaces\ISeedService.cs" />
+    <Compile Include="Areas\Admin\Interfaces\IUserService.cs" />
+    <Compile Include="Areas\Admin\Services\ApplicationSettingsService.cs" />
+    <Compile Include="Areas\Admin\Services\CustomerService.cs" />
+    <Compile Include="Areas\Admin\Services\SeedService.cs" />
+    <Compile Include="Areas\Admin\Services\UserService.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ApplicationSettingsVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\CustomerVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PriviledgeVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RevenueDepartmentVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RolePermissionVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RoleVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ServiceDepartmentVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\TemplateVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\UserVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\VendorVM.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Nav.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationSettings\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Notification.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ManageRoles.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_CreateRole.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_CreateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_EditRole.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_EditUser.cshtml" />
+    <Content Include="Areas\Admin\Views\User\_TreeViewPermission.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ManagePermissions.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManageRevenueDepartments.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreateRevenueDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditRevenueDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManageServiceDepartments.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreateServiceDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditServiceDepartment.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManagePriviledges.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreatePriviledge.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditPriviledge.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManageTemplates.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreateTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditTemplate.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManageVendors.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreateVendor.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditVendor.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\Unauthorized.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\ManageCustomers.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\_CreateCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\_EditCustomer.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\jsTree3\.github\FUNDING.yml" />
+    <Content Include="Scripts\jsTree3\.github\workflows\npm-publish.yml" />
+    <Content Include="Scripts\jsTree3\bower.json" />
+    <Content Include="Scripts\jsTree3\component.json" />
+    <Content Include="Scripts\jsTree3\composer.json" />
+    <Content Include="Scripts\jsTree3\demo\basic\root.json" />
+    <Content Include="Scripts\jsTree3\demo\README.md" />
+    <Content Include="Scripts\jsTree3\jstree.jquery.json" />
+    <Content Include="Scripts\jsTree3\LICENSE-MIT" />
+    <Content Include="Scripts\jsTree3\package.json" />
+    <Content Include="Scripts\jsTree3\README.md" />
+    <Content Include="Scripts\jsTree3\src\themes\base.less" />
+    <Content Include="Scripts\jsTree3\src\themes\default-dark\style.less" />
+    <Content Include="Scripts\jsTree3\src\themes\default\style.less" />
+    <Content Include="Scripts\jsTree3\src\themes\main.less" />
+    <Content Include="Scripts\jsTree3\src\themes\mixins.less" />
+    <Content Include="Scripts\jsTree3\src\themes\responsive.less" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JenzHealth.DAL\JenzHealth.DAL.csproj">
+      <Project>{94ced815-7dcf-4e12-8bee-c93b15102692}</Project>
+      <Name>JenzHealth.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57894</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44388/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

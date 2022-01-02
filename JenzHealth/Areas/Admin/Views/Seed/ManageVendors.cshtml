@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Manage Vendors";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Seed management</span>
+        <h3 class="page-title">Manage Vendors</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Active Vendors
+                    <button class="btn btn-primary fa-pull-right" data-toggle="modal"
+                            data-target="#Create">
+                        <i class="material-icons">add</i> Add Vendor
+                    </button>
+                </h6>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="table mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="border-0">Name</th>
+                            <th scope="col" class="border-0">Company Registration Number</th>
+                            <th scope="col" class="border-0">Office Address</th>
+                            <th scope="col" class="border-0">Email</th>
+                            <th scope="col" class="border-0">Website</th>
+                            <th scope="col" class="border-0">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in ViewBag.Vendors)
+                        {
+                            <tr>
+                                <td>@row.Name</td>
+                                <td>@row.CompanyRegistrationNumber</td>
+                                <td>@row.OfficeAddress</td>
+                                <td>@row.Email</td>
+                                <td>@row.Website</td>
+                                <td>
+                                    <button type="button" onclick="Edit(@row.Id)" class="btn btn-outline-accent" data-toggle="modal" data-target="#Edit">
+                                        <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>
+                                    </button>
+                                    <button type="button" onclick="Prompt(@row.Id)" class="btn btn-outline-danger">
+                                        <i class="dropdown-icon lnr-trash"> </i><span>Delete</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Vendor.js"></script>
+}
+@Html.Partial("_EditVendor")
+@Html.Partial("_CreateVendor")
