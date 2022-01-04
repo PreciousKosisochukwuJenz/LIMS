@@ -8,7 +8,7 @@
             $('#Id').val(result.Id);
             $('#Firstname').val(result.Firstname);
             $('#Lastname').val(result.Lastname);
-            $('#DOB').val(result.DOB);
+            $('#DOB').val(new Date(result.DOB).toLocaleDateString());
             $('#Gender').val(result.Gender);
             $('#Email').val(result.Email);
             $('#PhoneNumber').val(result.PhoneNumber);

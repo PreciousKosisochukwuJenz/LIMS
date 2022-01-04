@@ -64,7 +64,7 @@
                             <i class="material-icons">bloodtype</i>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true } })
+                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true, type = "date" } })
                     <div class="invalid-feedback">
                         Date of birth required
                     </div>
