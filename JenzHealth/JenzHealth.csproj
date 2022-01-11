@@ -314,6 +314,7 @@
     <Content Include="Scripts\jsTree3\src\themes\main.less" />
     <Content Include="Scripts\jsTree3\src\themes\mixins.less" />
     <Content Include="Scripts\jsTree3\src\themes\responsive.less" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,16 @@
+﻿
+@{
+    using (JenzHealth.DAL.DataConnection.DatabaseEntities _entities = new JenzHealth.DAL.DataConnection.DatabaseEntities())
+    {
+        var settings = _entities.ApplicationSettings.FirstOrDefault();
+        ViewBag.AppName = settings.AppName;
+        byte[] empty = { };
+        var logo = settings.Logo == null ? empty : settings.Logo;
+        string LogoBase64 = Convert.ToBase64String(logo);
+        ViewBag.LogoSrc = string.Format("data:image/gif;base64,{0}", LogoBase64);
+        ViewBag.Title = "Home";
+    }
+}
+<center style="margin-top:40px">
+    <img src="@ViewBag.LogoSrc" alt="Logo" class="img-fluid img-rounded img-responsive center" style="width:50%; height:50%;" onchange="ShowPreview(this)" onerror="this.src='/Content/images/Logo.jpg'" />
+</center>

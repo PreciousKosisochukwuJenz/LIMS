@@ -1,0 +1,53 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.RolePermissionVM
+@{
+    ViewBag.Title = "Manage Permissions";
+}
+
+<link href="~/Scripts/jsTree3/dist/themes/default/style.min.css" rel="stylesheet" />
+
+<div class="main-content-container container-fluid px-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto mt-4">
+            <!-- Edit User Details Card -->
+            <div class="card card-small edit-user-details mb-4">
+                <div class="card-header p-0">
+                    <div class="edit-user-details__bg">
+                        <img src="~/Content/images/Labrole.jpg" alt="User Details Background Image">
+                    </div>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Role</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            <input type="text" name="Role" class="form-control" value="@ViewBag.RoleName" readonly />
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    @Html.Partial("_TreeViewPermission")
+                    <input type="hidden" name="selectedItems" id="selectedItems" />
+
+                    <div class="card-footer border-top">
+                        <button type="submit" class="btn btn-sm btn-accent ml-auto d-table mr-3">Update</button>
+                    </div>
+                }
+
+            </div>
+            <!-- End Edit User Details Card -->
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Ajax.jquery.min.js"></script>
+<script src="~/Scripts/Previewer.js"></script>
+
+@section Scripts{
+    <script src="~/Scripts/jsTree3/dist/jstree.min.js"></script>
+    <script src="~/Scripts/jsTree3/Custom.js"></script>
+}
