@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="error">
+    <div class="error__content">
+        <h2>Error</h2>
+        <h3>Something went wrong!</h3>
+        <p>@TempData["ErrorMessage"]</p>
+        <button type="button" class="btn btn-primary btn-pill" onclick="previouspage()">&larr; Go Back</button>
+    </div> <!-- / .error_content -->
+</div> <!-- / .error -->
+
+@section Scripts{
+    <script>
+        function previouspage(){
+            history.back();
+        }
+    </script>
+}

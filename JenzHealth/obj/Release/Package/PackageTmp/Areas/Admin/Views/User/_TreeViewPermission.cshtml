@@ -1,0 +1,32 @@
+﻿<div id="MenuTreeView" class="demo box-body">
+    <ul>
+        @foreach (var menu in ViewBag.ApplicationMenus)
+        {
+            <li data-jstree='{"icon": "fa fa-bookmark", "opened": true, "selected":@(menu.isAssigned ? "true" : "false")}'>
+                <strong>@(menu._stringText)</strong>
+                @if (menu._childMenus.Count > 0)
+                {
+                    foreach (var submenu in menu._childMenus)
+                    {
+                        <ul>
+                            @if (submenu.isAssigned)
+                            {
+                                <li data-jstree='{"icon": "fa fa-link", "selected":true}'>
+                                    <span>@(submenu._stringText)</span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li data-jstree='{"icon": "fa fa-link", "selected":false}'>
+                                    <span>@(submenu._stringText)</span>
+                                </li>
+                            }
+
+                        </ul>
+                    }
+                }
+            </li>
+        }
+    </ul>
+</div>
+
