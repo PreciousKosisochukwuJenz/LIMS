@@ -39,5 +39,12 @@ namespace JenzHealth.Areas.Admin.Interfaces
         VendorVM GetVendor(int ID);
         bool EditVendor(VendorVM vmodel);
         bool DeleteVendor(int ID);
+
+
+        List<ServiceVM> GetServices(ServiceVM vmodel);
+        bool CreateService(ServiceVM vmodel);
+        ServiceVM GetService(int ID);
+        bool EditService(ServiceVM vmodel);
+        bool DeleteService(int ID);
     }
 }

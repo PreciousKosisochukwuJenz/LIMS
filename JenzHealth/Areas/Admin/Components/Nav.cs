@@ -26,6 +26,7 @@ namespace JenzHealth.Areas.Admin.Components
               new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManagePriviledges",stringText:"Priviledges", icon: null ?? defaultIcon, isMenu: true, claim: "seed.priviledges",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageTemplates",stringText:"Templates", icon: null ?? defaultIcon, isMenu: true, claim: "seed.templates",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageVendors",stringText:"Vendors", icon: null ?? defaultIcon, isMenu: true, claim: "seed.vendors",childMenus: null),
@@ -56,6 +57,7 @@ namespace JenzHealth.Areas.Admin.Components
             new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManagePriviledges",stringText:"Priviledges", icon: null ?? defaultIcon, isMenu: true, claim: "seed.priviledges",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageTemplates",stringText:"Templates", icon: null ?? defaultIcon, isMenu: true, claim: "seed.templates",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageVendors",stringText:"Vendors", icon: null ?? defaultIcon, isMenu: true, claim: "seed.vendors",childMenus: null),
