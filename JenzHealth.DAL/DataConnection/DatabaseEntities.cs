@@ -29,6 +29,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<Template> Templates { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
  
     }
 }

@@ -339,5 +339,70 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _seedService.DeleteVendor(id);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+
+        // Service Department
+        public ActionResult ManageServices(bool? Added, bool? Editted)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Added == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Service added successfully.";
+            }
+            if (Editted == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Service updated successfully.";
+            }
+            ViewBag.ServiceDepartments = new SelectList(db.ServiceDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
+            ViewBag.RevenueDepartments = new SelectList(db.RevenueDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ManageServices(ServiceVM vmodel)
+        {
+            ViewBag.Services = _seedService.GetServices(vmodel);
+            ViewBag.ServiceDepartments = new SelectList(db.ServiceDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
+            ViewBag.RevenueDepartments = new SelectList(db.RevenueDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateService(ServiceVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.CreateService(vmodel);
+            }
+            return RedirectToAction("ManageServices", new { Added = hasSaved });
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditService(ServiceVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.EditService(vmodel);
+            }
+            return RedirectToAction("ManageServices", new { Editted = hasSaved });
+        }
+        public JsonResult GetService(int id)
+        {
+            var model = _seedService.GetService(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteService(int id)
+        {
+            var model = _seedService.DeleteService(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }

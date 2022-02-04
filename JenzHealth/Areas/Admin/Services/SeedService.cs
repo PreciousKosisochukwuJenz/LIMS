@@ -5,6 +5,7 @@ using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -396,5 +397,100 @@ namespace JenzHealth.Areas.Admin.Services
             HasDeleted = true;
             return HasDeleted;
         }
+
+        /******************************************************/
+
+        //Service
+
+        // Fetching service
+        public List<ServiceVM> GetServices(ServiceVM vmodel)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var model = _db.Services.Where(x => x.IsDeleted == false && x.RevenueDepartmentID == vmodel.RevenueDepartmentID && x.ServiceDepartmentID == vmodel.ServiceDepartmentID).Select(b => new ServiceVM()
+            {
+                Id = b.Id,
+                Description = b.Description,
+                RevenueDepartmentID = b.RevenueDepartmentID,
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                RevenueDepartment = b.RevenueDepartment.Name,
+                ServiceDepartment = b.ServiceDepartment.Name,
+                CostPrice = b.CostPrice,
+                SellingPrice = b.SellingPrice,
+            }).ToList();
+            foreach(var each in model)
+            {
+                each.SellingPriceString = "₦" + each.SellingPrice.ToString("N", nfi);
+                each.CostPriceString = "₦" + each.CostPrice.ToString("N", nfi);
+            }
+            return model;
+        }
+
+        // Creating service
+        public bool CreateService(ServiceVM vmodel)
+        {
+            bool HasSaved = false;
+            Service model = new Service()
+            {
+                RevenueDepartmentID = vmodel.RevenueDepartmentID,
+                ServiceDepartmentID = vmodel.ServiceDepartmentID,
+                Description = vmodel.Description,
+                SellingPrice = CustomSerializer.UnMaskString(vmodel.SellingPriceString),
+                CostPrice = CustomSerializer.UnMaskString(vmodel.CostPriceString),
+                IsDeleted = false,
+                DateCreated = DateTime.Now
+            };
+            _db.Services.Add(model);
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Getting Service
+        public ServiceVM GetService(int ID)
+        {
+            var model = _db.Services.Where(x => x.Id == ID).Select(b => new ServiceVM()
+            {
+                Id = b.Id,
+                Description = b.Description,
+                RevenueDepartmentID = b.RevenueDepartmentID,
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                RevenueDepartment = b.RevenueDepartment.Name,
+                ServiceDepartment = b.ServiceDepartment.Name,
+                CostPrice = b.CostPrice,
+                SellingPrice = b.SellingPrice,
+            }).FirstOrDefault();
+            return model;
+        }
+
+        // Editting and updating service
+        public bool EditService(ServiceVM vmodel)
+        {
+            bool HasSaved = false;
+            var model = _db.Services.Where(x => x.Id == vmodel.Id).FirstOrDefault();
+            model.Description = vmodel.Description;
+            model.RevenueDepartmentID = vmodel.RevenueDepartmentID;
+            model.ServiceDepartmentID = vmodel.ServiceDepartmentID;
+            model.CostPrice = CustomSerializer.UnMaskString(vmodel.CostPriceString);
+            model.SellingPrice = CustomSerializer.UnMaskString(vmodel.SellingPriceString);
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Deleting service
+        public bool DeleteService(int ID)
+        {
+            bool HasDeleted = false;
+            var model = _db.Services.Where(x => x.Id == ID).FirstOrDefault();
+            model.IsDeleted = true;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasDeleted = true;
+            return HasDeleted;
+        }
+
     }
 }
