@@ -30,6 +30,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<Vendor> Vendors { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<Billing> Billings { get; set; }
  
     }
 }

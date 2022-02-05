@@ -30,8 +30,8 @@ namespace JenzHealth
             {
                 context.Database.CreateIfNotExists();
                 Seed.DatabaseSeed(context);
-                Nav.StorePermissions(Nav.ApplicationMenu);
             }
+            Nav.StorePermissions(Nav.ApplicationMenu);
         }
         protected void Application_Error()
         {
