@@ -22,6 +22,15 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Customers", icon: null ?? defaultIcon, isMenu: true,claim: "customer.managecustomers", childMenus: null),
             }),
 
+            
+              // Payment
+            new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
+            }),
+
              // Seed
               new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
@@ -51,6 +60,14 @@ namespace JenzHealth.Areas.Admin.Components
               // Customer
             new Menu(url: "#",stringText:"Customer Management", icon: "accessible", isMenu: true,claim: "customer", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Customers", icon: null ?? defaultIcon, isMenu: true,claim: "customer.managecustomers", childMenus: null),
+            }),
+
+                // Payment
+            new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
+                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
             }),
 
              // Seed
@@ -90,34 +107,54 @@ namespace JenzHealth.Areas.Admin.Components
         {
             GetAllMenu(AllMenus, AppMenu);
         }
+
+        public static bool CheckPermissionExist(string _stringText)
+        {
+            var exist = db.Permissions.Where(x => x.Description == _stringText).FirstOrDefault();
+            if (exist != null)
+                return true;
+            else
+                return false;
+        }
         public static void StorePermissions(List<Menu> menuViewModels)
         {
             List<Permission> model = new List<Permission>();
 
             foreach (var menu in menuViewModels)
             {
-                var permission = new Permission()
-                {
-                    Description = menu._stringText,
-                    Claim = menu._claim,
-                    Url = menu._url
-                };
-                model.Add(permission);
-                if (menu._childMenus.Count > 0)
-                {
-                    foreach (var submenu in menu._childMenus)
+                if (!CheckPermissionExist(menu._stringText)){
+                    var permission = new Permission()
                     {
-                        var childpermission = new Permission()
+                        Description = menu._stringText,
+                        Claim = menu._claim,
+                        Url = menu._url
+                    };
+                    model.Add(permission);
+                    if (menu._childMenus.Count > 0)
+                    {
+                        foreach (var submenu in menu._childMenus)
                         {
-                            Description = submenu._stringText,
-                            Claim = menu._claim,
-                            Url = submenu._url
-                        };
-                        model.Add(childpermission);
+                            var childpermission = new Permission()
+                            {
+                                Description = submenu._stringText,
+                                Claim = menu._claim,
+                                Url = submenu._url
+                            };
+                            model.Add(childpermission);
+                        }
                     }
+                    db.Permissions.AddRange(model);
+                }
+                else
+                {
+                    var permission = db.Permissions.Where(x => x.Description == menu._stringText).FirstOrDefault();
+                    permission.Description = menu._stringText;
+                    permission.Claim = menu._claim;
+                    permission.Url = menu._url;
+
+                    db.Entry(permission).State = System.Data.Entity.EntityState.Modified;
                 }
             }
-            db.Permissions.AddRange(model);
             db.SaveChanges();
         }
 

@@ -50,4 +50,13 @@ namespace JenzHealth.DAL.Entity
             return attribute == null ? value.ToString() : attribute.DisplayName;
         }
     }
+
+    public enum CustomerType
+    {
+        [EnumDisplayName(DisplayName = "REGISTERED CUSTOMER")]
+        REGISTERED_CUSTOMER = 1,
+
+        [EnumDisplayName(DisplayName = "WALK-IN CUSTOMER")]
+        WALK_IN_CUSTOMER
+    }
 }
