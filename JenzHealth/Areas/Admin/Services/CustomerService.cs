@@ -126,5 +126,25 @@ namespace JenzHealth.Areas.Admin.Services
             HasDeleted = true;
             return HasDeleted;
         }
+
+        // Get Customer by UniqueID
+        public CustomerVM GetCustomer(string unqiueID)
+        {
+            var model = _db.Customers.Where(x => x.CustomerUniqueID == unqiueID).Select(b => new CustomerVM()
+            {
+                Id = b.Id,
+                CustomerUniqueID = b.CustomerUniqueID,
+                Firstname = b.Firstname,
+                Lastname = b.Lastname,
+                Gender = b.Gender,
+                DOB = b.DOB,
+                Religion = b.Religion,
+                Address = b.Address,
+                PhoneNumber = b.PhoneNumber,
+                Email = b.Email
+            }).FirstOrDefault();
+            return model;
+        }
+
     }
 }

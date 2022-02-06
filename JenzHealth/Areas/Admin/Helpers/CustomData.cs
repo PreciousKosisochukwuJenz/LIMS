@@ -13,5 +13,10 @@ namespace JenzHealth.Areas.Admin.Helpers
           new SelectListItem() { Text = "Male", Value = "Male" },
           new SelectListItem() { Text = "Female", Value = "Female" }
         };
+        public static List<SelectListItem> SearchBy = new List<SelectListItem>()
+        {
+          new SelectListItem() { Text = "New", Value = "New" },
+          new SelectListItem() { Text = "Existing", Value = "Existing" }
+        };
     }
 }

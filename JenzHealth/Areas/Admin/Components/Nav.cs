@@ -25,7 +25,7 @@ namespace JenzHealth.Areas.Admin.Components
             
               // Payment
             new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
+                new Menu(url: "/Admin/Payment/Billings",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
@@ -64,7 +64,7 @@ namespace JenzHealth.Areas.Admin.Components
 
                 // Payment
             new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
+                new Menu(url: "/Admin/Payment/Billings",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
