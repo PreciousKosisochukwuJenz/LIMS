@@ -44,7 +44,9 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceVM> GetServices(ServiceVM vmodel);
         bool CreateService(ServiceVM vmodel);
         ServiceVM GetService(int ID);
+        ServiceVM GetService(string servicename);
         bool EditService(ServiceVM vmodel);
         bool DeleteService(int ID);
+        List<ServiceVM> GetServiceAutoComplete(string query);
     }
 }

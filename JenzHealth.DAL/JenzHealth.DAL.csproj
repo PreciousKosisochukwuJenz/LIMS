@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Billing.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Priviledge.cs" />
     <Compile Include="Entity\RevenueDepartment.cs" />

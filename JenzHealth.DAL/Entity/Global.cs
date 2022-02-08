@@ -53,10 +53,10 @@ namespace JenzHealth.DAL.Entity
 
     public enum CustomerType
     {
-        [EnumDisplayName(DisplayName = "REGISTERED CUSTOMER")]
+        [EnumDisplayName(DisplayName = "Registered Customer")]
         REGISTERED_CUSTOMER = 1,
 
-        [EnumDisplayName(DisplayName = "WALK-IN CUSTOMER")]
+        [EnumDisplayName(DisplayName = "Walk-In Customer")]
         WALK_IN_CUSTOMER
     }
 }

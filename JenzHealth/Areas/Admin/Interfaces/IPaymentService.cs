@@ -9,6 +9,9 @@ namespace JenzHealth.Areas.Admin.Interfaces
 {
     public interface IPaymentService
     {
-        bool CreateBilling(BillingVM vmodel, List<int> ServiceIDs);
+        bool CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList);
+        BillingVM GetCustomerForBill(string invoiceNumber);
+        List<BillingVM> GetBillServices(string invoiceNumber);
+        bool UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList);
     }
 }

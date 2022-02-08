@@ -492,5 +492,39 @@ namespace JenzHealth.Areas.Admin.Services
             return HasDeleted;
         }
 
+        public ServiceVM GetService(string servicename)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var model = _db.Services.Where(x => x.Description == servicename).Select(b => new ServiceVM()
+            {
+                Id = b.Id,
+                Description = b.Description,
+                RevenueDepartmentID = b.RevenueDepartmentID,
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                RevenueDepartment = b.RevenueDepartment.Name,
+                ServiceDepartment = b.ServiceDepartment.Name,
+                CostPrice = b.CostPrice,
+                SellingPrice = b.SellingPrice,
+            }).FirstOrDefault();
+
+            model.SellingPriceString = "₦" + model.SellingPrice.ToString("N", nfi);
+            model.CostPriceString = "₦" + model.CostPrice.ToString("N", nfi);
+            return model;
+        }
+        public List<ServiceVM> GetServiceAutoComplete(string query)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var model = _db.Services.Where(x => x.Description.StartsWith(query)).Select(b => new ServiceVM()
+            {
+                Id = b.Id,
+                Description = b.Description,
+                RevenueDepartmentID = b.RevenueDepartmentID,
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                RevenueDepartment = b.RevenueDepartment.Name,
+                ServiceDepartment = b.ServiceDepartment.Name,
+            }).ToList();
+            return model;
+        }
+
     }
 }
