@@ -10,7 +10,7 @@
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                }
+                } 
                 form.classList.add('was-validated');
                 let buttons = form.getElementsByTagName("button");
                 $.each(buttons, function (i, btn) {
