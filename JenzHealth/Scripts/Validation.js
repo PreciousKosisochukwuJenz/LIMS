@@ -1,4 +1,5 @@
-﻿// Example starter JavaScript for disabling form submissions if there are invalid fields
+﻿
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -10,9 +11,11 @@
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
-                } 
+                }
                 form.classList.add('was-validated');
+
                 let buttons = form.getElementsByTagName("button");
+
                 $.each(buttons, function (i, btn) {
                     if (btn.classList.contains("ladda-button")) {
                         if (btn.innerText == "Update changes" || btn.innerText == "Update") {
