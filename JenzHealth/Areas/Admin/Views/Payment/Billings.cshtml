@@ -14,10 +14,10 @@
 <div class="row">
     <div class="col">
         <div class="card card-small mb-4">
-            <div class="card-header border-bottom">
+            <div class="card-header">
 
                 <div class="m-0">
-                    @using (Html.BeginForm("Billings", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+                    @using (Html.BeginForm("Billings", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate",novalidate = true }))
                     {
                         <div style="background: #c1cee7">
                             <div class="form-group col-md-12">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="searchform">
                             <div class="form-group col-md-2">
                                 <label for="socialGitHub">Search by?</label>
                                 <div class="input-group input-group-seamless">
@@ -67,11 +67,11 @@
                                 <label for="socialGitHub">-</label>
                                 <div class="input-group input-group-seamless">
                                     <button class="btn btn-primary" id="SearchCustomer">
-                                        <i class="material-icons">search</i> Search
+                                        Search
                                     </button>
                                 </div>
                             </div>
-                        </div><br />
+                        </div>
                     }
                 </div>
             </div>
@@ -79,7 +79,7 @@
             <div class="card-body p-0 pb-3 text-center">
                 <fieldset>
                     <legend>Customer Information</legend>
-                    <table class="table mb-0">
+                    <table class="table mb-0 table-bordered">
                         <thead class="bg-light">
                             <tr>
                                 <th scope="col" class="border-0">Name</th>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="card-body p-0 pb-3 text-center">
-                <table class="table mb-0">
+                <table class="table mb-0 table-bordered">
                     <thead class="bg-light">
                         <tr>
                             <th scope="col" class="border-0"></th>

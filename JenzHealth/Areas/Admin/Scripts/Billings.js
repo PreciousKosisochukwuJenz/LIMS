@@ -12,6 +12,32 @@ $("#SearchBy").change(function () {
         $("#InvoiceDiv").hide();
     }
 })
+$("input[name='CustomerType']").change(function () {
+
+    if ($("input[name='CustomerType']:checked").val() == "REGISTERED_CUSTOMER") {
+        $("#Customername").empty();
+        $("#Customerage").empty();
+        $("#Customerphonenumber").empty();
+        $("#Customergender").empty();
+        $("#searchform").show();
+        $("#ServiceBody").empty();
+        updateNetAmount();
+    }
+    else {
+        let CustomerNameField = "<input type='text' class='form-control' name='CustomerName'  placeholder='Enter name'/>";
+        let CustomerAgeField = "<input type='number' class='form-control' name='CustomerAge'  placeholder='Enter age' />";
+        let CustomerPhoneNumberField = "<input type='text' class='form-control' name='CustomerPhoneNumber' placeholder='Enter phone number' />";
+        let CustomerGender = "<select class='form-control' name='CustomerGender' id='genderFll'><option value='Male'>Male</option><option value='Female'>Female</option></select>"
+        $("#Customername").html(CustomerNameField);
+        $("#Customerage").html(CustomerAgeField);
+        $("#Customerphonenumber").html(CustomerPhoneNumberField);
+        $("#Customergender").html(CustomerGender);
+        $("#searchform").hide();
+        $("#ServiceBody").empty();
+        updateNetAmount();
+
+    }
+})
 $(window).ready(function () {
     // Set  Customer Type
     var radios = $(".Status");
@@ -91,7 +117,7 @@ $("#SearchCustomer").click(function (e) {
                         $("#ServiceBody").empty()
                         $.each(datas, function (i, data) {
                             let html = "";
-                            html = "<tr id='" + data.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + data.ServiceName + "</td><td><input type='number' value="+data.Quantity+" class='form-control quantity-" + data.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + data.Id + "' data-id='" + data.SellingPrice + "'>" + data.SellingPriceString + "</td><td><strong class='gross-" + data.Id + " gross'>₦00.00</strong></td></tr>";
+                            html = "<tr id='" + data.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + data.ServiceName + "</td><td><input type='number' value=" + data.Quantity + " class='form-control quantity-" + data.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + data.Id + "' data-id='" + data.SellingPrice + "'>" + data.SellingPriceString + "</td><td><strong class='gross-" + data.Id + " gross'>₦00.00</strong></td></tr>";
                             $("#ServiceBody").append(html);
                             $("#ServiceName").val("");
                             CalculateGrossAmount(data.Quantity, data.SellingPrice, data.Id);
@@ -124,7 +150,7 @@ $("#AddService").click(function (e) {
             dataType: "json",
             success: function (response) {
                 let html = "";
-                html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-"+response.Id+"' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-"+response.Id+"' data-id='"+response.SellingPrice+"'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
+                html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-" + response.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + response.Id + "' data-id='" + response.SellingPrice + "'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
                 $("#ServiceBody").append(html);
                 $("#ServiceName").val("");
                 CalculateGrossAmount(1, response.SellingPrice, response.Id);
@@ -153,7 +179,12 @@ $("#FinishBtn").click(function () {
             let serviceArr = [];
             let data = {
                 InvoiceNumber: $("#InvoiceNumber").val(),
-                CustomerType: $("input[name='CustomerType']").val()
+                CustomerType: $("input[name='CustomerType']:checked").val(),
+                CustomerName: $("input[name='CustomerName']").val(),
+                CustomerUniqueID: $("#CustomerUniqueID").val(),
+                CustomerAge: $("input[name='CustomerAge']").val(),
+                CustomerGender: $("#genderFll").val(),
+                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val(),
             };
             var table = $("#ServiceBody")[0].children;
             $.each(table, function (i, tr) {
@@ -163,8 +194,6 @@ $("#FinishBtn").click(function () {
                 serviceObj.GrossAmount = ConvertToDecimal(tr.children[3].innerText);
                 serviceArr.push(serviceObj);
             });
-            debugger
-
             // Send ajax call to server
             $.ajax({
                 url: 'Billings',
@@ -235,7 +264,7 @@ function UpdateAmount(e) {
 
     updateNetAmount();
 }
-function updateNetAmount(){
+function updateNetAmount() {
     let grosses = $(".gross");
     let total = 0;
     $.each(grosses, function (i, gross) {

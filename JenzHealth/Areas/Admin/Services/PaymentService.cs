@@ -22,12 +22,10 @@ namespace JenzHealth.Areas.Admin.Services
         {
             _db = db;
         }
-
         public bool CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
             var dateOfBill = DateTime.Now.Date.ToShortDateString().Replace("/", "");
             var invoiceNumber = "BILL" + dateOfBill + Generator.GeneratorCode();
-
 
             foreach (var service in serviceList)
             {
@@ -35,10 +33,10 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     CustomerType = vmodel.CustomerType,
                     CustomerUniqueID = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerUniqueID : null,
-                    CustomerName = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerName : null,
-                    CustomerGender = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerGender : null,
-                    CustomerAge = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerAge : 0,
-                    CustomerPhoneNumber = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
+                    CustomerName = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerName : null,
+                    CustomerGender = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerGender : null,
+                    CustomerAge = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerAge : 0,
+                    CustomerPhoneNumber = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
                     IsDeleted = false,
                     InvoiceNumber = invoiceNumber,
                     DateCreated = DateTime.Now,
@@ -64,7 +62,6 @@ namespace JenzHealth.Areas.Admin.Services
                     _db.Entry(removeBillService).State = System.Data.Entity.EntityState.Modified;
                 }
             }
-
             if(serviceList.Count > 0)
             {
                 foreach(var service in serviceList)
@@ -73,10 +70,10 @@ namespace JenzHealth.Areas.Admin.Services
                     {
                         CustomerType = vmodel.CustomerType,
                         CustomerUniqueID = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? _db.Billings.FirstOrDefault(x => x.InvoiceNumber == vmodel.InvoiceNumber).CustomerUniqueID : null,
-                        CustomerName = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerName : null,
-                        CustomerGender = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerGender : null,
-                        CustomerAge = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerAge : 0,
-                        CustomerPhoneNumber = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
+                        CustomerName = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerName : null,
+                        CustomerGender = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerGender : null,
+                        CustomerAge = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerAge : 0,
+                        CustomerPhoneNumber = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
                         IsDeleted = false,
                         InvoiceNumber = vmodel.InvoiceNumber,
                         DateCreated = DateTime.Now,
@@ -89,23 +86,19 @@ namespace JenzHealth.Areas.Admin.Services
             }
             _db.SaveChanges();
 
-
-
             return true;
         }
-
         public BillingVM GetCustomerForBill(string invoiceNumber)
         {
             var model = _db.Billings.Where(x => x.InvoiceNumber == invoiceNumber && x.IsDeleted == false).Select(b => new BillingVM()
             {
-                CustomerName = _db.Customers.FirstOrDefault(x=>x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " "+ _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname,
-                CustomerGender = _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender,
-                CustomerPhoneNumber = _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber,
-                CustomerAge = DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year,
+                CustomerName = b.CustomerName == null ?_db.Customers.FirstOrDefault(x=>x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " "+ _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
+                CustomerGender = b.CustomerGender == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender : b.CustomerGender,
+                CustomerPhoneNumber = b.CustomerPhoneNumber == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber : b.CustomerPhoneNumber,
+                CustomerAge = b.CustomerAge == null ? DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year : b.CustomerAge,
             }).FirstOrDefault();
             return model;
         }
-
         public List<BillingVM> GetBillServices(string invoiceNumber)
         {
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
