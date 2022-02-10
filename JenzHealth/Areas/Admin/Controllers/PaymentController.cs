@@ -89,13 +89,13 @@ namespace JenzHealth.Areas.Admin.Controllers
         public ActionResult Billings(BillingVM vmodel, List<ServiceListVM> serviceList) 
         {
             ViewBag.SearchBy = new SelectList(CustomData.SearchBy, "Value", "Text");
-            if((vmodel.InvoiceNumber ==  null && vmodel.CustomerUniqueID != null) || (vmodel.CustomerName != null)) {
-                _paymentService.CreateBilling(vmodel, serviceList);
+            if((vmodel.InvoiceNumber !=  null && vmodel.CustomerUniqueID == null)) {
+                _paymentService.UpdateBilling(vmodel, serviceList);
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
             else
             {
-                _paymentService.UpdateBilling(vmodel, serviceList);
+                _paymentService.CreateBilling(vmodel, serviceList);
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
         }
