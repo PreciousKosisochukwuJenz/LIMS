@@ -33,10 +33,10 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     CustomerType = vmodel.CustomerType,
                     CustomerUniqueID = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerUniqueID : null,
-                    CustomerName = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerName : null,
-                    CustomerGender = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerGender : null,
-                    CustomerAge = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerAge : 0,
-                    CustomerPhoneNumber = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
+                    CustomerName =  vmodel.CustomerName,
+                    CustomerGender = vmodel.CustomerGender,
+                    CustomerAge =  vmodel.CustomerAge,
+                    CustomerPhoneNumber = vmodel.CustomerPhoneNumber,
                     IsDeleted = false,
                     InvoiceNumber = invoiceNumber,
                     DateCreated = DateTime.Now,
@@ -52,7 +52,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public bool UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
-            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber &x.IsDeleted ==false).Select(b=>b.ServiceID).ToList();
+            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber &&  x.IsDeleted == false).Select(b=>b.ServiceID).ToList();
             if (ServiceBills.Count > 0)
             {
                 foreach (var service in ServiceBills)
@@ -60,9 +60,10 @@ namespace JenzHealth.Areas.Admin.Services
                     var removeBillService = _db.Billings.FirstOrDefault(x => x.ServiceID == service && x.IsDeleted == false);
                     removeBillService.IsDeleted = true;
                     _db.Entry(removeBillService).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
                 }
             }
-            if(serviceList.Count > 0)
+            if (serviceList.Count > 0)
             {
                 foreach(var service in serviceList)
                 {
@@ -70,10 +71,10 @@ namespace JenzHealth.Areas.Admin.Services
                     {
                         CustomerType = vmodel.CustomerType,
                         CustomerUniqueID = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? _db.Billings.FirstOrDefault(x => x.InvoiceNumber == vmodel.InvoiceNumber).CustomerUniqueID : null,
-                        CustomerName = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerName : null,
-                        CustomerGender = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerGender : null,
-                        CustomerAge = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerAge : 0,
-                        CustomerPhoneNumber = vmodel.CustomerType == CustomerType.WALK_IN_CUSTOMER ? vmodel.CustomerPhoneNumber : null,
+                        CustomerName = vmodel.CustomerName,
+                        CustomerGender = vmodel.CustomerGender,
+                        CustomerAge = vmodel.CustomerAge,
+                        CustomerPhoneNumber =  vmodel.CustomerPhoneNumber,
                         IsDeleted = false,
                         InvoiceNumber = vmodel.InvoiceNumber,
                         DateCreated = DateTime.Now,

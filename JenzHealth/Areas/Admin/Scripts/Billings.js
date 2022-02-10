@@ -177,14 +177,16 @@ $("#FinishBtn").click(function () {
     }).then((result) => {
         if (result.value) {
             let serviceArr = [];
+            debugger
+            
             let data = {
                 InvoiceNumber: $("#InvoiceNumber").val(),
                 CustomerType: $("input[name='CustomerType']:checked").val(),
-                CustomerName: $("input[name='CustomerName']").val(),
+                CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
                 CustomerUniqueID: $("#CustomerUniqueID").val(),
-                CustomerAge: $("input[name='CustomerAge']").val(),
-                CustomerGender: $("#genderFll").val(),
-                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val(),
+                CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText: $("input[name='CustomerAge']").val(),
+                CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
+                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText: $("input[name='CustomerPhoneNumber']").val(),
             };
             var table = $("#ServiceBody")[0].children;
             $.each(table, function (i, tr) {
