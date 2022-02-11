@@ -26,9 +26,13 @@ namespace JenzHealth.Areas.Admin.Components
               // Payment
             new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Payment/Billings",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
+                new Menu(url: "/Admin/Payment/CashCollections",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
+                new Menu(url: "/Admin/Payment/DepositeCollections",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
+                new Menu(url: "/Admin/Payment/Transactions",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
+                new Menu(url: "/Admin/Payment/PartPayments",stringText:"Part payments", icon: null ?? defaultIcon, isMenu: true,claim: "payment.partpayments", childMenus: null),
+                new Menu(url: "/Admin/Payment/Waivers",stringText:"Waivers", icon: null ?? defaultIcon, isMenu: true,claim: "payment.waivers", childMenus: null),
+                new Menu(url: "/Admin/Payment/Refunds",stringText:"Refunds", icon: null ?? defaultIcon, isMenu: true,claim: "payment.refunds", childMenus: null),
+                new Menu(url: "/Admin/Payment/RecieptCollections",stringText:"Reciept Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcollections", childMenus: null),
             }),
 
              // Seed
@@ -61,13 +65,17 @@ namespace JenzHealth.Areas.Admin.Components
             new Menu(url: "#",stringText:"Customer Management", icon: "accessible", isMenu: true,claim: "customer", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Customers", icon: null ?? defaultIcon, isMenu: true,claim: "customer.managecustomers", childMenus: null),
             }),
-
-                // Payment
+              
+              // Payment
             new Menu(url: "#",stringText:"Payment Management", icon: "money", isMenu: true,claim: "Payment", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Payment/Billings",stringText:"Billings", icon: null ?? defaultIcon, isMenu: true,claim: "payment.billing", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
-                new Menu(url: "/Admin/Customer/ManageCustomers",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
+                new Menu(url: "/Admin/Payment/CashCollections",stringText:"Cash Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.cashcollection", childMenus: null),
+                new Menu(url: "/Admin/Payment/DepositeCollections",stringText:"Deposite Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.depositecollection", childMenus: null),
+                new Menu(url: "/Admin/Payment/Transactions",stringText:"Transactions", icon: null ?? defaultIcon, isMenu: true,claim: "payment.transactions", childMenus: null),
+                new Menu(url: "/Admin/Payment/PartPayments",stringText:"Part payments", icon: null ?? defaultIcon, isMenu: true,claim: "payment.partpayments", childMenus: null),
+                new Menu(url: "/Admin/Payment/Waivers",stringText:"Waivers", icon: null ?? defaultIcon, isMenu: true,claim: "payment.waivers", childMenus: null),
+                new Menu(url: "/Admin/Payment/Refunds",stringText:"Refunds", icon: null ?? defaultIcon, isMenu: true,claim: "payment.refunds", childMenus: null),
+                new Menu(url: "/Admin/Payment/RecieptCollections",stringText:"Reciept Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcollections", childMenus: null),
             }),
 
              // Seed

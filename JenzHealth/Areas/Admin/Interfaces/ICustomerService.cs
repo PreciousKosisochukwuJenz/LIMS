@@ -15,5 +15,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool EditCustomer(CustomerVM vmodel);
         bool DeleteCustomer(int ID);
         CustomerVM GetCustomer(string unqiueID);
+        CustomerVM SearchCustomerWithIDorPhoneNumber(string value);
     }
 }

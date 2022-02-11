@@ -9,7 +9,7 @@ using System.Web;
 
 namespace JenzHealth.Areas.Admin.Services
 {
-    public class CustomerService :ICustomerService
+    public class CustomerService : ICustomerService
     {
         /* Instancation of the database context model
       * and injecting some buisness layer services
@@ -53,7 +53,7 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var customerCount = _db.Customers.Count();
             var customrUniqueNumberPrefix = _db.ApplicationSettings.FirstOrDefault().CustomerNumberPrefix;
-            if(!customrUniqueNumberPrefix.EndsWith("/"))
+            if (!customrUniqueNumberPrefix.EndsWith("/"))
                 customrUniqueNumberPrefix = customrUniqueNumberPrefix + "/";
 
 
@@ -73,7 +73,7 @@ namespace JenzHealth.Areas.Admin.Services
             _db.Customers.Add(model);
             _db.SaveChanges();
 
-            return new { hasSaved = true , customerUniqueID = model.CustomerUniqueID };
+            return new { hasSaved = true, customerUniqueID = model.CustomerUniqueID };
         }
 
         // Getting Customer
@@ -145,6 +145,22 @@ namespace JenzHealth.Areas.Admin.Services
             }).FirstOrDefault();
             return model;
         }
-
+        public CustomerVM SearchCustomerWithIDorPhoneNumber(string value)
+        {
+            var model = _db.Customers.Where(x => (x.CustomerUniqueID == value || x.PhoneNumber == value) && x.IsDeleted == false).Select(b => new CustomerVM()
+            {
+                Id = b.Id,
+                CustomerUniqueID = b.CustomerUniqueID,
+                Firstname = b.Firstname,
+                Lastname = b.Lastname,
+                Gender = b.Gender,
+                DOB = b.DOB,
+                Religion = b.Religion,
+                Address = b.Address,
+                PhoneNumber = b.PhoneNumber,
+                Email = b.Email
+            }).FirstOrDefault();
+            return model;
+        }
     }
 }

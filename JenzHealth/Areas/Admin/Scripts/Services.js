@@ -73,8 +73,3 @@ function Prompt(ID) {
         }
     })
 }
-
-$(".currency").inputmask('currency', {
-    rightAlign: true,
-    "prefix": "₦"
-});

@@ -86,10 +86,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Billings(BillingVM vmodel, List<ServiceListVM> serviceList) 
+        public ActionResult Billings(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
             ViewBag.SearchBy = new SelectList(CustomData.SearchBy, "Value", "Text");
-            if((vmodel.InvoiceNumber !=  null && vmodel.CustomerUniqueID == null)) {
+            if ((vmodel.InvoiceNumber != null && vmodel.CustomerUniqueID == null))
+            {
                 _paymentService.UpdateBilling(vmodel, serviceList);
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
@@ -99,6 +100,63 @@ namespace JenzHealth.Areas.Admin.Controllers
                 return Json("success", JsonRequestBehavior.AllowGet);
             }
         }
+
+        public ActionResult Waivers(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Amount was waived successfully.";
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Waivers(WaiverVM vmodel)
+        {
+            var status = _paymentService.WaiveAmountForCustomer(vmodel);
+            return RedirectToAction("Waivers", new { Saved = status });
+        }
+        public ActionResult PartPayments(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Part payment was mapped successfully.";
+            }
+            return View();
+        }
+       
+        public ActionResult DepositeCollections(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Deposited successfully.";
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DepositeCollections(DepositeCollectionVM vmodel)
+        {
+            var status = _paymentService.Deposite(vmodel);
+            return RedirectToAction("DepositeCollections", new { Saved = status });
+        }
+        #region Json
 
         public JsonResult GetCustomerByUsername(string username)
         {
@@ -128,6 +186,18 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _paymentService.GetBillServices(invoiceNumber);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetInstallmentsByInvoiceNumber(string invoiceNumber)
+        {
+            var model = _paymentService.GetPartPayments(invoiceNumber);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult PartPayments(List<PartPaymentVM> vmodel)
+        {
+            var status = _paymentService.MapPartPayment(vmodel);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
 
     }
 }

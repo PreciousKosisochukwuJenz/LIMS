@@ -53,12 +53,15 @@
   <ItemGroup>
     <Compile Include="Entity\Billing.cs" />
     <Compile Include="Entity\Customer.cs" />
+    <Compile Include="Entity\DepositeCollection.cs" />
+    <Compile Include="Entity\PartPayment.cs" />
     <Compile Include="Entity\Priviledge.cs" />
     <Compile Include="Entity\RevenueDepartment.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\ServiceDepartment.cs" />
     <Compile Include="Entity\Template.cs" />
     <Compile Include="Entity\Vendor.cs" />
+    <Compile Include="Entity\Waiver.cs" />
     <Compile Include="Helpers\CustomDecrypt.cs" />
     <Compile Include="Helpers\CustomEncrypt.cs" />
     <Compile Include="DataConnection\Seed.cs" />

@@ -59,4 +59,23 @@ namespace JenzHealth.DAL.Entity
         [EnumDisplayName(DisplayName = "Walk-In Customer")]
         WALK_IN_CUSTOMER
     }
+    public enum WaiveBy
+    {
+        [EnumDisplayName(DisplayName = "Waive By Amount")]
+        AMOUNT = 1,
+
+        [EnumDisplayName(DisplayName = "Waive By Percentage")]
+        PERCENTAGE
+    }
+    public enum PaymentType
+    {
+        [EnumDisplayName(DisplayName = "Cash Deposite")]
+        CASH = 1,
+
+        [EnumDisplayName(DisplayName = "Point Of Service")]
+        POS,
+
+        [EnumDisplayName(DisplayName = "Electronic Funds Transfer")]
+        EFT
+    }
 }

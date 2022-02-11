@@ -1,0 +1,115 @@
+﻿@using JenzHealth.DAL.Entity;
+@model JenzHealth.Areas.Admin.ViewModels.DepositeCollectionVM
+@{
+    ViewBag.Title = "Manage Deposite Collections";
+}
+<link href="~/Content/css/jquery.autocomplete.css" rel="stylesheet" />
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Payment management</span>
+        <h3 class="page-title">Manage Deposite Collections</h3>
+    </div>
+</div>
+@using (Html.BeginForm("DepositeCollections", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", id = "WaiverForm", novalidate = true }))
+{
+    <div class="row">
+        <div class="col">
+            <div class="card card-small mb-4">
+                <div class="card-header">
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="socialGitHub">Search by:</label>
+                                <div class="input-group input-group-seamless">
+                                    <input type="text" class="form-control" id="Searchby" required />
+                                    <div class="invalid-feedback">
+                                        Customer ID or Phone number required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="Search">-</label>
+                                <div class="input-group input-group-seamless">
+                                    <button class="btn btn-primary" id="Search">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-0 pb-3 text-center">
+                    <fieldset>
+                        <legend>Customer Information</legend>
+                        <table class="table mb-0 table-bordered">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="border-0">Name</th>
+                                    <th scope="col" class="border-0">Gender</th>
+                                    <th scope="col" class="border-0">Age</th>
+                                    <th scope="col" class="border-0">Phone number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="Customername"></td>
+                                    <td id="Customergender"></td>
+                                    <td id="Customerage"></td>
+                                    <td id="Customerphonenumber"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+                <div class="card card-small mb-4">
+                    <div class="card-header border-bottom">
+                        <div class="m-0">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="AmountString">Amount</label>
+                                    <div class="input-group input-group-seamless">
+                                        @Html.EditorFor(model => model.AmountString, new { htmlAttributes = new { @class = "form-control currency", required = true } })
+                                    </div>
+                                </div>
+                                @Html.HiddenFor(x => x.CustomerUniqueID, new { id = "CustomerUID" })
+                                <div class="form-group col-md-6">
+                                    <label for="PaymentType">Payment Method</label>
+                                    <div class="input-group input-group-seamless">
+                                        @Html.DropDownListFor(model => model.PaymentType, EnumHelper.GetSelectList(typeof(PaymentType)), new { @class = "form-control", required = true })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="ReferenceNumber">Reference Number</label>
+                                    <div class="input-group input-group-seamless">
+                                        @Html.EditorFor(model => model.ReferenceNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Reference number", required = true } })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Description">Description</label>
+                                    <div class="input-group input-group-seamless">
+                                        @Html.TextAreaFor(model => model.Description, 0, 5, new { @class = "form-control", placeholder = "Enter Description", required = true })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0 pb-3 text-center">
+                        <hr />
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="submit">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Deposite.js"></script>
+}
