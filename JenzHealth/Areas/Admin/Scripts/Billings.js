@@ -91,7 +91,7 @@ $("#SearchCustomer").click(function (e) {
                 e.target.innerHTML = "Search"
             },
             error: function (err) {
-                alert(err);
+                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
                 e.target.innerHTML = "Search"
             }
         })
@@ -132,7 +132,7 @@ $("#SearchCustomer").click(function (e) {
                 e.target.innerHTML = "Search"
             },
             error: function (err) {
-                alert(err);
+                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
                 e.target.innerHTML = "Search"
             }
         })
@@ -158,7 +158,7 @@ $("#AddService").click(function (e) {
                 e.target.innerHTML = "Add"
             },
             error: function (err) {
-                alert(err);
+                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
                 e.target.innerHTML = "Add"
             }
         });
@@ -177,7 +177,6 @@ $("#FinishBtn").click(function () {
     }).then((result) => {
         if (result.value) {
             let serviceArr = [];
-            debugger
             
             let data = {
                 InvoiceNumber: $("#InvoiceNumber").val(),
@@ -227,9 +226,6 @@ function CalculateGrossAmount(quantity, price, RowID) {
     let grossAmount = quantity * price;
     $(".gross-" + RowID).html("₦" + numberWithCommas(grossAmount) + ".00");
 }
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 function Delete(e) {
     Swal.fire({
         title: 'Confirmation',
@@ -242,6 +238,7 @@ function Delete(e) {
     }).then((result) => {
         if (result.value) {
             e.parentElement.parentElement.remove();
+            toastr.success("Removed", "Service removed", { showDuration: 500 })
             updateNetAmount();
         }
         else if (
@@ -275,7 +272,4 @@ function updateNetAmount() {
     });
     $("#NetAmount").empty();
     $("#NetAmount").html("₦" + numberWithCommas(total) + ".00")
-}
-function ConvertToDecimal(amount) {
-    return Number(amount.replace(/[^0-9.-]+/g, ""));
 }

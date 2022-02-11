@@ -110,6 +110,12 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _customerService.GetCustomer(id);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult SearchCustomerWithIDorPhoneNumber(string value)
+        {
+            var model = _customerService.SearchCustomerWithIDorPhoneNumber(value);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult DeleteCustomer(int id)
         {
             var model = _customerService.DeleteCustomer(id);

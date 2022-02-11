@@ -31,6 +31,9 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Billing> Billings { get; set; }
+        public virtual DbSet<Waiver> Waivers { get; set; }
+        public virtual DbSet<PartPayment> PartPayments { get; set; }
+        public virtual DbSet<DepositeCollection> DepositeCollections { get; set; }
  
     }
 }

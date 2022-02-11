@@ -1,0 +1,129 @@
+﻿@using JenzHealth.DAL.Entity;
+@model JenzHealth.Areas.Admin.ViewModels.WaiverVM
+@{
+    ViewBag.Title = "Manage Waivers";
+}
+<link href="~/Content/css/jquery.autocomplete.css" rel="stylesheet" />
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Payment management</span>
+        <h3 class="page-title">Manage Waivers</h3>
+    </div>
+</div>
+@using (Html.BeginForm("Waivers", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate",id="WaiverForm", novalidate = true }))
+{
+    <div class="row">
+        <div class="col">
+            <div class="card card-small mb-4">
+                <div class="card-header">
+
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="socialGitHub">Search by:</label>
+                                <div class="input-group input-group-seamless">
+                                    @Html.EditorFor(model => model.BillInvoiceNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Invoice Number", id = "Searchby", required = true } })
+                                    <div class="invalid-feedback">
+                                        Invoice Number required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="socialGitHub">-</label>
+                                <div class="input-group input-group-seamless">
+                                    <button class="btn btn-primary" id="Search">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-0 pb-3 text-center">
+                    <fieldset>
+                        <legend>Customer Information</legend>
+                        <table class="table mb-0 table-bordered">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="border-0">Name</th>
+                                    <th scope="col" class="border-0">Gender</th>
+                                    <th scope="col" class="border-0">Age</th>
+                                    <th scope="col" class="border-0">Phone number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="Customername"></td>
+                                    <td id="Customergender"></td>
+                                    <td id="Customerage"></td>
+                                    <td id="Customerphonenumber"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+
+            </div>
+            <div class="card card-small mb-4">
+                <div class="card-header border-bottom">
+                    <div class="m-0">
+                        <div class="fa-pull-right">
+                            <div class="form-group col-md-12">
+                                <div class="input-group">
+                                    @foreach (var item in Enum.GetValues(typeof(WaiveBy)).Cast<WaiveBy>().ToList())
+                                    {
+                                        <span style="margin:10px;">
+                                            @Html.RadioButtonFor(model => model.WaiveBy, item, new { id = item, @class = "Status", required = true })
+                                            <label for="@item"><strong>@item.DisplayName()</strong></label>
+                                        </span>
+                                    }
+                                    <div class="invalid-feedback">
+                                        Waiver type required
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0 pb-3 text-center">
+                    <table class="table mb-0 table-bordered">
+                        <thead class="bg-light">
+                            <tr>
+                                <th scope="col" class="border-0">Net Amount (₦)</th>
+                                <th scope="col" class="border-0">Waive</th>
+                                <th scope="col" class="border-0">Balance (₦)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="netAmountDisplay">₦0.00</td>
+                                <td>
+                                    <input type="text" class="form-control currency" id="waiverAmount" style="font-weight:500" />
+                                    <input type="number" class="form-control" id="waiverPercentage" style="font-weight:500; display:none" />
+                                </td>
+                                <td id="balanceAmountDisplay">
+                                    ₦0.00
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @Html.HiddenFor(model => model.WaiveAmount)
+                    @Html.HiddenFor(model => model.NetAmount)
+                    @Html.HiddenFor(model => model.AvailableAmount)
+                    <hr />
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" id="FinishBtn" type="button">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Waivers.js"></script>
+}

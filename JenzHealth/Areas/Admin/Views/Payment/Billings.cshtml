@@ -17,7 +17,7 @@
             <div class="card-header">
 
                 <div class="m-0">
-                    @using (Html.BeginForm("Billings", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate",novalidate = true }))
+                    @using (Html.BeginForm("Billings", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
                     {
                         <div style="background: #c1cee7">
                             <div class="form-group col-md-12">
@@ -156,7 +156,8 @@
 
         </div>
     </div>
-    @section Scripts{
-        <script src="~/Scripts/jquery.autocomplete.js"></script>
-        <script src="~/Areas/Admin/Scripts/Billings.js"></script>
-    }
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery.autocomplete.js"></script>
+    <script src="~/Areas/Admin/Scripts/Billings.js"></script>
+}

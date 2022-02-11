@@ -13,5 +13,9 @@ namespace JenzHealth.Areas.Admin.Interfaces
         BillingVM GetCustomerForBill(string invoiceNumber);
         List<BillingVM> GetBillServices(string invoiceNumber);
         bool UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList);
+        bool WaiveAmountForCustomer(WaiverVM vmodel);
+        List<PartPaymentVM> GetPartPayments(string BillInvoiceNumber);
+        bool MapPartPayment(List<PartPaymentVM> vmodel);
+        bool Deposite(DepositeCollectionVM vmodel);
     }
 }

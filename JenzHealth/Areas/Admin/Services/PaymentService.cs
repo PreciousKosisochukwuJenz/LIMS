@@ -33,9 +33,9 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     CustomerType = vmodel.CustomerType,
                     CustomerUniqueID = vmodel.CustomerType == CustomerType.REGISTERED_CUSTOMER ? vmodel.CustomerUniqueID : null,
-                    CustomerName =  vmodel.CustomerName,
+                    CustomerName = vmodel.CustomerName,
                     CustomerGender = vmodel.CustomerGender,
-                    CustomerAge =  vmodel.CustomerAge,
+                    CustomerAge = vmodel.CustomerAge,
                     CustomerPhoneNumber = vmodel.CustomerPhoneNumber,
                     IsDeleted = false,
                     InvoiceNumber = invoiceNumber,
@@ -52,7 +52,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public bool UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
-            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber &&  x.IsDeleted == false).Select(b=>b.ServiceID).ToList();
+            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber && x.IsDeleted == false).Select(b => b.ServiceID).ToList();
             if (ServiceBills.Count > 0)
             {
                 foreach (var service in ServiceBills)
@@ -65,7 +65,7 @@ namespace JenzHealth.Areas.Admin.Services
             }
             if (serviceList.Count > 0)
             {
-                foreach(var service in serviceList)
+                foreach (var service in serviceList)
                 {
                     var model = new Billing()
                     {
@@ -74,7 +74,7 @@ namespace JenzHealth.Areas.Admin.Services
                         CustomerName = vmodel.CustomerName,
                         CustomerGender = vmodel.CustomerGender,
                         CustomerAge = vmodel.CustomerAge,
-                        CustomerPhoneNumber =  vmodel.CustomerPhoneNumber,
+                        CustomerPhoneNumber = vmodel.CustomerPhoneNumber,
                         IsDeleted = false,
                         InvoiceNumber = vmodel.InvoiceNumber,
                         DateCreated = DateTime.Now,
@@ -93,10 +93,11 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var model = _db.Billings.Where(x => x.InvoiceNumber == invoiceNumber && x.IsDeleted == false).Select(b => new BillingVM()
             {
-                CustomerName = b.CustomerName == null ?_db.Customers.FirstOrDefault(x=>x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " "+ _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
+                CustomerName = b.CustomerName == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " " + _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
                 CustomerGender = b.CustomerGender == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender : b.CustomerGender,
                 CustomerPhoneNumber = b.CustomerPhoneNumber == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber : b.CustomerPhoneNumber,
                 CustomerAge = b.CustomerAge == null ? DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year : b.CustomerAge,
+                InvoiceNumber = b.InvoiceNumber
             }).FirstOrDefault();
             return model;
         }
@@ -117,5 +118,99 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return model;
         }
+
+        public bool WaiveAmountForCustomer(WaiverVM vmodel)
+        {
+            var checkIfWaivedBefore = _db.Waivers.Count(x => x.BillInvoiceNumber == vmodel.BillInvoiceNumber && x.IsDeleted == false);
+            if (checkIfWaivedBefore > 0)
+            {
+                var model = _db.Waivers.FirstOrDefault(x => x.BillInvoiceNumber == vmodel.BillInvoiceNumber && x.IsDeleted == false);
+                model.AvailableAmount = vmodel.AvailableAmount;
+                model.WaiveAmount = vmodel.WaiveAmount;
+                model.NetAmount = vmodel.NetAmount;
+                model.WaiveBy = vmodel.WaiveBy;
+
+                _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            }
+            else
+            {
+                var model = new Waiver()
+                {
+                    BillInvoiceNumber = vmodel.BillInvoiceNumber,
+                    AvailableAmount = vmodel.AvailableAmount,
+                    NetAmount = vmodel.NetAmount,
+                    WaiveAmount = vmodel.WaiveAmount,
+                    WaiveBy = vmodel.WaiveBy,
+                    IsDeleted = false,
+                    DateCreated = DateTime.Now,
+                };
+                _db.Waivers.Add(model);
+            }
+            _db.SaveChanges();
+
+            return true;
+        }
+        public List<PartPaymentVM> GetPartPayments(string BillInvoiceNumber)
+        {
+            var model = _db.PartPayments.Where(x => x.BillInvoiceNumber == BillInvoiceNumber && x.IsDeleted == false).Select(b => new PartPaymentVM()
+            {
+                Id = b.Id,
+                InstallmentName = b.InstallmentName,
+                PartPaymentAmount = b.PartPaymentAmount,
+                IsPaidPartPayment = b.IsPaidPartPayment
+            }).ToList();
+            return model;
+        }
+        public bool MapPartPayment(List<PartPaymentVM> vmodel)
+        {
+            if (vmodel != null)
+            {
+                var billInvoiceNumber = vmodel.FirstOrDefault().BillInvoiceNumber;
+                // Update installment
+                var installments = _db.PartPayments.Where(x => x.BillInvoiceNumber == billInvoiceNumber && x.IsDeleted == false).ToList();
+                foreach (var installment in installments)
+                {
+                    installment.IsDeleted = true;
+                    _db.Entry(installment).State = System.Data.Entity.EntityState.Modified;
+                }
+                _db.SaveChanges();
+
+                foreach (var installment in vmodel)
+                {
+                    // Add installment
+                    var model = new PartPayment()
+                    {
+                        BillInvoiceNumber = installment.BillInvoiceNumber,
+                        InstallmentName = installment.InstallmentName,
+                        PartPaymentAmount = installment.PartPaymentAmount,
+                        IsPaidPartPayment = false,
+                        IsDeleted = false,
+                        DateCreated = DateTime.Now
+                    };
+                    _db.PartPayments.Add(model);
+                }
+                _db.SaveChanges();
+            }
+            return true;
+        }
+        public bool Deposite(DepositeCollectionVM vmodel)
+        {
+            var model = new DepositeCollection()
+            {
+                Amount = CustomSerializer.UnMaskString(vmodel.AmountString),
+                CustomerUniqueID = vmodel.CustomerUniqueID,
+                CustomerID = _db.Customers.FirstOrDefault(x=>x.CustomerUniqueID == vmodel.CustomerUniqueID).Id,
+                Description = vmodel.Description,
+                PaymentType = vmodel.PaymentType,
+                ReferenceNumber = vmodel.ReferenceNumber,
+                IsDeleted = false,
+                DateCreated = DateTime.Now
+            };
+            _db.DepositeCollections.Add(model);
+            _db.SaveChanges();
+
+            return true;
+        }
     }
+
 }
