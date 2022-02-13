@@ -32,3 +32,15 @@ $("#Search").click(function (e) {
     }
 });
 
+$("#PaymentType").change(function () {
+    var selected = $(this).val();
+    debugger
+
+    if (selected == 1) {
+        $("#ReferenceNumber").removeAttr("required");
+        $("#refDiv").hide();
+    } else {
+        $("#ReferenceNumber").attr("required",true);
+        $("#refDiv").show();
+    }
+})
