@@ -65,84 +65,146 @@ $(window).ready(function () {
 $("#SearchCustomer").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
-    e.target.innerHTML = "Searching..."
+
 
     let searchby = $("#SearchBy").val();
 
     if (searchby == "New") {
         var username = $("#CustomerUniqueID").val();
-        $.ajax({
-            url: 'GetCustomerByUsername?username=' + username,
-            method: "Get",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                $("#Customername").html(response.Firstname + " " + response.Lastname);
-                $("#Customergender").html(response.Gender);
-                $("#Customerphonenumber").html(response.PhoneNumber);
+        if (username === "") {
+            $("#CustomerUniqueID").addClass("is-invalid");
+        } else {
+            $("#CustomerUniqueID").removeClass("is-invalid");
+            e.target.innerHTML = "Searching..."
+            $("#customerInfoLoader").show();
+            $("#ServiceTableLoader").show();
+            $("#serviceTableDiv").hide();
+            $("#customerinfoDiv").hide();
+            $("#Customername").empty();
+            $("#Customergender").empty();
+            $("#Customerphonenumber").empty();
+            $("#Customerage").empty();
+            $("#ServiceBody").empty();
+            $("#NetAmount").html("₦0.00");
 
-                // Calcualte age
-                let customerDOBYear = new Date(+response.DOB.replace(/\D/g, '')).getFullYear();
-                let currentYear = new Date().getFullYear();
-                let customerAge = parseInt(currentYear - customerDOBYear);
-                $("#Customerage").html(customerAge);
 
 
-                e.target.innerHTML = "Search"
-            },
-            error: function (err) {
-                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
-                e.target.innerHTML = "Search"
-            }
-        })
+
+            $.ajax({
+                url: 'GetCustomerByUsername?username=' + username,
+                method: "Get",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $("#Customername").html(response.Firstname + " " + response.Lastname);
+                    $("#Customergender").html(response.Gender);
+                    $("#Customerphonenumber").html(response.PhoneNumber);
+
+                    // Calcualte age
+                    let customerDOBYear = new Date(+response.DOB.replace(/\D/g, '')).getFullYear();
+                    let currentYear = new Date().getFullYear();
+                    let customerAge = parseInt(currentYear - customerDOBYear);
+                    $("#Customerage").html(customerAge);
+
+                    $("#customerInfoLoader").hide();
+                    $("#customerinfoDiv").show();
+                    $("#ServiceTableLoader").hide();
+                    $("#serviceTableDiv").show();
+                    e.target.innerHTML = "Search"
+                },
+                error: function (err) {
+                    toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
+                    e.target.innerHTML = "Search"
+                    $("#customerInfoLoader").hide();
+                    $("#customerinfoDiv").show();
+                    $("#ServiceTableLoader").hide();
+                    $("#serviceTableDiv").show();
+                }
+            })
+        }
     } else {
         var invoiceNumber = $("#InvoiceNumber").val();
-        $.ajax({
-            url: 'GetCustomerByInvoiceNumber?invoiceNumber=' + invoiceNumber,
-            method: "Get",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                $("#Customername").html(response.CustomerName);
-                $("#Customergender").html(response.CustomerGender);
-                $("#Customerphonenumber").html(response.CustomerPhoneNumber);
-                $("#Customerage").html(response.CustomerAge);
+        if (invoiceNumber === "") {
+            $("#InvoiceNumber").addClass("is-invalid");
+        }
+        else {
+            $("#InvoiceNumber").removeClass("is-invalid");
+            e.target.innerHTML = "Searching..."
+            $("#customerInfoLoader").show();
+            $("#ServiceTableLoader").show();
+            $("#serviceTableDiv").hide();
+            $("#customerinfoDiv").hide();
+            $("#Customername").empty();
+            $("#Customergender").empty();
+            $("#Customerphonenumber").empty();
+            $("#Customerage").empty();
+            $("#ServiceBody").empty();
+            $("#NetAmount").html("₦0.00");
 
-                $.ajax({
-                    url: 'GetServicesByInvoiceNumber?invoiceNumber=' + invoiceNumber,
-                    method: "Get",
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
-                    success: function (datas) {
-                        $("#ServiceBody").empty()
-                        $.each(datas, function (i, data) {
-                            let html = "";
-                            html = "<tr id='" + data.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + data.ServiceName + "</td><td><input type='number' value=" + data.Quantity + " class='form-control quantity-" + data.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + data.Id + "' data-id='" + data.SellingPrice + "'>" + data.SellingPriceString + "</td><td><strong class='gross-" + data.Id + " gross'>₦00.00</strong></td></tr>";
-                            $("#ServiceBody").append(html);
-                            $("#ServiceName").val("");
-                            CalculateGrossAmount(data.Quantity, data.SellingPrice, data.Id);
-                        });
-                        updateNetAmount();
-                    },
-                    error: function (err) {
-                        alert(err);
-                    }
-                })
+            $.ajax({
+                url: 'GetCustomerByInvoiceNumber?invoiceNumber=' + invoiceNumber,
+                method: "Get",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    $("#Customername").html(response.CustomerName);
+                    $("#Customergender").html(response.CustomerGender);
+                    $("#Customerphonenumber").html(response.CustomerPhoneNumber);
+                    $("#Customerage").html(response.CustomerAge);
 
-                e.target.innerHTML = "Search"
-            },
-            error: function (err) {
-                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
-                e.target.innerHTML = "Search"
-            }
-        })
+                    $("#customerInfoLoader").hide();
+                    $("#customerinfoDiv").show();
+
+
+                    $.ajax({
+                        url: 'GetServicesByInvoiceNumber?invoiceNumber=' + invoiceNumber,
+                        method: "Get",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (datas) {
+                            $("#ServiceBody").empty()
+                            $.each(datas, function (i, data) {
+                                let html = "";
+                                html = "<tr id='" + data.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + data.ServiceName + "</td><td><input type='number' value=" + data.Quantity + " class='form-control quantity-" + data.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + data.Id + "' data-id='" + data.SellingPrice + "'>" + data.SellingPriceString + "</td><td><strong class='gross-" + data.Id + " gross'>₦00.00</strong></td></tr>";
+                                $("#ServiceBody").append(html);
+                                $("#ServiceName").val("");
+                                CalculateGrossAmount(data.Quantity, data.SellingPrice, data.Id);
+                            });
+                            updateNetAmount();
+                            $("#ServiceTableLoader").hide();
+                            $("#serviceTableDiv").show();
+                        },
+                        error: function (err) {
+                            toastr.error("No record found", "Not Found", { showDuration: 500 })
+                            $("#ServiceTableLoader").hide();
+                            $("#serviceTableDiv").show();
+                        }
+                    })
+
+                    e.target.innerHTML = "Search"
+                },
+                error: function (err) {
+                    toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
+                    e.target.innerHTML = "Search";
+                    $("#customerInfoLoader").hide();
+                    $("#customerinfoDiv").show();
+                    $("#ServiceTableLoader").hide();
+                    $("#serviceTableDiv").show();
+                }
+            })
+
+        }
     }
 
 })
 $("#AddService").click(function (e) {
-    if (document.getElementById("ServiceName").checkValidity()) {
+    var servicename = $("#ServiceName").val();
+    if (servicename === "") {
+        $("#ServiceName").addClass("is-invalid");
+    }
+    else {
+        $("#ServiceName").removeClass("is-invalid");
         e.target.innerHTML = "Adding..."
-        var servicename = $("#ServiceName").val();
         $.ajax({
             url: 'GetServiceByName?servicename=' + servicename,
             method: "Get",
@@ -163,7 +225,6 @@ $("#AddService").click(function (e) {
             }
         });
     }
-    document.getElementById("ServiceName").classList.add('was-validated');
 })
 $("#FinishBtn").click(function () {
     Swal.fire({
@@ -177,15 +238,15 @@ $("#FinishBtn").click(function () {
     }).then((result) => {
         if (result.value) {
             let serviceArr = [];
-            
+
             let data = {
                 InvoiceNumber: $("#InvoiceNumber").val(),
                 CustomerType: $("input[name='CustomerType']:checked").val(),
                 CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
                 CustomerUniqueID: $("#CustomerUniqueID").val(),
-                CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText: $("input[name='CustomerAge']").val(),
+                CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText : $("input[name='CustomerAge']").val(),
                 CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
-                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText: $("input[name='CustomerPhoneNumber']").val(),
+                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText : $("input[name='CustomerPhoneNumber']").val(),
             };
             var table = $("#ServiceBody")[0].children;
             $.each(table, function (i, tr) {
@@ -202,10 +263,10 @@ $("#FinishBtn").click(function () {
                 dataType: "json",
                 data: { vmodel: data, serviceList: serviceArr },
                 success: function (response) {
-                    if (response == "success" && $("#SearchBy").val() == "New") {
-                        location.href = "Billings?Saved=true";
+                    if (response.Status == true && $("#SearchBy").val() == "New") {
+                        location.href = "Billings?Saved=true&invoicenumber=" + response.InvoiceNumber;
                     } else {
-                        location.href = "Billings?Updated=true";
+                        location.href = "Billings?Updated=true&invoicenumber=" + response.InvoiceNumber;
                     }
                 }
             })

@@ -78,4 +78,14 @@ namespace JenzHealth.DAL.Entity
         [EnumDisplayName(DisplayName = "Electronic Funds Transfer")]
         EFT
     }
+
+    public enum CollectionType
+    {
+        [EnumDisplayName(DisplayName = "Billed")]
+        BILLED = 1,
+        [EnumDisplayName(DisplayName = "Unbilled")]
+        UNBILLED,
+        [EnumDisplayName(DisplayName = "Walk-In Customer")]
+        WALK_IN
+    }
 }

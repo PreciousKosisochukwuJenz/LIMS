@@ -22,10 +22,11 @@ namespace JenzHealth.Areas.Admin.Services
         {
             _db = db;
         }
-        public bool CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
+        public string CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
-            var dateOfBill = DateTime.Now.Date.ToShortDateString().Replace("/", "");
-            var invoiceNumber = "BILL" + dateOfBill + Generator.GeneratorCode();
+            var billCount = _db.ApplicationSettings.FirstOrDefault().BillCount;
+            billCount++;
+            var invoiceNumber = string.Format("BILL/{0}",billCount.ToString("D6"));
 
             foreach (var service in serviceList)
             {
@@ -46,11 +47,14 @@ namespace JenzHealth.Areas.Admin.Services
                 };
                 _db.Billings.Add(model);
             }
+            var updateSettings = _db.ApplicationSettings.FirstOrDefault();
+            updateSettings.BillCount = billCount;
+            _db.Entry(updateSettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 
-            return true;
+            return invoiceNumber;
         }
-        public bool UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
+        public string UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
             var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber && x.IsDeleted == false).Select(b => b.ServiceID).ToList();
             if (ServiceBills.Count > 0)
@@ -87,7 +91,7 @@ namespace JenzHealth.Areas.Admin.Services
             }
             _db.SaveChanges();
 
-            return true;
+            return vmodel.InvoiceNumber;
         }
         public BillingVM GetCustomerForBill(string invoiceNumber)
         {
@@ -118,7 +122,6 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return model;
         }
-
         public bool WaiveAmountForCustomer(WaiverVM vmodel)
         {
             var checkIfWaivedBefore = _db.Waivers.Count(x => x.BillInvoiceNumber == vmodel.BillInvoiceNumber && x.IsDeleted == false);
@@ -149,6 +152,10 @@ namespace JenzHealth.Areas.Admin.Services
             _db.SaveChanges();
 
             return true;
+        }
+        public Waiver GetWaivedAmountForBillInvoiceNumber(string billInvoiceNumber)
+        {
+            return _db.Waivers.FirstOrDefault(x => x.BillInvoiceNumber == billInvoiceNumber && x.IsDeleted == false);
         }
         public List<PartPaymentVM> GetPartPayments(string BillInvoiceNumber)
         {
@@ -209,6 +216,98 @@ namespace JenzHealth.Areas.Admin.Services
             _db.DepositeCollections.Add(model);
             _db.SaveChanges();
 
+            return true;
+        }
+        public bool CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
+        {
+            switch (vmodel.CollectionType)
+            {
+                case CollectionType.BILLED:
+
+                    var billCashCollection = new CashCollection()
+                    {
+                        BillInvoiceNumber = vmodel.BillInvoiceNumber,
+                        AmountPaid = vmodel.PartPaymentID == null ? vmodel.NetAmount : _db.PartPayments.FirstOrDefault(x => x.Id == vmodel.PartPaymentID).PartPaymentAmount,
+                        NetAmount = vmodel.NetAmount,
+                        DatePaid = DateTime.Now,
+                        WaivedAmount = vmodel.WaivedAmount,
+                        BalanceAmount = vmodel.NetAmount - vmodel.WaivedAmount,
+                        IsDeleted = false,
+                        TransactionReferenceNumber = vmodel.TransactionReferenceNumber,
+                        InstallmentType = vmodel.PartPaymentID == null ? "FULL" : "PART",
+                        PartPaymentID = vmodel.PartPaymentID,
+                        PaymentType = vmodel.PaymentType
+                    };
+                    _db.CashCollections.Add(billCashCollection);
+                    break;
+                case CollectionType.UNBILLED:
+                    // Create bill for registered customer
+                    var customer = _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == vmodel.CustomerUniqueID && x.IsDeleted == false);
+                    var registeredCustomerBill = new BillingVM()
+                    {
+                        CustomerUniqueID = vmodel.CustomerUniqueID,
+                        CustomerName = string.Format("{0} {1}",customer.Firstname, customer.Lastname),
+                        CustomerGender = customer.Gender,
+                        CustomerAge = (DateTime.Now.Year - customer.DOB.Year),
+                        CustomerPhoneNumber = customer.PhoneNumber,
+                        CustomerType = CustomerType.REGISTERED_CUSTOMER,
+                        CustomerID = customer.Id,
+                    };
+                    if(serviceList.Count > 0)
+                    {
+                        var billInvoiceNumber = this.CreateBilling(registeredCustomerBill, serviceList);
+
+                        var unbilledCashCollection = new CashCollection()
+                        {
+                            BillInvoiceNumber = billInvoiceNumber,
+                            TransactionReferenceNumber = vmodel.TransactionReferenceNumber,
+                            DatePaid = DateTime.Now,
+                            IsDeleted = false,
+                            AmountPaid = vmodel.AmountPaid,
+                            WaivedAmount = vmodel.WaivedAmount,
+                            BalanceAmount = vmodel.NetAmount - vmodel.WaivedAmount,
+                            NetAmount = vmodel.NetAmount,
+                            PaymentType = vmodel.PaymentType,
+                            PartPaymentID = vmodel.PartPaymentID,
+                            InstallmentType = "FULL",
+                        };
+
+                        _db.CashCollections.Add(unbilledCashCollection);
+                    }
+                    break;
+                case CollectionType.WALK_IN:
+                    // Create bill for walk-in customer
+                    var walkinBill = new BillingVM()
+                    {
+                        CustomerName = vmodel.CustomerName,
+                        CustomerGender = vmodel.CustomerGender,
+                        CustomerAge = vmodel.CustomerAge,
+                        CustomerPhoneNumber = vmodel.CustomerPhoneNumber,
+                        CustomerType = CustomerType.WALK_IN_CUSTOMER,
+                    };
+                    if (serviceList.Count > 0)
+                    {
+                        var billInvoiceNumber = this.CreateBilling(walkinBill, serviceList);
+
+                        var walkinCashCollection = new CashCollection()
+                        {
+                            BillInvoiceNumber = billInvoiceNumber,
+                            TransactionReferenceNumber = vmodel.TransactionReferenceNumber,
+                            DatePaid = DateTime.Now,
+                            IsDeleted = false,
+                            AmountPaid = vmodel.AmountPaid,
+                            NetAmount = vmodel.NetAmount,
+                            PaymentType = vmodel.PaymentType,
+                            BalanceAmount = vmodel.NetAmount - vmodel.WaivedAmount,
+                            PartPaymentID = vmodel.PartPaymentID,
+                            InstallmentType = "FULL",
+                        };
+
+                        _db.CashCollections.Add(walkinCashCollection);
+                    }
+                    break;
+            }
+            _db.SaveChanges();
             return true;
         }
     }

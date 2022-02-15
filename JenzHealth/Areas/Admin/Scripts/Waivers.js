@@ -26,10 +26,24 @@ $("input[name='WaiveBy']").change(function () {
 $("#Search").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
-    if (document.getElementById("Search").checkValidity()) {
+    let value = $("#Searchby").val();
 
-        e.target.innerHTML = "Searching..."
-        let value = $("#Searchby").val();
+    if (value === "") {
+        $("#Searchby").addClass("is-invalid");
+    }
+    else {
+        $("#Searchby").removeClass("is-invalid");
+        e.target.innerHTML = "Searching...";
+        $("#customerInfoLoader").show();
+        $("#ServiceTableLoader").show();
+        $("#serviceTableDiv").hide();
+        $("#customerinfoDiv").hide();
+        $("#netAmountDisplay").html("₦0.00");
+        $("#Customername").empty();
+        $("#Customergender").empty();
+        $("#Customerphonenumber").empty();
+        $("#Customerage").empty();
+
         $.ajax({
             url: 'GetCustomerByInvoiceNumber?invoiceNumber=' + value,
             method: "Get",
@@ -40,6 +54,9 @@ $("#Search").click(function (e) {
                 $("#Customergender").html(response.CustomerGender);
                 $("#Customerphonenumber").html(response.CustomerPhoneNumber);
                 $("#Customerage").html(response.CustomerAge);
+
+                $("#customerInfoLoader").hide();
+                $("#customerinfoDiv").show();
 
                 $.ajax({
                     url: 'GetServicesByInvoiceNumber?invoiceNumber=' + value,
@@ -54,17 +71,27 @@ $("#Search").click(function (e) {
                         });
                         $("#netAmountDisplay").html("₦" + numberWithCommas(netAmount) + ".00");
                         $("#NetAmount").val(netAmount);
+
+                        $("#ServiceTableLoader").hide();
+                        $("#serviceTableDiv").show();
                     },
                     error: function (err) {
-                        alert("No record found")
+                        toastr.error("No customer record found", "Not Found", { showDuration: 500 });
+                        $("#ServiceTableLoader").hide();
+                        $("#serviceTableDiv").show();
                     }
                 })
 
                 e.target.innerHTML = "Search"
             },
             error: function (err) {
-                alert("No record found")
-                e.target.innerHTML = "Search"
+                toastr.error("No customer record found", "Not Found", { showDuration: 500 });
+                e.target.innerHTML = "Search";
+                $("#customerInfoLoader").hide();
+                $("#customerinfoDiv").show();
+
+                $("#ServiceTableLoader").hide();
+                $("#serviceTableDiv").show();
             }
         })
     }

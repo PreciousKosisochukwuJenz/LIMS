@@ -11,7 +11,7 @@
         <h3 class="page-title">Manage Waivers</h3>
     </div>
 </div>
-@using (Html.BeginForm("Waivers", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate",id="WaiverForm", novalidate = true }))
+@using (Html.BeginForm("Waivers", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", id = "WaiverForm", novalidate = true }))
 {
     <div class="row">
         <div class="col">
@@ -41,10 +41,13 @@
                     </div>
                 </div>
 
-                <div class="card-body p-0 pb-3 text-center">
-                    <fieldset>
-                        <legend>Customer Information</legend>
-                        <table class="table mb-0 table-bordered">
+                <fieldset>
+                    <legend class="text-center">Customer Information</legend>
+                    <div id="customerInfoLoader" style="display:none" class="col text-center">
+                        <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                    </div>
+                    <div id="customerinfoDiv">
+                        <table class="file-manager file-manager-list2 d-none table-responsive">
                             <thead class="bg-light">
                                 <tr>
                                     <th scope="col" class="border-0">Name</th>
@@ -62,33 +65,36 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </fieldset>
-                </div>
+                    </div>
+                </fieldset>
 
             </div>
-            <div class="card card-small mb-4">
-                <div class="card-header border-bottom">
-                    <div class="m-0">
-                        <div class="fa-pull-right">
-                            <div class="form-group col-md-12">
-                                <div class="input-group">
-                                    @foreach (var item in Enum.GetValues(typeof(WaiveBy)).Cast<WaiveBy>().ToList())
-                                    {
-                                        <span style="margin:10px;">
-                                            @Html.RadioButtonFor(model => model.WaiveBy, item, new { id = item, @class = "Status", required = true })
-                                            <label for="@item"><strong>@item.DisplayName()</strong></label>
-                                        </span>
-                                    }
-                                    <div class="invalid-feedback">
-                                        Waiver type required
-                                    </div>
+            <div class="card-header">
+                <div class="m-0">
+                    <div class="fa-pull-right">
+                        <div class="form-group col-md-12">
+                            <div class="input-group">
+                                @foreach (var item in Enum.GetValues(typeof(WaiveBy)).Cast<WaiveBy>().ToList())
+                                {
+                                    <span style="margin:10px;">
+                                        @Html.RadioButtonFor(model => model.WaiveBy, item, new { id = item, @class = "Status", required = true })
+                                        <label for="@item"><strong>@item.DisplayName()</strong></label>
+                                    </span>
+                                }
+                                <div class="invalid-feedback">
+                                    Waiver type required
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body p-0 pb-3 text-center">
-                    <table class="table mb-0 table-bordered">
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <div id="ServiceTableLoader" style="display:none" class="col text-center">
+                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                </div>
+                <div id="serviceTableDiv">
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
                         <thead class="bg-light">
                             <tr>
                                 <th scope="col" class="border-0">Net Amount (₦)</th>
@@ -109,15 +115,15 @@
                             </tr>
                         </tbody>
                     </table>
-                    @Html.HiddenFor(model => model.WaiveAmount)
-                    @Html.HiddenFor(model => model.NetAmount)
-                    @Html.HiddenFor(model => model.AvailableAmount)
-                    <hr />
-                    <div class="col-md-12">
-                        <button class="btn btn-primary" id="FinishBtn" type="button">
-                            Save
-                        </button>
-                    </div>
+                </div>
+                @Html.HiddenFor(model => model.WaiveAmount)
+                @Html.HiddenFor(model => model.NetAmount)
+                @Html.HiddenFor(model => model.AvailableAmount)
+                <br />
+                <div class="col-md-12">
+                    <button class="btn btn-primary" id="FinishBtn" type="button">
+                        Save
+                    </button>
                 </div>
             </div>
         </div>

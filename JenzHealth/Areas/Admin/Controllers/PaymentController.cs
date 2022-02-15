@@ -64,7 +64,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         #endregion
 
 
-        public ActionResult Billings(bool? Saved, bool? Updated)
+        public ActionResult Billings(bool? Saved, bool? Updated, string invoicenumber)
         {
             if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
             {
@@ -74,13 +74,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             {
                 ViewBag.ShowAlert = true;
                 TempData["AlertType"] = "alert-success";
-                TempData["AlertMessage"] = "Billing was generated successfully.";
+                TempData["AlertMessage"] = string.Format("Bill was generated successfully for inoivce number '{0}'.", invoicenumber);
             }
             if (Updated == true)
             {
                 ViewBag.ShowAlert = true;
                 TempData["AlertType"] = "alert-success";
-                TempData["AlertMessage"] = "Billing was re-generated successfully.";
+                TempData["AlertMessage"] = string.Format("Bill was re-generated successfully for inoivce number '{0}'.", invoicenumber); ;
             }
             ViewBag.SearchBy = new SelectList(CustomData.SearchBy, "Value", "Text");
             return View();
@@ -89,16 +89,22 @@ namespace JenzHealth.Areas.Admin.Controllers
         public ActionResult Billings(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
             ViewBag.SearchBy = new SelectList(CustomData.SearchBy, "Value", "Text");
+            string invoicenumber = "";
             if ((vmodel.InvoiceNumber != null && vmodel.CustomerUniqueID == null))
             {
-                _paymentService.UpdateBilling(vmodel, serviceList);
-                return Json("success", JsonRequestBehavior.AllowGet);
+                invoicenumber = _paymentService.UpdateBilling(vmodel, serviceList);
             }
             else
             {
-                _paymentService.CreateBilling(vmodel, serviceList);
-                return Json("success", JsonRequestBehavior.AllowGet);
+                invoicenumber = _paymentService.CreateBilling(vmodel, serviceList);
             }
+            var response = new
+            {
+                Status = true,
+                InvoiceNumber = invoicenumber
+            };
+            return Json(response, JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult Waivers(bool? Saved)
@@ -135,7 +141,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             }
             return View();
         }
-       
+
         public ActionResult DepositeCollections(bool? Saved)
         {
             if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
@@ -155,6 +161,29 @@ namespace JenzHealth.Areas.Admin.Controllers
         {
             var status = _paymentService.Deposite(vmodel);
             return RedirectToAction("DepositeCollections", new { Saved = status });
+        }
+
+        public ActionResult CashCollections(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Cash Collected successfully.";
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CashCollections(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
+        {
+            var status = _paymentService.CashCollection(vmodel, serviceList);
+            return Json(status, JsonRequestBehavior.AllowGet);
+
         }
         #region Json
 
@@ -186,6 +215,14 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _paymentService.GetBillServices(invoiceNumber);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetWaivedAmountsForInvoiceNumber(string invoiceNumber)
+        {
+            var model = _paymentService.GetWaivedAmountForBillInvoiceNumber(invoiceNumber);
+            if (model == null)
+                model = new Waiver();
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetInstallmentsByInvoiceNumber(string invoiceNumber)
         {
             var model = _paymentService.GetPartPayments(invoiceNumber);

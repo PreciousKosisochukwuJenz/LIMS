@@ -38,10 +38,13 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-0 pb-3 text-center">
-                <fieldset>
-                    <legend>Customer Information</legend>
-                    <table class="table mb-0 table-bordered">
+            <fieldset>
+                <legend class="text-center">Customer Information</legend>
+                <div id="customerInfoLoader" style="display:none" class="col text-center">
+                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                </div>
+                <div id="customerinfoDiv">
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
                         <thead class="bg-light">
                             <tr>
                                 <th scope="col" class="border-0">Name</th>
@@ -59,46 +62,53 @@
                             </tr>
                         </tbody>
                     </table>
-                </fieldset>
-            </div>
+                </div>
+            </fieldset>
 
         </div>
         <div class="card card-small mb-4">
             <div class="card-body p-0 pb-3 text-center">
-                <table class="table mb-0 table-bordered">
-                    <thead class="bg-light">
-                        <tr>
-                            <th scope="col" class="border-0">Service</th>
-                            <th scope="col" class="border-0">Quantity</th>
-                            <th scope="col" class="border-0">Price (₦)</th>
-                            <th scope="col" class="border-0">Gross Amount (₦)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ServiceBody">
-                    </tbody>
-                    <tfoot style="border-top: 2px solid black; border-bottom: 2px solid black">
-                        <tr>
-                            <th colspan="2"></th>
-                            <th> Net Amount (₦)</th>
-                            <td id="NetAmount">₦0.00</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <hr />
+                <div id="ServiceTableLoader" style="display:none" class="col text-center">
+                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                </div>
+                <div id="serviceTableDiv">
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
+                        <thead class="bg-light">
+                            <tr>
+                                <th scope="col" class="border-0">Service</th>
+                                <th scope="col" class="border-0">Quantity</th>
+                                <th scope="col" class="border-0">Price (₦)</th>
+                                <th scope="col" class="border-0">Gross Amount (₦)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ServiceBody">
+                        </tbody>
+                        <tfoot style="border-top: 2px solid black; border-bottom: 2px solid black;background-color:#dcdfe1" class="text-center">
+                            <tr>
+                                <th colspan="2"></th>
+                                <th> Net Amount (₦)</th>
+                                <td id="NetAmount">₦0.00</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"></th>
+                                <th>Waived Amount (₦)</th>
+                                <td id="WaiveAmount">₦0.00</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"></th>
+                                <th> Balance Amount (₦)</th>
+                                <td id="BalanceAmount">₦0.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-
         </div>
         <div class="card card-small mb-4">
             <div class="card-header border-bottom">
                 <div class="m-0">
                     <div class="row">
-                        <div class="form-group col-md-5">
-                            <label for="installmentField">Installment</label>
-                            <div class="input-group input-group-seamless">
-                                <input type="text" class="form-control" id="installmentField" />
-                            </div>
-                        </div>
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-6">
                             <label for="installmentAmountField">Amount</label>
                             <div class="input-group input-group-seamless">
                                 <input type="text" class="form-control currency" id="installmentAmountField" />
@@ -115,25 +125,29 @@
                     </div>
                 </div>
             </div>
-
             <div class="card-body p-0 pb-3 text-center">
-                <table class="table mb-0 table-bordered">
-                    <thead class="bg-light">
-                        <tr>
-                            <th scope="col" class="border-0"></th>
-                            <th scope="col" class="border-0">Installment</th>
-                            <th scope="col" class="border-0">Amount (₦)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="InstallmentBody">
-                    </tbody>
-                    <tfoot style="border-top: 2px solid black; border-bottom: 2px solid black">
-                        <tr>
-                            <th colspan="2"> Installment Net Amount (₦)</th>
-                            <td id="InstallmentNetAmount">₦0.00</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div id="InstallmentTableLoader" style="display:none" class="col text-center">
+                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                </div>
+                <div id="InstallmentTableDiv">
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
+                        <thead class="bg-light">
+                            <tr>
+                                <th scope="col" class="border-0"></th>
+                                <th scope="col" class="border-0">Installment</th>
+                                <th scope="col" class="border-0">Amount (₦)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="InstallmentBody">
+                        </tbody>
+                        <tfoot style="border-top: 2px solid black; border-bottom: 2px solid black">
+                            <tr>
+                                <th colspan="2"> Installment Net Amount (₦)</th>
+                                <td id="InstallmentNetAmount">₦0.00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
                 <hr />
                 <div class="col-md-12">
                     <button class="btn btn-primary" id="FinishBtn">
