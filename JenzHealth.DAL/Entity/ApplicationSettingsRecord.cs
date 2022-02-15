@@ -20,5 +20,6 @@ namespace JenzHealth.DAL.Entity
         public bool EnableSpecimentCollectedBy { get; set; }
         public string CustomerNumberPrefix { get; set; }
         public int SalesRecieptCopyCount { get; set; }
+        public int BillCount { get; set; }
     }
 }

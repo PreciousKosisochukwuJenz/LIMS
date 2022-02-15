@@ -60,7 +60,7 @@ namespace JenzHealth.Areas.Admin.Services
             Customer model = new Customer()
             {
                 Firstname = vmodel.Firstname,
-                CustomerUniqueID = customrUniqueNumberPrefix + (customerCount + 1),
+                CustomerUniqueID = customrUniqueNumberPrefix + (customerCount + 1).ToString("D6"),
                 Lastname = vmodel.Lastname,
                 DOB = vmodel.DOB,
                 Email = vmodel.Email,
