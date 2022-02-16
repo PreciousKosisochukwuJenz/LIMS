@@ -21,5 +21,9 @@ namespace JenzHealth.DAL.Entity
         public string CustomerNumberPrefix { get; set; }
         public int SalesRecieptCopyCount { get; set; }
         public int BillCount { get; set; }
+        public int ShiftCount { get; set; }
+        public int PaymentCount { get; set; }
+        public int DepositeCount { get; set; }
+
     }
 }

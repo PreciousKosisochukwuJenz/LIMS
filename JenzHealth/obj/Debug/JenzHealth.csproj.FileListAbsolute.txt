@@ -88,3 +88,5 @@ C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.xml
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.Security.xml
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.dll
+C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.xml

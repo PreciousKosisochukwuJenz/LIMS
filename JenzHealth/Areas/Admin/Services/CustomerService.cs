@@ -130,7 +130,7 @@ namespace JenzHealth.Areas.Admin.Services
         // Get Customer by UniqueID
         public CustomerVM GetCustomer(string unqiueID)
         {
-            var model = _db.Customers.Where(x => x.CustomerUniqueID == unqiueID).Select(b => new CustomerVM()
+            var model = _db.Customers.Where(x => x.CustomerUniqueID == unqiueID || x.PhoneNumber == unqiueID).Select(b => new CustomerVM()
             {
                 Id = b.Id,
                 CustomerUniqueID = b.CustomerUniqueID,

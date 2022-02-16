@@ -20,5 +20,9 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool Deposite(DepositeCollectionVM vmodel);
         bool CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList);
         Waiver GetWaivedAmountForBillInvoiceNumber(string billInvoiceNumber);
+        TransactionVM GetTransactionReports(TransactionVM vmodel);
+        TransactionVM GetShiftTransactionDetails(int shiftID);
+        List<CashCollectionVM> GetCashCollectionsForShift(int shiftID);
+        string CalcualateTotalAmount(int shiftID, PaymentType paymentType);
     }
 }

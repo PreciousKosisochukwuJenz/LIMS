@@ -14,6 +14,7 @@ namespace JenzHealth.DAL.Entity
         public int Id { get; set; }
         public string BillInvoiceNumber { get; set; }
         public decimal AmountPaid { get; set; }
+        public string PaymentReciept { get; set; }
         public string InstallmentType { get; set; }
         public int? PartPaymentID { get; set; }
         public decimal NetAmount { get; set; }
@@ -22,8 +23,12 @@ namespace JenzHealth.DAL.Entity
         public string TransactionReferenceNumber { get; set; }
         public PaymentType PaymentType { get; set; }
         public bool IsDeleted { get; set; }
+        public int? ShiftID { get; set; }
         public DateTime DatePaid { get; set; }
         [ForeignKey("PartPaymentID")]
         public PartPayment PartPayment { get; set; }
+    
+        [ForeignKey("ShiftID")]
+        public Shift Shift { get; set; }
     }
 }

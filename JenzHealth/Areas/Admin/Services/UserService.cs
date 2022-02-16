@@ -176,6 +176,8 @@ namespace JenzHealth.Areas.Admin.Services
             Role role = new Role()
             {
                 Description = vmodel.Description,
+                EnableShift = vmodel.EnableShift,
+                ShiftExpiration = vmodel.ShiftExpiration,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
             };
@@ -191,7 +193,9 @@ namespace JenzHealth.Areas.Admin.Services
             var model = _db.Roles.Where(x => x.Id == ID).Select(b => new RoleVM()
             {
                 Id = b.Id,
-                Description = b.Description
+                Description = b.Description,
+                ShiftExpiration = b.ShiftExpiration,
+                EnableShift = b.EnableShift,
             }).FirstOrDefault();
             return model;
         }
@@ -202,6 +206,8 @@ namespace JenzHealth.Areas.Admin.Services
             bool HasSaved = false;
             var model = _db.Roles.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Description = vmodel.Description;
+            model.EnableShift = vmodel.EnableShift;
+            model.ShiftExpiration = vmodel.ShiftExpiration;
             model.DateModified = DateTime.Now;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
@@ -234,5 +240,53 @@ namespace JenzHealth.Areas.Admin.Services
             return user;
         }
 
+
+        public Shift GetShift()
+        {
+            var userID = Global.AuthenticatedUserID;
+            var userRoleID = Global.AuthenticatedUserRoleID;
+            var existingShift = _db.Shifts.Where(x => x.UserID == userID && x.HasExpired == false).OrderByDescending(x=>x.Id).FirstOrDefault();
+            var shiftCount = _db.ApplicationSettings.FirstOrDefault().ShiftCount;
+            shiftCount++;
+            if (existingShift != null)
+            {
+                if (existingShift.ExpiresDateTime.Value.TimeOfDay >= DateTime.Now.TimeOfDay && existingShift.ExpiresDateTime.Value.Date >= DateTime.Now.Date)
+                {
+                    return existingShift;
+                }
+                else
+                {
+                    existingShift.HasExpired = true;
+                    existingShift.ClosedBy = "System";
+                    _db.Entry(existingShift).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
+            var shift = new Shift()
+            {
+                UserID = userID,
+                DateTimeCreated = DateTime.Now,
+                ExpiresDateTime = DateTime.Now.Date.AddSeconds(86400 - 1),
+                ShiftUniqueID = String.Format("SHT/{0}", shiftCount.ToString("D6")),
+                HasExpired = false,
+            };
+            _db.Shifts.Add(shift);
+
+            var updatesettings = _db.ApplicationSettings.FirstOrDefault();
+            updatesettings.ShiftCount = shiftCount;
+
+            _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+
+            return shift;
+        }
+        public void CloseShift(int Id)
+        {
+            var model = _db.Shifts.FirstOrDefault(x => x.Id == Id);
+            model.HasExpired = true;
+            model.ClosedBy = _db.Users.FirstOrDefault(x => x.Id == Global.AuthenticatedUserID).Username;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+        }
     }
 }

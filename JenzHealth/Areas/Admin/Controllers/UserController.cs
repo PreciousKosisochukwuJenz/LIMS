@@ -242,5 +242,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             return ManagePermissions(roleID, saved);
         }
 
+        public JsonResult CloseShift(int Id)
+        {
+            _userService.CloseShift(Id);
+            return Json("Success",JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

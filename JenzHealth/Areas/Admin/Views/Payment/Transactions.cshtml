@@ -1,0 +1,131 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.TransactionVM
+@{
+    ViewBag.Title = "Manage Transaction Summaries";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Seed management</span>
+        <h3 class="page-title">Manage Transaction Summaries</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Summaries
+                </h6>
+                <br />
+                <div class="m-0">
+                    @using (Html.BeginForm("Transactions", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+                    {
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="socialGitHub">Username or Shift number</label>
+                            <div class="input-group input-group-seamless">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="material-icons">bloodtype</i>
+                                    </div>
+                                </div>
+                                @Html.EditorFor(model => model.ShiftUniqeID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter username or shift number" } })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="socialGitHub" class="fa-pull-right">Date range</label>
+                            <div id="analytics-overview-date-range" class="input-daterange input-group input-group-sm ml-auto">
+                                <input type="text" class="input-sm form-control" name="ShiftStarts" placeholder="Start Date" id="analytics-overview-date-range-1">
+                                <input type="text" class="input-sm form-control" name="ShiftEnds" placeholder="End Date" id="analytics-overview-date-range-2">
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">&#xE916;</i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <button class="btn btn-primary">
+                                <i class="material-icons">search</i> Search
+                            </button>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex ml-lg-auto my-auto">
+                                <div class="btn-group btn-group-sm mr-2 ml-lg-auto" role="group" aria-label="Table row actions">
+                                    <button type="button" class="btn btn-white" onclick="window.location.reload(true);">
+                                        <i class="fa fa-1x fa-retweet"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+            </div>
+            <table class="transaction-history d-none" style="white-space:nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">Shift number</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Shift duration</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Closed by?</th>
+                        <th scope="col">Transaction count</th>
+                        <th scope="col">Cummulative amount</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (Model.TableData != null)
+                        {
+                            foreach (var row in Model.TableData)
+                            {
+                                <tr>
+                                    <td>@row.ShiftUniqeID</td>
+                                    <td>@row.Username</td>
+                                    <td>@row.Name</td>
+                                    <td>@row.ShiftStarts.ToShortDateString() @row.ShiftStarts.ToString("hh:mm tt") to @row.ShiftEnds.Value.ToShortDateString() @row.ShiftEnds.Value.ToString("hh:mm tt")</td>
+                                    <td>
+                                        @if (row.ShiftStatus == "Closed")
+                                        {
+                                            <span class="badge badge-pill badge-danger">@row.ShiftStatus</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-pill badge-success">@row.ShiftStatus</span>
+                                        }
+                                    </td>
+                                    <td>@row.ShiftClosedBy</td>
+                                    <td>@row.TransactionCount</td>
+                                    <td class="text-success">@row.TotalAmountString</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+                                            @if (row.ShiftStatus == "Open")
+                                            {
+                                                <button type="button" class="btn btn-white" onclick="CloseShift(@row.Id)" title="Click to close shift">
+                                                    <i class="material-icons">&#xE5CA;</i>
+                                                </button>
+                                            }
+                                            <a href="@Url.Action("TransactionDetails",new{shiftID = row.Id })" class="btn btn-white" title="Click to view shift details">
+                                                <i class="material-icons">&#xE870;</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Transaction.js"></script>
+}
+

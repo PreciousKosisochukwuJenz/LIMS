@@ -9,5 +9,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public bool EnableShift { get; set; }
+        public int ShiftExpiration { get; set; }
     }
 }

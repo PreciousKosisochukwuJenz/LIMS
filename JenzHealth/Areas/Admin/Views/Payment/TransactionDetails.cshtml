@@ -1,0 +1,192 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.TransactionVM
+@{
+    ViewBag.Title = "View Shift Transaction Summaries#";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Seed management</span>
+        <h3 class="page-title">View Shift Transaction Summaries</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Transactions summaries of '@Model.ShiftUniqeID' for @Model.Name from '@Model.ShiftStarts.ToShortDateString() @Model.ShiftStarts.ToString("hh:mm tt")' to '@Model.ShiftEnds.Value.ToShortDateString() @Model.ShiftEnds.Value.ToString("hh:mm tt")'
+                </h6>
+            </div>
+            <table class="transaction-history d-none" style="white-space:nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Closed by?</th>
+                        <th scope="col">Transaction count</th>
+                        <th scope="col">Total CASH amount</th>
+                        <th scope="col">Total POS amount</th>
+                        <th scope="col">Total EFT amount</th>
+                        <th scope="col">Cummulative amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Username</td>
+                        <td>
+                            @if (Model.ShiftStatus == "Closed")
+                            {
+                                <span class="badge badge-pill badge-danger">@Model.ShiftStatus</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-pill badge-success">@Model.ShiftStatus</span>
+                            }
+                        </td>
+                        <td>@Model.ShiftClosedBy</td>
+                        <td>@Model.TransactionCount</td>
+                        <td>@Model.CashAmountString</td>
+                        <td>@Model.POSAmountString</td>
+                        <td>@Model.EFTAmountString</td>
+                        <td class="text-success">@Model.TotalAmountString</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class=" card-body p-0 pb-3 text-center">
+            <div id="ServiceTableLoader" style="display:none" class="col text-center">
+                <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+            </div>
+            <div id="serviceTableDiv">
+                <table class="transaction-history d-none" style="white-space:nowrap">
+                    <thead>
+                        <tr>
+                            <th scope="col">Customer number</th>
+                            <th scope="col">Customer name</th>
+                            @*<th scope="col">Customer gender</th>
+                                <th scope="col">Customer Phone number</th>*@
+                            <th scope="col">Customer type</th>
+                            <th scope="col">Payment type</th>
+                            <th scope="col">Bill number</th>
+                            <th scope="col">Payment reciept</th>
+                            <th scope="col">Transaction reference number</th>
+                            <th scope="col">Installment</th>
+                            <th scope="col">Amount paid</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ServiceBody">
+                        @{
+                            foreach (var data in ViewBag.DetailedCashCollection)
+                            {
+                                <tr>
+                                    <td>@data.CustomerUniqueID</td>
+                                    <td>@data.CustomerName</td>
+                                    @*<td>@data.CustomerGender</td>
+                                        <td>@data.CustomerPhoneNumber</td>*@
+                                    <td>@data.CustomerType</td>
+                                    <td>@data.PaymentType</td>
+                                    <td>@data.BillInvoiceNumber</td>
+                                    <td>@data.PaymentReciept</td>
+                                    <td>@data.TransactionReferenceNumber</td>
+                                    <td>@data.InstallmentType</td>
+                                    <td class="text-success">@data.AmountPaidString</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Analytics</h6>
+            </div>
+            <div class="card-body pt-0">
+                <canvas height="130" style="max-width: 100% !important;" id="analytics"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div class="card card-small h-100">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Transaction by payment types</h6>
+            </div>
+            <div class="card-body d-flex py-0">
+                <canvas height="220" id="transaction-by-paymenttype" class="m-auto"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/TransactionDetails.js"></script>
+    <script>
+        var bypaymenttypectx = document.getElementById('transaction-by-paymenttype').getContext('2d');
+        var transactionByPaymentTypeGraph = new Chart(bypaymenttypectx, {
+                type: 'pie',
+                data: {
+                    labels: @Html.Raw(ViewBag.PaymentTypes),
+                    datasets: [{
+                        label: 'Transaction by payment type',
+                        data: @ViewBag.TransactionByPaymentTypeCountArr,
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(75, 192, 192)',
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                }
+        });
+
+        analyticsCtx = document.getElementById('analytics').getContext('2d');
+        analyticsGraph = new Chart(analyticsCtx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewBag.PaymentTypes),
+                datasets: [{
+                    label: "Based on payment type",
+                    data: @ViewBag.AnalysticsCountArr,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 206, 86)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 206, 86)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        maintainAspectRatio: false,
+                        responsive: true
+                    }
+                },
+                indexAxis: 'y'
+            }
+        });
+    </script>
+}
+

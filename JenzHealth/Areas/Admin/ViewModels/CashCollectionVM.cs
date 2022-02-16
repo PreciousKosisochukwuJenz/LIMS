@@ -10,10 +10,12 @@ namespace JenzHealth.Areas.Admin.ViewModels
     {
         public int Id { get; set; }
         public string BillInvoiceNumber { get; set; }
+        public string PaymentReciept { get; set; }
         public string CustomerName { get; set; }
         public string CustomerUniqueID { get; set; }
         public int CustomerAge { get; set; }
         public string CustomerGender { get; set; }
+        public string CustomerType { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public decimal AmountPaid { get; set; }
         public string InstallmentType { get; set; }
@@ -27,5 +29,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public bool IsDeleted { get; set; }
         public DateTime DatePaid { get; set; }
         public string ServiceName { get; set; }
+        public string AmountPaidString { get; set; }
     }
 }

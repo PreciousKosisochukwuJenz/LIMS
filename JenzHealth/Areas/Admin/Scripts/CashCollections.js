@@ -308,65 +308,83 @@ $("#AddService").click(function (e) {
     document.getElementById("ServiceName").classList.add('was-validated');
 })
 $("#FinishBtn").click(function () {
-    Swal.fire({
-        title: 'Confirmation',
-        text: "Are you sure, you want to proceed with this operation?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, proceed!'
-    }).then((result) => {
-        if (result.value) {
-            let serviceArr = [];
+    var valName = $("input[name='CustomerName']").val();
+    var valAge = $("input[name='CustomerAge']").val();
+    var valPhoneNumber = $("input[name='CustomerPhoneNumber']").val();
+    if (valName === "" || valAge == "" || valPhoneNumber == "") {
+        $("input[name='CustomerName']").addClass("is-invalid");
+        $("input[name='CustomerAge']").addClass("is-invalid");
+        $("#genderFll").addClass("is-invalid");
+        $("input[name='CustomerPhoneNumber']").addClass("is-invalid");
+        toastr.error("Please, fill the form properly", "Validation error", { showDuration: 500 })
 
-            let data = {
-                BillInvoiceNumber: $("#BillInvoiceNumber").val(),
-                CollectionType: $("input[name='CollectionType']:checked").val(),
-                CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
-                CustomerUniqueID: $("#CustomerUniqueID").val(),
-                CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText : $("input[name='CustomerAge']").val(),
-                CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
-                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText : $("input[name='CustomerPhoneNumber']").val(),
-                AmountPaid: $("input[name='CollectionType']:checked").val() != "BILLED" ? ConvertToDecimal($("#BalanceAmount").html()) : 0,
-                WaivedAmount: ConvertToDecimal($("#WaiveAmount").html()),
-                NetAmount: ConvertToDecimal($("#NetAmount").html()),
-                PaymentType: $("#PaymentType").val(),
-                PartPaymentID: $("#installmentdrp").val(),
-                TransactionReferenceNumber: $("#TransactionReferenceNumber").val()
-            };
+    }
+    else {
 
-            var table = $("#ServiceBody")[0].children;
-            $.each(table, function (i, tr) {
-                let serviceObj = {};
-                serviceObj.ServiceID = tr.id;
-                serviceObj.Quantity = $(".quantity-" + tr.id).val();
-                serviceObj.GrossAmount = ConvertToDecimal(tr.children[3].innerText);
-                serviceArr.push(serviceObj);
-            });
-            // Send ajax call to server
-            $.ajax({
-                url: 'CashCollections',
-                method: 'Post',
-                dataType: "json",
-                data: { vmodel: data, serviceList: serviceArr },
-                success: function (response) {
-                    if (response == true) {
-                        location.href = "CashCollections?Saved=true";
+        $("input[name='CustomerName']").removeClass("is-invalid");
+        $("input[name='CustomerAge']").removeClass("is-invalid");
+        $("#genderFll").removeClass("is-invalid");
+        $("input[name='CustomerPhoneNumber']").removeClass("is-invalid");
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Are you sure, you want to proceed with this operation?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, proceed!'
+        }).then((result) => {
+            if (result.value) {
+                let serviceArr = [];
+
+                let data = {
+                    BillInvoiceNumber: $("#BillInvoiceNumber").val(),
+                    CollectionType: $("input[name='CollectionType']:checked").val(),
+                    CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
+                    CustomerUniqueID: $("#CustomerUniqueID").val(),
+                    CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText : $("input[name='CustomerAge']").val(),
+                    CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
+                    CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText : $("input[name='CustomerPhoneNumber']").val(),
+                    AmountPaid: $("input[name='CollectionType']:checked").val() != "BILLED" ? ConvertToDecimal($("#BalanceAmount").html()) : 0,
+                    WaivedAmount: ConvertToDecimal($("#WaiveAmount").html()),
+                    NetAmount: ConvertToDecimal($("#NetAmount").html()),
+                    PaymentType: $("#PaymentType").val(),
+                    PartPaymentID: $("#installmentdrp").val(),
+                    TransactionReferenceNumber: $("#TransactionReferenceNumber").val()
+                };
+
+                var table = $("#ServiceBody")[0].children;
+                $.each(table, function (i, tr) {
+                    let serviceObj = {};
+                    serviceObj.ServiceID = tr.id;
+                    serviceObj.Quantity = $(".quantity-" + tr.id).val();
+                    serviceObj.GrossAmount = ConvertToDecimal(tr.children[3].innerText);
+                    serviceArr.push(serviceObj);
+                });
+                // Send ajax call to server
+                $.ajax({
+                    url: 'CashCollections',
+                    method: 'Post',
+                    dataType: "json",
+                    data: { vmodel: data, serviceList: serviceArr },
+                    success: function (response) {
+                        if (response == true) {
+                            location.href = "CashCollections?Saved=true";
+                        }
                     }
-                }
-            })
-        }
-        else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-                'Cancelled',
-                'Cancelled :)',
-                'error'
-            )
-        }
-    })
+                })
+            }
+            else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Cancelled :)',
+                    'error'
+                )
+            }
+        })
+    }
 })
 
 function CalculateGrossAmount(quantity, price, RowID) {

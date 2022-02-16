@@ -11,6 +11,7 @@ namespace JenzHealth.DAL.Entity
     {
         public int Id { get; set; }
         public string CustomerUniqueID { get; set; }
+        public string DepositeReciept { get; set; }
         public int CustomerID { get; set; }
         public decimal Amount { get; set; }
         public PaymentType PaymentType { get; set; }

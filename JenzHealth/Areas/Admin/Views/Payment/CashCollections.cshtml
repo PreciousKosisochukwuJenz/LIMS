@@ -37,11 +37,11 @@
                         </div>
                         <div class="row" id="searchform">
                             <div class="form-group col-md-8" id="CustomerIDDiv" style="display:none">
-                                <label for="socialGitHub">Customer Unique ID</label>
+                                <label for="socialGitHub">Customer number or Phone number</label>
                                 <div class="input-group input-group-seamless">
                                     @Html.EditorFor(model => model.CustomerUniqueID, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Customer Unique ID", required = true } })
                                     <div class="invalid-feedback">
-                                        Customer Unique ID required
+                                        Customer number or phone number required
                                     </div>
                                 </div>
                             </div>
