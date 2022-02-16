@@ -404,5 +404,10 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _seedService.DeleteService(id);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetServiceAutoComplete(string term)
+        {
+            var response = _seedService.GetServiceNameAutoComplete(term);
+            return Json(response,JsonRequestBehavior.AllowGet);
+        }
     }
 }

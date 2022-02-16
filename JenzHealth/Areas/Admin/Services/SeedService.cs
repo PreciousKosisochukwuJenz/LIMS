@@ -525,6 +525,11 @@ namespace JenzHealth.Areas.Admin.Services
             }).ToList();
             return model;
         }
-
+        public List<string> GetServiceNameAutoComplete(string term)
+        {
+            List<string> ApplicationNumbers;
+            ApplicationNumbers = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term)).Select(b => b.Description).ToList();
+            return ApplicationNumbers;
+        }
     }
 }

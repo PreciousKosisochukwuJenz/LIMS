@@ -60,6 +60,7 @@
     <Compile Include="Entity\RevenueDepartment.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\ServiceDepartment.cs" />
+    <Compile Include="Entity\Shift.cs" />
     <Compile Include="Entity\Template.cs" />
     <Compile Include="Entity\Vendor.cs" />
     <Compile Include="Entity\Waiver.cs" />

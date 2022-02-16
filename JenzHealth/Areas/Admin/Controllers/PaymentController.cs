@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace JenzHealth.Areas.Admin.Controllers
 {
@@ -51,7 +52,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         ISeedService _seedService;
         public PaymentController()
         {
-            _paymentService = new PaymentService(new DatabaseEntities());
+            _paymentService = new PaymentService(new DatabaseEntities(), new UserService());
             _customerService = new CustomerService(new DatabaseEntities());
             _seedService = new SeedService(new DatabaseEntities());
         }
@@ -185,6 +186,61 @@ namespace JenzHealth.Areas.Admin.Controllers
             return Json(status, JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult Transactions()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            var model = new TransactionVM();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Transactions(TransactionVM vmodel)
+        {
+            var model = _paymentService.GetTransactionReports(vmodel);
+            return View(model);
+        }
+        public ActionResult TransactionDetails(int shiftID)
+        {
+            var model = _paymentService.GetShiftTransactionDetails(shiftID);
+            ViewBag.DetailedCashCollection = _paymentService.GetCashCollectionsForShift(shiftID);
+
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            List<int> paymentTypeTransactionCountArr = new List<int>();
+            var paymentTypes = Enum.GetValues(typeof(PaymentType)).Cast<PaymentType>();
+            foreach (var paymentType in paymentTypes.ToList())
+            {
+                var count = db.CashCollections.Count(x => x.IsDeleted == false && x.ShiftID == shiftID && x.PaymentType == paymentType);
+                paymentTypeTransactionCountArr.Add(count);
+            }
+
+            //Analytics
+            List<decimal> analyticsCountArr = new List<decimal>();
+            foreach (var paymentType in paymentTypes.ToList())
+            {
+                decimal totalamount;
+                var cashcollectionamount = db.CashCollections.Where(x => x.IsDeleted == false && x.ShiftID == shiftID && x.PaymentType == paymentType);
+                if(cashcollectionamount != null)
+                {
+                    totalamount =  cashcollectionamount.ToList().Sum(x => x.AmountPaid);
+                }
+                else
+                {
+                    totalamount = 0;
+                }
+
+                analyticsCountArr.Add(totalamount);
+            }
+
+            ViewBag.TransactionByPaymentTypeCountArr = jsSerializer.Serialize(paymentTypeTransactionCountArr);
+            ViewBag.PaymentTypes = jsSerializer.Serialize(paymentTypes.Select(x => x.DisplayName()).ToArray());
+            ViewBag.AnalysticsCountArr = jsSerializer.Serialize(analyticsCountArr);
+
+            return View(model);
+        }
+
         #region Json
 
         public JsonResult GetCustomerByUsername(string username)

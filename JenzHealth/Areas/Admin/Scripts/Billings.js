@@ -24,10 +24,10 @@ $("input[name='CustomerType']").change(function () {
         updateNetAmount();
     }
     else {
-        let CustomerNameField = "<input type='text' class='form-control' name='CustomerName'  placeholder='Enter name'/>";
-        let CustomerAgeField = "<input type='number' class='form-control' name='CustomerAge'  placeholder='Enter age' />";
-        let CustomerPhoneNumberField = "<input type='text' class='form-control' name='CustomerPhoneNumber' placeholder='Enter phone number' />";
-        let CustomerGender = "<select class='form-control' name='CustomerGender' id='genderFll'><option value='Male'>Male</option><option value='Female'>Female</option></select>"
+        let CustomerNameField = "<input type='text' class='form-control' name='CustomerName'  placeholder='Enter name' required/>";
+        let CustomerAgeField = "<input type='number' class='form-control' name='CustomerAge'  placeholder='Enter age' required/>";
+        let CustomerPhoneNumberField = "<input type='text' class='form-control' name='CustomerPhoneNumber' placeholder='Enter phone number'required />";
+        let CustomerGender = "<select class='form-control' name='CustomerGender' id='genderFll' required><option value='Male'>Male</option><option value='Female'>Female</option></select>"
         $("#Customername").html(CustomerNameField);
         $("#Customerage").html(CustomerAgeField);
         $("#Customerphonenumber").html(CustomerPhoneNumberField);
@@ -227,60 +227,90 @@ $("#AddService").click(function (e) {
     }
 })
 $("#FinishBtn").click(function () {
-    Swal.fire({
-        title: 'Confirmation',
-        text: "Are you sure, you want to proceed with this operation?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, proceed!'
-    }).then((result) => {
-        if (result.value) {
-            let serviceArr = [];
+    var valName = $("input[name='CustomerName']").val();
+    var valAge = $("input[name='CustomerAge']").val();
+    var valPhoneNumber = $("input[name='CustomerPhoneNumber']").val();
+    if (valName === "" || valAge == "" || valPhoneNumber == "") {
+        $("input[name='CustomerName']").addClass("is-invalid");
+        $("input[name='CustomerAge']").addClass("is-invalid");
+        $("#genderFll").addClass("is-invalid");
+        $("input[name='CustomerPhoneNumber']").addClass("is-invalid");
+        toastr.error("Please, fill the form properly", "Validation error", { showDuration: 500 })
+        
+    }
+    else {
 
-            let data = {
-                InvoiceNumber: $("#InvoiceNumber").val(),
-                CustomerType: $("input[name='CustomerType']:checked").val(),
-                CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
-                CustomerUniqueID: $("#CustomerUniqueID").val(),
-                CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText : $("input[name='CustomerAge']").val(),
-                CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
-                CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText : $("input[name='CustomerPhoneNumber']").val(),
-            };
-            var table = $("#ServiceBody")[0].children;
-            $.each(table, function (i, tr) {
-                let serviceObj = {};
-                serviceObj.ServiceID = tr.id;
-                serviceObj.Quantity = $(".quantity-" + tr.id).val();
-                serviceObj.GrossAmount = ConvertToDecimal(tr.children[3].innerText);
-                serviceArr.push(serviceObj);
-            });
-            // Send ajax call to server
-            $.ajax({
-                url: 'Billings',
-                method: 'Post',
-                dataType: "json",
-                data: { vmodel: data, serviceList: serviceArr },
-                success: function (response) {
-                    if (response.Status == true && $("#SearchBy").val() == "New") {
-                        location.href = "Billings?Saved=true&invoicenumber=" + response.InvoiceNumber;
-                    } else {
-                        location.href = "Billings?Updated=true&invoicenumber=" + response.InvoiceNumber;
+        $("input[name='CustomerName']").removeClass("is-invalid");
+        $("input[name='CustomerAge']").removeClass("is-invalid");
+        $("#genderFll").removeClass("is-invalid");
+        $("input[name='CustomerPhoneNumber']").removeClass("is-invalid");
+        Swal.fire({
+            title: 'Confirmation',
+            text: "Are you sure, you want to proceed with this operation?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, proceed!'
+        }).then((result) => {
+            if (result.value) {
+                let serviceArr = [];
+
+                let data = {
+                    InvoiceNumber: $("#InvoiceNumber").val(),
+                    CustomerType: $("input[name='CustomerType']:checked").val(),
+                    CustomerName: $("input[name='CustomerName']").val() == undefined ? $("#Customername")[0].innerText : $("input[name='CustomerName']").val(),
+                    CustomerUniqueID: $("#CustomerUniqueID").val(),
+                    CustomerAge: $("input[name='CustomerAge']").val() == undefined ? $("#Customerage")[0].innerText : $("input[name='CustomerAge']").val(),
+                    CustomerGender: $("#genderFll").val() == undefined ? $("#Customergender")[0].innerText : $("#genderFll").val(),
+                    CustomerPhoneNumber: $("input[name='CustomerPhoneNumber']").val() == undefined ? $("#Customerphonenumber")[0].innerText : $("input[name='CustomerPhoneNumber']").val(),
+                };
+                var table = $("#ServiceBody")[0].children;
+                $.each(table, function (i, tr) {
+                    let serviceObj = {};
+                    serviceObj.ServiceID = tr.id;
+                    serviceObj.Quantity = $(".quantity-" + tr.id).val();
+                    serviceObj.GrossAmount = ConvertToDecimal(tr.children[3].innerText);
+                    serviceArr.push(serviceObj);
+                });
+                // Send ajax call to server
+                $.ajax({
+                    url: 'Billings',
+                    method: 'Post',
+                    dataType: "json",
+                    data: { vmodel: data, serviceList: serviceArr },
+                    success: function (response) {
+                        Swal.fire({
+                            title: 'Billing successfully',
+                            html: '<div class="input-group mb-3" onclick="CopyToClip()"><div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clipboard" style="font-weight:500; font-size:30px; text-align:center"></i></span></div><input style="font-weight:500; font-size:30px; text-align:center" type="text" value="' + response.InvoiceNumber +'" id="billCopy" readonly class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"></div>',
+                            showCancelButton: true,
+                            confirmButtonText: 'View bill reciept',
+                            cancelButtonText: "Ok",
+                            showLoaderOnConfirm: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload(true);
+                            } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                window.location.reload(true);
+                            }
+                        })
                     }
-                }
-            })
-        }
-        else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-                'Cancelled',
-                'Cancelled :)',
-                'error'
-            )
-        }
-    })
+                })
+            }
+            else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Cancelled :)',
+                    'error'
+                )
+            }
+        })
+    }
+
 })
 
 function CalculateGrossAmount(quantity, price, RowID) {
@@ -333,4 +363,15 @@ function updateNetAmount() {
     });
     $("#NetAmount").empty();
     $("#NetAmount").html("₦" + numberWithCommas(total) + ".00")
+}
+
+function CopyToClip() {
+    let value = $("#billCopy").select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'Copied!' : 'Whoops, not copied!';
+        toastr.success(msg, "", { showDuration: 500 })
+    } catch (err) {
+        toastr.error("Failed to copy", "Command Error", { showDuration: 500 })
+    }
 }

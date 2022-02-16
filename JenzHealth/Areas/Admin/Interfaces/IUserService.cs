@@ -28,6 +28,8 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool DeleteRole(int ID);
 
         List<User> CheckCreditials(UserVM userVM);
+        Shift GetShift();
+        void CloseShift(int Id);
 
     }
 }

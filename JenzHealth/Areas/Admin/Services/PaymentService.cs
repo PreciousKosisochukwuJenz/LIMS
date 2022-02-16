@@ -14,19 +14,22 @@ namespace JenzHealth.Areas.Admin.Services
     public class PaymentService : IPaymentService
     {
         readonly DatabaseEntities _db;
+        IUserService _userService;
         public PaymentService()
         {
             _db = new DatabaseEntities();
+            _userService = new UserService(new DatabaseEntities());
         }
-        public PaymentService(DatabaseEntities db)
+        public PaymentService(DatabaseEntities db, UserService userService)
         {
             _db = db;
+            _userService = userService;
         }
         public string CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
             var billCount = _db.ApplicationSettings.FirstOrDefault().BillCount;
             billCount++;
-            var invoiceNumber = string.Format("BILL/{0}",billCount.ToString("D6"));
+            var invoiceNumber = string.Format("BILL/{0}", billCount.ToString("D6"));
 
             foreach (var service in serviceList)
             {
@@ -56,14 +59,13 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public string UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList)
         {
-            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber && x.IsDeleted == false).Select(b => b.ServiceID).ToList();
+            var ServiceBills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.InvoiceNumber && x.IsDeleted == false).ToList();
             if (ServiceBills.Count > 0)
             {
                 foreach (var service in ServiceBills)
                 {
-                    var removeBillService = _db.Billings.FirstOrDefault(x => x.ServiceID == service && x.IsDeleted == false);
-                    removeBillService.IsDeleted = true;
-                    _db.Entry(removeBillService).State = System.Data.Entity.EntityState.Modified;
+                    service.IsDeleted = true;
+                    _db.Entry(service).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
                 }
             }
@@ -202,24 +204,35 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public bool Deposite(DepositeCollectionVM vmodel)
         {
+            var depositeCount = _db.ApplicationSettings.FirstOrDefault().DepositeCount;
+            depositeCount++;
             var model = new DepositeCollection()
             {
                 Amount = CustomSerializer.UnMaskString(vmodel.AmountString),
                 CustomerUniqueID = vmodel.CustomerUniqueID,
-                CustomerID = _db.Customers.FirstOrDefault(x=>x.CustomerUniqueID == vmodel.CustomerUniqueID).Id,
+                CustomerID = _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == vmodel.CustomerUniqueID).Id,
                 Description = vmodel.Description,
                 PaymentType = vmodel.PaymentType,
                 ReferenceNumber = vmodel.ReferenceNumber,
+                DepositeReciept = String.Format("TR/{0}", depositeCount.ToString("D6")),
                 IsDeleted = false,
                 DateCreated = DateTime.Now
             };
             _db.DepositeCollections.Add(model);
+
+            var updatesettings = _db.ApplicationSettings.FirstOrDefault();
+            updatesettings.DepositeCount = depositeCount;
+
+            _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
 
             return true;
         }
         public bool CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
         {
+            var shift = _userService.GetShift();
+            var paymentCount = _db.ApplicationSettings.FirstOrDefault().PaymentCount;
+            paymentCount++;
             switch (vmodel.CollectionType)
             {
                 case CollectionType.BILLED:
@@ -236,7 +249,9 @@ namespace JenzHealth.Areas.Admin.Services
                         TransactionReferenceNumber = vmodel.TransactionReferenceNumber,
                         InstallmentType = vmodel.PartPaymentID == null ? "FULL" : "PART",
                         PartPaymentID = vmodel.PartPaymentID,
-                        PaymentType = vmodel.PaymentType
+                        PaymentType = vmodel.PaymentType,
+                        ShiftID = shift.Id,
+                        PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6"))
                     };
                     _db.CashCollections.Add(billCashCollection);
                     break;
@@ -246,14 +261,14 @@ namespace JenzHealth.Areas.Admin.Services
                     var registeredCustomerBill = new BillingVM()
                     {
                         CustomerUniqueID = vmodel.CustomerUniqueID,
-                        CustomerName = string.Format("{0} {1}",customer.Firstname, customer.Lastname),
+                        CustomerName = string.Format("{0} {1}", customer.Firstname, customer.Lastname),
                         CustomerGender = customer.Gender,
                         CustomerAge = (DateTime.Now.Year - customer.DOB.Year),
                         CustomerPhoneNumber = customer.PhoneNumber,
                         CustomerType = CustomerType.REGISTERED_CUSTOMER,
                         CustomerID = customer.Id,
                     };
-                    if(serviceList.Count > 0)
+                    if (serviceList.Count > 0)
                     {
                         var billInvoiceNumber = this.CreateBilling(registeredCustomerBill, serviceList);
 
@@ -270,6 +285,8 @@ namespace JenzHealth.Areas.Admin.Services
                             PaymentType = vmodel.PaymentType,
                             PartPaymentID = vmodel.PartPaymentID,
                             InstallmentType = "FULL",
+                            ShiftID = shift.Id,
+                            PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6"))
                         };
 
                         _db.CashCollections.Add(unbilledCashCollection);
@@ -301,14 +318,115 @@ namespace JenzHealth.Areas.Admin.Services
                             BalanceAmount = vmodel.NetAmount - vmodel.WaivedAmount,
                             PartPaymentID = vmodel.PartPaymentID,
                             InstallmentType = "FULL",
+                            ShiftID = shift.Id,
+                            PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6"))
                         };
 
                         _db.CashCollections.Add(walkinCashCollection);
                     }
                     break;
             }
+            var updatesettings = _db.ApplicationSettings.FirstOrDefault();
+            updatesettings.PaymentCount = paymentCount;
+
+            _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
             return true;
+        }
+        public TransactionVM GetTransactionReports(TransactionVM vmodel)
+        {
+            var model = new TransactionVM();
+            var summaries = _db.Shifts.Where(x => x.User.Username == vmodel.ShiftUniqeID || x.ShiftUniqueID == vmodel.ShiftUniqeID || (x.DateTimeCreated >= vmodel.ShiftStarts && x.ExpiresDateTime <= vmodel.ShiftEnds)).Select(b => new TransactionVM()
+            {
+                Id = b.Id,
+                ShiftUniqeID = b.ShiftUniqueID,
+                Username = b.User.Username,
+                Name = b.User.Firstname + " " + b.User.Lastname,
+                PhoneNumber = b.User.PhoneNumber,
+                Email = b.User.Email,
+                ShiftStarts = b.DateTimeCreated,
+                ShiftEnds = b.ExpiresDateTime,
+                ShiftStatus = b.HasExpired ? "Closed" : "Open",
+                ShiftClosedBy = b.HasExpired ? b.ClosedBy : " - ",
+                TransactionCount = _db.CashCollections.Count(x => x.Shift.Id == b.Id),
+                TotalAmount = _db.CashCollections.Where(x => x.ShiftID == b.Id).ToList().Sum(x => x.AmountPaid),
+            }).OrderByDescending(x => x.Id).ToList();
+
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+            foreach (var summary in summaries)
+            {
+                summary.TotalAmountString = "₦" + summary.TotalAmount.ToString("N", nfi);
+            }
+
+            model.TableData = summaries;
+
+            return model;
+        }
+        public TransactionVM GetShiftTransactionDetails(int shiftID)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var model = new TransactionVM();
+            var shift = _db.Shifts.Where(x => x.Id == shiftID).Select(b => new TransactionVM()
+            {
+                Id = b.Id,
+                ShiftUniqeID = b.ShiftUniqueID,
+                Username = b.User.Username,
+                Name = b.User.Firstname + " " + b.User.Lastname,
+                PhoneNumber = b.User.PhoneNumber,
+                Email = b.User.Email,
+                ShiftStarts = b.DateTimeCreated,
+                ShiftEnds = b.ExpiresDateTime,
+                ShiftStatus = b.HasExpired ? "Closed" : "Open",
+                ShiftClosedBy = b.HasExpired ? b.ClosedBy : " - ",
+                TransactionCount = _db.CashCollections.Count(x => x.Shift.Id == b.Id),
+                TotalAmount = _db.CashCollections.Where(x => x.ShiftID == b.Id).ToList().Sum(x => x.AmountPaid),
+            }).FirstOrDefault();
+            shift.CashAmountString = this.CalcualateTotalAmount(shiftID, PaymentType.CASH);
+            shift.POSAmountString = this.CalcualateTotalAmount(shiftID, PaymentType.POS);
+            shift.EFTAmountString = this.CalcualateTotalAmount(shiftID, PaymentType.EFT);
+            shift.TotalAmountString = "₦" + shift.TotalAmount.ToString("N", nfi);
+
+            return shift;
+        }
+        public List<CashCollectionVM> GetCashCollectionsForShift(int shiftID)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var cashcollections = _db.CashCollections.Where(x => x.ShiftID == shiftID).Select(b => new CashCollectionVM()
+            {
+                Id = b.Id,
+                AmountPaid = b.AmountPaid,
+                PaymentReciept = b.PaymentReciept,
+                InstallmentType = b.InstallmentType,
+                TransactionReferenceNumber = b.TransactionReferenceNumber == null ? " - " : b.TransactionReferenceNumber,
+                PaymentType = (PaymentType)b.PaymentType,
+                BillInvoiceNumber = b.BillInvoiceNumber,
+                CustomerName = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
+                CustomerGender = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerGender,
+                CustomerUniqueID = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID == null ? " - " : _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
+                CustomerPhoneNumber = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
+                CustomerType = ((CustomerType)_db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerType).ToString(),
+            }).ToList();
+            foreach (var cashcollection in cashcollections)
+            {
+                cashcollection.AmountPaidString = "₦" + cashcollection.AmountPaid.ToString("N", nfi);
+            }
+            return cashcollections;
+        }
+        public string CalcualateTotalAmount(int shiftID, PaymentType paymentType)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            decimal total = 0;
+            var cashcollections = _db.CashCollections.Where(x => x.ShiftID == shiftID && x.PaymentType == paymentType).ToList();
+            if (cashcollections.Count > 0)
+            {
+                total = cashcollections.Sum(x => x.AmountPaid);
+            }
+            else
+            {
+                total = 0;
+            }
+            return "₦" + total.ToString("N", nfi);
         }
     }
 
