@@ -30,5 +30,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime DatePaid { get; set; }
         public string ServiceName { get; set; }
         public string AmountPaidString { get; set; }
+        public string Comment { get; set; }
     }
 }

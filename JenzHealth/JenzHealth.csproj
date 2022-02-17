@@ -122,6 +122,8 @@
     <Content Include="Areas\Admin\Scripts\Deposite.js" />
     <Content Include="Areas\Admin\Scripts\PartPayments.js" />
     <Content Include="Areas\Admin\Scripts\Priviledge.js" />
+    <Content Include="Areas\Admin\Scripts\RecieptCancellations.js" />
+    <Content Include="Areas\Admin\Scripts\Refunds.js" />
     <Content Include="Areas\Admin\Scripts\RevenueDepartment.js" />
     <Content Include="Areas\Admin\Scripts\Role.js" />
     <Content Include="Areas\Admin\Scripts\ServiceDepartment.js" />
@@ -281,6 +283,7 @@
     <Compile Include="Areas\Admin\ViewModels\DepositeCollectionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PartPaymentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PriviledgeVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RefundVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RevenueDepartmentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RolePermissionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RoleVM.cs" />
@@ -359,6 +362,8 @@
     <Content Include="Content\fonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Views\Payment\Transactions.cshtml" />
     <Content Include="Areas\Admin\Views\Payment\TransactionDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Payment\Refunds.cshtml" />
+    <Content Include="Areas\Admin\Views\Payment\RecieptCancellations.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />

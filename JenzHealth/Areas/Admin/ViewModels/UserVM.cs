@@ -8,10 +8,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
 {
     public class UserVM
     {
-        public void Initilize()
-        {
-            MyProperty = new List<SelectListItem>() { new SelectListItem() { }, new SelectListItem() { } };
-        }
         public int Id { get; set; }
         public string Username { get; set; }
         public string Firstname { get; set; }
@@ -26,7 +22,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime DateCreated { get; set; }
         public int? RoleID { get; set; }
         public string Role { get; set; }
-        public List<SelectListItem> MyProperty { get; set; }
 
     }
 }

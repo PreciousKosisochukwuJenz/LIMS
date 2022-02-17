@@ -123,6 +123,7 @@ $("#SearchCustomer").click(function (e) {
                     $("#Customername").html(response.Firstname + " " + response.Lastname);
                     $("#Customergender").html(response.Gender);
                     $("#Customerphonenumber").html(response.PhoneNumber);
+                    $("#CustomerUniqueID").val(response.CustomerUniqueID);
 
                     // Calcualte age
                     let customerDOBYear = new Date(+response.DOB.replace(/\D/g, '')).getFullYear();

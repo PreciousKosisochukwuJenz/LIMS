@@ -27,5 +27,8 @@ namespace JenzHealth.DAL.Entity
 
         [ForeignKey("ServiceID")]
         public Service Service { get; set; }
+        public int? BilledByID { get; set; }
+        [ForeignKey("BilledByID")]
+        public User BilledBy { get; set; }
     }
 }

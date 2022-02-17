@@ -20,9 +20,9 @@
                     <div class="m-0">
                         <div class="row">
                             <div class="form-group col-md-8">
-                                <label for="socialGitHub">Customer number or Phone numberr</label>
+                                <label for="socialGitHub">Customer number or Phone number</label>
                                 <div class="input-group input-group-seamless">
-                                    <input type="text" class="form-control" id="Searchby" required />
+                                    <input type="text" class="form-control" id="Searchby" placeholder="Enter Customer number or Phone number" required />
                                     <div class="invalid-feedback">
                                         Customer number or phone number required
                                     </div>
@@ -89,7 +89,7 @@
                             <div class="form-group col-md-6" id="refDiv" style="display:none">
                                 <label for="ReferenceNumber">Reference Number</label>
                                 <div class="input-group input-group-seamless">
-                                    @Html.EditorFor(model => model.ReferenceNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Reference number", required = true } })
+                                    @Html.EditorFor(model => model.ReferenceNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Reference number"} })
                                 </div>
                             </div>
                             <div class="form-group col-md-6">

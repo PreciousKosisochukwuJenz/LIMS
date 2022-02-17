@@ -79,6 +79,13 @@ namespace JenzHealth.DAL.Entity
         EFT
     }
 
+    public enum RecieptTypes
+    {
+        [EnumDisplayName(DisplayName = "Payment Reciept")]
+        PAYMENT_RECIEPT = 1,
+        [EnumDisplayName(DisplayName = "Deposite Recipet")]
+        DEPOSITE_RECIEPT,
+    }
     public enum CollectionType
     {
         [EnumDisplayName(DisplayName = "Billed")]

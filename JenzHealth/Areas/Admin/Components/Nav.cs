@@ -32,7 +32,7 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Payment/PartPayments",stringText:"Part payments", icon: null ?? defaultIcon, isMenu: true,claim: "payment.partpayments", childMenus: null),
                 new Menu(url: "/Admin/Payment/Waivers",stringText:"Waivers", icon: null ?? defaultIcon, isMenu: true,claim: "payment.waivers", childMenus: null),
                 new Menu(url: "/Admin/Payment/Refunds",stringText:"Refunds", icon: null ?? defaultIcon, isMenu: true,claim: "payment.refunds", childMenus: null),
-                new Menu(url: "/Admin/Payment/RecieptCollections",stringText:"Reciept Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcollections", childMenus: null),
+                new Menu(url: "/Admin/Payment/RecieptCancellations",stringText:"Reciept cancellation", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcancellation", childMenus: null),
             }),
 
              // Seed
@@ -75,7 +75,7 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Payment/PartPayments",stringText:"Part payments", icon: null ?? defaultIcon, isMenu: true,claim: "payment.partpayments", childMenus: null),
                 new Menu(url: "/Admin/Payment/Waivers",stringText:"Waivers", icon: null ?? defaultIcon, isMenu: true,claim: "payment.waivers", childMenus: null),
                 new Menu(url: "/Admin/Payment/Refunds",stringText:"Refunds", icon: null ?? defaultIcon, isMenu: true,claim: "payment.refunds", childMenus: null),
-                new Menu(url: "/Admin/Payment/RecieptCollections",stringText:"Reciept Collections", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcollections", childMenus: null),
+                new Menu(url: "/Admin/Payment/RecieptCancellations",stringText:"Reciept cancellation", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcancellation", childMenus: null),
             }),
 
              // Seed
