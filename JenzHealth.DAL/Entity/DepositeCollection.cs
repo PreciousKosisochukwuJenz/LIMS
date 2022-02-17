@@ -21,5 +21,9 @@ namespace JenzHealth.DAL.Entity
         public bool IsDeleted { get; set; }
         [ForeignKey("CustomerID")]
         public Customer Customer { get; set; }
+
+        public int? DepositedByID { get; set; }
+        [ForeignKey("DepositedByID")]
+        public User DepositedBy { get; set; }
     }
 }

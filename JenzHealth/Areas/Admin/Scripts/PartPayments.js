@@ -261,6 +261,7 @@ function DeleteInstallment(e) {
     }).then((result) => {
         if (result.value) {
             e.parentElement.parentElement.remove();
+            installmentCount--;
             toastr.success("Removed", "Installment removed", { showDuration: 500 })
             updateInstallmentNetAmount();
         }

@@ -57,6 +57,7 @@
     <Compile Include="Entity\DepositeCollection.cs" />
     <Compile Include="Entity\PartPayment.cs" />
     <Compile Include="Entity\Priviledge.cs" />
+    <Compile Include="Entity\Refund.cs" />
     <Compile Include="Entity\RevenueDepartment.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\ServiceDepartment.cs" />

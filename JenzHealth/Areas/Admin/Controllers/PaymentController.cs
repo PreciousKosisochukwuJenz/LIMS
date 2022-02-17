@@ -240,18 +240,64 @@ namespace JenzHealth.Areas.Admin.Controllers
 
             return View(model);
         }
+        public ActionResult Refunds(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Refund was successfully.";
+            }
+            return View();
+        }
+
+        public ActionResult RecieptCancellations(bool? Saved)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Reciept cancelled successfully.";
+            }
+            return View();
+        }
 
         #region Json
+        [HttpPost]
+        public JsonResult Refunds(RefundVM vmodel)
+        {
+            var model = _paymentService.Refund(vmodel);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpPost]
+        public JsonResult CancelReciept(CashCollectionVM vmodel)
+        {
+            _paymentService.CancelReciept(vmodel);
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetCustomerByUsername(string username)
         {
-            var model = _customerService.GetCustomer(username);
+            var model = _customerService.SearchCustomerWithIDorPhoneNumber(username);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCustomerByInvoiceNumber(string invoiceNumber)
         {
             var model = _paymentService.GetCustomerForBill(invoiceNumber);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBillInvoiceWithReciept(string recipet)
+        {
+            var model = _paymentService.GetBillNumberWithReceipt(recipet);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 

@@ -17,6 +17,10 @@ namespace JenzHealth.DAL.Entity
         public decimal NetAmount { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
-      
+
+        public int? WaivedByID { get; set; }
+        [ForeignKey("WaivedByID")]
+        public User WaivedBy { get; set; }
+
     }
 }

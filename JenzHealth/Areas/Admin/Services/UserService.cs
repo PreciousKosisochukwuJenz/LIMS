@@ -176,8 +176,6 @@ namespace JenzHealth.Areas.Admin.Services
             Role role = new Role()
             {
                 Description = vmodel.Description,
-                EnableShift = vmodel.EnableShift,
-                ShiftExpiration = vmodel.ShiftExpiration,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
             };
@@ -194,8 +192,6 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Description = b.Description,
-                ShiftExpiration = b.ShiftExpiration,
-                EnableShift = b.EnableShift,
             }).FirstOrDefault();
             return model;
         }
@@ -206,8 +202,6 @@ namespace JenzHealth.Areas.Admin.Services
             bool HasSaved = false;
             var model = _db.Roles.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Description = vmodel.Description;
-            model.EnableShift = vmodel.EnableShift;
-            model.ShiftExpiration = vmodel.ShiftExpiration;
             model.DateModified = DateTime.Now;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;

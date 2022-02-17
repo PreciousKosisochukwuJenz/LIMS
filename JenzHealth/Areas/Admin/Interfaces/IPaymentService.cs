@@ -24,5 +24,8 @@ namespace JenzHealth.Areas.Admin.Interfaces
         TransactionVM GetShiftTransactionDetails(int shiftID);
         List<CashCollectionVM> GetCashCollectionsForShift(int shiftID);
         string CalcualateTotalAmount(int shiftID, PaymentType paymentType);
+        bool Refund(RefundVM vmodel);
+        string GetBillNumberWithReceipt(string receipt);
+        void CancelReciept(CashCollectionVM vmodel);
     }
 }

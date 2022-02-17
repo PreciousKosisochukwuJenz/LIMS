@@ -14,8 +14,6 @@ namespace JenzHealth.DAL.Entity
         public int Id { get; set; }
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
-        public bool EnableShift { get; set; }
-        public int ShiftExpiration { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
     }

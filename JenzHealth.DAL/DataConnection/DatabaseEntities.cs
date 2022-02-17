@@ -36,6 +36,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<DepositeCollection> DepositeCollections { get; set; }
         public virtual DbSet<CashCollection> CashCollections { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
+        public virtual DbSet<Refund> Refunds { get; set; }
  
     }
 }
