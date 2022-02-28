@@ -203,6 +203,12 @@ $("#SearchCustomer").click(function (e) {
                                 CalculateGrossAmount(data.Quantity, data.SellingPrice, data.Id);
                             });
                             updateNetAmount();
+                            var netamount = $("#NetAmount").html();
+                            var waiveamount = $("#WaiveAmount").html();
+                            var paidamount = $("#PaidAmount").html();
+                            var balanceAmount = (ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount)) - ConvertToDecimal(paidamount);
+
+                            $("#BalanceAmount").html("₦" + numberWithCommas(balanceAmount) + ".00");
                         },
                         error: function (err) {
                             toastr.error(err.fail, "Data not retrieved successfully", { showDuration: 500 });
@@ -218,11 +224,43 @@ $("#SearchCustomer").click(function (e) {
                         success: function (data) {
                             if (data.Id != 0) {
                                 $("#WaiveAmount").html("₦" + numberWithCommas(data.WaiveAmount) + ".00");
-                                $("#BalanceAmount").html("₦" + numberWithCommas(data.AvailableAmount) + ".00");
-                            } else {
-                                var netamount = $("#NetAmount").html();
-                                $("#BalanceAmount").html(netamount);
                             }
+                            var netamount = $("#NetAmount").html();
+                            var waiveamount = $("#WaiveAmount").html();
+                            var paidamount = $("#PaidAmount").html();
+                            var balanceAmount = (ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount)) - ConvertToDecimal(paidamount);
+
+                            $("#BalanceAmount").html("₦" + numberWithCommas(balanceAmount) + ".00");
+                        },
+                        error: function (err) {
+                            toastr.error(err.fail, "Data not retrieved successfully", { showDuration: 500 });
+                            $("#ServiceTableLoader").hide();
+                            $("#serviceTableDiv").show();
+                        }
+                    });
+
+                    // Get Total Amount Paid
+                    $.ajax({
+                        url: 'GetTotalPaidBillAmount?invoiceNumber=' + invoiceNumber,
+                        method: "Get",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (totalamountpaid) {
+                            updateNetAmount();
+                            if (totalamountpaid != null) {
+                                $("#PaidAmount").html("₦" + numberWithCommas(totalamountpaid) + ".00");
+                                var netamount = $("#NetAmount").html();
+                                var waiveamount = $("#WaiveAmount").html();
+                                var balanceAmount = (ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount)) - totalamountpaid;
+
+                                $("#BalanceAmount").html("₦" + numberWithCommas(balanceAmount) + ".00");
+                            } else {
+                                totalamount = "₦0.00";
+                                $("#PaidAmount").html(totalamount);
+                                var netamount = $("#NetAmount").html();
+                                var balanceAmount = (ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount)) - totalamountpaid;
+
+                                $("#BalanceAmount").html("₦" + numberWithCommas(balanceAmount) + ".00");                            }
 
                             $("#ServiceTableLoader").hide();
                             $("#serviceTableDiv").show();
@@ -234,7 +272,7 @@ $("#SearchCustomer").click(function (e) {
                         }
                     });
 
-                    // Populate installmentt
+                    // Populate installment
                     $.ajax({
                         url: 'GetInstallmentsByInvoiceNumber?invoiceNumber=' + invoiceNumber,
                         method: "Get",
@@ -246,7 +284,11 @@ $("#SearchCustomer").click(function (e) {
                                 $.each(datas, function (i, data) {
                                     installmentCount++;
                                     let html = "";
-                                    html = "<option value='" + data.Id + "'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00)</option>";
+                                    if (data.HasPaid) {
+                                        html = "<option value='" + data.Id + "'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00) <span class='badge badge - pill badge - success'>PAID</span></option>";
+                                    } else {
+                                        html = "<option value='" + data.Id + "'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00)</option>";
+                                    }
                                     $("#installmentdrp").append(html);
                                 });
                                 $("#InstallmentDiv").show();

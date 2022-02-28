@@ -170,9 +170,21 @@ namespace JenzHealth.Areas.Admin.Services
                 Id = b.Id,
                 InstallmentName = b.InstallmentName,
                 PartPaymentAmount = b.PartPaymentAmount,
-                IsPaidPartPayment = b.IsPaidPartPayment
+                IsPaidPartPayment = b.IsPaidPartPayment,
             }).ToList();
+            foreach(var partpayment in model)
+            {
+                partpayment.HasPaid = this.HasPaidInstallment(partpayment.Id);
+            }
             return model;
+        }
+        public bool HasPaidInstallment(int installmentID)
+        {
+            var paidinstallment = _db.CashCollections.Count(x => x.PartPaymentID == installmentID);
+            if (paidinstallment > 0)
+                return true;
+            else
+                return false;
         }
         public bool MapPartPayment(List<PartPaymentVM> vmodel)
         {
@@ -468,6 +480,21 @@ namespace JenzHealth.Areas.Admin.Services
 
             _db.Entry(cashcollection).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
+        }
+        public decimal GetTotalPaidBillAmount(string billnumber)
+        {
+            decimal totalbillamount = 0;
+            var billamount = _db.CashCollections.Where(x => x.BillInvoiceNumber == billnumber);
+            if (billamount.Count() > 0)
+            {
+                totalbillamount = billamount.Sum(b => b.AmountPaid);
+            }
+            else
+            {
+                totalbillamount = 0;
+            }
+
+            return totalbillamount;
         }
     }
 

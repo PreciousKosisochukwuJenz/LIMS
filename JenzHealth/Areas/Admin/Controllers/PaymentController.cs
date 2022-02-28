@@ -324,6 +324,11 @@ namespace JenzHealth.Areas.Admin.Controllers
                 model = new Waiver();
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetTotalPaidBillAmount(string invoiceNumber)
+        {
+            var model = _paymentService.GetTotalPaidBillAmount(invoiceNumber);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult GetInstallmentsByInvoiceNumber(string invoiceNumber)
         {
