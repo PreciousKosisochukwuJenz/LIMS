@@ -27,5 +27,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool Refund(RefundVM vmodel);
         string GetBillNumberWithReceipt(string receipt);
         void CancelReciept(CashCollectionVM vmodel);
+        decimal GetTotalPaidBillAmount(string billnumber);
     }
 }

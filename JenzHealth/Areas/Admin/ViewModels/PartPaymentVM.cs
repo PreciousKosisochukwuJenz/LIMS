@@ -13,6 +13,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public decimal PartPaymentAmount { get; set; }
         public bool IsPaidPartPayment { get; set; }
         public bool IsDeleted { get; set; }
+        public bool HasPaid { get; set; }
         public DateTime DateCreated { get; set; }
     }
 }
