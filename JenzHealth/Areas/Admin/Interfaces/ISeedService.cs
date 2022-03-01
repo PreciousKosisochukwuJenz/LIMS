@@ -49,5 +49,26 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool DeleteService(int ID);
         List<ServiceVM> GetServiceAutoComplete(string query);
         List<string> GetServiceNameAutoComplete(string term);
+
+
+        List<SpecimenVM> GetSpecimens();
+        bool CreateSpecimen(SpecimenVM vmodel);
+        SpecimenVM GetSpecimen(int ID);
+        bool EditSpecimen(SpecimenVM vmodel);
+        bool DeleteSpecimen(int ID);
+
+
+        List<OrganismVM> GetOrganisms();
+        bool CreateOrganism(OrganismVM vmodel);
+        OrganismVM GetOrganism(int ID);
+        bool EditOrganism(OrganismVM vmodel);
+        bool DeleteOrganism(int ID);
+
+
+        List<AntiBioticVM> GetAntiBiotics();
+        bool CreateAnitBiotic(AntiBioticVM vmodel);
+        AntiBioticVM GetAntiBiotic(int ID);
+        bool EditAntiBiotic(AntiBioticVM vmodel);
+        bool DeleteAntiBiotic(int ID);
     }
 }

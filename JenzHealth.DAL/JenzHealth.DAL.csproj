@@ -51,10 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\AntiBiotic.cs" />
     <Compile Include="Entity\Billing.cs" />
     <Compile Include="Entity\CashCollection.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\DepositeCollection.cs" />
+    <Compile Include="Entity\Organism.cs" />
     <Compile Include="Entity\PartPayment.cs" />
     <Compile Include="Entity\Priviledge.cs" />
     <Compile Include="Entity\Refund.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\ServiceDepartment.cs" />
     <Compile Include="Entity\Shift.cs" />
+    <Compile Include="Entity\Specimen.cs" />
     <Compile Include="Entity\Template.cs" />
     <Compile Include="Entity\Vendor.cs" />
     <Compile Include="Entity\Waiver.cs" />

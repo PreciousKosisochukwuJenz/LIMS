@@ -88,3 +88,5 @@ C:\Users\DELL\source\repos\JenzHealth\JenzHealth\obj\Release\JenzHealth.csproj.C
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\obj\Release\JenzHealth.csproj.CopyComplete
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\obj\Release\JenzHealth.dll
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\obj\Release\JenzHealth.pdb
+C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.dll
+C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.xml

@@ -409,5 +409,174 @@ namespace JenzHealth.Areas.Admin.Controllers
             var response = _seedService.GetServiceNameAutoComplete(term);
             return Json(response,JsonRequestBehavior.AllowGet);
         }
+
+
+
+        // Specimen
+        public ActionResult ManageSpecimens(bool? Added, bool? Editted)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Added == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Specimen added successfully.";
+            }
+            if (Editted == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Specimen updated successfully.";
+            }
+            ViewBag.Specimens = _seedService.GetSpecimens();
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateSpecimen(SpecimenVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.CreateSpecimen(vmodel);
+            }
+            return RedirectToAction("ManageSpecimens", new { Added = hasSaved });
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditSpecimen(SpecimenVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.EditSpecimen(vmodel);
+            }
+            return RedirectToAction("ManageSpecimens", new { Editted = hasSaved });
+        }
+        public JsonResult GetSpecimen(int id)
+        {
+            var model = _seedService.GetSpecimen(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteSpecimen(int id)
+        {
+            var model = _seedService.DeleteSpecimen(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+
+        // Organism
+        public ActionResult ManageOrganisms(bool? Added, bool? Editted)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Added == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Organism added successfully.";
+            }
+            if (Editted == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Organism updated successfully.";
+            }
+            ViewBag.Organisms = _seedService.GetOrganisms();
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateOrganism(OrganismVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.CreateOrganism(vmodel);
+            }
+            return RedirectToAction("ManageOrganisms", new { Added = hasSaved });
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditOrganism(OrganismVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.EditOrganism(vmodel);
+            }
+            return RedirectToAction("ManageOrganisms", new { Editted = hasSaved });
+        }
+        public JsonResult GetOrganism(int id)
+        {
+            var model = _seedService.GetOrganism(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteOrganism(int id)
+        {
+            var model = _seedService.DeleteOrganism(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+
+        // Organism
+        public ActionResult ManageAntiBiotics(bool? Added, bool? Editted)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Added == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "AntiBotic added successfully.";
+            }
+            if (Editted == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "AntiBotic updated successfully.";
+            }
+            ViewBag.AntiBotics = _seedService.GetAntiBiotics();
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateAntiBiotic(AntiBioticVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.CreateAnitBiotic(vmodel);
+            }
+            return RedirectToAction("ManageAntiBiotics", new { Added = hasSaved });
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditAntiBiotic(AntiBioticVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.EditAntiBiotic(vmodel);
+            }
+            return RedirectToAction("ManageAntiBiotics", new { Editted = hasSaved });
+        }
+        public JsonResult GetAntiBiotic(int id)
+        {
+            var model = _seedService.GetAntiBiotic(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteAntiBiotic(int id)
+        {
+            var model = _seedService.DeleteAntiBiotic(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }

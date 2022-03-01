@@ -46,48 +46,46 @@
                     }
                 </div>
             </div>
-            <div class="card-body p-0 pb-3 text-center">
-                <table class="table mb-0">
-                    <thead class="bg-light">
-                        <tr>
-                            <th scope="col" class="border-0">Name</th>
-                            <th scope="col" class="border-0">Service Department</th>
-                            <th scope="col" class="border-0">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            if (ViewBag.Templates != null)
+            <table class="file-manager file-manager-list d-none table-responsive">
+                <thead class="bg-light">
+                    <tr>
+                        <th scope="col" class="border-0">Name</th>
+                        <th scope="col" class="border-0">Service Department</th>
+                        <th scope="col" class="border-0">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (ViewBag.Templates != null)
+                        {
+                            if (ViewBag.Templates.Count > 0)
                             {
-                                if (ViewBag.Templates.Count > 0)
-                                {
-                                    foreach (var row in ViewBag.Templates)
-                                    {
-                                        <tr>
-                                            <td>@row.Name</td>
-                                            <td>@row.ServiceDepartment</td>
-                                            <td>
-                                                <button type="button" onclick="Edit(@row.Id)" class="btn btn-outline-accent" data-toggle="modal" data-target="#Edit">
-                                                    <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>
-                                                </button>
-                                                <button type="button" onclick="Prompt(@row.Id)" class="btn btn-outline-danger">
-                                                    <i class="dropdown-icon lnr-trash"> </i><span>Delete</span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                                else
+                                foreach (var row in ViewBag.Templates)
                                 {
                                     <tr>
-                                        <td colspan="3">No data found</td>
+                                        <td>@row.Name</td>
+                                        <td>@row.ServiceDepartment</td>
+                                        <td>
+                                            <button type="button" onclick="Edit(@row.Id)" class="btn btn-outline-accent" data-toggle="modal" data-target="#Edit">
+                                                <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>
+                                            </button>
+                                            <button type="button" onclick="Prompt(@row.Id)" class="btn btn-outline-danger">
+                                                <i class="dropdown-icon lnr-trash"> </i><span>Delete</span>
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3">No data found</td>
+                                </tr>
+                            }
                         }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

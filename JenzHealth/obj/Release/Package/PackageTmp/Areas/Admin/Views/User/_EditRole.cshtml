@@ -17,11 +17,6 @@
                     <div class="form-group col-md-12">
                         <label for="socialGitHub">Role</label>
                         <div class="input-group input-group-seamless">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="material-icons">bloodtype</i>
-                                </div>
-                            </div>
                             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter description", required = true } })
                             <div class="invalid-feedback">
                                 Role required

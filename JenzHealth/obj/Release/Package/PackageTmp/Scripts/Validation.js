@@ -1,4 +1,5 @@
-﻿// Example starter JavaScript for disabling form submissions if there are invalid fields
+﻿
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -12,6 +13,24 @@
                     event.stopPropagation();
                 }
                 form.classList.add('was-validated');
+
+                let buttons = form.getElementsByTagName("button");
+
+                $.each(buttons, function (i, btn) {
+                    if (btn.classList.contains("ladda-button")) {
+                        if (btn.innerText == "Update changes" || btn.innerText == "Update") {
+                            btn.innerText = "Updating...";
+                        }
+                        else if (btn.innerText == "Create") {
+                            btn.innerText = "Creating...";
+                        } else if (btn.innerText == "Save Changes") {
+                            btn.innerText = "Saving...";
+                        }
+                        else {
+                            btn.innerText = "Processing...";
+                        }
+                    }
+                })
             }, false);
         });
     }, false);

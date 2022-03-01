@@ -531,5 +531,208 @@ namespace JenzHealth.Areas.Admin.Services
             ApplicationNumbers = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term)).Select(b => b.Description).ToList();
             return ApplicationNumbers;
         }
+
+        /* *************************************************************************** */
+        //Specimen
+
+        // Fetching Specimen
+        public List<SpecimenVM> GetSpecimens()
+        {
+            var model = _db.Specimens.Where(x => x.IsDeleted == false).Select(b => new SpecimenVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).ToList();
+            return model;
+        }
+
+        // Creating Specimen
+        public bool CreateSpecimen(SpecimenVM vmodel)
+        {
+            bool HasSaved = false;
+            Specimen model = new Specimen()
+            {
+                Name = vmodel.Name,
+                IsDeleted = false,
+                DateCreated = DateTime.Now,
+            };
+            _db.Specimens.Add(model);
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Getting Specimen
+        public SpecimenVM GetSpecimen(int ID)
+        {
+            var model = _db.Specimens.Where(x => x.Id == ID).Select(b => new SpecimenVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).FirstOrDefault();
+            return model;
+        }
+
+        // Editting and updating Specimen
+        public bool EditSpecimen(SpecimenVM vmodel)
+        {
+            bool HasSaved = false;
+            var model = _db.Specimens.Where(x => x.Id == vmodel.Id).FirstOrDefault();
+            model.Name = vmodel.Name;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Deleting Specimen
+        public bool DeleteSpecimen(int ID)
+        {
+            bool HasDeleted = false;
+            var model = _db.Specimens.Where(x => x.Id == ID).FirstOrDefault();
+            model.IsDeleted = true;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasDeleted = true;
+            return HasDeleted;
+        }
+
+
+
+        /* *************************************************************************** */
+        //Organism
+
+        // Fetching Organism
+        public List<OrganismVM> GetOrganisms()
+        {
+            var model = _db.Organisms.Where(x => x.IsDeleted == false).Select(b => new OrganismVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).ToList();
+            return model;
+        }
+
+        // Creating Organism
+        public bool CreateOrganism(OrganismVM vmodel)
+        {
+            bool HasSaved = false;
+            Organism model = new Organism()
+            {
+                Name = vmodel.Name,
+                IsDeleted = false,
+                DateCreated = DateTime.Now,
+            };
+            _db.Organisms.Add(model);
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Getting Organism
+        public OrganismVM GetOrganism(int ID)
+        {
+            var model = _db.Organisms.Where(x => x.Id == ID).Select(b => new OrganismVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).FirstOrDefault();
+            return model;
+        }
+
+        // Editting and updating Organism
+        public bool EditOrganism(OrganismVM vmodel)
+        {
+            bool HasSaved = false;
+            var model = _db.Organisms.Where(x => x.Id == vmodel.Id).FirstOrDefault();
+            model.Name = vmodel.Name;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Deleting Organism
+        public bool DeleteOrganism(int ID)
+        {
+            bool HasDeleted = false;
+            var model = _db.Organisms.Where(x => x.Id == ID).FirstOrDefault();
+            model.IsDeleted = true;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasDeleted = true;
+            return HasDeleted;
+        }
+
+        /* *************************************************************************** */
+        //AntiBiotic
+
+        // Fetching AntiBiotics
+        public List<AntiBioticVM> GetAntiBiotics()
+        {
+            var model = _db.AntiBiotics.Where(x => x.IsDeleted == false).Select(b => new AntiBioticVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).ToList();
+            return model;
+        }
+
+        // Creating AntiBiotic
+        public bool CreateAnitBiotic(AntiBioticVM vmodel)
+        {
+            bool HasSaved = false;
+            AntiBiotic model = new AntiBiotic()
+            {
+                Name = vmodel.Name,
+                IsDeleted = false,
+                DateCreated = DateTime.Now,
+            };
+            _db.AntiBiotics.Add(model);
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Getting AntiBioticVM
+        public AntiBioticVM GetAntiBiotic(int ID)
+        {
+            var model = _db.AntiBiotics.Where(x => x.Id == ID).Select(b => new AntiBioticVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+            }).FirstOrDefault();
+            return model;
+        }
+
+        // Editting and updating AntiBiotic
+        public bool EditAntiBiotic(AntiBioticVM vmodel)
+        {
+            bool HasSaved = false;
+            var model = _db.AntiBiotics.Where(x => x.Id == vmodel.Id).FirstOrDefault();
+            model.Name = vmodel.Name;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Deleting AntiBiotic
+        public bool DeleteAntiBiotic(int ID)
+        {
+            bool HasDeleted = false;
+            var model = _db.AntiBiotics.Where(x => x.Id == ID).FirstOrDefault();
+            model.IsDeleted = true;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasDeleted = true;
+            return HasDeleted;
+        }
     }
 }

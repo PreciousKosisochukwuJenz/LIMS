@@ -1,0 +1,43 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.AntiBioticVM
+<div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create AntiBiotic</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("CreateAntiBiotic", "Seed", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Name</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter name", required = true } })
+                            <div class="invalid-feedback">
+                                Name required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="ladda-button btn btn-shadow btn-primary" data-style="zoom-in">
+                        <span class="ladda-label">Create</span>
+                        <span class="ladda-spinner"></span>
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

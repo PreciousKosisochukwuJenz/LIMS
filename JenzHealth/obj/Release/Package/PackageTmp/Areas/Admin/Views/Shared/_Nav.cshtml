@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@(menu._url)">
                         <i class="material-icons">@(Html.Raw(menu._icon))</i>
-                        <span>@(menu._stringText)</span>
+                        <span class="">@(menu._stringText)</span>
                     </a>
                 </li>
             </ul>
@@ -30,7 +30,7 @@
                         <div class="dropdown-menu dropdown-menu-small">
                             @foreach (var submenu in menu._childMenus.Where(x => x.isAssigned == true))
                             {
-                                <a class="dropdown-item " href="@(submenu._url)">@(submenu._stringText)</a>
+                                <a class="dropdown-item" href="@(submenu._url)">@(submenu._stringText)</a>
                             }
                         </div>
                     }
@@ -38,4 +38,5 @@
             </ul>
         }
     }
+    <ul class="nav nav--no-borders flex-column" id="localUrlSearch"></ul>
 }
