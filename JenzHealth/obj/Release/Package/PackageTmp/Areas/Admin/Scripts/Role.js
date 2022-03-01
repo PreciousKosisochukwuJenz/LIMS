@@ -7,6 +7,8 @@
         success: function (result) {
             $('#Id').val(result.Id);
             $('#Description').val(result.Description);
+            $('#conversationsEmailsToggle').prop("checked",result.EnableShift);
+            $('#ShiftExpiration').val(result.ShiftExpiration);
         },
         error: function (errormessage) {
             var message = errormessage.responseText;
