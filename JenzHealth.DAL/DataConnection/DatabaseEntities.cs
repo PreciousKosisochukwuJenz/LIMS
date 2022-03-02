@@ -40,6 +40,9 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<Specimen> Specimens { get; set; }
         public virtual DbSet<AntiBiotic> AntiBiotics { get; set; }
         public virtual DbSet<Organism> Organisms { get; set; }
+        public virtual DbSet<ServiceParameter> ServiceParameters { get; set; }
+        public virtual DbSet<ServiceParameterSetup> ServiceParameterSetups { get; set; }
+        public virtual DbSet<ServiceParameterRangeSetup> ServiceParameterRangeSetups { get; set; }
  
     }
 }

@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace JenzHealth.DAL.Entity
 {
-    public class AntiBiotic
+    public class ServiceParameterSetup
     {
         public int Id { get; set; }
-        public int? OrganismID { get; set; }
+        public int? ServiceParameterID { get; set; }
         public string Name { get; set; }
+        public int Rank { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
 
-        [ForeignKey("OrganismID")]
-        public Organism Organism { get; set; }
+        [ForeignKey("ServiceParameterID")]
+        public ServiceParameter ServiceParameter { get; set; }
     }
 }

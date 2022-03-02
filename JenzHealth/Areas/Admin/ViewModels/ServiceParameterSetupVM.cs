@@ -5,13 +5,14 @@ using System.Web;
 
 namespace JenzHealth.Areas.Admin.ViewModels
 {
-    public class AntiBioticVM
+    public class ServiceParameterSetupVM
     {
         public int Id { get; set; }
+        public int? ServiceParameterID { get; set; }
         public string Name { get; set; }
+        public int Rank { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
-        public int? OrganismID { get; set; }
-        public string OrganismName { get; set; }
+        public string ServiceParameter { get; set; }
     }
 }

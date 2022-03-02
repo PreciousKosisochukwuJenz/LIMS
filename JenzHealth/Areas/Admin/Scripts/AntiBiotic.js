@@ -7,6 +7,7 @@
         success: function (result) {
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
+            $('#OrganismID').val(result.OrganismID);
         },
         error: function (errormessage) {
             var message = errormessage.responseText;

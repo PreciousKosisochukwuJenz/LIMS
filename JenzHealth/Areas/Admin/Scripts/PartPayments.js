@@ -247,7 +247,7 @@ function updateInstallmentNetAmount() {
         total += amount;
     });
     $("#InstallmentNetAmount").empty();
-    $("#InstallmentNetAmount").html("₦" + numberWithCommas(total) + ".00")
+    $("#InstallmentNetAmount").html("₦" + numberWithCommas(total) + ".00");
 }
 function DeleteInstallment(e) {
     Swal.fire({
