@@ -63,6 +63,9 @@
     <Compile Include="Entity\RevenueDepartment.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\ServiceDepartment.cs" />
+    <Compile Include="Entity\ServiceParameter.cs" />
+    <Compile Include="Entity\ServiceParameterRangeSetup.cs" />
+    <Compile Include="Entity\ServiceParameterSetup.cs" />
     <Compile Include="Entity\Shift.cs" />
     <Compile Include="Entity\Specimen.cs" />
     <Compile Include="Entity\Template.cs" />

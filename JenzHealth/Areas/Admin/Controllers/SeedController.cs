@@ -409,6 +409,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             var response = _seedService.GetServiceNameAutoComplete(term);
             return Json(response,JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetSpecimenAutoComplete(string term)
+        {
+            var response = _seedService.GetSpecimenAutoComplete(term);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
 
 
@@ -543,7 +548,14 @@ namespace JenzHealth.Areas.Admin.Controllers
                 TempData["AlertType"] = "alert-success";
                 TempData["AlertMessage"] = "AntiBotic updated successfully.";
             }
-            ViewBag.AntiBotics = _seedService.GetAntiBiotics();
+            ViewBag.Organisms = new SelectList(db.Organisms.Where(x => x.IsDeleted == false), "Id", "Name");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ManageAntiBiotics(AntiBioticVM vmodel)
+        {
+            ViewBag.AntiBiotics = _seedService.GetAntiBiotics((int)vmodel.OrganismID);
+            ViewBag.Organisms = new SelectList(db.Organisms.Where(x => x.IsDeleted == false), "Id", "Name");
             return View();
         }
         [ValidateAntiForgeryToken]

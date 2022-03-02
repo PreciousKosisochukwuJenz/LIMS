@@ -35,13 +35,18 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Payment/RecieptCancellations",stringText:"Reciept cancellation", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcancellation", childMenus: null),
             }),
 
+                // Laboratory
+            new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
+            }),
+
              // Seed
               new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
-                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.services",childMenus: null),
-                new Menu(url: "/Admin/Seed/ManageSpecimens",stringText:"Specimen", icon: null ?? defaultIcon, isMenu: true, claim: "seed.specimen",childMenus: null),
-                 new Menu(url: "/Admin/Seed/ManageOrganisms",stringText:"Organisms", icon: null ?? defaultIcon, isMenu: true, claim: "seed.organisms",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageSpecimens",stringText:"Specimens", icon: null ?? defaultIcon, isMenu: true, claim: "seed.specimens",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageOrganisms",stringText:"Organism", icon: null ?? defaultIcon, isMenu: true, claim: "seed.organisms",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageAntiBiotics",stringText:"AntiBiotics", icon: null ?? defaultIcon, isMenu: true, claim: "seed.antibiotics",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManagePriviledges",stringText:"Priviledges", icon: null ?? defaultIcon, isMenu: true, claim: "seed.priviledges",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageTemplates",stringText:"Templates", icon: null ?? defaultIcon, isMenu: true, claim: "seed.templates",childMenus: null),
@@ -81,13 +86,18 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Payment/RecieptCancellations",stringText:"Reciept cancellation", icon: null ?? defaultIcon, isMenu: true,claim: "payment.recieptcancellation", childMenus: null),
             }),
 
+              // Laboratory
+            new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
+            }),
+
              // Seed
             new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
-                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.services",childMenus: null),
-                new Menu(url: "/Admin/Seed/ManageSpecimens",stringText:"Specimen", icon: null ?? defaultIcon, isMenu: true, claim: "seed.specimen",childMenus: null),
-                new Menu(url: "/Admin/Seed/ManageOrganisms",stringText:"Organisms", icon: null ?? defaultIcon, isMenu: true, claim: "seed.organisms",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageSpecimens",stringText:"Specimens", icon: null ?? defaultIcon, isMenu: true, claim: "seed.specimens",childMenus: null),
+                new Menu(url: "/Admin/Seed/ManageOrganisms",stringText:"Organism", icon: null ?? defaultIcon, isMenu: true, claim: "seed.organisms",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageAntiBiotics",stringText:"AntiBiotics", icon: null ?? defaultIcon, isMenu: true, claim: "seed.antibiotics",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManagePriviledges",stringText:"Priviledges", icon: null ?? defaultIcon, isMenu: true, claim: "seed.priviledges",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageTemplates",stringText:"Templates", icon: null ?? defaultIcon, isMenu: true, claim: "seed.templates",childMenus: null),
@@ -122,10 +132,10 @@ namespace JenzHealth.Areas.Admin.Components
             GetAllMenu(AllMenus, AppMenu);
         }
 
-        public static bool CheckPermissionExist(string _claim)
+        public static bool CheckPermissionExist(string _stringText)
         {
-            var exist = db.Permissions.Where(x => x.Claim == _claim);
-            if (exist.Count() > 0)
+            var exist = db.Permissions.Where(x => x.Description == _stringText).FirstOrDefault();
+            if (exist != null)
                 return true;
             else
                 return false;
@@ -136,11 +146,18 @@ namespace JenzHealth.Areas.Admin.Components
 
             foreach (var menu in menuViewModels)
             {
-                if (menu._childMenus.Count() > 0)
+                if (!CheckPermissionExist(menu._stringText))
                 {
-                    foreach (var submenu in menu._childMenus)
+                    var permission = new Permission()
                     {
-                        if (!CheckPermissionExist(submenu._claim))
+                        Description = menu._stringText,
+                        Claim = menu._claim,
+                        Url = menu._url
+                    };
+                    model.Add(permission);
+                    if (menu._childMenus.Count > 0)
+                    {
+                        foreach (var submenu in menu._childMenus)
                         {
                             var childpermission = new Permission()
                             {
@@ -148,42 +165,22 @@ namespace JenzHealth.Areas.Admin.Components
                                 Claim = submenu._claim,
                                 Url = submenu._url
                             };
-                            db.Permissions.Add(childpermission);
-                            db.SaveChanges();
-                        }
-                        else
-                        {
-                            var subpermission = db.Permissions.Where(x => x.Claim == submenu._claim).FirstOrDefault();
-                            subpermission.Description = submenu._stringText;
-                            subpermission.Claim = submenu._claim;
-                            subpermission.Url = submenu._url;
-                            db.Entry(subpermission).State = System.Data.Entity.EntityState.Modified;
-                            db.SaveChanges();
+                            model.Add(childpermission);
                         }
                     }
-                    if (!CheckPermissionExist(menu._claim))
-                    {
-                        var permission = new Permission()
-                        {
-                            Description = menu._stringText,
-                            Claim = menu._claim,
-                            Url = menu._url
-                        };
-                        db.Permissions.Add(permission);
-                        db.SaveChanges();
-                    }
-                    else
-                    {
-                        var permission = db.Permissions.Where(x => x.Claim == menu._claim).FirstOrDefault();
-                        permission.Description = menu._stringText;
-                        permission.Claim = menu._claim;
-                        permission.Url = menu._url;
-                     
-                        db.Entry(permission).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
-                    }
+                    db.Permissions.AddRange(model);
+                }
+                else
+                {
+                    var permission = db.Permissions.Where(x => x.Description == menu._stringText).FirstOrDefault();
+                    permission.Description = menu._stringText;
+                    permission.Claim = menu._claim;
+                    permission.Url = menu._url;
+
+                    db.Entry(permission).State = System.Data.Entity.EntityState.Modified;
                 }
             }
+            db.SaveChanges();
         }
 
         public static void GetRolePermissionMenu(List<Menu> applicationMenus, List<RolePermission> permissionMenus)
@@ -232,7 +229,7 @@ namespace JenzHealth.Areas.Admin.Components
                 if (CheckPermissionExist(roleID, menu._stringText) == 0)
                 {
                     var rolePermission = new RolePermission();
-                    rolePermission.PermissionID = db.Permissions.FirstOrDefault(x => x.Claim == menu._claim).Id;
+                    rolePermission.PermissionID = db.Permissions.FirstOrDefault(x => x.Description == menu._stringText).Id;
                     rolePermission.Permission = menu._stringText;
                     rolePermission.RoleID = roleID;
                     rolePermission.IsAssigned = false;
@@ -251,8 +248,7 @@ namespace JenzHealth.Areas.Admin.Components
 
         public static void AssignPermission(string permission, int roleID, bool isAssigned)
         {
-            var perm = db.Permissions.FirstOrDefault(x => x.Description == permission);
-            var RolePermission = db.RolePermissions.Where(p => p.RoleID == roleID && p.PermissionID == perm.Id).FirstOrDefault();
+            var RolePermission = db.RolePermissions.Where(p => p.RoleID == roleID && p.PermissionID == db.Permissions.FirstOrDefault(x => x.Description == permission).Id).FirstOrDefault();
             RolePermission.IsAssigned = isAssigned;
             db.Entry(RolePermission).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();

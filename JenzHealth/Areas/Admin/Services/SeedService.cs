@@ -527,9 +527,15 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public List<string> GetServiceNameAutoComplete(string term)
         {
-            List<string> ApplicationNumbers;
-            ApplicationNumbers = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term)).Select(b => b.Description).ToList();
-            return ApplicationNumbers;
+            List<string> services;
+            services = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term)).Select(b => b.Description).ToList();
+            return services;
+        }
+        public List<string> GetSpecimenAutoComplete(string term)
+        {
+            List<string> specimens;
+            specimens = _db.Specimens.Where(x => x.IsDeleted == false && x.Name.StartsWith(term)).Select(b => b.Name).ToList();
+            return specimens;
         }
 
         /* *************************************************************************** */
@@ -672,12 +678,14 @@ namespace JenzHealth.Areas.Admin.Services
         //AntiBiotic
 
         // Fetching AntiBiotics
-        public List<AntiBioticVM> GetAntiBiotics()
+        public List<AntiBioticVM> GetAntiBiotics(int OrganismID)
         {
-            var model = _db.AntiBiotics.Where(x => x.IsDeleted == false).Select(b => new AntiBioticVM()
+            var model = _db.AntiBiotics.Where(x => x.IsDeleted == false && x.OrganismID == OrganismID).Select(b => new AntiBioticVM()
             {
                 Id = b.Id,
                 Name = b.Name,
+                OrganismID = b.OrganismID,
+                OrganismName = b.Organism.Name
             }).ToList();
             return model;
         }
@@ -689,6 +697,7 @@ namespace JenzHealth.Areas.Admin.Services
             AntiBiotic model = new AntiBiotic()
             {
                 Name = vmodel.Name,
+                OrganismID = vmodel.OrganismID,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
             };
@@ -705,6 +714,8 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Name = b.Name,
+                OrganismID = b.OrganismID,
+                OrganismName = b.Organism.Name
             }).FirstOrDefault();
             return model;
         }
@@ -715,6 +726,7 @@ namespace JenzHealth.Areas.Admin.Services
             bool HasSaved = false;
             var model = _db.AntiBiotics.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Name = vmodel.Name;
+            model.OrganismID = vmodel.OrganismID;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();

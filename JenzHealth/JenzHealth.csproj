@@ -72,6 +72,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PowerfulExtensions_4.5, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PowerfulExtensions.1.0.5\lib\net45\PowerfulExtensions_4.5.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,6 +132,8 @@
     <Content Include="Areas\Admin\Scripts\RevenueDepartment.js" />
     <Content Include="Areas\Admin\Scripts\Role.js" />
     <Content Include="Areas\Admin\Scripts\ServiceDepartment.js" />
+    <Content Include="Areas\Admin\Scripts\ServiceParameterRangeSetup.js" />
+    <Content Include="Areas\Admin\Scripts\ServiceParameterSetup.js" />
     <Content Include="Areas\Admin\Scripts\Services.js" />
     <Content Include="Areas\Admin\Scripts\Specimen.js" />
     <Content Include="Areas\Admin\Scripts\Template.js" />
@@ -260,6 +265,7 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LaboratoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\PaymentController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeedController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -271,11 +277,13 @@
     <Compile Include="Areas\Admin\Helpers\HtmlConverter.cs" />
     <Compile Include="Areas\Admin\Interfaces\IApplicationSettingsService.cs" />
     <Compile Include="Areas\Admin\Interfaces\ICustomerService.cs" />
+    <Compile Include="Areas\Admin\Interfaces\ILaboratoryService.cs" />
     <Compile Include="Areas\Admin\Interfaces\IPaymentService.cs" />
     <Compile Include="Areas\Admin\Interfaces\ISeedService.cs" />
     <Compile Include="Areas\Admin\Interfaces\IUserService.cs" />
     <Compile Include="Areas\Admin\Services\ApplicationSettingsService.cs" />
     <Compile Include="Areas\Admin\Services\CustomerService.cs" />
+    <Compile Include="Areas\Admin\Services\LaboratoryService.cs" />
     <Compile Include="Areas\Admin\Services\PaymentService.cs" />
     <Compile Include="Areas\Admin\Services\SeedService.cs" />
     <Compile Include="Areas\Admin\Services\UserService.cs" />
@@ -294,6 +302,9 @@
     <Compile Include="Areas\Admin\ViewModels\RoleVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\ServiceDepartmentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\ServiceListVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ServiceParameterRangeSetupVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ServiceParameterSetupVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ServiceParameterVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\ServiceVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\SpecimenVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\TemplateVM.cs" />
@@ -379,6 +390,8 @@
     <Content Include="Areas\Admin\Views\Seed\_EditOrganism.cshtml" />
     <Content Include="Areas\Admin\Views\Seed\_CreateAntiBiotic.cshtml" />
     <Content Include="Areas\Admin\Views\Seed\_EditAntiBiotic.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\ParameterSetups.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\RangeSetups.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />

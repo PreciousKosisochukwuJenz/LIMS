@@ -90,3 +90,4 @@ C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.Security.xml
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.dll
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\Newtonsoft.Json.xml
+C:\Users\DELL\source\repos\JenzHealth\JenzHealth\bin\PowerfulExtensions_4.5.dll
