@@ -76,7 +76,7 @@ $(function () {
                 });
             }
         },
-        minLength: 1
+        minLength: 1,
     });
 
 })
@@ -155,8 +155,8 @@ $("#FinishBtn").click(function () {
 $("#Service").on("keyup", function () {
     $("#RangeTableLoader").show();
     $("#RangeTableDiv").hide();
-
     var service = $("#Service").val();
+    debugger
     $.ajax({
         url: 'GetServiceParameterSetups?service=' + service,
         method: "Get",

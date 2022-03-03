@@ -50,8 +50,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceVM> GetServiceAutoComplete(string query);
         List<string> GetServiceNameAutoComplete(string term);
         List<string> GetSpecimenAutoComplete(string term);
-
-
         List<SpecimenVM> GetSpecimens();
         bool CreateSpecimen(SpecimenVM vmodel);
         SpecimenVM GetSpecimen(int ID);
