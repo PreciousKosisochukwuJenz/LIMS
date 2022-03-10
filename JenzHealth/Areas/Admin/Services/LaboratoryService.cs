@@ -31,6 +31,8 @@ namespace JenzHealth.Areas.Admin.Services
                 Service = b.Service.Description,
                 SpecimenID = b.SpecimenID,
                 Specimen = b.Specimen.Name,
+                TemplateID = b.TemplateID,
+                Template = b.Template.Name,
                 RequireApproval = b.RequireApproval,
             }).FirstOrDefault();
 
@@ -55,6 +57,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     ServiceID = _db.Services.FirstOrDefault(x => x.Description == serviceParamter.Service).Id,
                     SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == serviceParamter.Specimen).Id,
+                    TemplateID = _db.Templates.FirstOrDefault(x=>x.Name == serviceParamter.Template).Id,
                     RequireApproval = serviceParamter.RequireApproval,
                 };
                 _db.ServiceParameters.Add(serviceParameter);
@@ -142,6 +145,73 @@ namespace JenzHealth.Areas.Admin.Services
                 };
                 _db.ServiceParameterRangeSetups.Add(rangeSetup);
                 _db.SaveChanges();
+            }
+        }
+
+        public void UpdateSpecimenSampleCollection(SpecimenCollectionVM specimenCollected, List<SpecimenCollectionCheckListVM> checklist)
+        {
+            int specimenCollectionID = 0;
+            var sampleExist = _db.SpecimenCollections.Where(x => x.BillInvoiceNumber == specimenCollected.BillInvoiceNumber && x.IsDeleted == false).FirstOrDefault();
+            if (sampleExist != null)
+            {
+                sampleExist.RequestingPhysician = specimenCollected.RequestingPhysician;
+                sampleExist.ClinicalSummary = specimenCollected.ClinicalSummary;
+                sampleExist.ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis;
+                sampleExist.OtherInformation = specimenCollected.OtherInformation;
+                sampleExist.RequestingDate = specimenCollected.RequestingDate;
+                _db.Entry(sampleExist).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+                specimenCollectionID = sampleExist.Id;
+            }
+            else
+            {
+                var labCount = _db.ApplicationSettings.FirstOrDefault().LabCount;
+                labCount++;
+                var labnumber = string.Format("LAB/{0}", labCount.ToString("D6"));
+
+                var specimenCollection = new SpecimenCollection()
+                {
+                    BillInvoiceNumber = specimenCollected.BillInvoiceNumber,
+                    ClinicalSummary = specimenCollected.ClinicalSummary,
+                    OtherInformation = specimenCollected.OtherInformation,
+                    ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis,
+                    RequestingPhysician = specimenCollected.RequestingPhysician,
+                    RequestingDate = specimenCollected.RequestingDate,
+                    IsDeleted = false,
+                    DateTimeCreated = DateTime.Now,
+                    LabNumber = labnumber
+                };
+
+                _db.SpecimenCollections.Add(specimenCollection);
+                _db.SaveChanges();
+                specimenCollectionID = specimenCollection.Id;
+            }
+
+            if(checklist.Count() > 0)
+            {
+                foreach (var sample in checklist)
+                {
+                    var checkSample = _db.SpecimenCollectionCheckLists.FirstOrDefault(x => x.Specimen.Name == sample.Specimen && x.SpecimenCollectionID == specimenCollectionID && x.IsDeleted == false);
+                    if(checkSample != null)
+                    {
+                        checkSample.IsCollected = sample.IsCollected;
+                        _db.Entry(checkSample).State = System.Data.Entity.EntityState.Modified;
+                        _db.SaveChanges();
+                    }
+                    else{
+                        var newSample = new SpecimenCollectionCheckList()
+                        {
+                            SpecimenCollectionID = specimenCollectionID,
+                            SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == sample.Specimen).Id,
+                            IsCollected = sample.IsCollected,
+                            IsDeleted = false,
+                            DateTimeCreated = DateTime.Now,
+                        };
+
+                        _db.SpecimenCollectionCheckLists.Add(newSample);
+                        _db.SaveChanges();
+                    }
+                }
             }
         }
     }

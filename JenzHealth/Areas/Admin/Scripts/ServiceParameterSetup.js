@@ -95,6 +95,26 @@ $(function () {
     });
 
 })
+$(function () {
+    $("#Template").autoComplete({
+        resolver: "custom",
+        events: {
+            search: function (qry, callback) {
+                $.ajax({
+                    url: "/Admin/Seed/GetTemplateAutoComplete",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: qry },
+                }).done(function (res) {
+                    callback(res)
+                });
+            }
+        },
+        minLength: 1
+    });
+
+})
+
 
 $("#FinishBtn").click(function () {
     var service = $("#Service").val();
@@ -189,6 +209,7 @@ $("#Service").on("keyup", function () {
         dataType: "json",
         success: function (data) {
             $("#Specimen").val(data.Specimen);
+            $("#Template").val(data.Template);
             $("#newProjectsEmailsToggle").prop("checked", data.RequireApproval);
 
             $.ajax({
