@@ -14,5 +14,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceParameterSetupVM> GetServiceParamterSetups(string serviceName);
         List<ServiceParameterRangeSetupVM> GetRangeSetups(string serviceName);
         void UpdateParameterRangeSetup(List<ServiceParameterRangeSetupVM> rangeSetups);
+        void UpdateSpecimenSampleCollection(SpecimenCollectionVM specimenCollected, List<SpecimenCollectionCheckListVM> checklist);
     }
 }

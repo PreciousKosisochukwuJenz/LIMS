@@ -24,6 +24,7 @@ namespace JenzHealth.DAL.Entity
         public int ShiftCount { get; set; }
         public int PaymentCount { get; set; }
         public int DepositeCount { get; set; }
+        public int LabCount { get; set; }
 
     }
 }

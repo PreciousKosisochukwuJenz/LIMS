@@ -538,6 +538,13 @@ namespace JenzHealth.Areas.Admin.Services
             return specimens;
         }
 
+        public List<string> GetTemplateAutoComplete(string term)
+        {
+            List<string> templates;
+            templates = _db.Templates.Where(x => x.IsDeleted == false && x.Name.StartsWith(term)).Select(b => b.Name).ToList();
+            return templates;
+        }
+
         /* *************************************************************************** */
         //Specimen
 

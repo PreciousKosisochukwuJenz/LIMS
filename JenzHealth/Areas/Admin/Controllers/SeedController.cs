@@ -414,6 +414,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             var response = _seedService.GetSpecimenAutoComplete(term);
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetTemplateAutoComplete(string term)
+        {
+            var response = _seedService.GetTemplateAutoComplete(term);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
 
 
