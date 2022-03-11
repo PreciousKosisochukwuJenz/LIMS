@@ -143,6 +143,7 @@ $("#FinishBtn").click(function () {
                 var serviceParameter = {
                     Service: $("#Service").val(),
                     Specimen: $("#Specimen").val(),
+                    Template: $("#Template").val(),
                     RequireApproval: $("#newProjectsEmailsToggle").val()
                 };
 
