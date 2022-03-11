@@ -38,6 +38,7 @@ namespace JenzHealth.Areas.Admin.Components
                 // Laboratory
             new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
+                new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
             }),
 
              // Seed
@@ -89,6 +90,7 @@ namespace JenzHealth.Areas.Admin.Components
               // Laboratory
             new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
+                new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
             }),
 
              // Seed

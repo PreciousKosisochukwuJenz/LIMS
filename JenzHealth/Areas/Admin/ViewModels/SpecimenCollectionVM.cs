@@ -17,5 +17,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string OtherInformation { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateTimeCreated { get; set; }
+        public List<SpecimenCollectionCheckListVM> CheckList { get; set; }
     }
 }

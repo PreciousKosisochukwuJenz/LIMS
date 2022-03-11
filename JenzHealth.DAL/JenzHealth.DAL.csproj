@@ -68,6 +68,8 @@
     <Compile Include="Entity\ServiceParameterSetup.cs" />
     <Compile Include="Entity\Shift.cs" />
     <Compile Include="Entity\Specimen.cs" />
+    <Compile Include="Entity\SpecimenCollection.cs" />
+    <Compile Include="Entity\SpecimenCollectionCheckList.cs" />
     <Compile Include="Entity\Template.cs" />
     <Compile Include="Entity\Vendor.cs" />
     <Compile Include="Entity\Waiver.cs" />

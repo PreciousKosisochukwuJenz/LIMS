@@ -203,6 +203,7 @@ namespace JenzHealth.Areas.Admin.Services
                         {
                             SpecimenCollectionID = specimenCollectionID,
                             SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == sample.Specimen).Id,
+                            ServiceID = _db.Services.FirstOrDefault(x=>x.Description == sample.Service).Id,
                             IsCollected = sample.IsCollected,
                             IsDeleted = false,
                             DateTimeCreated = DateTime.Now,
@@ -213,6 +214,65 @@ namespace JenzHealth.Areas.Admin.Services
                     }
                 }
             }
+        }
+        public List<ServiceParameterVM> GetServiceParameters(string invoiceNumber)
+        {
+            var model = _db.Billings.Where(x => x.InvoiceNumber == invoiceNumber && x.IsDeleted == false).Select(b => new ServiceParameterVM()
+            {
+                Id = b.Id,
+                ServiceID = b.ServiceID,
+                Service = b.Service.Description,
+            }).ToList();
+            foreach(var service in model)
+            {
+                service.Specimen = this.GetSpecimen((int)service.ServiceID);
+            }
+            return model;
+        }
+        public string GetSpecimen(int ServiceID)
+        {
+            var specimen = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == ServiceID);
+            if (specimen == null)
+                return "-";
+            else
+                return _db.Specimens.FirstOrDefault(x => x.Id == specimen.SpecimenID).Name;
+        }
+        public bool CheckSpecimenCollectionWithBillNumber(string billnumber)
+        {
+            var exist = _db.SpecimenCollections.FirstOrDefault(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber);
+            if (exist != null)
+                return true;
+            else
+                return false;
+        }
+
+        public SpecimenCollectionVM GetSpecimenCollected(string billnumber)
+        {
+            var specimenCollected = _db.SpecimenCollections.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new SpecimenCollectionVM()
+            {
+                Id = b.Id,
+                ClinicalSummary = b.ClinicalSummary,
+                ProvitionalDiagnosis = b.ProvitionalDiagnosis,
+                OtherInformation = b.OtherInformation,
+                RequestingPhysician = b.RequestingPhysician,
+                RequestingDate = b.RequestingDate,
+                LabNumber = b.LabNumber
+            }).FirstOrDefault();
+            specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
+            return specimenCollected;
+        }
+
+        public List<SpecimenCollectionCheckListVM> GetCheckList(int SpecimentCollectionID)
+        {
+            var checklist = _db.SpecimenCollectionCheckLists.Where(x => x.IsDeleted == false && x.SpecimenCollectionID == SpecimentCollectionID)
+                .Select(b => new SpecimenCollectionCheckListVM()
+                {
+                    Id = b.Id,
+                    Specimen = b.Specimen.Name,
+                    IsCollected = b.IsCollected,
+                    Service = b.Service.Description
+                }).ToList();
+            return checklist;
         }
     }
 }

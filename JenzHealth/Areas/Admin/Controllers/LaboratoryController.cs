@@ -70,6 +70,15 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult SpecimenCollections()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return View();
+        }
+
         public ActionResult UpdateServiceParameters(ServiceParameterVM serviceParameter, List<ServiceParameterSetupVM> serviceParameterSetups)
         {
             _laboratoryService.UpdateParamterSetup(serviceParameter, serviceParameterSetups);
@@ -80,6 +89,22 @@ namespace JenzHealth.Areas.Admin.Controllers
             _laboratoryService.UpdateParameterRangeSetup(serviceParameterSetups);
             return Json("Success", JsonRequestBehavior.AllowGet);
         }
+        public ActionResult UpdateSpecimenCollection(SpecimenCollectionVM specimenCollection, List<SpecimenCollectionCheckListVM> checklist)
+        {
+            _laboratoryService.UpdateSpecimenSampleCollection(specimenCollection, checklist);
+            return Json("Success", JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CheckSpecimenCollection(string invoicenumber)
+        {
+            var exist = _laboratoryService.CheckSpecimenCollectionWithBillNumber(invoicenumber);
+            return Json(exist, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetSpecimenCollected(string invoicenumber)
+        {
+            var specimenCollected = _laboratoryService.GetSpecimenCollected(invoicenumber);
+            return Json(specimenCollected, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetServiceParameter(string service)
         {
             var serviceparameter = _laboratoryService.GetServiceParameter(service);
@@ -95,5 +120,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             var serviceparameter = _laboratoryService.GetServiceParamterSetups(service);
             return Json(serviceparameter, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetServicesAndSpecimenByInvoiceNumber(string invoiceNumber)
+        {
+            var model = _laboratoryService.GetServiceParameters(invoiceNumber);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

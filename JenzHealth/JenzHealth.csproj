@@ -136,6 +136,7 @@
     <Content Include="Areas\Admin\Scripts\ServiceParameterSetup.js" />
     <Content Include="Areas\Admin\Scripts\Services.js" />
     <Content Include="Areas\Admin\Scripts\Specimen.js" />
+    <Content Include="Areas\Admin\Scripts\SpecimenCollections.js" />
     <Content Include="Areas\Admin\Scripts\Template.js" />
     <Content Include="Areas\Admin\Scripts\Transaction.js" />
     <Content Include="Areas\Admin\Scripts\TransactionDetails.js" />
@@ -306,6 +307,8 @@
     <Compile Include="Areas\Admin\ViewModels\ServiceParameterSetupVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\ServiceParameterVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\ServiceVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\SpecimenCollectionCheckListVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\SpecimenCollectionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\SpecimenVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\TemplateVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\TransactionVM.cs" />
@@ -392,6 +395,7 @@
     <Content Include="Areas\Admin\Views\Seed\_EditAntiBiotic.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\ParameterSetups.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\RangeSetups.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\SpecimenCollections.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
