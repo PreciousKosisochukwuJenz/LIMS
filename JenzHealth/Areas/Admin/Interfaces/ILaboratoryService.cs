@@ -23,5 +23,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceParameterVM> GetServicesToPrepare(string invoiceNumber);
         List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices);
         List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber);
+        bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote);
     }
 }

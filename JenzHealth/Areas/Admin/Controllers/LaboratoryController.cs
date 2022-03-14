@@ -98,12 +98,19 @@ namespace JenzHealth.Areas.Admin.Controllers
             ViewBag.TableData = _laboratoryService.GetLabPreparations(vmodel);
             return View(vmodel);
         }
-        public ActionResult Prepare(int ID)
+        public ActionResult Prepare(int ID, bool? Saved)
         {
-
+            if (Saved == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-success";
+                TempData["AlertMessage"] = "Result computation saved successfully";
+            }
             var record = _laboratoryService.GetSpecimensForPreparation(ID);
             ViewBag.Customer = _paymentService.GetCustomerForBill(record.BillInvoiceNumber);
             var billedServices = _laboratoryService.GetServicesToPrepare(record.BillInvoiceNumber);
+            TempData["SpecimenCollectedID"] = ID;
+            TempData["BillNumber"] = record.BillInvoiceNumber;
             ViewBag.Services = billedServices;
             ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
             return View();
@@ -113,6 +120,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View(_laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
         }
 
+        public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote)
+        {
+            var status = _laboratoryService.UpdateLabResults(results, labnote);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult UpdateServiceParameters(ServiceParameterVM serviceParameter, List<ServiceParameterSetupVM> serviceParameterSetups)
         {

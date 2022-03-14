@@ -10,9 +10,9 @@ namespace JenzHealth.DAL.Entity
     public class TemplatedLabPreparation
     {
         public int Id { get; set; }
+        public string BillInvoiceNumber { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
-        public int? KeyID { get; set; }
         public int? ServiceRangeID { get; set; }
         public int? ServiceParameterID { get; set; }
         public int? ServiceParameterSetupID { get; set; }
