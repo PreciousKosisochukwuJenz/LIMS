@@ -1,0 +1,114 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.SpecimenCollectionVM
+@{
+    ViewBag.Title = "Laboratory Preparations";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Preparations</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Lab Reports
+                </h6>
+                <br />
+                <div class="m-0">
+                    @using (Html.BeginForm("Preparations", "Laboratory", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="socialGitHub">Search By</label>
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="material-icons">bloodtype</i>
+                                        </div>
+                                    </div>
+                                    @Html.EditorFor(model => model.BillInvoiceNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter bill invoice number or lab number" } })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub" class="fa-pull-right">Date range</label>
+                                <div id="analytics-overview-date-range" class="input-daterange input-group input-group-sm ml-auto">
+                                    <input type="text" class="input-sm form-control" name="StartDate" placeholder="Start Date" id="analytics-overview-date-range-1">
+                                    <input type="text" class="input-sm form-control" name="EndDate" placeholder="End Date" id="analytics-overview-date-range-2">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">&#xE916;</i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button class="btn btn-primary">
+                                    <i class="material-icons">search</i> Search
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex ml-lg-auto my-auto">
+                                    <div class="btn-group btn-group-sm mr-2 ml-lg-auto" role="group" aria-label="Table row actions">
+                                        <button type="button" class="btn btn-white" onclick="window.location.reload(true);">
+                                            <i class="fa fa-1x fa-retweet"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+            <table class="transaction-history d-none" style="white-space:nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">S/N</th>
+                        <th scope="col">Bill Number</th>
+                        <th scope="col">Lab Number</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Patient Number</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (ViewBag.TableData != null)
+                        {
+                            var counter = 0;
+                            foreach (var row in ViewBag.TableData)
+                            {
+                                counter++;
+                                <tr>
+                                    <td>@counter</td>
+                                    <td>@row.BillInvoiceNumber</td>
+                                    <td>@row.LabNumber</td>
+                                    <td>@row.CustomerName</td>
+                                    <td>@row.CustomerUniqueID</td>
+                                    <td>@row.CustomerPhoneNumber</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+                                            <a href="@Url.Action("Prepare",new{ID = row.Id })" class="btn btn-white" title="Click to prepare">
+                                                <i class="material-icons">&#xE870;</i> Prepare Result
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Preparations.js"></script>
+}
+

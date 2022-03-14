@@ -46,6 +46,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 ExistingServiceParamterExist.RequireApproval = serviceParamter.RequireApproval;
                 ExistingServiceParamterExist.SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == serviceParamter.Specimen).Id;
+                ExistingServiceParamterExist.TemplateID = _db.Templates.FirstOrDefault(x => x.Name == serviceParamter.Template).Id;
                 _db.Entry(ExistingServiceParamterExist).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
 
@@ -273,6 +274,90 @@ namespace JenzHealth.Areas.Admin.Services
                     Service = b.Service.Description
                 }).ToList();
             return checklist;
+        }
+
+        public List<SpecimenCollectionVM> GetLabPreparations(SpecimenCollectionVM vmodel)
+        {
+            var preparations = _db.SpecimenCollections.Where(x => (x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == x.BillInvoiceNumber) || (x.DateTimeCreated >= vmodel.StartDate && x.DateTimeCreated <= vmodel.EndDate) && x.IsDeleted == false)
+                .Select(b => new SpecimenCollectionVM()
+                {
+                    Id = b.Id,
+                    LabNumber = b.LabNumber,
+                    BillInvoiceNumber = b.BillInvoiceNumber,
+                    CustomerName = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
+                    CustomerPhoneNumber = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
+                    CustomerUniqueID = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
+                }).ToList();
+            return preparations;
+        }
+        public SpecimenCollectionVM GetSpecimensForPreparation(int Id)
+        {
+            var model = _db.SpecimenCollections.Where(x => x.Id == Id).Select(b => new SpecimenCollectionVM()
+            {
+                Id = b.Id,
+                LabNumber = b.LabNumber,
+                BillInvoiceNumber = b.BillInvoiceNumber
+            }).FirstOrDefault();
+            return model;
+        }
+        public List<ServiceParameterVM> GetServicesToPrepare(string invoiceNumber)
+        {
+            var model = _db.Billings.Where(x => x.InvoiceNumber == invoiceNumber && x.IsDeleted == false).Select(b => new ServiceParameterVM()
+            {
+                Id = b.Id,
+                ServiceID = b.ServiceID,
+                Service = b.Service.Description,
+                Template  = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == b.ServiceID).Template.Name,
+                TemplateID  = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == b.ServiceID).TemplateID,
+                BillNumber = b.InvoiceNumber
+            }).ToList();
+          
+            return model;
+        }
+        public List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices)
+        {
+            return billedServices.Distinct(o => o.TemplateID).ToList();
+        }
+
+        public List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber)
+        {
+            List<TemplateServiceCompuationVM> model = new List<TemplateServiceCompuationVM>();
+
+            var billedService = this.GetServicesToPrepare(billNumber);
+            var billedServiceForTemplate = billedService.Where(x => x.TemplateID == TemplateID);
+
+            foreach(var service in billedServiceForTemplate)
+            {
+                TemplateServiceCompuationVM billservice = new TemplateServiceCompuationVM();
+                billservice.Parameters = new List<ServiceParameterAndRange>();
+                var serviceParameterID = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == service.ServiceID && x.TemplateID == TemplateID).Id;
+                var parameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID && x.IsDeleted == false).Select(b => new ServiceParameterSetupVM()
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Rank = b.Rank
+                }).ToList();
+
+                foreach(var parameterSetup in parameterSetups)
+                {
+                    var parameter = new ServiceParameterAndRange();
+                    var ranges = _db.ServiceParameterRangeSetups.Where(x => x.ServiceParameterSetupID == parameterSetup.Id && x.IsDeleted == false).Select(b => new ServiceParameterRangeSetupVM()
+                    {
+                        Id = b.Id,
+                        Range = b.Range,
+                        Unit = b.Unit,
+                    }).ToList();
+                    parameter.Parameter = parameterSetup;
+                    parameter.Ranges = ranges;
+
+                    billservice.Parameters.Add(parameter);
+                }
+                billservice.Service = service.Service;
+                billservice.ServiceID = (int)service.ServiceID;
+                model.Add(billservice);
+            }
+
+            return model;
         }
     }
 }

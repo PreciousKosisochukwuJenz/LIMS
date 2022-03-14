@@ -56,6 +56,7 @@
     <Compile Include="Entity\CashCollection.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\DepositeCollection.cs" />
+    <Compile Include="Entity\TemplatedLabPreparation.cs" />
     <Compile Include="Entity\Organism.cs" />
     <Compile Include="Entity\PartPayment.cs" />
     <Compile Include="Entity\Priviledge.cs" />

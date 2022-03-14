@@ -15,5 +15,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Service { get; set; }
         public string Specimen { get; set; }
         public string Template { get; set; }
+        public string BillNumber { get; set; }
     }
 }
