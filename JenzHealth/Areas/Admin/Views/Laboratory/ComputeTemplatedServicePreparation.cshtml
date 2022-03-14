@@ -1,0 +1,91 @@
+﻿@using JenzHealth.DAL.Entity;
+@model IEnumerable<JenzHealth.Areas.Admin.ViewModels.TemplateServiceCompuationVM>
+@{
+    ViewBag.Title = "Compute Result";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Compute Result</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card  card-small h-100">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Service/Test</h6>
+                <div class="block-handle"></div>
+            </div>
+            <div class="card-body p-0">
+                <div class="container-fluid">
+                    @foreach (var billedService in Model)
+                    {
+                        <div class="row px-3">
+                            <div class="col-md-3 sc-stats__title"><strong>@billedService.Service</strong></div>
+                            <div class="col-md-9">
+                                <table class="file-manager file-manager-list2 d-none table-responsive">
+                                    <thead class="bg-light">
+                                        <tr>
+                                            <th scope="col">Parameter</th>
+                                            <th scope="col">Value</th>
+                                            <th scope="col">Range</th>
+                                            <th scope="col">Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var paramater in billedService.Parameters)
+                                        {
+                                            <tr>
+                                                <td>@paramater.Parameter.Name</td>
+                                                <td><input type="text" class="form-control" /></td>
+                                                <td>
+                                                    <select class="form-control">
+                                                        <option>-- Select range --</option>
+                                                        @foreach (var range in paramater.Ranges)
+                                                        {
+                                                            <option value="@range.Unit">@range.Range</option>
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" readonly />
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table><hr />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="ClinicalSummary">Lab Note</label>
+                        <div class="input-group input-group-seamless">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Lab note required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary" id="FinishBtn">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<br />
+@section Scripts{
+    @*<script src="~/Areas/Admin/Scripts/SpecimenCollections.js"></script>*@
+}
+
+

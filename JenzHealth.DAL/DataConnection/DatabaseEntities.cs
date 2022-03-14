@@ -45,6 +45,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<ServiceParameterRangeSetup> ServiceParameterRangeSetups { get; set; }
         public virtual DbSet<SpecimenCollection> SpecimenCollections { get; set; }
         public virtual DbSet<SpecimenCollectionCheckList> SpecimenCollectionCheckLists { get; set; }
+        public virtual DbSet<TemplatedLabPreparation> TemplatedLabPreparations { get; set; }
  
     }
 }

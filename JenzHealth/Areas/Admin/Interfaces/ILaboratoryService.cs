@@ -18,5 +18,10 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceParameterVM> GetServiceParameters(string invoiceNumber);
         bool CheckSpecimenCollectionWithBillNumber(string billnumber);
         SpecimenCollectionVM GetSpecimenCollected(string billnumber);
+        List<SpecimenCollectionVM> GetLabPreparations(SpecimenCollectionVM vmodel);
+        SpecimenCollectionVM GetSpecimensForPreparation(int Id);
+        List<ServiceParameterVM> GetServicesToPrepare(string invoiceNumber);
+        List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices);
+        List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber);
     }
 }

@@ -1,0 +1,86 @@
+﻿@using JenzHealth.DAL.Entity;
+@model JenzHealth.Areas.Admin.ViewModels.SpecimenCollectionVM
+@{
+    ViewBag.Title = "Prepare";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Prepare</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <fieldset>
+                <legend class="text-center">Customer Information</legend>
+                <table class="file-manager file-manager-list2 d-none table-responsive">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="border-0">Name</th>
+                            <th scope="col" class="border-0">Gender</th>
+                            <th scope="col" class="border-0">Age</th>
+                            <th scope="col" class="border-0">Phone number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="Customername">@ViewBag.Customer.CustomerName</td>
+                            <td id="Customergender">@ViewBag.Customer.CustomerGender</td>
+                            <td id="Customerage">@ViewBag.Customer.CustomerAge</td>
+                            <td id="Customerphonenumber">@ViewBag.Customer.CustomerPhoneNumber</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div id="serviceTableDiv">
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="file-manager file-manager-list2 d-none table-responsive">
+                    <thead class="bg-light">
+                        <tr>
+                            <th scope="col" class="border-0">Template</th>
+                            <th scope="col" class="border-0">Services</th>
+                            <th scope="col" class="border-0"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var row in ViewBag.Templates)
+                        {
+                            <tr>
+                                <td>
+                                    @row.Template
+                                </td>
+                                <td>
+                                    <ul class="list-group list-group-small list-group-flush">
+                                        @foreach (var service in ViewBag.Services)
+                                        {
+                                            if (service.TemplateID == row.TemplateID)
+                                            {
+                                                <li class="list-group-item d-flex px-3">
+                                                    <span class="text-semibold text-fiord-blue ">@service.Service</span>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+                                        <a href="@Url.Action("ComputeTemplatedServicePreparation",new{templateID = row.TemplateID, billNumber=row.BillNumber })" class="btn btn-white" title="Click to compute">
+                                            <i class="material-icons">&#xE870;</i> Compute
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/SpecimenCollections.js"></script>
+}

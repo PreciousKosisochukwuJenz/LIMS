@@ -45,13 +45,19 @@ namespace JenzHealth.Areas.Admin.Controllers
         #region Instanciation
         DatabaseEntities db = new DatabaseEntities();
         ILaboratoryService _laboratoryService;
+        ICustomerService _customerService;
+        IPaymentService _paymentService;
         public LaboratoryController()
         {
             _laboratoryService = new LaboratoryService(new DatabaseEntities());
+            _customerService = new CustomerService(new DatabaseEntities());
+            _paymentService = new PaymentService(new DatabaseEntities(),new UserService());
         }
-        public LaboratoryController(LaboratoryService laboratoryService)
+        public LaboratoryController(LaboratoryService laboratoryService, CustomerService customerService, PaymentService paymentService)
         {
             _laboratoryService = laboratoryService;
+            _customerService = customerService;
+            _paymentService = paymentService;
         }
         #endregion
 
@@ -78,6 +84,35 @@ namespace JenzHealth.Areas.Admin.Controllers
             }
             return View();
         }
+        public ActionResult Preparations()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Preparations(SpecimenCollectionVM vmodel)
+        {
+            ViewBag.TableData = _laboratoryService.GetLabPreparations(vmodel);
+            return View(vmodel);
+        }
+        public ActionResult Prepare(int ID)
+        {
+
+            var record = _laboratoryService.GetSpecimensForPreparation(ID);
+            ViewBag.Customer = _paymentService.GetCustomerForBill(record.BillInvoiceNumber);
+            var billedServices = _laboratoryService.GetServicesToPrepare(record.BillInvoiceNumber);
+            ViewBag.Services = billedServices;
+            ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
+            return View();
+        }
+        public ActionResult ComputeTemplatedServicePreparation(int templateID, string billNumber)
+        {
+            return View(_laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
+        }
+
 
         public ActionResult UpdateServiceParameters(ServiceParameterVM serviceParameter, List<ServiceParameterSetupVM> serviceParameterSetups)
         {
@@ -125,6 +160,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _laboratoryService.GetServiceParameters(invoiceNumber);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
 
     }
 }
