@@ -8,6 +8,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
     public class ServiceParameterRangeSetupVM
     {
         public int Id { get; set; }
+        public int ParameterID { get; set; }
         public int? ServiceParameterSetupID { get; set; }
         public string Range { get; set; }
         public string Unit { get; set; }

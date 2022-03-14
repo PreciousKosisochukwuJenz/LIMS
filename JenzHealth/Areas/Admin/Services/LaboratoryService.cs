@@ -138,7 +138,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 var rangeSetup = new ServiceParameterRangeSetup()
                 {
-                    ServiceParameterSetupID = rangesetup.ServiceParameterSetupID,
+                    ServiceParameterSetupID = _db.ServiceParameterSetups.FirstOrDefault(x=>x.IsDeleted == false && x.Id == rangesetup.ParameterID).Id,
                     Range = rangesetup.Range,
                     Unit = rangesetup.Unit,
                     IsDeleted = false,
@@ -358,6 +358,36 @@ namespace JenzHealth.Areas.Admin.Services
             }
 
             return model;
+        }
+        public bool UpdateLabResults(List<RequestComputedResultVM> results,string labnote)
+        {
+            foreach(var result in results)
+            {
+                var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == result.BillInvoiceNumber && x.IsDeleted == false && x.ServiceParameterSetupID == result.KeyID).FirstOrDefault();
+
+                if(exist != null)
+                {
+                    exist.Value = result.Value;
+                    exist.ServiceRangeID = result.RangeID;
+                    _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    var templateLabPreparation = new TemplatedLabPreparation()
+                    {
+                        BillInvoiceNumber = result.BillInvoiceNumber,
+                        ServiceParameterSetupID = result.KeyID,
+                        Key = result.Key,
+                        Value = result.Value,
+                        ServiceRangeID = result.RangeID,
+                        IsDeleted = false,
+                        DateCreated = DateTime.Now
+                    };
+                    _db.TemplatedLabPreparations.Add(templateLabPreparation);
+                }
+            }
+            _db.SaveChanges();
+            return true;
         }
     }
 }

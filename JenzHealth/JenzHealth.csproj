@@ -122,6 +122,7 @@
     <Content Include="Areas\Admin\Scripts\AntiBiotic.js" />
     <Content Include="Areas\Admin\Scripts\Billings.js" />
     <Content Include="Areas\Admin\Scripts\CashCollections.js" />
+    <Content Include="Areas\Admin\Scripts\Compute.js" />
     <Content Include="Areas\Admin\Scripts\Customer.js" />
     <Content Include="Areas\Admin\Scripts\Deposite.js" />
     <Content Include="Areas\Admin\Scripts\Organism.js" />
@@ -300,6 +301,7 @@
     <Compile Include="Areas\Admin\ViewModels\PartPaymentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PriviledgeVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RefundVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RequestComputedResultVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RevenueDepartmentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RolePermissionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\RoleVM.cs" />

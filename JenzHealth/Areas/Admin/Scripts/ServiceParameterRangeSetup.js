@@ -106,7 +106,7 @@ $("#FinishBtn").click(function () {
                     i += 1;
                     // Create Parameter
                     let setup = {};
-                    setup.ServiceParameterSetupID = tr.children[1].id;
+                    setup.ParameterID = tr.children[1].id;
                     setup.Range = tr.children[2].innerText;
                     setup.Unit = tr.children[3].innerText;
 

@@ -18,60 +18,63 @@
                 <div class="block-handle"></div>
             </div>
             <div class="card-body p-0">
-                <div class="container-fluid">
+                <div class="container-fluid" id="resultBody">
                     @foreach (var billedService in Model)
                     {
                         <div class="row px-3">
-                            <div class="col-md-3 sc-stats__title"><strong>@billedService.Service</strong></div>
+                            <div class="col-md-3 sc-stats__title"><strong style="line-height: 20px">@billedService.Service</strong></div>
                             <div class="col-md-9">
                                 <table class="file-manager file-manager-list2 d-none table-responsive">
                                     <thead class="bg-light">
                                         <tr>
                                             <th scope="col">Parameter</th>
                                             <th scope="col">Value</th>
-                                            <th scope="col">Range</th>
                                             <th scope="col">Unit</th>
+                                            <th scope="col">Range</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var paramater in billedService.Parameters)
                                         {
-                                            <tr>
-                                                <td>@paramater.Parameter.Name</td>
-                                                <td><input type="text" class="form-control" /></td>
-                                                <td>
-                                                    <select class="form-control">
-                                                        <option>-- Select range --</option>
-                                                        @foreach (var range in paramater.Ranges)
-                                                        {
-                                                            <option value="@range.Unit">@range.Range</option>
-                                                        }
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" readonly />
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td data-parent="@billedService.ServiceID" data-child="@paramater.Parameter.Id">@paramater.Parameter.Name</td>
+                                            <td><input type="text" class="form-control value" /></td>
+                                            <td>
+                                                <input type="text" class="form-control unit" readonly />
+                                            </td>
+                                            <td>
+                                                <select class="form-control rangeID">
+                                                    <option>-- Select range --</option>
+                                                    @foreach (var range in paramater.Ranges)
+                                                    {
+                                                        <option value="@range.Id" data-unit="@range.Unit">@range.Range</option>
+                                                    }
+                                                </select>
+                                            </td>
+
+                                        </tr>
                                         }
                                     </tbody>
-                                </table><hr />
+                                </table>
                             </div>
-                        </div>
+                        </div><hr />
 
                     }
                 </div>
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="ClinicalSummary">Lab Note</label>
+                    @*<div class="form-group col-md-12">
+                        <label for="labnote">Lab Note</label>
                         <div class="input-group input-group-seamless">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" id="labnote" rows="3"></textarea>
                             <div class="invalid-feedback">
                                 Lab note required
                             </div>
                         </div>
-                    </div>
+                    </div>*@
+                    <input type="hidden" id="specimencollectedID" value="@TempData["SpecimenCollectedID"]" />
+                    <input type="hidden" id="billnumber" value="@TempData["BillNumber"]" />
                     <div class="col-md-12 text-center">
                         <button class="btn btn-primary" id="FinishBtn">
                             Save
@@ -85,7 +88,7 @@
 </div>
 <br />
 @section Scripts{
-    @*<script src="~/Areas/Admin/Scripts/SpecimenCollections.js"></script>*@
+    <script src="~/Areas/Admin/Scripts/Compute.js"></script>
 }
 
 
