@@ -67,7 +67,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
-                                        <a href="@Url.Action("ComputeTemplatedServicePreparation",new{templateID = row.TemplateID, billNumber=row.BillNumber })" class="btn btn-white" title="Click to compute">
+                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber })" class="btn btn-white" title="Click to compute">
                                             <i class="material-icons">&#xE870;</i> Compute
                                         </a>
                                     </div>

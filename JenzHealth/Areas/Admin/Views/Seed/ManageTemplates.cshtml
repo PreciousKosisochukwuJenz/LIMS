@@ -51,6 +51,7 @@
                     <tr>
                         <th scope="col" class="border-0">Name</th>
                         <th scope="col" class="border-0">Service Department</th>
+                        <th scope="col" class="border-0">Use Default Parameters</th>
                         <th scope="col" class="border-0">Actions</th>
                     </tr>
                 </thead>
@@ -65,6 +66,7 @@
                                     <tr>
                                         <td>@row.Name</td>
                                         <td>@row.ServiceDepartment</td>
+                                        <td>@(row.UseDefaultParameters ? "YES" : "NO")</td>
                                         <td>
                                             <button type="button" onclick="Edit(@row.Id)" class="btn btn-outline-accent" data-toggle="modal" data-target="#Edit">
                                                 <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>

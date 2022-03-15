@@ -246,7 +246,8 @@ namespace JenzHealth.Areas.Admin.Services
                 Id = b.Id,
                 Name = b.Name,
                 ServiceDepartment = b.ServiceDepartment.Name,
-                ServiceDepartmentID = b.ServiceDepartmentID
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                UseDefaultParameters = b.UseDefaultParameters
             }).ToList();
             return model;
         }
@@ -259,6 +260,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Name = vmodel.Name,
                 ServiceDepartmentID = vmodel.ServiceDepartmentID,
+                UseDefaultParameters = vmodel.UseDefaultParameters,
                 IsDeleted = false,
                 CreatedDate = DateTime.Now,
             };
@@ -275,7 +277,8 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Name = b.Name,
-                ServiceDepartmentID = b.ServiceDepartmentID
+                ServiceDepartmentID = b.ServiceDepartmentID,
+                UseDefaultParameters = b.UseDefaultParameters
             }).FirstOrDefault();
             return model;
         }
@@ -287,6 +290,7 @@ namespace JenzHealth.Areas.Admin.Services
             var model = _db.Templates.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Name = vmodel.Name;
             model.ServiceDepartmentID = vmodel.ServiceDepartmentID;
+            model.UseDefaultParameters = vmodel.UseDefaultParameters;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
