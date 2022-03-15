@@ -123,6 +123,7 @@
     <Content Include="Areas\Admin\Scripts\Billings.js" />
     <Content Include="Areas\Admin\Scripts\CashCollections.js" />
     <Content Include="Areas\Admin\Scripts\Compute.js" />
+    <Content Include="Areas\Admin\Scripts\ComputeNonTemplated.js" />
     <Content Include="Areas\Admin\Scripts\Customer.js" />
     <Content Include="Areas\Admin\Scripts\Deposite.js" />
     <Content Include="Areas\Admin\Scripts\Organism.js" />
@@ -297,6 +298,7 @@
     <Compile Include="Areas\Admin\ViewModels\CashCollectionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\CustomerVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\DepositeCollectionVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\NonTemplatedLabPreparationVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\OrganismVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PartPaymentVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PriviledgeVM.cs" />
@@ -404,6 +406,7 @@
     <Content Include="Areas\Admin\Views\Laboratory\Preparations.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\Prepare.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\ComputeTemplatedServicePreparation.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\ComputeNonTemplatedServicePreparation.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />

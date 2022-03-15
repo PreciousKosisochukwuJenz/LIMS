@@ -47,11 +47,13 @@ namespace JenzHealth.Areas.Admin.Controllers
         ILaboratoryService _laboratoryService;
         ICustomerService _customerService;
         IPaymentService _paymentService;
+        ISeedService _seedService;
         public LaboratoryController()
         {
-            _laboratoryService = new LaboratoryService(new DatabaseEntities());
-            _customerService = new CustomerService(new DatabaseEntities());
-            _paymentService = new PaymentService(new DatabaseEntities(),new UserService());
+            _laboratoryService = new LaboratoryService(db);
+            _customerService = new CustomerService(db);
+            _paymentService = new PaymentService(db, new UserService());
+            _seedService = new SeedService(db);
         }
         public LaboratoryController(LaboratoryService laboratoryService, CustomerService customerService, PaymentService paymentService)
         {
@@ -115,9 +117,17 @@ namespace JenzHealth.Areas.Admin.Controllers
             ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
             return View();
         }
-        public ActionResult ComputeTemplatedServicePreparation(int templateID, string billNumber)
+        public ActionResult Compute(int templateID, string billNumber)
         {
-            return View(_laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
+            var template = _seedService.GetTemplate(templateID);
+            switch (template.UseDefaultParameters)
+            {
+                case true:
+                    return View("ComputeNonTemplatedServicePreparation", _laboratoryService.GetNonTemplatedLabPreparation(billNumber));
+                case false:
+                    return View("ComputeTemplatedServicePreparation", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
+            }
+            return View();
         }
 
         public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote)

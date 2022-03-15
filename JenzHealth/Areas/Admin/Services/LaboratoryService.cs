@@ -66,7 +66,7 @@ namespace JenzHealth.Areas.Admin.Services
                 serviceParameterID = serviceParameter.Id;
             }
 
-            if (paramterSetups.Any())
+            if (paramterSetups != null)
             {
                 var existingParameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID);
                 if (existingParameterSetups.Any())
@@ -388,6 +388,37 @@ namespace JenzHealth.Areas.Admin.Services
             }
             _db.SaveChanges();
             return true;
+        }
+        public NonTemplatedLabPreparationVM GetNonTemplatedLabPreparation(string billnumber)
+        {
+            var model = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new NonTemplatedLabPreparationVM()
+            {
+                Id = b.Id,
+                Temperature = b.Temperature,
+                SpecificGravity = b.SpecificGravity,
+                Acidity = b.Acidity,
+                AdultWarm = b.AdultWarm,
+                Appearance =  b.Appearance,
+                AscorbicAcid = b.AscorbicAcid,
+                Atomsphere = b.Atomsphere,
+                DipstickBlood = b.DipstickBlood,
+                BillInvoiceNumber = b.BillInvoiceNumber,
+                Duration = b.Duration,
+                Blirubin = b.Blirubin,
+                Color = b.Color,
+                Glucose = b.Glucose,
+                Incubatio = b.Incubatio,
+                Ketones = b.Ketones,
+                Labnote = b.Labnote, 
+                LeucocyteEsterase = b.LeucocyteEsterase,
+                MacrosopyBlood = b.MacrosopyBlood,
+                Mucus = b.Mucus,
+                Niterite = b.Niterite,
+                Plate = b.Plate,
+                Protein = b.Protein,
+                Urobilinogen = b.Urobilinogen
+            }).FirstOrDefault();
+            return model;
         }
     }
 }

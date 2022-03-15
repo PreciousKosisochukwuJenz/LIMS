@@ -46,6 +46,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<SpecimenCollection> SpecimenCollections { get; set; }
         public virtual DbSet<SpecimenCollectionCheckList> SpecimenCollectionCheckLists { get; set; }
         public virtual DbSet<TemplatedLabPreparation> TemplatedLabPreparations { get; set; }
+        public virtual DbSet<NonTemplatedLabPreparation> NonTemplatedLabPreparations { get; set; }
  
     }
 }
