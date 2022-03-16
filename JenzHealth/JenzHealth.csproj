@@ -298,6 +298,7 @@
     <Compile Include="Areas\Admin\ViewModels\CashCollectionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\CustomerVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\DepositeCollectionVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\NonTemplatedLabPreparationOrganismXAntiBioticsVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\NonTemplatedLabPreparationVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\OrganismVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\PartPaymentVM.cs" />

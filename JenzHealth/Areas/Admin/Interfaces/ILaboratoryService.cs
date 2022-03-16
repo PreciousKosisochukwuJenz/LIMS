@@ -25,5 +25,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber);
         bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote);
         NonTemplatedLabPreparationVM GetNonTemplatedLabPreparation(string billnumber);
+        bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms);
     }
 }

@@ -730,6 +730,17 @@ namespace JenzHealth.Areas.Admin.Services
             }).FirstOrDefault();
             return model;
         }
+        public AntiBioticVM GetAntiBioticByOrganismName(string organismName)
+        {
+            var model = _db.AntiBiotics.Where(x => x.Organism.Name == organismName).Select(b => new AntiBioticVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+                OrganismID = b.OrganismID,
+                OrganismName = b.Organism.Name
+            }).FirstOrDefault();
+            return model;
+        }
 
         // Editting and updating AntiBiotic
         public bool EditAntiBiotic(AntiBioticVM vmodel)
@@ -757,5 +768,12 @@ namespace JenzHealth.Areas.Admin.Services
             HasDeleted = true;
             return HasDeleted;
         }
+        public List<string> GetOrganismAutoComplete(string term)
+        {
+            List<string> organisms;
+            organisms = _db.Organisms.Where(x => x.IsDeleted == false && x.Name.StartsWith(term)).Select(b => b.Name).ToList();
+            return organisms;
+        }
+
     }
 }

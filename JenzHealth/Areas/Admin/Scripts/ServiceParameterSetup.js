@@ -198,7 +198,7 @@ $("#FinishBtn").click(function () {
    
 })
 
-$("#Service").on("keyup", function () {
+$("#Service").on("keyup focusout blur", function () {
     $("#ParameterTableLoader").show();
     $("#ParamterTableDiv").hide();
 
@@ -249,4 +249,11 @@ $("#Service").on("keyup", function () {
     })
 
 
+})
+document.addEventListener("keyup", function (e) {
+    if (e.target.value === "") {
+        e.target.classList.add("is-invalid");
+    } else {
+        e.target.classList.remove("is-invalid");
+    }
 })

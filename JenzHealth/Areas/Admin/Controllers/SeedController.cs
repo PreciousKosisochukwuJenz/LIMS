@@ -160,6 +160,12 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _seedService.GetServiceDepartment(id);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetAntiBioticByOrganismName(string organismName)
+        {
+            var model = _seedService.GetAntiBioticByOrganismName(organismName);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult DeleteServiceDepartment(int id)
         {
             var model = _seedService.DeleteServiceDepartment(id);
@@ -595,5 +601,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _seedService.DeleteAntiBiotic(id);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetOrganismAutoComplete(string term)
+        {
+            var response = _seedService.GetOrganismAutoComplete(term);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
