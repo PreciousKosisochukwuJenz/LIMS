@@ -20,7 +20,6 @@ namespace JenzHealth.App_Start
                 ExpireTimeSpan = TimeSpan.FromMinutes(5.0),
                 ReturnUrlParameter = "/Account/Login"
             });
-
         }
     }
 }

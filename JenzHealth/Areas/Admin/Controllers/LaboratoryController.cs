@@ -48,6 +48,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         ICustomerService _customerService;
         IPaymentService _paymentService;
         ISeedService _seedService;
+        private static int SpecimenCollectionID;
         public LaboratoryController()
         {
             _laboratoryService = new LaboratoryService(db);
@@ -112,6 +113,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             ViewBag.Customer = _paymentService.GetCustomerForBill(record.BillInvoiceNumber);
             var billedServices = _laboratoryService.GetServicesToPrepare(record.BillInvoiceNumber);
             TempData["SpecimenCollectedID"] = ID;
+            SpecimenCollectionID = ID;
             TempData["BillNumber"] = record.BillInvoiceNumber;
             ViewBag.Services = billedServices;
             ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
@@ -119,6 +121,9 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
         public ActionResult Compute(int templateID, string billNumber)
         {
+            TempData["BillNumber"] = billNumber;
+            TempData["SpecimenCollectedID"] = SpecimenCollectionID;
+
             var template = _seedService.GetTemplate(templateID);
             switch (template.UseDefaultParameters)
             {
@@ -133,6 +138,11 @@ namespace JenzHealth.Areas.Admin.Controllers
         public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote)
         {
             var status = _laboratoryService.UpdateLabResults(results, labnote);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
+        {
+            var status = _laboratoryService.UpdateNonTemplatedLabResults(vmodel, organisms);
             return Json(status, JsonRequestBehavior.AllowGet);
         }
 
@@ -182,7 +192,6 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _laboratoryService.GetServiceParameters(invoiceNumber);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
 
     }
 }

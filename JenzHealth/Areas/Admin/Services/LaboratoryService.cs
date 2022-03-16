@@ -420,5 +420,56 @@ namespace JenzHealth.Areas.Admin.Services
             }).FirstOrDefault();
             return model;
         }
+        public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
+        {
+            var model = new NonTemplatedLabPreparation()
+            {
+                Temperature = vmodel.Temperature,
+                SpecificGravity = vmodel.SpecificGravity,
+                Acidity = vmodel.Acidity,
+                AdultWarm = vmodel.AdultWarm,
+                Appearance = vmodel.Appearance,
+                AscorbicAcid = vmodel.AscorbicAcid,
+                Atomsphere = vmodel.Atomsphere,
+                DipstickBlood = vmodel.DipstickBlood,
+                BillInvoiceNumber = vmodel.BillInvoiceNumber,
+                Duration = vmodel.Duration,
+                Blirubin = vmodel.Blirubin,
+                Color = vmodel.Color,
+                Glucose = vmodel.Glucose,
+                Incubatio = vmodel.Incubatio,
+                Ketones = vmodel.Ketones,
+                Labnote = vmodel.Labnote,
+                LeucocyteEsterase = vmodel.LeucocyteEsterase,
+                MacrosopyBlood = vmodel.MacrosopyBlood,
+                Mucus = vmodel.Mucus,
+                Niterite = vmodel.Niterite,
+                Plate = vmodel.Plate,
+                Protein = vmodel.Protein,
+                Urobilinogen = vmodel.Urobilinogen,
+                IsDeleted = false,
+                DateCreated = DateTime.Now
+            };
+            _db.NonTemplatedLabPreparations.Add(model);
+            _db.SaveChanges();
+
+            if(organisms.Count() > 0)
+            {
+                foreach(var organism in organisms)
+                {
+                    var organismModel = new NonTemplatedLabResultOrganismXAntibiotics()
+                    {
+                        AntiBioticID = organism.AntiBioticID,
+                        OrganismID = organism.OrganismID,
+                        NonTemplateLabResultID = model.Id,
+                        IsDeleted = false,
+                        DateCreated = DateTime.Now
+                    };
+                    _db.NonTemplatedLabResultOrganismXAntibiotics.Add(organismModel);
+                    _db.SaveChanges();
+                }
+            }
+            return true;
+        }
     }
 }

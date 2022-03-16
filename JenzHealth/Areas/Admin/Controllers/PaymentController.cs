@@ -50,11 +50,13 @@ namespace JenzHealth.Areas.Admin.Controllers
         IPaymentService _paymentService;
         ICustomerService _customerService;
         ISeedService _seedService;
+        IApplicationSettingsService _settingsService;
         public PaymentController()
         {
-            _paymentService = new PaymentService(new DatabaseEntities(), new UserService());
-            _customerService = new CustomerService(new DatabaseEntities());
-            _seedService = new SeedService(new DatabaseEntities());
+            _paymentService = new PaymentService(db, new UserService());
+            _customerService = new CustomerService(db);
+            _seedService = new SeedService(db);
+            _settingsService = new ApplicationSettingsService(db);
         }
         public PaymentController(PaymentService paymentService, CustomerService customerService, SeedService seedService)
         {
@@ -133,6 +135,10 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
             {
                 throw new UnauthorizedAccessException();
+            }
+            if (!_settingsService.GetApplicationSettings().EnablePartPayment)
+            {
+                throw new Exception("Please, contact admin to Enable Part-Payment in the global settings page before you can use this feature");
             }
             if (Saved == true)
             {
