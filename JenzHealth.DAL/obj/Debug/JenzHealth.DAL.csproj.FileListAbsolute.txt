@@ -10,3 +10,15 @@ C:\Users\DELL\source\repos\JenzHealth\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.cs
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb
 C:\Users\DELL\source\repos\JenzHealth\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.AssemblyReference.cache
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.dll.config
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.dll
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.pdb
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\EntityFramework.dll
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\EntityFramework.xml
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.AssemblyReference.cache
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CoreCompileInputs.cache
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CopyComplete
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
+C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb

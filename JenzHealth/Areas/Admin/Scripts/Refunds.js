@@ -224,7 +224,20 @@ $("#FinishBtn").click(function () {
                     data: { vmodel: data },
                     success: function (response) {
                         if (response == true) {
-                            location.href = "Refunds?Saved=true";
+                            Swal.fire({
+                                title: 'Refund successfully',
+                                showCancelButton: false,
+                                confirmButtonText: 'Ok',
+                                showLoaderOnConfirm: true,
+                            }).then((result) => {
+                                if (result.value) {
+                                    location.href = "Refunds?Saved=true";
+                                } else if (
+                                    result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                                    location.href = "Refunds?Saved=true";
+                                }
+                            })
                         }
                     }
                 })

@@ -26,7 +26,7 @@
                         result.KeyID = tr.children[0].dataset.child;
                         result.Key = tr.children[0].innerText;
                         result.Value = tr.children[1].getElementsByClassName("value")[0].value;
-                        result.RangeID = tr.children[3].getElementsByClassName("rangeID")[0].value;
+                        result.RangeID = tr.children[2].getElementsByClassName("rangeID")[0].value;
 
                         // Add to result to list
                         results.push(result);
@@ -40,7 +40,20 @@
                     dataType: "json",
                     data: { results: results, labnote: labnote },
                     success: function (response) {
-                        location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                        Swal.fire({
+                            title: 'Test computed duccessfully successfully',
+                            showCancelButton: false,
+                            confirmButtonText: 'Ok',
+                            showLoaderOnConfirm: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                            } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                            }
+                        })
                     }
                 })
             }
