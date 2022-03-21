@@ -412,7 +412,20 @@ $("#FinishBtn").click(function () {
                     data: { vmodel: data, serviceList: serviceArr },
                     success: function (response) {
                         if (response == true) {
-                            location.href = "CashCollections?Saved=true";
+                            Swal.fire({
+                                title: 'Cash collected successfully',
+                                showCancelButton: false,
+                                confirmButtonText: 'Ok',
+                                showLoaderOnConfirm: true,
+                            }).then((result) => {
+                                if (result.value) {
+                                    location.href = "CashCollections?Saved=true";
+                                } else if (
+                                    result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                                    location.href = "CashCollections?Saved=true";
+                                }
+                            })
                         }
                     }
                 })

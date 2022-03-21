@@ -40,9 +40,6 @@
                                             <td data-parent="@billedService.ServiceID" data-child="@paramater.Parameter.Id">@paramater.Parameter.Name</td>
                                             <td><input type="text" class="form-control value" required /></td>
                                             <td>
-                                                <input type="text" class="form-control unit" required readonly />
-                                            </td>
-                                            <td>
                                                 <select class="form-control rangeID">
                                                     <option>-- Select range --</option>
                                                     @foreach (var range in paramater.Ranges)
@@ -51,7 +48,9 @@
                                                     }
                                                 </select>
                                             </td>
-
+                                            <td>
+                                                <input type="text" class="form-control unit" required readonly />
+                                            </td>
                                         </tr>
                                         }
                                     </tbody>

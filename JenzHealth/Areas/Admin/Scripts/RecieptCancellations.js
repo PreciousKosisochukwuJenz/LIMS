@@ -220,7 +220,20 @@ $("#FinishBtn").click(function () {
                     data: { vmodel: data },
                     success: function (response) {
                         if (response == "success") {
-                            location.href = "RecieptCancellations?Saved=true";
+                            Swal.fire({
+                                title: 'Reciept cancelled successfully',
+                                showCancelButton: false,
+                                confirmButtonText: 'Ok',
+                                showLoaderOnConfirm: true,
+                            }).then((result) => {
+                                if (result.value) {
+                                    location.href = "RecieptCancellations?Saved=true";
+                                } else if (
+                                    result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                                    location.href = "RecieptCancellations?Saved=true";
+                                }
+                            })
                         }
                     }
                 })

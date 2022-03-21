@@ -168,7 +168,20 @@ $("#FinishBtn").click(function () {
                     dataType: "json",
                     data: { vmodel: InstallmentList },
                     success: function (response) {
-                        location.href = "PartPayments?Saved=true";
+                        Swal.fire({
+                            title: 'Part payment mapped successfully',
+                            showCancelButton: false,
+                            confirmButtonText: 'Ok',
+                            showLoaderOnConfirm: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                location.href = "PartPayments?Saved=true";
+                            } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                location.href = "PartPayments?Saved=true";
+                            }
+                        })
                     }
                 })
             }

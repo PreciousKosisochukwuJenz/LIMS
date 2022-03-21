@@ -162,7 +162,20 @@ $("#FinishBtn").click(function () {
                     dataType: "json",
                     data: { vmodel: data, organisms : OrganismList },
                     success: function (response) {
-                        location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                        Swal.fire({
+                            title: 'Test computed successfully',
+                            showCancelButton: false,
+                            confirmButtonText: 'Ok',
+                            showLoaderOnConfirm: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                            } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                location.href = "Prepare?ID=" + specimencollectedID + "&Saved=" + response;
+                            }
+                        })
                     }
                 })
             }
