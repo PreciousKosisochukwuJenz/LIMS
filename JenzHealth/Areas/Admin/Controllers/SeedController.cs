@@ -559,8 +559,13 @@ namespace JenzHealth.Areas.Admin.Controllers
                 TempData["AlertType"] = "alert-success";
                 TempData["AlertMessage"] = "AntiBotic updated successfully.";
             }
+            var data = (AntiBioticVM)TempData["AntiBiotic"];
+            if(data != null)
+            {
+                ViewBag.AntiBiotics = _seedService.GetAntiBiotics((int)data.OrganismID);
+            }
             ViewBag.Organisms = new SelectList(db.Organisms.Where(x => x.IsDeleted == false), "Id", "Name");
-            return View();
+            return View(data);
         }
         [HttpPost]
         public ActionResult ManageAntiBiotics(AntiBioticVM vmodel)
@@ -573,12 +578,12 @@ namespace JenzHealth.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CreateAntiBiotic(AntiBioticVM vmodel)
         {
-            bool hasSaved = false;
             if (ModelState.IsValid)
             {
-                hasSaved = _seedService.CreateAnitBiotic(vmodel);
+                var antibiotic = _seedService.CreateAnitBiotic(vmodel);
+                TempData["AntiBiotic"] = antibiotic;
             }
-            return RedirectToAction("ManageAntiBiotics", new { Added = hasSaved });
+            return RedirectToAction("ManageAntiBiotics", new { Added = true });
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
