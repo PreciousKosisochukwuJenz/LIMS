@@ -702,9 +702,8 @@ namespace JenzHealth.Areas.Admin.Services
         }
 
         // Creating AntiBiotic
-        public bool CreateAnitBiotic(AntiBioticVM vmodel)
+        public AntiBioticVM CreateAnitBiotic(AntiBioticVM vmodel)
         {
-            bool HasSaved = false;
             AntiBiotic model = new AntiBiotic()
             {
                 Name = vmodel.Name,
@@ -714,8 +713,7 @@ namespace JenzHealth.Areas.Admin.Services
             };
             _db.AntiBiotics.Add(model);
             _db.SaveChanges();
-            HasSaved = true;
-            return HasSaved;
+            return vmodel;
         }
 
         // Getting AntiBioticVM
