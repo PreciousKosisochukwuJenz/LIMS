@@ -25,6 +25,7 @@ namespace JenzHealth.DAL.Entity
         public int PaymentCount { get; set; }
         public int DepositeCount { get; set; }
         public int LabCount { get; set; }
+        public int SessionTimeOut { get; set; }
 
     }
 }

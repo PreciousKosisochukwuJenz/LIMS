@@ -25,7 +25,13 @@
                             <a class="nav-link" data-toggle="tab" href="#finance" role="tab" aria-controls="finance" aria-selected="false">Finance</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  data-toggle="tab" role="tab"  href="#lab" aria-controls="lab" aria-selected="false">Lab</a>
+                            <a class="nav-link" data-toggle="tab" role="tab" href="#lab" aria-controls="lab" aria-selected="false">Laboratory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" role="tab" href="#seed" aria-controls="seed" aria-selected="false">Seed</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" role="tab" href="#security" aria-controls="security" aria-selected="false">Security</a>
                         </li>
                     </ul>
                 </div>
@@ -67,17 +73,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="firstName">Code Generator Seed</label>
-                                                    @Html.EditorFor(model => model.CodeGenSeed, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter code generator seed", required = true } })
-                                                    <div class="invalid-feedback">
-                                                        Customer number prefix required
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="col-lg-4">
@@ -106,7 +101,7 @@
                                     </label>
                                     <div class="col d-flex">
                                         <div class="custom-control custom-toggle ml-auto my-auto">
-                                            @Html.CheckBoxFor(model => model.EnablePartPayment, new { @class = "custom-control-input", id = "conversationsEmailsToggle"})
+                                            @Html.CheckBoxFor(model => model.EnablePartPayment, new { @class = "custom-control-input", id = "conversationsEmailsToggle" })
                                             <label class="custom-control-label" for="conversationsEmailsToggle"></label>
                                         </div>
                                     </div>
@@ -124,11 +119,43 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Bill invoice count</label>
+                                            @Html.EditorFor(model => model.BillCount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Deposite count</label>
+                                            @Html.EditorFor(model => model.DepositeCount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Payment reciept count</label>
+                                            @Html.EditorFor(model => model.PaymentCount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Shift count</label>
+                                            @Html.EditorFor(model => model.ShiftCount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="lab" role="tabpanel" aria-labelledby="lab-tab">
                                 <div class="form-row mx-4">
                                     <div class="col mb-3">
-                                        <h6 class="form-text m-0">Lab</h6>
+                                        <h6 class="form-text m-0">Laboratory</h6>
                                         <p class="form-text text-muted m-0">Setup your lab system configurations.</p>
                                     </div>
                                 </div>
@@ -139,12 +166,61 @@
                                     </label>
                                     <div class="col d-flex">
                                         <div class="custom-control custom-toggle ml-auto my-auto">
-                                            @Html.CheckBoxFor(model => model.EnableSpecimentCollectedBy, new { @class = "custom-control-input", id = "newProjectsEmailsToggle"})
+                                            @Html.CheckBoxFor(model => model.EnableSpecimentCollectedBy, new { @class = "custom-control-input", id = "newProjectsEmailsToggle" })
                                             <label class="custom-control-label" for="newProjectsEmailsToggle"></label>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Lab count</label>
+                                            @Html.EditorFor(model => model.LabCount, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="tab-pane fade" id="seed" role="tabpanel" aria-labelledby="seed-tab">
+                                <div class="form-row mx-4">
+                                    <div class="col mb-3">
+                                        <h6 class="form-text m-0">Seed</h6>
+                                        <p class="form-text text-muted m-0">Setup your seed system configurations.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Code generator length</label>
+                                            @Html.EditorFor(model => model.CodeGenSeed, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter code generator seed", required = true } })
+                                            <div class="invalid-feedback">
+                                                Customer number prefix required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                              
+                            </div>
+                            <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                                <div class="form-row mx-4">
+                                    <div class="col mb-3">
+                                        <h6 class="form-text m-0">Security</h6>
+                                        <p class="form-text text-muted m-0">Setup your security system configurations.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="firstName">Session expiration time (Minutes)</label>
+                                            @Html.EditorFor(model => model.SessionTimeOut, new { htmlAttributes = new { @class = "form-control", required = true } })
+                                            <div class="invalid-feedback">
+                                                Session Expiration time required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <br />
                     </div>
