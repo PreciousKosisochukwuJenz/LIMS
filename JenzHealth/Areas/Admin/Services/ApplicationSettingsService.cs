@@ -44,7 +44,13 @@ namespace JenzHealth.Areas.Admin.Services
                 EnableSpecimentCollectedBy = model.EnableSpecimentCollectedBy,
                 SalesRecieptCopyCount = model.SalesRecieptCopyCount,
                 CustomerNumberPrefix = model.CustomerNumberPrefix,
-                CodeGenSeed = model.CodeGenSeed
+                CodeGenSeed = model.CodeGenSeed,
+                DepositeCount = model.DepositeCount,
+                BillCount = model.BillCount,
+                LabCount = model.LabCount,
+                SessionTimeOut = model.SessionTimeOut,
+                PaymentCount = model.PaymentCount,
+                ShiftCount = model.ShiftCount
             };
             return Vmodel;
         }
@@ -60,6 +66,7 @@ namespace JenzHealth.Areas.Admin.Services
             model.CustomerNumberPrefix = Vmodel.CustomerNumberPrefix;
             model.SalesRecieptCopyCount = Vmodel.SalesRecieptCopyCount;
             model.CodeGenSeed = Vmodel.CodeGenSeed;
+            model.SessionTimeOut = Vmodel.SessionTimeOut;
             if (Logo != null)
                 model.Logo = CustomSerializer.Serialize(Logo);
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
