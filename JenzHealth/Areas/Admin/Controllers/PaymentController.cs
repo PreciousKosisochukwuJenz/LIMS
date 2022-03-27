@@ -58,7 +58,10 @@ namespace JenzHealth.Areas.Admin.Controllers
             _seedService = new SeedService(db);
             _settingsService = new ApplicationSettingsService(db);
         }
-        public PaymentController(PaymentService paymentService, CustomerService customerService, SeedService seedService)
+        public PaymentController(
+            PaymentService paymentService,
+            CustomerService customerService,
+            SeedService seedService)
         {
             _paymentService = paymentService;
             _customerService = customerService;

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using JenzHealth.Areas.Admin.ViewModels.Report;
 
 namespace JenzHealth.Areas.Admin.Services
 {
@@ -78,6 +79,17 @@ namespace JenzHealth.Areas.Admin.Services
             return hasSucceed;
         }
 
-    
+    public List<SettingsDataSetVM> GetReportHeader()
+        {
+            byte[] empty = { 4,3 };
+            var response = _db.ApplicationSettings.Where(x => x.Id != 0).Select(b => new SettingsDataSetVM()
+            {
+               Id = b.Id,
+               BrandName = b.AppName,
+               Logo = b.Logo == null ? empty : b.Logo,
+               DateGenerated = DateTime.Now
+            }).ToList();
+            return response;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using JenzHealth.Areas.Admin.ViewModels;
+using JenzHealth.Areas.Admin.ViewModels.Report;
 using JenzHealth.DAL.Entity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace JenzHealth.Areas.Admin.Interfaces
     {
         string CreateBilling(BillingVM vmodel, List<ServiceListVM> serviceList);
         BillingVM GetCustomerForBill(string invoiceNumber);
+        List<BillingVM> GetCustomerForReport(string invoiceNumber);
         List<BillingVM> GetBillServices(string invoiceNumber);
+        List<BillDetailsVM> GetBillingDetails(string billnumber);
         string UpdateBilling(BillingVM vmodel, List<ServiceListVM> serviceList);
         bool WaiveAmountForCustomer(WaiverVM vmodel);
         List<PartPaymentVM> GetPartPayments(string BillInvoiceNumber);

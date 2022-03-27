@@ -1,4 +1,5 @@
 ﻿using JenzHealth.Areas.Admin.ViewModels;
+using JenzHealth.Areas.Admin.ViewModels.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         // Application settings
         ApplicationSettingsVM GetApplicationSettings();
         bool UpdateApplicationSettings(ApplicationSettingsVM Vmodel, HttpPostedFileBase Logo, HttpPostedFileBase Favicon);
-
+        List<SettingsDataSetVM> GetReportHeader();
     }
 }
