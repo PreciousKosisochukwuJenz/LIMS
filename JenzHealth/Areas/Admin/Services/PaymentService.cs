@@ -1,6 +1,7 @@
 ﻿using JenzHealth.Areas.Admin.Helpers;
 using JenzHealth.Areas.Admin.Interfaces;
 using JenzHealth.Areas.Admin.ViewModels;
+using JenzHealth.Areas.Admin.ViewModels.Report;
 using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
 using System;
@@ -109,6 +110,19 @@ namespace JenzHealth.Areas.Admin.Services
             }).FirstOrDefault();
             return model;
         }
+        public List<BillingVM> GetCustomerForReport(string invoiceNumber)
+        {
+            var model = _db.Billings.Where(x => x.InvoiceNumber == invoiceNumber && x.IsDeleted == false).Select(b => new BillingVM()
+            {
+                CustomerName = b.CustomerName == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " " + _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
+                CustomerGender = b.CustomerGender == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender : b.CustomerGender,
+                CustomerPhoneNumber = b.CustomerPhoneNumber == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber : b.CustomerPhoneNumber,
+                CustomerAge = b.CustomerAge == 0 ? DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year : b.CustomerAge,
+                CustomerUniqueID = b.CustomerUniqueID,
+                InvoiceNumber = b.InvoiceNumber.ToUpper()
+            }).ToList();
+            return model;
+        }
         public List<BillingVM> GetBillServices(string invoiceNumber)
         {
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
@@ -116,16 +130,40 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.ServiceID,
                 ServiceName = b.Service.Description,
-                GrossAmount = b.GrossAmount,
                 Quantity = b.Quantity,
-                SellingPrice = b.Service.SellingPrice
+                SellingPrice = b.Service.SellingPrice,
             }).ToList();
             foreach (var each in model)
             {
+                each.GrossAmount = (each.Quantity * each.SellingPrice);
                 each.SellingPriceString = "₦" + each.SellingPrice.ToString("N", nfi);
             }
             return model;
         }
+
+        public List<BillDetailsVM> GetBillingDetails(string billnumber)
+        {
+            var billList = new List<BillDetailsVM>();
+
+            var bill = _db.Billings.Where(x => x.IsDeleted == false && x.InvoiceNumber == billnumber).Select(b => new BillDetailsVM()
+            {
+                BilledBy = b.BilledBy.Firstname + " "+ b.BilledBy.Lastname,
+                BillInvoiceNumber = b.InvoiceNumber.ToUpper(),
+            }).FirstOrDefault();
+            var waived = GetWaivedAmountForBillInvoiceNumber(billnumber);
+            decimal waivedAmount = 0;
+            if (waived != null)
+                waivedAmount = waived.WaiveAmount;
+        
+            bill.WaivedAmount = waivedAmount;
+            bill.NetAmount = GetBillServices(billnumber).Sum(x => x.GrossAmount);
+            bill.BalanceAmount = (bill.NetAmount - bill.WaivedAmount);
+
+            billList.Add(bill);
+
+            return billList;
+        }
+
         public bool WaiveAmountForCustomer(WaiverVM vmodel)
         {
             var checkIfWaivedBefore = _db.Waivers.Count(x => x.BillInvoiceNumber == vmodel.BillInvoiceNumber && x.IsDeleted == false);

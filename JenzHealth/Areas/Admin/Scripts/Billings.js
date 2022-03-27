@@ -285,12 +285,13 @@ $("#FinishBtn").click(function () {
                             title: 'Billing successfully',
                             html: '<div class="input-group mb-3" onclick="CopyToClip()"><div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clipboard" style="font-weight:500; font-size:30px; text-align:center"></i></span></div><input style="font-weight:500; font-size:30px; text-align:center" type="text" value="' + response.InvoiceNumber +'" id="billCopy" readonly class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"></div>',
                             showCancelButton: true,
-                            confirmButtonText: 'View bill reciept',
+                            confirmButtonText: 'Print billing Invoice',
                             cancelButtonText: "Ok",
                             showLoaderOnConfirm: true,
                         }).then((result) => {
                             if (result.value) {
-                                window.location.reload(true);
+                                let reportUrl = '/Admin/Report/BillingInvoice?billnumber=' + response.InvoiceNumber;
+                                window.open(reportUrl, 'blank');
                             } else if (
                                 result.dismiss === Swal.DismissReason.cancel
                             ) {

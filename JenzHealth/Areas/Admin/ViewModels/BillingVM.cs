@@ -25,5 +25,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public decimal GrossAmount { get; set; }
         public decimal SellingPrice { get; set; }
         public string SellingPriceString { get; set; }
+        public string BillBy { get; set; }
     }
 }
