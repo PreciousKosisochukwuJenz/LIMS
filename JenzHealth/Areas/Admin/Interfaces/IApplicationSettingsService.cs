@@ -13,7 +13,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
     {
         // Application settings
         ApplicationSettingsVM GetApplicationSettings();
-        bool UpdateApplicationSettings(ApplicationSettingsVM Vmodel, HttpPostedFileBase Logo, HttpPostedFileBase Favicon);
+        bool UpdateApplicationSettings(ApplicationSettingsVM Vmodel, HttpPostedFileBase Logo, HttpPostedFileBase Watermark);
         List<SettingsDataSetVM> GetReportHeader();
     }
 }

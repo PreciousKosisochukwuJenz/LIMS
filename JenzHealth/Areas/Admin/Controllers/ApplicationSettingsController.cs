@@ -63,11 +63,11 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(ApplicationSettingsVM Vmodel, HttpPostedFileBase LogoData, HttpPostedFileBase FaviconData)
+        public ActionResult Manage(ApplicationSettingsVM Vmodel, HttpPostedFileBase LogoData, HttpPostedFileBase WatermarkData)
         {
             if (ModelState.IsValid)
             {
-                bool saveState = _settingService.UpdateApplicationSettings(Vmodel, LogoData, FaviconData);
+                bool saveState = _settingService.UpdateApplicationSettings(Vmodel, LogoData, WatermarkData);
                 if(saveState == true)
                 {
                     ViewBag.ShowAlert = true;

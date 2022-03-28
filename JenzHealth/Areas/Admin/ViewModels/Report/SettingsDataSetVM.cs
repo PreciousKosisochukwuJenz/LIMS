@@ -10,6 +10,7 @@ namespace JenzHealth.Areas.Admin.ViewModels.Report
         public int Id { get; set; }
         public string BrandName { get; set; }
         public byte[] Logo { get; set; }
+        public byte[] Watermark { get; set; }
         public DateTime DateGenerated { get; set; }
     }
 }
