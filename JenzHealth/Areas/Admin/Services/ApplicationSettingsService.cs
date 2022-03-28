@@ -41,6 +41,7 @@ namespace JenzHealth.Areas.Admin.Services
                 ID = model.Id,
                 AppName = model.AppName,
                 Logo = model.Logo == null ? emptyArr : model.Logo,
+                Watermark = model.Watermark == null ? emptyArr : model.Watermark,
                 EnablePartPayment = model.EnablePartPayment,
                 EnableSpecimentCollectedBy = model.EnableSpecimentCollectedBy,
                 SalesRecieptCopyCount = model.SalesRecieptCopyCount,
@@ -57,7 +58,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
 
         // Editting and updating the system application setting data
-        public bool UpdateApplicationSettings(ApplicationSettingsVM Vmodel, HttpPostedFileBase Logo, HttpPostedFileBase Favicon)
+        public bool UpdateApplicationSettings(ApplicationSettingsVM Vmodel, HttpPostedFileBase Logo, HttpPostedFileBase Watermark)
         {
             bool hasSucceed = false;
             var model = _db.ApplicationSettings.FirstOrDefault(x => x.Id == Vmodel.ID);
@@ -70,6 +71,8 @@ namespace JenzHealth.Areas.Admin.Services
             model.SessionTimeOut = Vmodel.SessionTimeOut;
             if (Logo != null)
                 model.Logo = CustomSerializer.Serialize(Logo);
+            if (Watermark != null)
+                model.Watermark = CustomSerializer.Serialize(Watermark);
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             var state = _db.SaveChanges();
             if (state > 0)
@@ -87,6 +90,7 @@ namespace JenzHealth.Areas.Admin.Services
                Id = b.Id,
                BrandName = b.AppName,
                Logo = b.Logo == null ? empty : b.Logo,
+               Watermark = b.Watermark == null ? empty : b.Watermark,
                DateGenerated = DateTime.Now
             }).ToList();
             return response;

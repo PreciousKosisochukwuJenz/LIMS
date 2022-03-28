@@ -287,6 +287,8 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnLogo;
             
+            private global::System.Data.DataColumn columnWatermark;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ApplicationSettingsRecordsDataTable() {
@@ -354,6 +356,14 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn WatermarkColumn {
+                get {
+                    return this.columnWatermark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +399,14 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ApplicationSettingsRecordsRow AddApplicationSettingsRecordsRow(string DateGenerated, string BrandName, string Logo) {
+            public ApplicationSettingsRecordsRow AddApplicationSettingsRecordsRow(string DateGenerated, string BrandName, string Logo, string Watermark) {
                 ApplicationSettingsRecordsRow rowApplicationSettingsRecordsRow = ((ApplicationSettingsRecordsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         DateGenerated,
                         BrandName,
-                        Logo};
+                        Logo,
+                        Watermark};
                 rowApplicationSettingsRecordsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowApplicationSettingsRecordsRow);
                 return rowApplicationSettingsRecordsRow;
@@ -429,6 +440,7 @@ namespace JenzHealth {
                 this.columnDateGenerated = base.Columns["DateGenerated"];
                 this.columnBrandName = base.Columns["BrandName"];
                 this.columnLogo = base.Columns["Logo"];
+                this.columnWatermark = base.Columns["Watermark"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -442,6 +454,8 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnBrandName);
                 this.columnLogo = new global::System.Data.DataColumn("Logo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLogo);
+                this.columnWatermark = new global::System.Data.DataColumn("Watermark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWatermark);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -653,6 +667,23 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Watermark {
+                get {
+                    try {
+                        return ((string)(this[this.tableApplicationSettingsRecords.WatermarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Watermark\' in table \'ApplicationSettingsRecords\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableApplicationSettingsRecords.WatermarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDateGeneratedNull() {
                 return this.IsNull(this.tableApplicationSettingsRecords.DateGeneratedColumn);
             }
@@ -685,6 +716,18 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetLogoNull() {
                 this[this.tableApplicationSettingsRecords.LogoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsWatermarkNull() {
+                return this.IsNull(this.tableApplicationSettingsRecords.WatermarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetWatermarkNull() {
+                this[this.tableApplicationSettingsRecords.WatermarkColumn] = global::System.Convert.DBNull;
             }
         }
         
