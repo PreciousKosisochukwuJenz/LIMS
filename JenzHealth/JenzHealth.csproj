@@ -310,6 +310,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PaymentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SettingsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -520,6 +525,17 @@
     <Content Include="Scripts\jsTree3\src\themes\main.less" />
     <Content Include="Scripts\jsTree3\src\themes\mixins.less" />
     <Content Include="Scripts\jsTree3\src\themes\responsive.less" />
+    <Content Include="PaymentDataSet.xsc">
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="PaymentDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PaymentDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PaymentDataSet.xss">
+      <DependentUpon>PaymentDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <Content Include="SettingsDataSet.xsc">
       <DependentUpon>SettingsDataSet.xsd</DependentUpon>
@@ -551,6 +567,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Areas\Admin\Reports\PaymentReciept.rdlc" />
     <EmbeddedResource Include="Areas\Admin\Reports\BillInvoice.rdlc" />
   </ItemGroup>
   <PropertyGroup>

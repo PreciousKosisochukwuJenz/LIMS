@@ -97,7 +97,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
             ReportDataSource BilledService = new ReportDataSource("BillingDataSet", billServices);
             ReportDataSource BillDetails = new ReportDataSource("BillingDetailsDataSet", billDetails);
-            if (Header != null && Customer != null && BilledService != null)
+            if (Header != null && Customer != null && BilledService != null && BillDetails != null)
             {
                 lr.DataSources.Add(Header);
                 lr.DataSources.Add(Customer);
@@ -132,5 +132,61 @@ namespace JenzHealth.Areas.Admin.Controllers
                 out warnings);
             return File(renderedBytes, mimeType);
         }
+        public ActionResult PaymentReciept(string recieptnumber, string billnumber)
+        {
+            LocalReport lr = new LocalReport();
+            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports"), "PaymentReciept.rdlc");
+            if (System.IO.File.Exists(path))
+            {
+                lr.ReportPath = path;
+            }
+            else
+            {
+                throw new Exception(String.Format("Report path not found in the specified directory: {0", path));
+            }
+            var header = _settingService.GetReportHeader();
+            var customer = _paymentService.GetCustomerForReport(billnumber);
+            var billServices = _paymentService.GetBillServices(billnumber);
+            var paymentDetail = _paymentService.GetPaymentDetails(recieptnumber);
+            ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
+            ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
+            ReportDataSource BilledService = new ReportDataSource("BillingDataSet", billServices);
+            ReportDataSource PaymentDetails = new ReportDataSource("PaymentDataSet", paymentDetail);
+            if (Header != null && Customer != null && BilledService != null && PaymentDetails!= null)
+            {
+                lr.DataSources.Add(Header);
+                lr.DataSources.Add(Customer);
+                lr.DataSources.Add(BilledService);
+                lr.DataSources.Add(PaymentDetails);
+            }
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string deviceInfo = "<DeviceInfo>" +
+                    "  <PageWidth>8.27in</PageWidth>" +
+                    "  <PageHeight>11.69in</PageHeight>" +
+                    "  <MarginTop>0.25in</MarginTop>" +
+                    "  <MarginLeft>0.4in</MarginLeft>" +
+                    "  <MarginRight>0.4in</MarginRight>" +
+                    "  <MarginBottom>0.25in</MarginBottom>" +
+                    "  <EmbedFonts>None</EmbedFonts>" +
+                    "</DeviceInfo>";
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = lr.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+            return File(renderedBytes, mimeType);
+        }
+
     }
 }

@@ -411,7 +411,7 @@ $("#FinishBtn").click(function () {
                     dataType: "json",
                     data: { vmodel: data, serviceList: serviceArr },
                     success: function (response) {
-                        if (response == true) {
+                        if (response.PaymentReciept != null) {
                             Swal.fire({
                                 title: 'Cash collected successfully',
                                 showCancelButton: false,
@@ -419,6 +419,8 @@ $("#FinishBtn").click(function () {
                                 showLoaderOnConfirm: true,
                             }).then((result) => {
                                 if (result.value) {
+                                    let reportUrl = '/Admin/Report/PaymentReciept?recieptnumber=' + response.PaymentReciept + '&billnumber=' + response.BillInvoiceNumber;
+                                    window.open(reportUrl, 'blank');
                                     location.href = "CashCollections?Saved=true";
                                 } else if (
                                     result.dismiss === Swal.DismissReason.cancel

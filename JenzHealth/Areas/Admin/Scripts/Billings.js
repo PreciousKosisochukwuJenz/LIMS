@@ -292,6 +292,7 @@ $("#FinishBtn").click(function () {
                             if (result.value) {
                                 let reportUrl = '/Admin/Report/BillingInvoice?billnumber=' + response.InvoiceNumber;
                                 window.open(reportUrl, 'blank');
+                                window.location.reload(true);
                             } else if (
                                 result.dismiss === Swal.DismissReason.cancel
                             ) {

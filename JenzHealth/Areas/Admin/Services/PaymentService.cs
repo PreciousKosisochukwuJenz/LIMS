@@ -284,7 +284,7 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-        public bool CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
+        public CashCollectionVM CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
         {
             var shift = _userService.GetShift();
             var paymentCount = _db.ApplicationSettings.FirstOrDefault().PaymentCount;
@@ -311,6 +311,7 @@ namespace JenzHealth.Areas.Admin.Services
                         CollectedByID = Global.AuthenticatedUserID
                     };
                     _db.CashCollections.Add(billCashCollection);
+                    vmodel.PaymentReciept = billCashCollection.PaymentReciept;
                     break;
                 case CollectionType.UNBILLED:
                     // Create bill for registered customer
@@ -348,6 +349,7 @@ namespace JenzHealth.Areas.Admin.Services
                         };
 
                         _db.CashCollections.Add(unbilledCashCollection);
+                        vmodel.PaymentReciept = unbilledCashCollection.PaymentReciept;
                     }
                     break;
                 case CollectionType.WALK_IN:
@@ -382,6 +384,7 @@ namespace JenzHealth.Areas.Admin.Services
                         };
 
                         _db.CashCollections.Add(walkinCashCollection);
+                        vmodel.PaymentReciept = walkinCashCollection.PaymentReciept;
                     }
                     break;
             }
@@ -390,7 +393,39 @@ namespace JenzHealth.Areas.Admin.Services
 
             _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
-            return true;
+            return vmodel;
+        }
+        public List<CashCollectionVM> GetPaymentDetails(string recieptnumber)
+        {
+            var payments = _db.CashCollections.Where(x => x.IsDeleted == false && x.PaymentReciept == recieptnumber).Select(b => new CashCollectionVM()
+            {
+                Id = b.Id,
+                PaymentReciept = b.PaymentReciept.ToUpper(),
+                BillInvoiceNumber = b.BillInvoiceNumber.ToUpper(),
+                AmountPaid = b.AmountPaid,
+                DatePaid = b.DatePaid,
+                TransactionReferenceNumber = b.TransactionReferenceNumber == null ? "NIL" : b.TransactionReferenceNumber.ToUpper(),
+                PaymentType = b.PaymentType,
+                InstallmentType = b.InstallmentType.ToUpper(),
+                PartPayment = b.PartPayment == null ? "FULL PAYMENT" : b.PartPayment.InstallmentName,
+                CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
+                ShiftNumber = b.Shift.ShiftUniqueID
+            }).ToList();
+            foreach(var payment in payments)
+            {
+                payment.PaymentTypee = payment.PaymentType.DisplayName();
+                var waived = GetWaivedAmountForBillInvoiceNumber(payment.BillInvoiceNumber);
+                decimal waivedAmount = 0;
+                decimal totalPaidBills = this.GetTotalPaidBillAmount(payment.BillInvoiceNumber);
+                if (waived != null)
+                    waivedAmount = waived.WaiveAmount;
+
+                payment.WaivedAmount = waivedAmount;
+                payment.TotalAmountPaid = totalPaidBills;
+                payment.NetAmount = GetBillServices(payment.BillInvoiceNumber).Sum(x => x.GrossAmount);
+                payment.BalanceAmount = (payment.NetAmount - (payment.WaivedAmount + totalPaidBills));
+            }
+            return payments;
         }
         public TransactionVM GetTransactionReports(TransactionVM vmodel)
         {
