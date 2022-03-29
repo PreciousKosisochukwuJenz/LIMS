@@ -21,7 +21,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<PartPaymentVM> GetPartPayments(string BillInvoiceNumber);
         bool MapPartPayment(List<PartPaymentVM> vmodel);
         bool Deposite(DepositeCollectionVM vmodel);
-        bool CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList);
+        CashCollectionVM CashCollection(CashCollectionVM vmodel, List<ServiceListVM> serviceList);
         Waiver GetWaivedAmountForBillInvoiceNumber(string billInvoiceNumber);
         TransactionVM GetTransactionReports(TransactionVM vmodel);
         TransactionVM GetShiftTransactionDetails(int shiftID);
@@ -30,6 +30,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool Refund(RefundVM vmodel);
         string GetBillNumberWithReceipt(string receipt);
         void CancelReciept(CashCollectionVM vmodel);
+        List<CashCollectionVM> GetPaymentDetails(string recieptnumber);
         decimal GetTotalPaidBillAmount(string billnumber);
     }
 }

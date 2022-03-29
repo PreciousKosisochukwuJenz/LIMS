@@ -191,8 +191,8 @@ namespace JenzHealth.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CashCollections(CashCollectionVM vmodel, List<ServiceListVM> serviceList)
         {
-            var status = _paymentService.CashCollection(vmodel, serviceList);
-            return Json(status, JsonRequestBehavior.AllowGet);
+            var response = _paymentService.CashCollection(vmodel, serviceList);
+            return Json(response, JsonRequestBehavior.AllowGet);
 
         }
 

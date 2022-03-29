@@ -23,6 +23,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string PartPayment { get; set; }
         public decimal NetAmount { get; set; }
         public decimal WaivedAmount { get; set; }
+        public decimal BalanceAmount { get; set; }
         public string TransactionReferenceNumber { get; set; }
         public PaymentType PaymentType { get; set; }
         public CollectionType  CollectionType { get; set; }
@@ -31,5 +32,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string ServiceName { get; set; }
         public string AmountPaidString { get; set; }
         public string Comment { get; set; }
+        public string PaymentTypee { get; set; }
+        public string CollectedBy { get; set; }
+        public string ShiftNumber { get; set; }
+        public decimal TotalAmountPaid { get; set; }
     }
 }
