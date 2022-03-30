@@ -22,7 +22,7 @@
                 <div class="m-0">
                     @using (Html.BeginForm("Billings", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
                     {
-                        <div style="background: #c1cee7">
+                        <div style="background: #c1cee7; border-radius:10px">
                             <div class="form-group col-md-12">
                                 <div class="input-group">
                                     @foreach (var item in Enum.GetValues(typeof(CustomerType)).Cast<CustomerType>().ToList())

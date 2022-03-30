@@ -200,3 +200,11 @@ document.addEventListener("keyup", function (e) {
         e.target.classList.remove("is-invalid");
     }
 })
+
+$("#step").steps({
+    headerTag: "h3",
+    bodyTag: "section",
+    transitionEffect: "slideLeft",
+    autoFocus: true,
+    stepsOrientation: "vertical"
+});
