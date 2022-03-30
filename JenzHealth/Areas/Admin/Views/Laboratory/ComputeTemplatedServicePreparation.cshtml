@@ -32,29 +32,36 @@
                                         <tr>
                                             <th scope="col">Parameter</th>
                                             <th scope="col">Value</th>
-                                            <th scope="col">Unit</th>
                                             <th scope="col">Range</th>
+                                            <th scope="col">Unit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var paramater in billedService.Parameters)
                                         {
-                                        <tr>
-                                            <td data-parent="@billedService.ServiceID" data-child="@paramater.Parameter.Id">@paramater.Parameter.Name</td>
-                                            <td><input type="text" class="form-control value" required /></td>
-                                            <td>
-                                                <select class="form-control rangeID">
-                                                    <option>-- Select range --</option>
-                                                    @foreach (var range in paramater.Ranges)
-                                                    {
-                                                        <option value="@range.Id" data-unit="@range.Unit">@range.Range</option>
-                                                    }
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control unit" required readonly />
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td data-parent="@billedService.ServiceID" data-child="@paramater.Parameter.Id">@paramater.Parameter.Name</td>
+                                                <td><input type="text" class="form-control value" value="@paramater.Parameter.Value" required /></td>
+                                                <td>
+                                                    <select class="form-control rangeID">
+                                                        <option>-- Select range --</option>
+                                                        @foreach (var range in paramater.Ranges)
+                                                        {
+                                                            if (range.Range == paramater.Parameter.Range)
+                                                            {
+                                                                <option value="@range.Id" selected data-unit="@range.Unit">@range.Range</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@range.Id" data-unit="@range.Unit">@range.Range</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control unit" value="@paramater.Parameter.Unit" required readonly />
+                                                </td>
+                                            </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -85,7 +92,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 <br />
