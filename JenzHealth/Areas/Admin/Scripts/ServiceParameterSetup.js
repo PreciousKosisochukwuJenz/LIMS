@@ -198,11 +198,7 @@ $("#FinishBtn").click(function () {
    
 })
 
-$("#Service").on("keyup focusout blur", function () {
-    $("#ParameterTableLoader").show();
-    $("#ParamterTableDiv").hide();
-
-    var service = $("#Service").val();
+function Populate(service) {
     $.ajax({
         url: 'GetServiceParameter?service=' + service,
         method: "Get",
@@ -248,6 +244,16 @@ $("#Service").on("keyup focusout blur", function () {
         }
     })
 
+}
+
+$("#Service").on("blur paste", function () {
+    $("#ParameterTableLoader").show();
+    $("#ParamterTableDiv").hide();
+
+    setTimeout(function () {
+        let service = $("#Service").val();
+        Populate(service);
+    }, 200);
 
 })
 document.addEventListener("keyup", function (e) {

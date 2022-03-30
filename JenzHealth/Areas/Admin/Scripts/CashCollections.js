@@ -285,7 +285,7 @@ $("#SearchCustomer").click(function (e) {
                                     installmentCount++;
                                     let html = "";
                                     if (data.HasPaid) {
-                                        html = "<option value='" + data.Id + "'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00) <span class='badge badge - pill badge - success'>PAID</span></option>";
+                                        html = "<option value='" + data.Id + "' style='color: green'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00) <span class='badge badge-pill badge-success'>PAID</span></option>";
                                     } else {
                                         html = "<option value='" + data.Id + "'>" + data.InstallmentName + " (₦" + numberWithCommas(data.PartPaymentAmount) + ".00)</option>";
                                     }
@@ -318,7 +318,32 @@ $("#SearchCustomer").click(function (e) {
     }
 
 })
-$("#AddService").click(function (e) {
+
+function AddService(servicename) {
+    $.ajax({
+        url: 'GetServiceByName?servicename=' + servicename,
+        method: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            let html = "";
+            html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-" + response.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + response.Id + "' data-id='" + response.SellingPrice + "'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
+            $("#ServiceBody").append(html);
+            $("#ServiceName").val("");
+            CalculateGrossAmount(1, response.SellingPrice, response.Id);
+            updateNetAmount();
+            UpdateBalanceAmount();
+            e.target.innerHTML = "Add"
+        },
+        error: function (err) {
+            toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
+            e.target.innerHTML = "Add"
+        }
+    });
+
+}
+
+$("#ServiceName").on("blur",function (e) {
     var servicename = $("#ServiceName").val();
 
     if (servicename === "") {
@@ -326,29 +351,13 @@ $("#AddService").click(function (e) {
     }
     else {
         $("#ServiceName").removeClass("is-invalid");
-        e.target.innerHTML = "Adding..."
-        $.ajax({
-            url: 'GetServiceByName?servicename=' + servicename,
-            method: "Get",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                let html = "";
-                html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-" + response.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + response.Id + "' data-id='" + response.SellingPrice + "'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
-                $("#ServiceBody").append(html);
-                $("#ServiceName").val("");
-                CalculateGrossAmount(1, response.SellingPrice, response.Id);
-                updateNetAmount();
-                UpdateBalanceAmount();
-                e.target.innerHTML = "Add"
-            },
-            error: function (err) {
-                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
-                e.target.innerHTML = "Add"
-            }
-        });
+        e.target.innerHTML = "Adding...";
+
+        setTimeout(function () {
+            servicename = $("#ServiceName").val();
+            AddService(servicename);
+        }, 200);
     }
-    document.getElementById("ServiceName").classList.add('was-validated');
 })
 $("#FinishBtn").click(function () {
     var valName = $("input[name='CustomerName']").val();
@@ -415,7 +424,7 @@ $("#FinishBtn").click(function () {
                             Swal.fire({
                                 title: 'Cash collected successfully',
                                 showCancelButton: false,
-                                confirmButtonText: 'Ok',
+                                confirmButtonText: 'Print payment receipt',
                                 showLoaderOnConfirm: true,
                             }).then((result) => {
                                 if (result.value) {

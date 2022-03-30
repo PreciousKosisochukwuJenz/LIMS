@@ -58,7 +58,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     ServiceID = _db.Services.FirstOrDefault(x => x.Description == serviceParamter.Service).Id,
                     SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == serviceParamter.Specimen).Id,
-                    TemplateID = _db.Templates.FirstOrDefault(x=>x.Name == serviceParamter.Template).Id,
+                    TemplateID = _db.Templates.FirstOrDefault(x => x.Name == serviceParamter.Template).Id,
                     RequireApproval = serviceParamter.RequireApproval,
                 };
                 _db.ServiceParameters.Add(serviceParameter);
@@ -120,7 +120,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public void UpdateParameterRangeSetup(List<ServiceParameterRangeSetupVM> rangeSetups)
         {
-            var uniqueIDs = rangeSetups.Distinct(o=>o.ServiceParameterSetupID).ToList();
+            var uniqueIDs = rangeSetups.Distinct(o => o.ServiceParameterSetupID).ToList();
             if (uniqueIDs.Any())
             {
                 foreach (var id in uniqueIDs)
@@ -138,7 +138,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 var rangeSetup = new ServiceParameterRangeSetup()
                 {
-                    ServiceParameterSetupID = _db.ServiceParameterSetups.FirstOrDefault(x=>x.IsDeleted == false && x.Id == rangesetup.ParameterID).Id,
+                    ServiceParameterSetupID = _db.ServiceParameterSetups.FirstOrDefault(x => x.IsDeleted == false && x.Id == rangesetup.ParameterID).Id,
                     Range = rangesetup.Range,
                     Unit = rangesetup.Unit,
                     IsDeleted = false,
@@ -188,23 +188,24 @@ namespace JenzHealth.Areas.Admin.Services
                 specimenCollectionID = specimenCollection.Id;
             }
 
-            if(checklist.Count() > 0)
+            if (checklist.Count() > 0)
             {
                 foreach (var sample in checklist)
                 {
                     var checkSample = _db.SpecimenCollectionCheckLists.FirstOrDefault(x => x.Specimen.Name == sample.Specimen && x.SpecimenCollectionID == specimenCollectionID && x.IsDeleted == false);
-                    if(checkSample != null)
+                    if (checkSample != null)
                     {
                         checkSample.IsCollected = sample.IsCollected;
                         _db.Entry(checkSample).State = System.Data.Entity.EntityState.Modified;
                         _db.SaveChanges();
                     }
-                    else{
+                    else
+                    {
                         var newSample = new SpecimenCollectionCheckList()
                         {
                             SpecimenCollectionID = specimenCollectionID,
                             SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == sample.Specimen).Id,
-                            ServiceID = _db.Services.FirstOrDefault(x=>x.Description == sample.Service).Id,
+                            ServiceID = _db.Services.FirstOrDefault(x => x.Description == sample.Service).Id,
                             IsCollected = sample.IsCollected,
                             IsDeleted = false,
                             DateTimeCreated = DateTime.Now,
@@ -224,7 +225,7 @@ namespace JenzHealth.Areas.Admin.Services
                 ServiceID = b.ServiceID,
                 Service = b.Service.Description,
             }).ToList();
-            foreach(var service in model)
+            foreach (var service in model)
             {
                 service.Specimen = this.GetSpecimen((int)service.ServiceID);
             }
@@ -284,9 +285,9 @@ namespace JenzHealth.Areas.Admin.Services
                     Id = b.Id,
                     LabNumber = b.LabNumber,
                     BillInvoiceNumber = b.BillInvoiceNumber,
-                    CustomerName = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
-                    CustomerPhoneNumber = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
-                    CustomerUniqueID = _db.Billings.FirstOrDefault(x=>x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
+                    CustomerName = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
+                    CustomerPhoneNumber = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
+                    CustomerUniqueID = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
                 }).ToList();
             return preparations;
         }
@@ -307,11 +308,11 @@ namespace JenzHealth.Areas.Admin.Services
                 Id = b.Id,
                 ServiceID = b.ServiceID,
                 Service = b.Service.Description,
-                Template  = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == b.ServiceID).Template.Name,
-                TemplateID  = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == b.ServiceID).TemplateID,
+                Template = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.Name,
+                TemplateID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).TemplateID,
                 BillNumber = b.InvoiceNumber
             }).ToList();
-          
+
             return model;
         }
         public List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices)
@@ -326,19 +327,31 @@ namespace JenzHealth.Areas.Admin.Services
             var billedService = this.GetServicesToPrepare(billNumber);
             var billedServiceForTemplate = billedService.Where(x => x.TemplateID == TemplateID);
 
-            foreach(var service in billedServiceForTemplate)
+            foreach (var service in billedServiceForTemplate)
             {
                 TemplateServiceCompuationVM billservice = new TemplateServiceCompuationVM();
                 billservice.Parameters = new List<ServiceParameterAndRange>();
-                var serviceParameterID = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == service.ServiceID && x.TemplateID == TemplateID).Id;
+                var serviceParameterID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == service.ServiceID && x.TemplateID == TemplateID).Id;
                 var parameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID && x.IsDeleted == false).Select(b => new ServiceParameterSetupVM()
                 {
                     Id = b.Id,
                     Name = b.Name,
-                    Rank = b.Rank
+                    Rank = b.Rank,
                 }).ToList();
 
-                foreach(var parameterSetup in parameterSetups)
+                // Check for database record and map
+                foreach (var parametersetup in parameterSetups)
+                {
+                    var record = this.GetParamaterValue(billNumber,parametersetup.Id);
+                    var range = _db.ServiceParameterRangeSetups.FirstOrDefault(x => x.Id == record.RangeID);
+
+                    parametersetup.Value = record.Value;
+                    parametersetup.Range = range == null ? " " : range.Range;
+                    parametersetup.Unit = range == null ? " " : range.Unit;
+                }
+
+                // Get mapped ranges
+                foreach (var parameterSetup in parameterSetups)
                 {
                     var parameter = new ServiceParameterAndRange();
                     var ranges = _db.ServiceParameterRangeSetups.Where(x => x.ServiceParameterSetupID == parameterSetup.Id && x.IsDeleted == false).Select(b => new ServiceParameterRangeSetupVM()
@@ -359,13 +372,26 @@ namespace JenzHealth.Areas.Admin.Services
 
             return model;
         }
-        public bool UpdateLabResults(List<RequestComputedResultVM> results,string labnote)
+        public RequestComputedResultVM GetParamaterValue(string billnumber, int SetupID)
         {
-            foreach(var result in results)
+            var record = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetupID == SetupID)
+                .Select(b => new RequestComputedResultVM()
+                {
+                    Value = b.Value,
+                    RangeID = (int)b.ServiceRangeID,
+                }).FirstOrDefault();
+            if (record != null)
+                return record;
+            else
+                return new RequestComputedResultVM();
+        }
+        public bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote)
+        {
+            foreach (var result in results)
             {
                 var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == result.BillInvoiceNumber && x.IsDeleted == false && x.ServiceParameterSetupID == result.KeyID).FirstOrDefault();
 
-                if(exist != null)
+                if (exist != null)
                 {
                     exist.Value = result.Value;
                     exist.ServiceRangeID = result.RangeID;
@@ -398,7 +424,7 @@ namespace JenzHealth.Areas.Admin.Services
                 SpecificGravity = b.SpecificGravity,
                 Acidity = b.Acidity,
                 AdultWarm = b.AdultWarm,
-                Appearance =  b.Appearance,
+                Appearance = b.Appearance,
                 AscorbicAcid = b.AscorbicAcid,
                 Atomsphere = b.Atomsphere,
                 DipstickBlood = b.DipstickBlood,
@@ -409,7 +435,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Glucose = b.Glucose,
                 Incubatio = b.Incubatio,
                 Ketones = b.Ketones,
-                Labnote = b.Labnote, 
+                Labnote = b.Labnote,
                 LeucocyteEsterase = b.LeucocyteEsterase,
                 MacrosopyBlood = b.MacrosopyBlood,
                 Mucus = b.Mucus,
@@ -453,9 +479,9 @@ namespace JenzHealth.Areas.Admin.Services
             _db.NonTemplatedLabPreparations.Add(model);
             _db.SaveChanges();
 
-            if(organisms.Count() > 0)
+            if (organisms.Count() > 0)
             {
-                foreach(var organism in organisms)
+                foreach (var organism in organisms)
                 {
                     var organismModel = new NonTemplatedLabResultOrganismXAntibiotics()
                     {

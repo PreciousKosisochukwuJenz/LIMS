@@ -10,6 +10,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public int Id { get; set; }
         public int? ServiceParameterID { get; set; }
         public string Name { get; set; }
+        public string Value { get; set; }
+        public string Unit { get; set; }
+        public string Range { get; set; }
         public int Rank { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }

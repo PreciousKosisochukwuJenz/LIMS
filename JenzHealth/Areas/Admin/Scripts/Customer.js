@@ -5,7 +5,7 @@
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (result) {
-            var date = new Date(+result.DOB.replace(/\D/g, ''));
+            var date = new Date(+result.DOB.replace(/\D/g, '') + 3600 * 1000 * 24);
 
             $('#Id').val(result.Id);
             $('#Firstname').val(result.Firstname);

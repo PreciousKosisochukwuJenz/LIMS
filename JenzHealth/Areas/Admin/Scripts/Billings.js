@@ -196,35 +196,42 @@ $("#SearchCustomer").click(function (e) {
 
         }
     }
+});
 
-})
-$("#AddService").click(function (e) {
+function AddService(servicename) {
+    $.ajax({
+        url: 'GetServiceByName?servicename=' + servicename,
+        method: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            let html = "";
+            html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-" + response.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + response.Id + "' data-id='" + response.SellingPrice + "'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
+            $("#ServiceBody").append(html);
+            $("#ServiceName").val("");
+            CalculateGrossAmount(1, response.SellingPrice, response.Id);
+            updateNetAmount();
+            e.target.innerHTML = "Add"
+        },
+        error: function (err) {
+            toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
+            e.target.innerHTML = "Add"
+        }
+    });
+}
+
+$("#ServiceName").on("blur", function (e) {
     var servicename = $("#ServiceName").val();
     if (servicename === "") {
         $("#ServiceName").addClass("is-invalid");
     }
     else {
         $("#ServiceName").removeClass("is-invalid");
-        e.target.innerHTML = "Adding..."
-        $.ajax({
-            url: 'GetServiceByName?servicename=' + servicename,
-            method: "Get",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                let html = "";
-                html = "<tr id='" + response.Id + "' ><td><button class='btn btn-danger' onclick='Delete(this)'>Remove</button></td><td>" + response.Description + "</td><td><input type='number' value='1' class='form-control quantity-" + response.Id + "' onchange='UpdateAmount(this)' onkeyup='UpdateAmount(this)' /></td><td class='sellingprice-" + response.Id + "' data-id='" + response.SellingPrice + "'>" + response.SellingPriceString + "</td><td><strong class='gross-" + response.Id + " gross'>₦00.00</strong></td></tr>";
-                $("#ServiceBody").append(html);
-                $("#ServiceName").val("");
-                CalculateGrossAmount(1, response.SellingPrice, response.Id);
-                updateNetAmount();
-                e.target.innerHTML = "Add"
-            },
-            error: function (err) {
-                toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
-                e.target.innerHTML = "Add"
-            }
-        });
+        e.target.innerHTML = "Adding...";
+        setTimeout(function () {
+            servicename = $("#ServiceName").val();
+            AddService(servicename)
+        }, 200);
     }
 })
 $("#FinishBtn").click(function () {
@@ -237,7 +244,7 @@ $("#FinishBtn").click(function () {
         $("#genderFll").addClass("is-invalid");
         $("input[name='CustomerPhoneNumber']").addClass("is-invalid");
         toastr.error("Please, fill the form properly", "Validation error", { showDuration: 500 })
-        
+
     }
     else {
 
@@ -283,7 +290,7 @@ $("#FinishBtn").click(function () {
                     success: function (response) {
                         Swal.fire({
                             title: 'Billing successfully',
-                            html: '<div class="input-group mb-3" onclick="CopyToClip()"><div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clipboard" style="font-weight:500; font-size:30px; text-align:center"></i></span></div><input style="font-weight:500; font-size:30px; text-align:center" type="text" value="' + response.InvoiceNumber +'" id="billCopy" readonly class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"></div>',
+                            html: '<div class="input-group mb-3" onclick="CopyToClip()"><div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clipboard" style="font-weight:500; font-size:30px; text-align:center"></i></span></div><input style="font-weight:500; font-size:30px; text-align:center" type="text" value="' + response.InvoiceNumber + '" id="billCopy" readonly class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"></div>',
                             showCancelButton: true,
                             confirmButtonText: 'Print billing Invoice',
                             cancelButtonText: "Ok",

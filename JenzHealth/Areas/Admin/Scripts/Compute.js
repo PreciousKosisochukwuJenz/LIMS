@@ -73,7 +73,7 @@
 $(".rangeID").on("change", function (e) {
     var select = e.target;
     var unit = select.options[select.selectedIndex].dataset.unit;
-    select.parentElement.parentElement.children[2].children[0].value = unit;
+    select.parentElement.parentElement.children[3].children[0].value = unit;
 })
 
 function CheckValidity() {

@@ -148,15 +148,9 @@ $("#FinishBtn").click(function () {
             }
         })
     }
-
-
 })
 
-$("#Service").on("keyup focusout blur", function () {
-    $("#RangeTableLoader").show();
-    $("#RangeTableDiv").hide();
-    var service = $("#Service").val();
-    debugger
+function Populate(service) {
     $.ajax({
         url: 'GetServiceParameterSetups?service=' + service,
         method: "Get",
@@ -200,7 +194,16 @@ $("#Service").on("keyup focusout blur", function () {
             $("#RangeTableDiv").show();
         }
     })
+}
 
+$("#Service").on("blur", function () {
+    $("#RangeTableLoader").show();
+    $("#RangeTableDiv").hide();
+
+    setTimeout(function () {
+        let service = $("#Service").val();
+        Populate(service);
+    },200);
 })
 
 document.addEventListener("keyup", function (e) {
