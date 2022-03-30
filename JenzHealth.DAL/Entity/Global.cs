@@ -95,4 +95,36 @@ namespace JenzHealth.DAL.Entity
         [EnumDisplayName(DisplayName = "Walk-In Customer")]
         WALK_IN
     }
+    public enum MicroscopyType
+    {
+        [EnumDisplayName(DisplayName = "N/A")]
+        NA = 1,
+        [EnumDisplayName(DisplayName = "Wet mount")]
+        WET_MOUNT,
+        [EnumDisplayName(DisplayName = "Stain")]
+        STAIN,
+        [EnumDisplayName(DisplayName = "SFA")]
+        SFA,
+        [EnumDisplayName(DisplayName = "KOH")]
+        KOH,
+        [EnumDisplayName(DisplayName = "Others")]
+        OTHERS
+    }
+    public enum StainType
+    {
+        [EnumDisplayName(DisplayName = "Grain Stain")]
+        GRAIN_STAIN = 1,
+        [EnumDisplayName(DisplayName = "Giemsa Stain")]
+        GIEMSA_STAIN,
+        [EnumDisplayName(DisplayName = "Ziehl Neelson Stain")]
+        ZIEHL_NEELSON_STAIN,
+        [EnumDisplayName(DisplayName = "India Ink Stain")]
+        INDIAN_INK_STAIN,
+        [EnumDisplayName(DisplayName = "Iodine Stain")]
+        IODINE_STAIN,
+        [EnumDisplayName(DisplayName = "Methylene Blue Stain")]
+        METHYLENE_BLUE_STAIN,
+        [EnumDisplayName(DisplayName = "Others")]
+        OTHERS
+    }
 }
