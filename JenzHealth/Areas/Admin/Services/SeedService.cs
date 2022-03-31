@@ -728,7 +728,7 @@ namespace JenzHealth.Areas.Admin.Services
             }).FirstOrDefault();
             return model;
         }
-        public AntiBioticVM GetAntiBioticByOrganismName(string organismName)
+        public List<AntiBioticVM> GetAntiBioticByOrganismName(string organismName)
         {
             var model = _db.AntiBiotics.Where(x => x.Organism.Name == organismName).Select(b => new AntiBioticVM()
             {
@@ -736,7 +736,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Name = b.Name,
                 OrganismID = b.OrganismID,
                 OrganismName = b.Organism.Name
-            }).FirstOrDefault();
+            }).ToList();
             return model;
         }
 

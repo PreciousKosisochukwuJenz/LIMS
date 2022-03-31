@@ -122,8 +122,8 @@
 /*    background: #eee;
 */    display: block;
     margin: 0.5em;
-    min-height: 35em;
-    overflow: hidden;
+    min-height: 40em;
+    overflow-y: scroll;
     position: relative;
     width: auto;
     -webkit-border-radius: 5px;

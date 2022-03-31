@@ -68,7 +68,7 @@ namespace JenzHealth.DAL.Entity
         public DateTime? TimeOfProduction { get; set; }
         public string ModeOfProduction { get; set; }
         public string Viscosity { get; set; }
-        public string TimeExamined { get; set; }
+        public DateTime? TimeExamined { get; set; }
         public string Morphology { get; set; }
         public string Motility { get; set; }
         public int? TotalSpermCount { get; set; }

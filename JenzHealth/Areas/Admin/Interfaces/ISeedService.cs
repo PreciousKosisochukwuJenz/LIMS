@@ -68,7 +68,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<AntiBioticVM> GetAntiBiotics(int OrganismID);
         AntiBioticVM CreateAnitBiotic(AntiBioticVM vmodel);
         AntiBioticVM GetAntiBiotic(int ID);
-        AntiBioticVM GetAntiBioticByOrganismName(string organismName);
+        List<AntiBioticVM> GetAntiBioticByOrganismName(string organismName);
         bool EditAntiBiotic(AntiBioticVM vmodel);
         bool DeleteAntiBiotic(int ID);
         List<string> GetOrganismAutoComplete(string term);

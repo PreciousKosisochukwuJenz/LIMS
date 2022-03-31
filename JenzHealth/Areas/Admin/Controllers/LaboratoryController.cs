@@ -192,6 +192,10 @@ namespace JenzHealth.Areas.Admin.Controllers
             var model = _laboratoryService.GetServiceParameters(invoiceNumber);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult GetComputedAntibioticsAndOrgansm(int id)
+        {
+            var result = _laboratoryService.GetComputedOrganismXAntibiotics(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
