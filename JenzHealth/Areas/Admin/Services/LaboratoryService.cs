@@ -442,12 +442,68 @@ namespace JenzHealth.Areas.Admin.Services
                 Niterite = b.Niterite,
                 Plate = b.Plate,
                 Protein = b.Protein,
-                Urobilinogen = b.Urobilinogen
+                Urobilinogen = b.Urobilinogen,
+                StainType = b.StainType,
+                GiemsaStainParasite = b.GiemsaStainParasite,
+                AnySpillage = b.AnySpillage,
+                OtherStainResult = b.OtherStainResult,
+                RBCS = b.RBCS,
+                TotalSpermCount = b.TotalSpermCount,
+                WBCS = b.WBCS,
+                AcisFastBacilli = b.AcisFastBacilli,
+                Casts = b.Casts,
+                Cystals = b.Cystals,
+                DateCreated = b.DateCreated,
+                DateOfProduction = b.DateOfProduction,
+                DurationOfAbstinence = b.DurationOfAbstinence,
+                EpithelialCells = b.EpithelialCells,
+                GiemsaOthers = b.GiemsaOthers,
+                GramNegativeCocci = b.GramNegativeCocci,
+                IsDeleted = b.IsDeleted,
+                GramNegativeRods = b.GramNegativeRods,
+                GramPositiveCocci = b.GramPositiveCocci,
+                GramPositiveRods = b.GramPositiveRods,
+                ImmatureCells = b.ImmatureCells,
+                IndiaInkResult = b.IndiaInkResult,
+                IodineResult = b.IodineResult,
+                KOHPrepareation = b.KOHPrepareation,
+                KOHResult = b.KOHResult,
+                MethyleneResult = b.MethyleneResult,
+                MicroscopyType = b.MicroscopyType,
+                ModeOfProduction = b.ModeOfProduction,
+                Morphology = b.Morphology,
+                Motility = b.Motility,
+                OthersResult = b.OthersResult,
+                Ova = b.Ova,
+                PH = b.PH,
+                Protozoa = b.Protozoa,  
+                PusCells = b.PusCells,
+                RedBloodCells = b.RedBloodCells,
+                TimeExamined = b.TimeExamined,
+                TimeOfProduction = b.TimeOfProduction,
+                TimeRecieved = b.TimeRecieved,
+                TrichomonasVaginalis = b.TrichomonasVaginalis,
+                VincetsOrganisms = b.VincetsOrganisms,
+                Viscosity = b.Viscosity,
+                WetMountBacteria = b.WetMountBacteria,
+                WetMountOthers = b.WetMountOthers,
+                WetMountParasite = b.WetMountParasite,
+                WetMountYesats = b.WetMountYesats,
+                WhiteBloodCells = b.WhiteBloodCells,
+                YeastCells = b.YeastCells,
+                ZiehlOthers = b.ZiehlOthers
             }).FirstOrDefault();
             return model;
         }
         public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
         {
+            var checkResultIfExist = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == vmodel.BillInvoiceNumber).FirstOrDefault();
+            if(checkResultIfExist != null)
+            {
+                checkResultIfExist.IsDeleted = true;
+                _db.Entry(checkResultIfExist).State = System.Data.Entity.EntityState.Modified;
+                _db.SaveChanges();
+            }
             var model = new NonTemplatedLabPreparation()
             {
                 Temperature = vmodel.Temperature,
@@ -473,6 +529,53 @@ namespace JenzHealth.Areas.Admin.Services
                 Plate = vmodel.Plate,
                 Protein = vmodel.Protein,
                 Urobilinogen = vmodel.Urobilinogen,
+                DateOfProduction = vmodel.DateOfProduction,
+                DurationOfAbstinence = vmodel.DurationOfAbstinence,
+                StainType = vmodel.StainType,
+                GiemsaStainParasite = vmodel.GiemsaStainParasite,
+                AnySpillage = vmodel.AnySpillage,
+                OtherStainResult = vmodel.OtherStainResult,
+                RBCS = vmodel.RBCS,
+                TotalSpermCount = vmodel.TotalSpermCount,
+                WBCS = vmodel.WBCS,
+                AcisFastBacilli = vmodel.AcisFastBacilli,
+                Casts = vmodel.Casts,
+                VincetsOrganisms = vmodel.VincetsOrganisms,
+                Cystals = vmodel.Cystals,
+                EpithelialCells = vmodel.EpithelialCells,
+                GiemsaOthers = vmodel.GiemsaOthers,
+                GramNegativeCocci = vmodel.GramNegativeCocci,
+                GramNegativeRods = vmodel.GramNegativeRods,
+                GramPositiveCocci = vmodel.GramPositiveCocci,
+                GramPositiveRods = vmodel.GramPositiveRods,
+                ImmatureCells = vmodel.ImmatureCells,
+                IndiaInkResult = vmodel.IndiaInkResult,
+                IodineResult = vmodel.IodineResult,
+                KOHPrepareation = vmodel.KOHPrepareation,
+                KOHResult = vmodel.KOHResult,
+                MethyleneResult = vmodel.MethyleneResult,
+                MicroscopyType = vmodel.MicroscopyType,
+                ModeOfProduction = vmodel.ModeOfProduction,
+                Morphology = vmodel.Morphology,
+                Motility = vmodel.Motility,
+                OthersResult = vmodel.OthersResult,
+                Ova = vmodel.Ova,
+                PH = vmodel.PH,
+                Protozoa = vmodel.Protozoa,
+                PusCells = vmodel.PusCells,
+                RedBloodCells = vmodel.RedBloodCells,
+                TimeExamined = vmodel.TimeExamined,
+                TimeOfProduction = vmodel.TimeOfProduction,
+                TimeRecieved = vmodel.TimeRecieved,
+                TrichomonasVaginalis = vmodel.TrichomonasVaginalis,
+                Viscosity = vmodel.Viscosity,
+                WetMountBacteria = vmodel.WetMountBacteria,
+                WetMountOthers = vmodel.WetMountOthers,
+                WetMountParasite = vmodel.WetMountParasite,
+                WetMountYesats = vmodel.WetMountYesats,
+                WhiteBloodCells = vmodel.WhiteBloodCells,
+                YeastCells = vmodel.YeastCells,
+                ZiehlOthers = vmodel.ZiehlOthers,
                 IsDeleted = false,
                 DateCreated = DateTime.Now
             };
@@ -483,11 +586,27 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 foreach (var organism in organisms)
                 {
+                    if(checkResultIfExist != null)
+                    {
+                        var checkIfOrganismExist = _db.NonTemplatedLabResultOrganismXAntibiotics.FirstOrDefault(x => x.IsDeleted == false && x.OrganismID == organism.OrganismID && x.NonTemplateLabResultID == checkResultIfExist.Id);
+                        if (checkIfOrganismExist != null)
+                        {
+                            checkIfOrganismExist.IsDeleted = true;
+                            _db.Entry(checkIfOrganismExist).State = System.Data.Entity.EntityState.Modified;
+                            _db.SaveChanges();
+                        }
+                    }
+                  
                     var organismModel = new NonTemplatedLabResultOrganismXAntibiotics()
                     {
                         AntiBioticID = organism.AntiBioticID,
                         OrganismID = organism.OrganismID,
                         NonTemplateLabResultID = model.Id,
+                        ResistanceDegree = organism.ResistanceDegree,
+                        SensitiveDegree = organism.SensitiveDegree,
+                        IsSensitive = organism.IsSensitive,
+                        IsIntermediate = organism.IsIntermediate,
+                        IsResistance = organism.IsResistance,
                         IsDeleted = false,
                         DateCreated = DateTime.Now
                     };
@@ -496,6 +615,25 @@ namespace JenzHealth.Areas.Admin.Services
                 }
             }
             return true;
+        }
+        public List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> GetComputedOrganismXAntibiotics(int nonTemplatedId)
+        {
+            var results = _db.NonTemplatedLabResultOrganismXAntibiotics.Where(x => x.IsDeleted == false && x.NonTemplateLabResultID == nonTemplatedId)
+                .Select(b => new NonTemplatedLabPreparationOrganismXAntiBioticsVM()
+                {
+                    Id = b.Id,
+                    NonTemplateLabResultID = b.NonTemplateLabResultID,
+                    SensitiveDegree = b.SensitiveDegree,
+                    IsSensitive = b.IsSensitive,
+                    IsResistance = b.IsResistance,
+                    AntiBioticID = b.AntiBioticID,
+                    AntiBiotic = b.AntiBiotic.Name,
+                    Organism = b.Organism.Name,
+                    OrganismID = b.OrganismID,
+                    IsIntermediate = b.IsIntermediate,
+                    ResistanceDegree = b.ResistanceDegree,
+                }).ToList();
+            return results;
         }
     }
 }

@@ -108,7 +108,7 @@ namespace JenzHealth.DAL.Entity
         [EnumDisplayName(DisplayName = "KOH")]
         KOH,
         [EnumDisplayName(DisplayName = "Others")]
-        OTHERS
+        OTHER_MICROSCOPY
     }
     public enum StainType
     {
@@ -125,6 +125,6 @@ namespace JenzHealth.DAL.Entity
         [EnumDisplayName(DisplayName = "Methylene Blue Stain")]
         METHYLENE_BLUE_STAIN,
         [EnumDisplayName(DisplayName = "Others")]
-        OTHERS
+        OTHER_STAINS
     }
 }
