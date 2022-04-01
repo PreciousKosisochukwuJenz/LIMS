@@ -73,6 +73,9 @@
                                         <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber })" class="btn btn-white" title="Click to compute">
                                             <i class="material-icons">&#xE870;</i> Compute
                                         </a>
+                                        <a href="@Url.Action("NonTemplateLabReport","Report",new{billnumber = row.BillNumber })" target="_blank" class="btn btn-white" title="Click to print">
+                                            <i class="material-icons">&#xE870;</i> Print result
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
