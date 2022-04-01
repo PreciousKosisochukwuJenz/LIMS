@@ -313,6 +313,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="NonTemplatedLabResultDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NonTemplatedLabResultDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NonTemplatedOrganismDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NonTemplatedOrganismDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PaymentDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -507,6 +517,28 @@
     <Content Include="CustomerDataSet.xss">
       <DependentUpon>CustomerDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="NonTemplatedLabResultDataSet.xsc">
+      <DependentUpon>NonTemplatedLabResultDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="NonTemplatedLabResultDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NonTemplatedLabResultDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="NonTemplatedLabResultDataSet.xss">
+      <DependentUpon>NonTemplatedLabResultDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="NonTemplatedOrganismDataSet.xsc">
+      <DependentUpon>NonTemplatedOrganismDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="NonTemplatedOrganismDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NonTemplatedOrganismDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="NonTemplatedOrganismDataSet.xss">
+      <DependentUpon>NonTemplatedOrganismDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -570,8 +602,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Areas\Admin\Reports\PaymentReciept.rdlc" />
-    <EmbeddedResource Include="Areas\Admin\Reports\BillInvoice.rdlc" />
+    <EmbeddedResource Include="Areas\Admin\Reports\Laboratory\NonTemplatedLabResult.rdlc" />
+    <EmbeddedResource Include="Areas\Admin\Reports\Laboratory\TemplatedLabResult.rdlc" />
+    <EmbeddedResource Include="Areas\Admin\Reports\Payment\PaymentReciept.rdlc" />
+    <EmbeddedResource Include="Areas\Admin\Reports\Payment\BillInvoice.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -77,10 +77,12 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
         #endregion
         // GET: Admin/Report
+
+        #region Payment Report
         public ActionResult BillingInvoice(string billnumber)
         {
             LocalReport lr = new LocalReport();
-            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports"), "BillInvoice.rdlc");
+            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Payment"), "BillInvoice.rdlc");
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
@@ -135,7 +137,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         public ActionResult PaymentReciept(string recieptnumber, string billnumber)
         {
             LocalReport lr = new LocalReport();
-            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports"), "PaymentReciept.rdlc");
+            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Payment"), "PaymentReciept.rdlc");
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
@@ -187,6 +189,66 @@ namespace JenzHealth.Areas.Admin.Controllers
                 out warnings);
             return File(renderedBytes, mimeType);
         }
+        #endregion
 
+        #region Laboratory report
+
+        public ActionResult NonTemplateLabReport(string billnumber)
+        {
+            LocalReport lr = new LocalReport();
+            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
+            if (System.IO.File.Exists(path))
+            {
+                lr.ReportPath = path;
+            }
+            else
+            {
+                throw new Exception(String.Format("Report path not found in the specified directory: {0", path));
+            }
+            var header = _settingService.GetReportHeader();
+            var customer = _paymentService.GetCustomerForReport(billnumber);
+            var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber);
+            var nonTemplateOrganism = _laboratoryService.GetComputedOrganismXAntibiotics(nonTemplateResult.FirstOrDefault().Id);
+            ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
+            ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
+            ReportDataSource NonTemplateResult = new ReportDataSource("NonTemplatedLabResultDataSet", nonTemplateResult);
+            ReportDataSource NonTemplateOrganism = new ReportDataSource("NonTemplatedOrganismDataSet", nonTemplateOrganism);
+            if (Header != null && Customer != null && NonTemplateResult != null && NonTemplateOrganism != null)
+            {
+                lr.DataSources.Add(Header);
+                lr.DataSources.Add(Customer);
+                lr.DataSources.Add(NonTemplateResult);
+                lr.DataSources.Add(NonTemplateOrganism);
+            }
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string deviceInfo = "<DeviceInfo>" +
+                    "  <PageWidth>8.27in</PageWidth>" +
+                    "  <PageHeight>11.69in</PageHeight>" +
+                    "  <MarginTop>0.25in</MarginTop>" +
+                    "  <MarginLeft>0.4in</MarginLeft>" +
+                    "  <MarginRight>0.4in</MarginRight>" +
+                    "  <MarginBottom>0.25in</MarginBottom>" +
+                    "  <EmbedFonts>None</EmbedFonts>" +
+                    "</DeviceInfo>";
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = lr.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+            return File(renderedBytes, mimeType);
+        }
+
+        #endregion
     }
 }
