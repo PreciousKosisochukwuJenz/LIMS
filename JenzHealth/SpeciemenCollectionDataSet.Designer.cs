@@ -20,17 +20,17 @@ namespace JenzHealth {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("NonTemplatedOrganismDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("SpeciemenCollectionDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class NonTemplatedOrganismDataSet : global::System.Data.DataSet {
+    public partial class SpeciemenCollectionDataSet : global::System.Data.DataSet {
         
-        private NonTemplatedLabResultOrganismXAntibioticsDataTable tableNonTemplatedLabResultOrganismXAntibiotics;
+        private SpecimenCollectionsDataTable tableSpecimenCollections;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public NonTemplatedOrganismDataSet() {
+        public SpeciemenCollectionDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace JenzHealth {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected NonTemplatedOrganismDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected SpeciemenCollectionDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace JenzHealth {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["NonTemplatedLabResultOrganismXAntibiotics"] != null)) {
-                    base.Tables.Add(new NonTemplatedLabResultOrganismXAntibioticsDataTable(ds.Tables["NonTemplatedLabResultOrganismXAntibiotics"]));
+                if ((ds.Tables["SpecimenCollections"] != null)) {
+                    base.Tables.Add(new SpecimenCollectionsDataTable(ds.Tables["SpecimenCollections"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace JenzHealth {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NonTemplatedLabResultOrganismXAntibioticsDataTable NonTemplatedLabResultOrganismXAntibiotics {
+        public SpecimenCollectionsDataTable SpecimenCollections {
             get {
-                return this.tableNonTemplatedLabResultOrganismXAntibiotics;
+                return this.tableSpecimenCollections;
             }
         }
         
@@ -127,7 +127,7 @@ namespace JenzHealth {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            NonTemplatedOrganismDataSet cln = ((NonTemplatedOrganismDataSet)(base.Clone()));
+            SpeciemenCollectionDataSet cln = ((SpeciemenCollectionDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace JenzHealth {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["NonTemplatedLabResultOrganismXAntibiotics"] != null)) {
-                    base.Tables.Add(new NonTemplatedLabResultOrganismXAntibioticsDataTable(ds.Tables["NonTemplatedLabResultOrganismXAntibiotics"]));
+                if ((ds.Tables["SpecimenCollections"] != null)) {
+                    base.Tables.Add(new SpecimenCollectionsDataTable(ds.Tables["SpecimenCollections"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace JenzHealth {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableNonTemplatedLabResultOrganismXAntibiotics = ((NonTemplatedLabResultOrganismXAntibioticsDataTable)(base.Tables["NonTemplatedLabResultOrganismXAntibiotics"]));
+            this.tableSpecimenCollections = ((SpecimenCollectionsDataTable)(base.Tables["SpecimenCollections"]));
             if ((initTable == true)) {
-                if ((this.tableNonTemplatedLabResultOrganismXAntibiotics != null)) {
-                    this.tableNonTemplatedLabResultOrganismXAntibiotics.InitVars();
+                if ((this.tableSpecimenCollections != null)) {
+                    this.tableSpecimenCollections.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace JenzHealth {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "NonTemplatedOrganismDataSet";
+            this.DataSetName = "SpeciemenCollectionDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/NonTemplatedOrganismDataSet.xsd";
+            this.Namespace = "http://tempuri.org/SpeciemenCollectionDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableNonTemplatedLabResultOrganismXAntibiotics = new NonTemplatedLabResultOrganismXAntibioticsDataTable();
-            base.Tables.Add(this.tableNonTemplatedLabResultOrganismXAntibiotics);
+            this.tableSpecimenCollections = new SpecimenCollectionsDataTable();
+            base.Tables.Add(this.tableSpecimenCollections);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeNonTemplatedLabResultOrganismXAntibiotics() {
+        private bool ShouldSerializeSpecimenCollections() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace JenzHealth {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            NonTemplatedOrganismDataSet ds = new NonTemplatedOrganismDataSet();
+            SpeciemenCollectionDataSet ds = new SpeciemenCollectionDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,45 +270,45 @@ namespace JenzHealth {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void NonTemplatedLabResultOrganismXAntibioticsRowChangeEventHandler(object sender, NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent e);
+        public delegate void SpecimenCollectionsRowChangeEventHandler(object sender, SpecimenCollectionsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NonTemplatedLabResultOrganismXAntibioticsDataTable : global::System.Data.TypedTableBase<NonTemplatedLabResultOrganismXAntibioticsRow> {
+        public partial class SpecimenCollectionsDataTable : global::System.Data.TypedTableBase<SpecimenCollectionsRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnNonTemplateLabResultID;
+            private global::System.Data.DataColumn columnBillInvoiceNumber;
             
-            private global::System.Data.DataColumn columnAntiBioticID;
+            private global::System.Data.DataColumn columnRequestingDate;
             
-            private global::System.Data.DataColumn columnOrganismID;
+            private global::System.Data.DataColumn columnRequestingPhysician;
+            
+            private global::System.Data.DataColumn columnLabNumber;
+            
+            private global::System.Data.DataColumn columnClinicalSummary;
+            
+            private global::System.Data.DataColumn columnProvitionalDiagnosis;
+            
+            private global::System.Data.DataColumn columnOtherInformation;
             
             private global::System.Data.DataColumn columnIsDeleted;
             
-            private global::System.Data.DataColumn columnDateCreated;
+            private global::System.Data.DataColumn columnDateTimeCreated;
             
-            private global::System.Data.DataColumn columnIsSensitive;
+            private global::System.Data.DataColumn columnCollectedBy;
             
-            private global::System.Data.DataColumn columnSensitiveDegree;
+            private global::System.Data.DataColumn columnSpecimen;
             
-            private global::System.Data.DataColumn columnIsIntermediate;
-            
-            private global::System.Data.DataColumn columnIsResistance;
-            
-            private global::System.Data.DataColumn columnResistanceDegree;
-            
-            private global::System.Data.DataColumn columnOrganism;
-            
-            private global::System.Data.DataColumn columnAntiBiotic;
+            private global::System.Data.DataColumn columnServiceDepartment;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsDataTable() {
-                this.TableName = "NonTemplatedLabResultOrganismXAntibiotics";
+            public SpecimenCollectionsDataTable() {
+                this.TableName = "SpecimenCollections";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -316,7 +316,7 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal NonTemplatedLabResultOrganismXAntibioticsDataTable(global::System.Data.DataTable table) {
+            internal SpecimenCollectionsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -333,7 +333,7 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected NonTemplatedLabResultOrganismXAntibioticsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SpecimenCollectionsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -348,25 +348,57 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn NonTemplateLabResultIDColumn {
+            public global::System.Data.DataColumn BillInvoiceNumberColumn {
                 get {
-                    return this.columnNonTemplateLabResultID;
+                    return this.columnBillInvoiceNumber;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AntiBioticIDColumn {
+            public global::System.Data.DataColumn RequestingDateColumn {
                 get {
-                    return this.columnAntiBioticID;
+                    return this.columnRequestingDate;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn OrganismIDColumn {
+            public global::System.Data.DataColumn RequestingPhysicianColumn {
                 get {
-                    return this.columnOrganismID;
+                    return this.columnRequestingPhysician;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LabNumberColumn {
+                get {
+                    return this.columnLabNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ClinicalSummaryColumn {
+                get {
+                    return this.columnClinicalSummary;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ProvitionalDiagnosisColumn {
+                get {
+                    return this.columnProvitionalDiagnosis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn OtherInformationColumn {
+                get {
+                    return this.columnOtherInformation;
                 }
             }
             
@@ -380,65 +412,33 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DateCreatedColumn {
+            public global::System.Data.DataColumn DateTimeCreatedColumn {
                 get {
-                    return this.columnDateCreated;
+                    return this.columnDateTimeCreated;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IsSensitiveColumn {
+            public global::System.Data.DataColumn CollectedByColumn {
                 get {
-                    return this.columnIsSensitive;
+                    return this.columnCollectedBy;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn SensitiveDegreeColumn {
+            public global::System.Data.DataColumn SpecimenColumn {
                 get {
-                    return this.columnSensitiveDegree;
+                    return this.columnSpecimen;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IsIntermediateColumn {
+            public global::System.Data.DataColumn ServiceDepartmentColumn {
                 get {
-                    return this.columnIsIntermediate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IsResistanceColumn {
-                get {
-                    return this.columnIsResistance;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ResistanceDegreeColumn {
-                get {
-                    return this.columnResistanceDegree;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn OrganismColumn {
-                get {
-                    return this.columnOrganism;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn AntiBioticColumn {
-                get {
-                    return this.columnAntiBiotic;
+                    return this.columnServiceDepartment;
                 }
             }
             
@@ -453,64 +453,64 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRow this[int index] {
+            public SpecimenCollectionsRow this[int index] {
                 get {
-                    return ((NonTemplatedLabResultOrganismXAntibioticsRow)(this.Rows[index]));
+                    return ((SpecimenCollectionsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NonTemplatedLabResultOrganismXAntibioticsRowChangeEventHandler NonTemplatedLabResultOrganismXAntibioticsRowChanging;
+            public event SpecimenCollectionsRowChangeEventHandler SpecimenCollectionsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NonTemplatedLabResultOrganismXAntibioticsRowChangeEventHandler NonTemplatedLabResultOrganismXAntibioticsRowChanged;
+            public event SpecimenCollectionsRowChangeEventHandler SpecimenCollectionsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NonTemplatedLabResultOrganismXAntibioticsRowChangeEventHandler NonTemplatedLabResultOrganismXAntibioticsRowDeleting;
+            public event SpecimenCollectionsRowChangeEventHandler SpecimenCollectionsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event NonTemplatedLabResultOrganismXAntibioticsRowChangeEventHandler NonTemplatedLabResultOrganismXAntibioticsRowDeleted;
+            public event SpecimenCollectionsRowChangeEventHandler SpecimenCollectionsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddNonTemplatedLabResultOrganismXAntibioticsRow(NonTemplatedLabResultOrganismXAntibioticsRow row) {
+            public void AddSpecimenCollectionsRow(SpecimenCollectionsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRow AddNonTemplatedLabResultOrganismXAntibioticsRow(int NonTemplateLabResultID, int AntiBioticID, int OrganismID, bool IsDeleted, System.DateTime DateCreated, bool IsSensitive, string SensitiveDegree, bool IsIntermediate, bool IsResistance, string ResistanceDegree, string Organism, string AntiBiotic) {
-                NonTemplatedLabResultOrganismXAntibioticsRow rowNonTemplatedLabResultOrganismXAntibioticsRow = ((NonTemplatedLabResultOrganismXAntibioticsRow)(this.NewRow()));
+            public SpecimenCollectionsRow AddSpecimenCollectionsRow(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, string CollectedBy, string Specimen, string ServiceDepartment) {
+                SpecimenCollectionsRow rowSpecimenCollectionsRow = ((SpecimenCollectionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NonTemplateLabResultID,
-                        AntiBioticID,
-                        OrganismID,
+                        BillInvoiceNumber,
+                        RequestingDate,
+                        RequestingPhysician,
+                        LabNumber,
+                        ClinicalSummary,
+                        ProvitionalDiagnosis,
+                        OtherInformation,
                         IsDeleted,
-                        DateCreated,
-                        IsSensitive,
-                        SensitiveDegree,
-                        IsIntermediate,
-                        IsResistance,
-                        ResistanceDegree,
-                        Organism,
-                        AntiBiotic};
-                rowNonTemplatedLabResultOrganismXAntibioticsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNonTemplatedLabResultOrganismXAntibioticsRow);
-                return rowNonTemplatedLabResultOrganismXAntibioticsRow;
+                        DateTimeCreated,
+                        CollectedBy,
+                        Specimen,
+                        ServiceDepartment};
+                rowSpecimenCollectionsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSpecimenCollectionsRow);
+                return rowSpecimenCollectionsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRow FindById(int Id) {
-                return ((NonTemplatedLabResultOrganismXAntibioticsRow)(this.Rows.Find(new object[] {
+            public SpecimenCollectionsRow FindById(int Id) {
+                return ((SpecimenCollectionsRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                NonTemplatedLabResultOrganismXAntibioticsDataTable cln = ((NonTemplatedLabResultOrganismXAntibioticsDataTable)(base.Clone()));
+                SpecimenCollectionsDataTable cln = ((SpecimenCollectionsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -518,25 +518,25 @@ namespace JenzHealth {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NonTemplatedLabResultOrganismXAntibioticsDataTable();
+                return new SpecimenCollectionsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnNonTemplateLabResultID = base.Columns["NonTemplateLabResultID"];
-                this.columnAntiBioticID = base.Columns["AntiBioticID"];
-                this.columnOrganismID = base.Columns["OrganismID"];
+                this.columnBillInvoiceNumber = base.Columns["BillInvoiceNumber"];
+                this.columnRequestingDate = base.Columns["RequestingDate"];
+                this.columnRequestingPhysician = base.Columns["RequestingPhysician"];
+                this.columnLabNumber = base.Columns["LabNumber"];
+                this.columnClinicalSummary = base.Columns["ClinicalSummary"];
+                this.columnProvitionalDiagnosis = base.Columns["ProvitionalDiagnosis"];
+                this.columnOtherInformation = base.Columns["OtherInformation"];
                 this.columnIsDeleted = base.Columns["IsDeleted"];
-                this.columnDateCreated = base.Columns["DateCreated"];
-                this.columnIsSensitive = base.Columns["IsSensitive"];
-                this.columnSensitiveDegree = base.Columns["SensitiveDegree"];
-                this.columnIsIntermediate = base.Columns["IsIntermediate"];
-                this.columnIsResistance = base.Columns["IsResistance"];
-                this.columnResistanceDegree = base.Columns["ResistanceDegree"];
-                this.columnOrganism = base.Columns["Organism"];
-                this.columnAntiBiotic = base.Columns["AntiBiotic"];
+                this.columnDateTimeCreated = base.Columns["DateTimeCreated"];
+                this.columnCollectedBy = base.Columns["CollectedBy"];
+                this.columnSpecimen = base.Columns["Specimen"];
+                this.columnServiceDepartment = base.Columns["ServiceDepartment"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -544,30 +544,30 @@ namespace JenzHealth {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnNonTemplateLabResultID = new global::System.Data.DataColumn("NonTemplateLabResultID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNonTemplateLabResultID);
-                this.columnAntiBioticID = new global::System.Data.DataColumn("AntiBioticID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAntiBioticID);
-                this.columnOrganismID = new global::System.Data.DataColumn("OrganismID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrganismID);
+                this.columnBillInvoiceNumber = new global::System.Data.DataColumn("BillInvoiceNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBillInvoiceNumber);
+                this.columnRequestingDate = new global::System.Data.DataColumn("RequestingDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestingDate);
+                this.columnRequestingPhysician = new global::System.Data.DataColumn("RequestingPhysician", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequestingPhysician);
+                this.columnLabNumber = new global::System.Data.DataColumn("LabNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLabNumber);
+                this.columnClinicalSummary = new global::System.Data.DataColumn("ClinicalSummary", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClinicalSummary);
+                this.columnProvitionalDiagnosis = new global::System.Data.DataColumn("ProvitionalDiagnosis", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProvitionalDiagnosis);
+                this.columnOtherInformation = new global::System.Data.DataColumn("OtherInformation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtherInformation);
                 this.columnIsDeleted = new global::System.Data.DataColumn("IsDeleted", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsDeleted);
-                this.columnDateCreated = new global::System.Data.DataColumn("DateCreated", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDateCreated);
-                this.columnIsSensitive = new global::System.Data.DataColumn("IsSensitive", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsSensitive);
-                this.columnSensitiveDegree = new global::System.Data.DataColumn("SensitiveDegree", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSensitiveDegree);
-                this.columnIsIntermediate = new global::System.Data.DataColumn("IsIntermediate", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsIntermediate);
-                this.columnIsResistance = new global::System.Data.DataColumn("IsResistance", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsResistance);
-                this.columnResistanceDegree = new global::System.Data.DataColumn("ResistanceDegree", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnResistanceDegree);
-                this.columnOrganism = new global::System.Data.DataColumn("Organism", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrganism);
-                this.columnAntiBiotic = new global::System.Data.DataColumn("AntiBiotic", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAntiBiotic);
+                this.columnDateTimeCreated = new global::System.Data.DataColumn("DateTimeCreated", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateTimeCreated);
+                this.columnCollectedBy = new global::System.Data.DataColumn("CollectedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCollectedBy);
+                this.columnSpecimen = new global::System.Data.DataColumn("Specimen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecimen);
+                this.columnServiceDepartment = new global::System.Data.DataColumn("ServiceDepartment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServiceDepartment);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -576,39 +576,41 @@ namespace JenzHealth {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnBillInvoiceNumber.MaxLength = 2147483647;
+                this.columnRequestingDate.AllowDBNull = false;
+                this.columnRequestingPhysician.MaxLength = 2147483647;
+                this.columnLabNumber.MaxLength = 2147483647;
+                this.columnClinicalSummary.MaxLength = 2147483647;
+                this.columnProvitionalDiagnosis.MaxLength = 2147483647;
+                this.columnOtherInformation.MaxLength = 2147483647;
                 this.columnIsDeleted.AllowDBNull = false;
-                this.columnDateCreated.AllowDBNull = false;
-                this.columnIsSensitive.AllowDBNull = false;
-                this.columnSensitiveDegree.MaxLength = 2147483647;
-                this.columnIsIntermediate.AllowDBNull = false;
-                this.columnIsResistance.AllowDBNull = false;
-                this.columnResistanceDegree.MaxLength = 2147483647;
+                this.columnDateTimeCreated.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRow NewNonTemplatedLabResultOrganismXAntibioticsRow() {
-                return ((NonTemplatedLabResultOrganismXAntibioticsRow)(this.NewRow()));
+            public SpecimenCollectionsRow NewSpecimenCollectionsRow() {
+                return ((SpecimenCollectionsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NonTemplatedLabResultOrganismXAntibioticsRow(builder);
+                return new SpecimenCollectionsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(NonTemplatedLabResultOrganismXAntibioticsRow);
+                return typeof(SpecimenCollectionsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NonTemplatedLabResultOrganismXAntibioticsRowChanged != null)) {
-                    this.NonTemplatedLabResultOrganismXAntibioticsRowChanged(this, new NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent(((NonTemplatedLabResultOrganismXAntibioticsRow)(e.Row)), e.Action));
+                if ((this.SpecimenCollectionsRowChanged != null)) {
+                    this.SpecimenCollectionsRowChanged(this, new SpecimenCollectionsRowChangeEvent(((SpecimenCollectionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -616,8 +618,8 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NonTemplatedLabResultOrganismXAntibioticsRowChanging != null)) {
-                    this.NonTemplatedLabResultOrganismXAntibioticsRowChanging(this, new NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent(((NonTemplatedLabResultOrganismXAntibioticsRow)(e.Row)), e.Action));
+                if ((this.SpecimenCollectionsRowChanging != null)) {
+                    this.SpecimenCollectionsRowChanging(this, new SpecimenCollectionsRowChangeEvent(((SpecimenCollectionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -625,8 +627,8 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NonTemplatedLabResultOrganismXAntibioticsRowDeleted != null)) {
-                    this.NonTemplatedLabResultOrganismXAntibioticsRowDeleted(this, new NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent(((NonTemplatedLabResultOrganismXAntibioticsRow)(e.Row)), e.Action));
+                if ((this.SpecimenCollectionsRowDeleted != null)) {
+                    this.SpecimenCollectionsRowDeleted(this, new SpecimenCollectionsRowChangeEvent(((SpecimenCollectionsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -634,14 +636,14 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NonTemplatedLabResultOrganismXAntibioticsRowDeleting != null)) {
-                    this.NonTemplatedLabResultOrganismXAntibioticsRowDeleting(this, new NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent(((NonTemplatedLabResultOrganismXAntibioticsRow)(e.Row)), e.Action));
+                if ((this.SpecimenCollectionsRowDeleting != null)) {
+                    this.SpecimenCollectionsRowDeleting(this, new SpecimenCollectionsRowChangeEvent(((SpecimenCollectionsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveNonTemplatedLabResultOrganismXAntibioticsRow(NonTemplatedLabResultOrganismXAntibioticsRow row) {
+            public void RemoveSpecimenCollectionsRow(SpecimenCollectionsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -650,7 +652,7 @@ namespace JenzHealth {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                NonTemplatedOrganismDataSet ds = new NonTemplatedOrganismDataSet();
+                SpeciemenCollectionDataSet ds = new SpeciemenCollectionDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -668,7 +670,7 @@ namespace JenzHealth {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NonTemplatedLabResultOrganismXAntibioticsDataTable";
+                attribute2.FixedValue = "SpecimenCollectionsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -712,76 +714,136 @@ namespace JenzHealth {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class NonTemplatedLabResultOrganismXAntibioticsRow : global::System.Data.DataRow {
+        public partial class SpecimenCollectionsRow : global::System.Data.DataRow {
             
-            private NonTemplatedLabResultOrganismXAntibioticsDataTable tableNonTemplatedLabResultOrganismXAntibiotics;
+            private SpecimenCollectionsDataTable tableSpecimenCollections;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal NonTemplatedLabResultOrganismXAntibioticsRow(global::System.Data.DataRowBuilder rb) : 
+            internal SpecimenCollectionsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNonTemplatedLabResultOrganismXAntibiotics = ((NonTemplatedLabResultOrganismXAntibioticsDataTable)(this.Table));
+                this.tableSpecimenCollections = ((SpecimenCollectionsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
-                    return ((int)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IdColumn]));
+                    return ((int)(this[this.tableSpecimenCollections.IdColumn]));
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IdColumn] = value;
+                    this[this.tableSpecimenCollections.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int NonTemplateLabResultID {
+            public string BillInvoiceNumber {
                 get {
                     try {
-                        return ((int)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.NonTemplateLabResultIDColumn]));
+                        return ((string)(this[this.tableSpecimenCollections.BillInvoiceNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NonTemplateLabResultID\' in table \'NonTemplatedLabResultOrga" +
-                                "nismXAntibiotics\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'BillInvoiceNumber\' in table \'SpecimenCollections\' is DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.NonTemplateLabResultIDColumn] = value;
+                    this[this.tableSpecimenCollections.BillInvoiceNumberColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int AntiBioticID {
+            public System.DateTime RequestingDate {
                 get {
-                    try {
-                        return ((int)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AntiBioticID\' in table \'NonTemplatedLabResultOrganismXAntib" +
-                                "iotics\' is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableSpecimenCollections.RequestingDateColumn]));
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticIDColumn] = value;
+                    this[this.tableSpecimenCollections.RequestingDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int OrganismID {
+            public string RequestingPhysician {
                 get {
                     try {
-                        return ((int)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismIDColumn]));
+                        return ((string)(this[this.tableSpecimenCollections.RequestingPhysicianColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OrganismID\' in table \'NonTemplatedLabResultOrganismXAntibio" +
-                                "tics\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RequestingPhysician\' in table \'SpecimenCollections\' is DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismIDColumn] = value;
+                    this[this.tableSpecimenCollections.RequestingPhysicianColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string LabNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecimenCollections.LabNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LabNumber\' in table \'SpecimenCollections\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecimenCollections.LabNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ClinicalSummary {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecimenCollections.ClinicalSummaryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClinicalSummary\' in table \'SpecimenCollections\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecimenCollections.ClinicalSummaryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ProvitionalDiagnosis {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecimenCollections.ProvitionalDiagnosisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProvitionalDiagnosis\' in table \'SpecimenCollections\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecimenCollections.ProvitionalDiagnosisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string OtherInformation {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecimenCollections.OtherInformationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtherInformation\' in table \'SpecimenCollections\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecimenCollections.OtherInformationColumn] = value;
                 }
             }
             
@@ -789,207 +851,179 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDeleted {
                 get {
-                    return ((bool)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsDeletedColumn]));
+                    return ((bool)(this[this.tableSpecimenCollections.IsDeletedColumn]));
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsDeletedColumn] = value;
+                    this[this.tableSpecimenCollections.IsDeletedColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime DateCreated {
+            public System.DateTime DateTimeCreated {
                 get {
-                    return ((global::System.DateTime)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.DateCreatedColumn]));
+                    return ((global::System.DateTime)(this[this.tableSpecimenCollections.DateTimeCreatedColumn]));
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.DateCreatedColumn] = value;
+                    this[this.tableSpecimenCollections.DateTimeCreatedColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSensitive {
-                get {
-                    return ((bool)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsSensitiveColumn]));
-                }
-                set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsSensitiveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string SensitiveDegree {
+            public string CollectedBy {
                 get {
                     try {
-                        return ((string)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.SensitiveDegreeColumn]));
+                        return ((string)(this[this.tableSpecimenCollections.CollectedByColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SensitiveDegree\' in table \'NonTemplatedLabResultOrganismXAn" +
-                                "tibiotics\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CollectedBy\' in table \'SpecimenCollections\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.SensitiveDegreeColumn] = value;
+                    this[this.tableSpecimenCollections.CollectedByColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIntermediate {
-                get {
-                    return ((bool)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsIntermediateColumn]));
-                }
-                set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsIntermediateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsResistance {
-                get {
-                    return ((bool)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsResistanceColumn]));
-                }
-                set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.IsResistanceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ResistanceDegree {
+            public string Specimen {
                 get {
                     try {
-                        return ((string)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.ResistanceDegreeColumn]));
+                        return ((string)(this[this.tableSpecimenCollections.SpecimenColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ResistanceDegree\' in table \'NonTemplatedLabResultOrganismXA" +
-                                "ntibiotics\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Specimen\' in table \'SpecimenCollections\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.ResistanceDegreeColumn] = value;
+                    this[this.tableSpecimenCollections.SpecimenColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Organism {
+            public string ServiceDepartment {
                 get {
                     try {
-                        return ((string)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismColumn]));
+                        return ((string)(this[this.tableSpecimenCollections.ServiceDepartmentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Organism\' in table \'NonTemplatedLabResultOrganismXAntibioti" +
-                                "cs\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServiceDepartment\' in table \'SpecimenCollections\' is DBNull" +
+                                ".", e);
                     }
                 }
                 set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismColumn] = value;
+                    this[this.tableSpecimenCollections.ServiceDepartmentColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string AntiBiotic {
-                get {
-                    try {
-                        return ((string)(this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AntiBiotic\' in table \'NonTemplatedLabResultOrganismXAntibio" +
-                                "tics\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticColumn] = value;
-                }
+            public bool IsBillInvoiceNumberNull() {
+                return this.IsNull(this.tableSpecimenCollections.BillInvoiceNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsNonTemplateLabResultIDNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.NonTemplateLabResultIDColumn);
+            public void SetBillInvoiceNumberNull() {
+                this[this.tableSpecimenCollections.BillInvoiceNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetNonTemplateLabResultIDNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.NonTemplateLabResultIDColumn] = global::System.Convert.DBNull;
+            public bool IsRequestingPhysicianNull() {
+                return this.IsNull(this.tableSpecimenCollections.RequestingPhysicianColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAntiBioticIDNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticIDColumn);
+            public void SetRequestingPhysicianNull() {
+                this[this.tableSpecimenCollections.RequestingPhysicianColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAntiBioticIDNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticIDColumn] = global::System.Convert.DBNull;
+            public bool IsLabNumberNull() {
+                return this.IsNull(this.tableSpecimenCollections.LabNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsOrganismIDNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismIDColumn);
+            public void SetLabNumberNull() {
+                this[this.tableSpecimenCollections.LabNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetOrganismIDNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismIDColumn] = global::System.Convert.DBNull;
+            public bool IsClinicalSummaryNull() {
+                return this.IsNull(this.tableSpecimenCollections.ClinicalSummaryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsSensitiveDegreeNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.SensitiveDegreeColumn);
+            public void SetClinicalSummaryNull() {
+                this[this.tableSpecimenCollections.ClinicalSummaryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetSensitiveDegreeNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.SensitiveDegreeColumn] = global::System.Convert.DBNull;
+            public bool IsProvitionalDiagnosisNull() {
+                return this.IsNull(this.tableSpecimenCollections.ProvitionalDiagnosisColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsResistanceDegreeNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.ResistanceDegreeColumn);
+            public void SetProvitionalDiagnosisNull() {
+                this[this.tableSpecimenCollections.ProvitionalDiagnosisColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetResistanceDegreeNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.ResistanceDegreeColumn] = global::System.Convert.DBNull;
+            public bool IsOtherInformationNull() {
+                return this.IsNull(this.tableSpecimenCollections.OtherInformationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsOrganismNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismColumn);
+            public void SetOtherInformationNull() {
+                this[this.tableSpecimenCollections.OtherInformationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetOrganismNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.OrganismColumn] = global::System.Convert.DBNull;
+            public bool IsCollectedByNull() {
+                return this.IsNull(this.tableSpecimenCollections.CollectedByColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsAntiBioticNull() {
-                return this.IsNull(this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticColumn);
+            public void SetCollectedByNull() {
+                this[this.tableSpecimenCollections.CollectedByColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetAntiBioticNull() {
-                this[this.tableNonTemplatedLabResultOrganismXAntibiotics.AntiBioticColumn] = global::System.Convert.DBNull;
+            public bool IsSpecimenNull() {
+                return this.IsNull(this.tableSpecimenCollections.SpecimenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSpecimenNull() {
+                this[this.tableSpecimenCollections.SpecimenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsServiceDepartmentNull() {
+                return this.IsNull(this.tableSpecimenCollections.ServiceDepartmentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetServiceDepartmentNull() {
+                this[this.tableSpecimenCollections.ServiceDepartmentColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -997,22 +1031,22 @@ namespace JenzHealth {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent : global::System.EventArgs {
+        public class SpecimenCollectionsRowChangeEvent : global::System.EventArgs {
             
-            private NonTemplatedLabResultOrganismXAntibioticsRow eventRow;
+            private SpecimenCollectionsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRowChangeEvent(NonTemplatedLabResultOrganismXAntibioticsRow row, global::System.Data.DataRowAction action) {
+            public SpecimenCollectionsRowChangeEvent(SpecimenCollectionsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NonTemplatedLabResultOrganismXAntibioticsRow Row {
+            public SpecimenCollectionsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1028,7 +1062,7 @@ namespace JenzHealth {
         }
     }
 }
-namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
+namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
     
     
     /// <summary>
@@ -1040,7 +1074,7 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NonTemplatedLabResultOrganismXAntibioticsTableAdapter : global::System.ComponentModel.Component {
+    public partial class SpecimenCollectionsTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1054,7 +1088,7 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public NonTemplatedLabResultOrganismXAntibioticsTableAdapter() {
+        public SpecimenCollectionsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1151,53 +1185,49 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NonTemplatedLabResultOrganismXAntibiotics";
+            tableMapping.DataSetTable = "SpecimenCollections";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("NonTemplateLabResultID", "NonTemplateLabResultID");
-            tableMapping.ColumnMappings.Add("AntiBioticID", "AntiBioticID");
-            tableMapping.ColumnMappings.Add("OrganismID", "OrganismID");
+            tableMapping.ColumnMappings.Add("BillInvoiceNumber", "BillInvoiceNumber");
+            tableMapping.ColumnMappings.Add("RequestingDate", "RequestingDate");
+            tableMapping.ColumnMappings.Add("RequestingPhysician", "RequestingPhysician");
+            tableMapping.ColumnMappings.Add("LabNumber", "LabNumber");
+            tableMapping.ColumnMappings.Add("ClinicalSummary", "ClinicalSummary");
+            tableMapping.ColumnMappings.Add("ProvitionalDiagnosis", "ProvitionalDiagnosis");
+            tableMapping.ColumnMappings.Add("OtherInformation", "OtherInformation");
             tableMapping.ColumnMappings.Add("IsDeleted", "IsDeleted");
-            tableMapping.ColumnMappings.Add("DateCreated", "DateCreated");
-            tableMapping.ColumnMappings.Add("IsSensitive", "IsSensitive");
-            tableMapping.ColumnMappings.Add("SensitiveDegree", "SensitiveDegree");
-            tableMapping.ColumnMappings.Add("IsIntermediate", "IsIntermediate");
-            tableMapping.ColumnMappings.Add("IsResistance", "IsResistance");
-            tableMapping.ColumnMappings.Add("ResistanceDegree", "ResistanceDegree");
+            tableMapping.ColumnMappings.Add("DateTimeCreated", "DateTimeCreated");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[NonTemplatedLabResultOrganismXAntibiotics] WHERE (([Id] = @Ori" +
-                "ginal_Id))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[SpecimenCollections] WHERE (([Id] = @Original_Id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[NonTemplatedLabResultOrganismXAntibiotics] ([NonTemplateLabResultID], [AntiBioticID], [OrganismID], [IsDeleted], [DateCreated], [IsSensitive], [SensitiveDegree], [IsIntermediate], [IsResistance], [ResistanceDegree]) VALUES (@NonTemplateLabResultID, @AntiBioticID, @OrganismID, @IsDeleted, @DateCreated, @IsSensitive, @SensitiveDegree, @IsIntermediate, @IsResistance, @ResistanceDegree)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[SpecimenCollections] ([BillInvoiceNumber], [RequestingDate], [RequestingPhysician], [LabNumber], [ClinicalSummary], [ProvitionalDiagnosis], [OtherInformation], [IsDeleted], [DateTimeCreated]) VALUES (@BillInvoiceNumber, @RequestingDate, @RequestingPhysician, @LabNumber, @ClinicalSummary, @ProvitionalDiagnosis, @OtherInformation, @IsDeleted, @DateTimeCreated)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NonTemplateLabResultID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NonTemplateLabResultID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AntiBioticID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AntiBioticID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrganismID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrganismID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BillInvoiceNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BillInvoiceNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingPhysician", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingPhysician", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicalSummary", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicalSummary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProvitionalDiagnosis", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProvitionalDiagnosis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtherInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtherInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsDeleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsDeleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsSensitive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsSensitive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensitiveDegree", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensitiveDegree", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsIntermediate", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsIntermediate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsResistance", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsResistance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ResistanceDegree", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ResistanceDegree", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTimeCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTimeCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[NonTemplatedLabResultOrganismXAntibiotics] SET [NonTemplateLabResultID] = @NonTemplateLabResultID, [AntiBioticID] = @AntiBioticID, [OrganismID] = @OrganismID, [IsDeleted] = @IsDeleted, [DateCreated] = @DateCreated, [IsSensitive] = @IsSensitive, [SensitiveDegree] = @SensitiveDegree, [IsIntermediate] = @IsIntermediate, [IsResistance] = @IsResistance, [ResistanceDegree] = @ResistanceDegree WHERE (([Id] = @Original_Id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SpecimenCollections] SET [BillInvoiceNumber] = @BillInvoiceNumber, [RequestingDate] = @RequestingDate, [RequestingPhysician] = @RequestingPhysician, [LabNumber] = @LabNumber, [ClinicalSummary] = @ClinicalSummary, [ProvitionalDiagnosis] = @ProvitionalDiagnosis, [OtherInformation] = @OtherInformation, [IsDeleted] = @IsDeleted, [DateTimeCreated] = @DateTimeCreated WHERE (([Id] = @Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NonTemplateLabResultID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NonTemplateLabResultID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AntiBioticID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AntiBioticID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OrganismID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OrganismID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BillInvoiceNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BillInvoiceNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingPhysician", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingPhysician", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicalSummary", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicalSummary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProvitionalDiagnosis", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProvitionalDiagnosis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtherInformation", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtherInformation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsDeleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsDeleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsSensitive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsSensitive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SensitiveDegree", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SensitiveDegree", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsIntermediate", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsIntermediate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsResistance", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsResistance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ResistanceDegree", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ResistanceDegree", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTimeCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTimeCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -1214,9 +1244,9 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, NonTemplateLabResultID, AntiBioticID, OrganismID, IsDeleted, DateCreat" +
-                "ed, IsSensitive, SensitiveDegree, IsIntermediate, IsResistance, ResistanceDegree" +
-                " FROM dbo.NonTemplatedLabResultOrganismXAntibiotics";
+            this._commandCollection[0].CommandText = "SELECT Id, BillInvoiceNumber, RequestingDate, RequestingPhysician, LabNumber, Cli" +
+                "nicalSummary, ProvitionalDiagnosis, OtherInformation, IsDeleted, DateTimeCreated" +
+                " FROM dbo.SpecimenCollections";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1224,7 +1254,7 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(NonTemplatedOrganismDataSet.NonTemplatedLabResultOrganismXAntibioticsDataTable dataTable) {
+        public virtual int Fill(SpeciemenCollectionDataSet.SpecimenCollectionsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1237,9 +1267,9 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual NonTemplatedOrganismDataSet.NonTemplatedLabResultOrganismXAntibioticsDataTable GetData() {
+        public virtual SpeciemenCollectionDataSet.SpecimenCollectionsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            NonTemplatedOrganismDataSet.NonTemplatedLabResultOrganismXAntibioticsDataTable dataTable = new NonTemplatedOrganismDataSet.NonTemplatedLabResultOrganismXAntibioticsDataTable();
+            SpeciemenCollectionDataSet.SpecimenCollectionsDataTable dataTable = new SpeciemenCollectionDataSet.SpecimenCollectionsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1247,15 +1277,15 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(NonTemplatedOrganismDataSet.NonTemplatedLabResultOrganismXAntibioticsDataTable dataTable) {
+        public virtual int Update(SpeciemenCollectionDataSet.SpecimenCollectionsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(NonTemplatedOrganismDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "NonTemplatedLabResultOrganismXAntibiotics");
+        public virtual int Update(SpeciemenCollectionDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "SpecimenCollections");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1299,42 +1329,46 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> NonTemplateLabResultID, global::System.Nullable<int> AntiBioticID, global::System.Nullable<int> OrganismID, bool IsDeleted, System.DateTime DateCreated, bool IsSensitive, string SensitiveDegree, bool IsIntermediate, bool IsResistance, string ResistanceDegree) {
-            if ((NonTemplateLabResultID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(NonTemplateLabResultID.Value));
-            }
-            else {
+        public virtual int Insert(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated) {
+            if ((BillInvoiceNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((AntiBioticID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(AntiBioticID.Value));
-            }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(BillInvoiceNumber));
             }
-            if ((OrganismID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(OrganismID.Value));
-            }
-            else {
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(RequestingDate));
+            if ((RequestingPhysician == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(IsDeleted));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(DateCreated));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((bool)(IsSensitive));
-            if ((SensitiveDegree == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(RequestingPhysician));
+            }
+            if ((LabNumber == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(LabNumber));
+            }
+            if ((ClinicalSummary == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ClinicalSummary));
+            }
+            if ((ProvitionalDiagnosis == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ProvitionalDiagnosis));
+            }
+            if ((OtherInformation == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SensitiveDegree));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(OtherInformation));
             }
-            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(IsIntermediate));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(IsResistance));
-            if ((ResistanceDegree == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(ResistanceDegree));
-            }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(IsDeleted));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(DateTimeCreated));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1355,43 +1389,47 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> NonTemplateLabResultID, global::System.Nullable<int> AntiBioticID, global::System.Nullable<int> OrganismID, bool IsDeleted, System.DateTime DateCreated, bool IsSensitive, string SensitiveDegree, bool IsIntermediate, bool IsResistance, string ResistanceDegree, int Original_Id) {
-            if ((NonTemplateLabResultID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(NonTemplateLabResultID.Value));
-            }
-            else {
+        public virtual int Update(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, int Original_Id) {
+            if ((BillInvoiceNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((AntiBioticID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(AntiBioticID.Value));
-            }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(BillInvoiceNumber));
             }
-            if ((OrganismID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(OrganismID.Value));
-            }
-            else {
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(RequestingDate));
+            if ((RequestingPhysician == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(IsDeleted));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(DateCreated));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((bool)(IsSensitive));
-            if ((SensitiveDegree == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(RequestingPhysician));
+            }
+            if ((LabNumber == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(LabNumber));
+            }
+            if ((ClinicalSummary == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ClinicalSummary));
+            }
+            if ((ProvitionalDiagnosis == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ProvitionalDiagnosis));
+            }
+            if ((OtherInformation == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SensitiveDegree));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(OtherInformation));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(IsIntermediate));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(IsResistance));
-            if ((ResistanceDegree == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(ResistanceDegree));
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(IsDeleted));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(DateTimeCreated));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1421,7 +1459,7 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private NonTemplatedLabResultOrganismXAntibioticsTableAdapter _nonTemplatedLabResultOrganismXAntibioticsTableAdapter;
+        private SpecimenCollectionsTableAdapter _specimenCollectionsTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -1443,12 +1481,12 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public NonTemplatedLabResultOrganismXAntibioticsTableAdapter NonTemplatedLabResultOrganismXAntibioticsTableAdapter {
+        public SpecimenCollectionsTableAdapter SpecimenCollectionsTableAdapter {
             get {
-                return this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter;
+                return this._specimenCollectionsTableAdapter;
             }
             set {
-                this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter = value;
+                this._specimenCollectionsTableAdapter = value;
             }
         }
         
@@ -1471,9 +1509,9 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null) 
-                            && (this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection != null))) {
-                    return this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection;
+                if (((this._specimenCollectionsTableAdapter != null) 
+                            && (this._specimenCollectionsTableAdapter.Connection != null))) {
+                    return this._specimenCollectionsTableAdapter.Connection;
                 }
                 return null;
             }
@@ -1488,7 +1526,7 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
+                if ((this._specimenCollectionsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -1500,14 +1538,14 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(NonTemplatedOrganismDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(SpeciemenCollectionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.NonTemplatedLabResultOrganismXAntibiotics.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._specimenCollectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.SpecimenCollections.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Update(updatedRows));
+                    result = (result + this._specimenCollectionsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1519,13 +1557,13 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(NonTemplatedOrganismDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(SpeciemenCollectionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.NonTemplatedLabResultOrganismXAntibiotics.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._specimenCollectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.SpecimenCollections.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Update(addedRows));
+                    result = (result + this._specimenCollectionsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1537,13 +1575,13 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(NonTemplatedOrganismDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(SpeciemenCollectionDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.NonTemplatedLabResultOrganismXAntibiotics.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._specimenCollectionsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.SpecimenCollections.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Update(deletedRows));
+                    result = (result + this._specimenCollectionsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -1579,15 +1617,15 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(NonTemplatedOrganismDataSet dataSet) {
+        public virtual int UpdateAll(SpeciemenCollectionDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection) == false))) {
+            if (((this._specimenCollectionsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._specimenCollectionsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -1623,13 +1661,13 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
-                    revertConnections.Add(this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter, this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection);
-                    this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Adapter);
+                if ((this._specimenCollectionsTableAdapter != null)) {
+                    revertConnections.Add(this._specimenCollectionsTableAdapter, this._specimenCollectionsTableAdapter.Connection);
+                    this._specimenCollectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._specimenCollectionsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._specimenCollectionsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._specimenCollectionsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._specimenCollectionsTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -1690,9 +1728,9 @@ namespace JenzHealth.NonTemplatedOrganismDataSetTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter != null)) {
-                    this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter]));
-                    this._nonTemplatedLabResultOrganismXAntibioticsTableAdapter.Transaction = null;
+                if ((this._specimenCollectionsTableAdapter != null)) {
+                    this._specimenCollectionsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._specimenCollectionsTableAdapter]));
+                    this._specimenCollectionsTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

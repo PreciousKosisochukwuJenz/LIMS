@@ -18,7 +18,7 @@
               </TextRun>
               <TextRun>
                 <Label>Service Department</Label>
-                <Value>=First(Fields!ServiceDepartment.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -47,8 +47,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.08333in</Top>
-        <Left>0.20708in</Left>
+        <Top>2.17485in</Top>
+        <Left>0.10289in</Left>
         <Height>0.64458in</Height>
         <Width>6.86223in</Width>
         <Style>
@@ -241,8 +241,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.78347in</Top>
-        <Left>0.20708in</Left>
+        <Top>2.87499in</Top>
+        <Left>0.10289in</Left>
         <Height>1.87153in</Height>
         <Width>6.86223in</Width>
         <ZIndex>1</ZIndex>
@@ -299,7 +299,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAB NUMBER:</Value>
+                <Value>LAB NUMBER:                                 </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Lab number</Label>
+                <Value>=First(Fields!LabNumber.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -314,7 +323,25 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>DATE PREPARED:</Value>
+                <Value>DATE PREPARED:                           </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Date Prepared</Label>
+                <Value>=First(Fields!RequestingDate.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>f</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -329,7 +356,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>NATURE OF SPECIMEN:</Value>
+                <Value>NATURE OF SPECIMEN:                </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Specimen</Label>
+                <Value>=First(Fields!Specimen.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -344,7 +380,49 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTION DATE:</Value>
+                <Value>SPECIMEN COLLECTION DATE:    </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Collection Date</Label>
+                <Value>=First(Fields!DateTimeCreated.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>f</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SPECIMEN COLLECTED BY:           </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Collected By</Label>
+                <Value>=First(Fields!CollectedBy.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -359,37 +437,24 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTED BY:</Value>
+                <Value>REQUESTING CLINCIAN:               </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
               <TextRun>
-                <Value>WARD:</Value>
+                <Label>Requestion Clinican</Label>
+                <Value>=First(Fields!RequestingPhysician.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
               <TextRun>
-                <Value>REQUESTING CLINCIAN:</Value>
+                <Value xml:space="preserve">  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -433,8 +498,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.68278in</Top>
-        <Left>0.20708in</Left>
+        <Top>4.7743in</Top>
+        <Left>0.10289in</Left>
         <Height>2.59723in</Height>
         <Width>6.86223in</Width>
         <ZIndex>2</ZIndex>
@@ -547,7 +612,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>:               </Value>
+                <Value>:              </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -697,8 +762,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>5.29389in</Top>
-        <Left>0.20708in</Left>
+        <Top>7.38541in</Top>
+        <Left>0.10289in</Left>
         <Height>1.73611in</Height>
         <Width>6.86223in</Width>
         <ZIndex>3</ZIndex>
@@ -707,11 +772,10 @@
             <Style>None</Style>
           </Border>
           <TopBorder>
+            <Color>Black</Color>
             <Style>Solid</Style>
+            <Width>1pt</Width>
           </TopBorder>
-          <BottomBorder>
-            <Style>Solid</Style>
-          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -722,6 +786,45 @@
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
           <Paragraph>
             <TextRuns>
               <TextRun>
@@ -762,7 +865,7 @@
               </TextRun>
               <TextRun>
                 <Label>Microscopy Type</Label>
-                <Value>=First(Fields!MicroscopyType.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Value>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -855,7 +958,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                  Crystals:           </Value>
+                <Value>                        Crystals:                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -887,7 +990,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>White Blood Cells:      </Value>
+                <Value>White Blood Cells:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -895,7 +998,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Label>White Blood Cells</Label>
+                <Label>White Blood Cell</Label>
                 <Value>=First(Fields!WhiteBloodCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
@@ -904,7 +1007,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>      Ova:                     </Value>
+                <Value>                            Ova:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -945,7 +1048,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>           Parasite:              </Value>
+                <Value>                            Parasite:                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -977,7 +1080,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Bacteria:                     </Value>
+                <Value>Bacteria:                      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -994,7 +1097,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                        Epithelial Cells:     </Value>
+                <Value>                            Epithelial Cells:      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1018,7 +1121,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Yeasts:                        </Value>
+                <Value>Yeasts:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1035,7 +1138,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                           Protozoa:              </Value>
+                <Value>                             Protozoa:               </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1067,7 +1170,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Casts:                          </Value>
+                <Value>Casts:                           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1084,7 +1187,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                              Others:               </Value>
+                <Value>                             Others:                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1155,7 +1258,7 @@
               </TextRun>
               <TextRun>
                 <Label>Stain Type</Label>
-                <Value>=First(Fields!StainType.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1201,7 +1304,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Gram Positive Cocci:  </Value>
+                <Value>Gram Positive Cocci:        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1218,7 +1321,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>       Gram Negative Cocci: </Value>
+                <Value>                     Gram Negative Cocci:    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1242,7 +1345,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Gram Positive Rods:   </Value>
+                <Value>Gram Positive Rods:         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1259,7 +1362,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>      Gram Negative Rods:</Value>
+                <Value>                    Gram Negative Rods:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1300,7 +1403,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>      Vincente Organisms:</Value>
+                <Value>                   Vincente Organisms:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1324,7 +1427,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Yeasts Cells:                    </Value>
+                <Value>Yeasts Cells:                       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1380,7 +1483,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Parasite:  </Value>
+                <Value>Parasite:    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1397,7 +1500,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                                 Others: </Value>
+                <Value>                                 Others:   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1452,7 +1555,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Acis Fast Bacilli:   </Value>
+                <Value>Acis Fast Bacilli:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1469,7 +1572,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                  Others: </Value>
+                <Value>                  Others:   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1524,7 +1627,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Result:   </Value>
+                <Value>Result:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1579,7 +1682,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Result:   </Value>
+                <Value>Result:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1633,7 +1736,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Result:   </Value>
+                <Value>Result:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1687,7 +1790,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Result:   </Value>
+                <Value>Result:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1701,6 +1804,36 @@
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1756,24 +1889,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Duration Of Abstinence:  </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Duration</Label>
-                <Value>=First(Fields!DurationOfAbstinence.Value, "NonTemplatedLabResultDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value>   Date Of Production: </Value>
+                <Value>Date Of Production:   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1798,48 +1914,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Mode Of Production: </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>MOP</Label>
-                <Value>=First(Fields!ModeOfProduction.Value, "NonTemplatedLabResultDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value>                Viscosity: </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Vis</Label>
-                <Value>=First(Fields!Viscosity.Value, "NonTemplatedLabResultDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Time Examined:   </Value>
+                <Value>Time Examined:          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1856,8 +1931,97 @@
                   <Format>f</Format>
                 </Style>
               </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
               <TextRun>
-                <Value>                           Morphology: </Value>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <Format>f</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Duration Of Abstinence:  </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Duration</Label>
+                <Value>=First(Fields!DurationOfAbstinence.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>         Mode Of Production:    </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>MOP</Label>
+                <Value>=First(Fields!ModeOfProduction.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Viscosity:               </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Vis</Label>
+                <Value>=First(Fields!Viscosity.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                      </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>Morphology:                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1881,7 +2045,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Motility:            </Value>
+                <Value>Motility:                </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1898,7 +2062,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                     Total Sperm Count: </Value>
+                <Value>             Total Sperm Count:        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1954,7 +2118,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>WBCS:      </Value>
+                <Value>WBCS:                    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1971,7 +2135,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                                 Any Spillage:  </Value>
+                <Value>                        Any Spillage:                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1995,7 +2159,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RBCS:      </Value>
+                <Value>RBCS:                     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2012,7 +2176,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                                    PH:</Value>
+                <Value>                         PH:                                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2190,20 +2354,19 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>7.04389in</Top>
-        <Left>0.20708in</Left>
-        <Height>15.64931in</Height>
+        <Top>9.13541in</Top>
+        <Left>0.10289in</Left>
+        <Height>15.82987in</Height>
         <Width>6.86223in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <TopBorder>
-            <Style>Solid</Style>
-          </TopBorder>
           <BottomBorder>
+            <Color>Black</Color>
             <Style>Solid</Style>
+            <Width>1pt</Width>
           </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -2261,7 +2424,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                             Duration:  </Value>
+                <Value>                                    Duration:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2283,7 +2446,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Atmosphere:      </Value>
+                <Value>Atmosphere:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2300,7 +2463,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>                 Plate:        </Value>
+                <Value>                                     Plate:        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2377,8 +2540,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>22.70709in</Top>
-        <Left>0.20708in</Left>
+        <Top>24.96528in</Top>
+        <Left>0.1029in</Left>
         <Height>1.9375in</Height>
         <Width>6.86223in</Width>
         <ZIndex>5</ZIndex>
@@ -2419,7 +2582,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.32292in</Height>
+              <Height>0.26563in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2594,7 +2757,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.625in</Height>
+              <Height>0.56771in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2637,7 +2800,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!AnitBiotic.Value</Value>
+                              <Value>=Fields!AntiBiotic.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2669,6 +2832,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Label>IsSensitve</Label>
                               <Value>=Fields!IsSensitive.Value</Value>
                               <Style />
                             </TextRun>
@@ -2680,7 +2844,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>---------------------------</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2767,7 +2931,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>-----------------------</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2825,11 +2989,12 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <KeepTogether>true</KeepTogether>
         <DataSetName>NonTemplatedOrganismDataSet</DataSetName>
-        <Top>24.70014in</Top>
-        <Left>0.20708in</Left>
-        <Height>0.94792in</Height>
-        <Width>6.86223in</Width>
+        <Top>26.95833in</Top>
+        <Left>0.1029in</Left>
+        <Height>0.83334in</Height>
+        <Width>6.86224in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -2883,8 +3048,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>25.86334in</Top>
-        <Left>0.20708in</Left>
+        <Top>27.95486in</Top>
+        <Left>0.10289in</Left>
         <Height>1.38542in</Height>
         <Width>6.86223in</Width>
         <ZIndex>7</ZIndex>
@@ -2898,8 +3063,61 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Brand Name</Label>
+                <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>20pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox26</rd:DefaultName>
+        <Top>1.53237in</Top>
+        <Left>0.10289in</Left>
+        <Height>0.40625in</Height>
+        <Width>6.96643in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="Logo">
+        <Source>Database</Source>
+        <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
+        <MIMEType>image/jpeg</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.23375in</Top>
+        <Left>3.0775in</Left>
+        <Height>1.22917in</Height>
+        <Width>1.52083in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
     </ReportItems>
-    <Height>27.41542in</Height>
+    <Height>29.40501in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -2911,72 +3129,8 @@
       </BackgroundImage>
     </Style>
   </Body>
-  <Width>7.20473in</Width>
+  <Width>7.06932in</Width>
   <Page>
-    <PageHeader>
-      <Height>2.05208in</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <ReportItems>
-        <Textbox Name="Textbox26">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Label>Brand Name</Label>
-                  <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
-                  <Style>
-                    <FontFamily>Tahoma</FontFamily>
-                    <FontSize>20pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>1.42236in</Top>
-          <Left>0.20708in</Left>
-          <Height>0.40625in</Height>
-          <Width>6.86223in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Image Name="Logo">
-          <Source>Database</Source>
-          <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
-          <MIMEType>image/jpeg</MIMEType>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.13763in</Top>
-          <Left>3.11333in</Left>
-          <Height>1.22917in</Height>
-          <Width>1.52083in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
-      </ReportItems>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-        <BackgroundColor>White</BackgroundColor>
-      </Style>
-    </PageHeader>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
@@ -3033,6 +3187,13 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>f1b8665d-6beb-4a4c-a054-6372b44fe5ab</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SpeciemenCollectionDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>b64d35a5-38c0-49b0-9c16-205076c99ef5</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -3466,6 +3627,14 @@
           <DataField>Template</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="StainTypee">
+          <DataField>StainTypee</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MicroscopyTypee">
+          <DataField>MicroscopyTypee</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>NonTemplatedLabResultDataSet</rd:DataSetName>
@@ -3530,8 +3699,8 @@
           <DataField>Organism</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="AnitBiotic">
-          <DataField>AnitBiotic</DataField>
+        <Field Name="AntiBiotic">
+          <DataField>AntiBiotic</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -3542,6 +3711,74 @@
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>NonTemplatedLabResultOrganismXAntibioticsTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="SpecimenCollectionDataSet">
+      <Query>
+        <DataSourceName>SpeciemenCollectionDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BillInvoiceNumber">
+          <DataField>BillInvoiceNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequestingDate">
+          <DataField>RequestingDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RequestingPhysician">
+          <DataField>RequestingPhysician</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LabNumber">
+          <DataField>LabNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ClinicalSummary">
+          <DataField>ClinicalSummary</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProvitionalDiagnosis">
+          <DataField>ProvitionalDiagnosis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OtherInformation">
+          <DataField>OtherInformation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IsDeleted">
+          <DataField>IsDeleted</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DateTimeCreated">
+          <DataField>DateTimeCreated</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CollectedBy">
+          <DataField>CollectedBy</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Specimen">
+          <DataField>Specimen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ServiceDepartment">
+          <DataField>ServiceDepartment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>SpeciemenCollectionDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\SpeciemenCollectionDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>SpecimenCollections</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>SpecimenCollectionsTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

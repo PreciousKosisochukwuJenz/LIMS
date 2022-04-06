@@ -21,6 +21,9 @@ namespace JenzHealth.DAL.Entity
         public string OtherInformation { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateTimeCreated { get; set; }
+        public int? CollectedByID { get; set; }
+        [ForeignKey("CollectedByID")]
+        public User CollectedBy { get; set; }
 
     }
 }

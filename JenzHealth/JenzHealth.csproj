@@ -333,6 +333,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SpeciemenCollectionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpeciemenCollectionDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Compile Include="App_Start\SearchBotFilter.cs" />
@@ -582,6 +587,17 @@
     </None>
     <Content Include="SettingsDataSet.xss">
       <DependentUpon>SettingsDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="SpeciemenCollectionDataSet.xsc">
+      <DependentUpon>SpeciemenCollectionDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="SpeciemenCollectionDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SpeciemenCollectionDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SpeciemenCollectionDataSet.xss">
+      <DependentUpon>SpeciemenCollectionDataSet.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

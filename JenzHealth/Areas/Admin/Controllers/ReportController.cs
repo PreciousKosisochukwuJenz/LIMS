@@ -193,7 +193,7 @@ namespace JenzHealth.Areas.Admin.Controllers
 
         #region Laboratory report
 
-        public ActionResult NonTemplateLabReport(string billnumber)
+        public ActionResult NonTemplateLabReport(string billnumber, int templateID)
         {
             LocalReport lr = new LocalReport();
             string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
@@ -209,16 +209,19 @@ namespace JenzHealth.Areas.Admin.Controllers
             var customer = _paymentService.GetCustomerForReport(billnumber);
             var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber);
             var nonTemplateOrganism = _laboratoryService.GetComputedOrganismXAntibiotics(nonTemplateResult.FirstOrDefault().Id);
+            var specimenCollection = _laboratoryService.GetSpecimenCollectedForReport(billnumber, templateID);
             ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
             ReportDataSource NonTemplateResult = new ReportDataSource("NonTemplatedLabResultDataSet", nonTemplateResult);
             ReportDataSource NonTemplateOrganism = new ReportDataSource("NonTemplatedOrganismDataSet", nonTemplateOrganism);
-            if (Header != null && Customer != null && NonTemplateResult != null && NonTemplateOrganism != null)
+            ReportDataSource SpecimenCollection = new ReportDataSource("SpecimenCollectionDataSet", specimenCollection);
+            if (Header != null && Customer != null && NonTemplateResult != null && NonTemplateOrganism != null && SpecimenCollection != null)
             {
                 lr.DataSources.Add(Header);
                 lr.DataSources.Add(Customer);
                 lr.DataSources.Add(NonTemplateResult);
                 lr.DataSources.Add(NonTemplateOrganism);
+                lr.DataSources.Add(SpecimenCollection);
             }
             string reportType = "PDF";
             string mimeType;
