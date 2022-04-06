@@ -12,14 +12,16 @@ namespace JenzHealth.Areas.Admin.Services
     public class LaboratoryService : ILaboratoryService
     {
         readonly DatabaseEntities _db;
-
+        readonly ISeedService _seedService;
         public LaboratoryService()
         {
             _db = new DatabaseEntities();
+            _seedService = new SeedService();
         }
         public LaboratoryService(DatabaseEntities db)
         {
             _db = db;
+            _seedService = new SeedService(db);
         }
 
         public ServiceParameterVM GetServiceParameter(string ServiceName)
@@ -160,6 +162,7 @@ namespace JenzHealth.Areas.Admin.Services
                 sampleExist.ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis;
                 sampleExist.OtherInformation = specimenCollected.OtherInformation;
                 sampleExist.RequestingDate = specimenCollected.RequestingDate;
+                sampleExist.CollectedByID = Global.AuthenticatedUserID;
                 _db.Entry(sampleExist).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
                 specimenCollectionID = sampleExist.Id;
@@ -180,7 +183,8 @@ namespace JenzHealth.Areas.Admin.Services
                     RequestingDate = specimenCollected.RequestingDate,
                     IsDeleted = false,
                     DateTimeCreated = DateTime.Now,
-                    LabNumber = labnumber
+                    LabNumber = labnumber,
+                    CollectedByID = Global.AuthenticatedUserID
                 };
 
                 _db.SpecimenCollections.Add(specimenCollection);
@@ -261,6 +265,35 @@ namespace JenzHealth.Areas.Admin.Services
                 LabNumber = b.LabNumber
             }).FirstOrDefault();
             specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
+            return specimenCollected;
+        }
+        public List<SpecimenCollectionVM> GetSpecimenCollectedForReport(string billnumber, int templateID)
+        {
+            var specimenCollected = _db.SpecimenCollections.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new SpecimenCollectionVM()
+            {
+                Id = b.Id,
+                ClinicalSummary = b.ClinicalSummary,
+                ProvitionalDiagnosis = b.ProvitionalDiagnosis,
+                OtherInformation = b.OtherInformation,
+                RequestingPhysician = b.RequestingPhysician,
+                RequestingDate = b.RequestingDate,
+                LabNumber = b.LabNumber,
+                CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
+                DateTimeCreated = b.DateTimeCreated
+            }).ToList();
+            foreach(var specimenColl in specimenCollected)
+            {
+                var specimens = this.GetCheckList(specimenColl.Id);
+                foreach(var spec in specimens)
+                {
+                    var parameterSetup = this.GetServiceParameter(spec.Service);
+                    if(parameterSetup.TemplateID == templateID)
+                    {
+                        specimenColl.Specimen = parameterSetup.Specimen;
+                        specimenColl.ServiceDepartment = _seedService.GetService((int)parameterSetup.ServiceID).ServiceDepartment.ToUpper();
+                    }
+                }
+            }
             return specimenCollected;
         }
 
@@ -573,6 +606,11 @@ namespace JenzHealth.Areas.Admin.Services
                 YeastCells = b.YeastCells,
                 ZiehlOthers = b.ZiehlOthers
             }).ToList();
+            foreach(var item in model)
+            {
+                item.MicroscopyTypee = item.MicroscopyType.DisplayName();
+                item.StainTypee = item.StainType.DisplayName();
+            }
             return model;
         }
 
@@ -704,7 +742,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     Id = b.Id,
                     NonTemplateLabResultID = b.NonTemplateLabResultID,
-                    SensitiveDegree = b.SensitiveDegree,
+                    SensitiveDegree = b.SensitiveDegree == null ? "N/A": b.ResistanceDegree,
                     IsSensitive = b.IsSensitive,
                     IsResistance = b.IsResistance,
                     AntiBioticID = b.AntiBioticID,
@@ -712,7 +750,7 @@ namespace JenzHealth.Areas.Admin.Services
                     Organism = b.Organism.Name,
                     OrganismID = b.OrganismID,
                     IsIntermediate = b.IsIntermediate,
-                    ResistanceDegree = b.ResistanceDegree,
+                    ResistanceDegree = b.ResistanceDegree == null ? "N/A" : b.ResistanceDegree,
                 }).ToList();
             return results;
         }

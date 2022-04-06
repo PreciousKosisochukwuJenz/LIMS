@@ -34,7 +34,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Labnote { get; set; }
 
         public MicroscopyType MicroscopyType { get; set; }
+        public string MicroscopyTypee { get; set; }
         public StainType StainType { get; set; }
+        public string StainTypee { get; set; }
 
         public string PusCells { get; set; }
         public string WhiteBloodCells { get; set; }
