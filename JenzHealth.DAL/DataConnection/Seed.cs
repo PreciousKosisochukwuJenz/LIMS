@@ -17,8 +17,12 @@ namespace JenzHealth.DAL.DataConnection
               Id = 1,
               AppName = "TECH LABORATORY",
               AllowSetupRouteAccess = true,
-              CodeGenSeed = 7
-          }) ;
+              CodeGenSeed = 7,
+              SessionTimeOut = 15,
+              CustomerNumberPrefix = "TECHLAB/CUST/",
+              EnableSpecimentCollectedBy = true,
+              EnablePartPayment = true
+          });
             context.Roles.AddOrUpdate(x => x.Id,
                 new Entity.Role()
                 {

@@ -343,7 +343,8 @@ namespace JenzHealth.Areas.Admin.Services
                 Service = b.Service.Description,
                 Template = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.Name,
                 TemplateID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).TemplateID,
-                BillNumber = b.InvoiceNumber
+                BillNumber = b.InvoiceNumber,
+                Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters
             }).ToList();
 
             return model;
@@ -379,6 +380,7 @@ namespace JenzHealth.Areas.Admin.Services
                     var range = _db.ServiceParameterRangeSetups.FirstOrDefault(x => x.Id == record.RangeID);
 
                     parametersetup.Value = record.Value;
+                    parametersetup.Labnote = record.Labnote;
                     parametersetup.Range = range == null ? " " : range.Range;
                     parametersetup.Unit = range == null ? " " : range.Unit;
                 }
@@ -402,8 +404,21 @@ namespace JenzHealth.Areas.Admin.Services
                 billservice.ServiceID = (int)service.ServiceID;
                 model.Add(billservice);
             }
+            model[0].Labnote = model[0].Parameters[0].Parameter.Labnote;
 
             return model;
+        }
+        public List<TemplateServiceCompuationVM> GetTemplatedLabResultForReport(int templateID, string billnumber)
+        {
+            var result = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.IsDeleted == false && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID)
+                .Select(b => new TemplateServiceCompuationVM() { 
+                  Parameter = b.ServiceParameterSetup.Name,
+                  Value = b.Value,
+                  Unit = b.ServiceRange.Unit,
+                  Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
+                  Labnote = b.Labnote
+                }).ToList();
+            return result;
         }
         public RequestComputedResultVM GetParamaterValue(string billnumber, int SetupID)
         {
@@ -412,6 +427,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     Value = b.Value,
                     RangeID = (int)b.ServiceRangeID,
+                    Labnote = b.Labnote
                 }).FirstOrDefault();
             if (record != null)
                 return record;
@@ -427,6 +443,7 @@ namespace JenzHealth.Areas.Admin.Services
                 if (exist != null)
                 {
                     exist.Value = result.Value;
+                    exist.Labnote = labnote;
                     exist.ServiceRangeID = result.RangeID;
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
                 }
@@ -439,6 +456,7 @@ namespace JenzHealth.Areas.Admin.Services
                         Key = result.Key,
                         Value = result.Value,
                         ServiceRangeID = result.RangeID,
+                        Labnote = labnote,
                         IsDeleted = false,
                         DateCreated = DateTime.Now
                     };
@@ -742,7 +760,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     Id = b.Id,
                     NonTemplateLabResultID = b.NonTemplateLabResultID,
-                    SensitiveDegree = b.SensitiveDegree == null ? "N/A": b.ResistanceDegree,
+                    SensitiveDegree = b.SensitiveDegree == null ? "N/A": b.SensitiveDegree,
                     IsSensitive = b.IsSensitive,
                     IsResistance = b.IsResistance,
                     AntiBioticID = b.AntiBioticID,

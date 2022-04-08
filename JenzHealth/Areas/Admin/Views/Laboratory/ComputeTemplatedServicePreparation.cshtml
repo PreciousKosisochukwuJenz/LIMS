@@ -76,7 +76,7 @@
                     <div class="form-group col-md-12">
                         <label for="labnote">Lab Note</label>
                         <div class="input-group input-group-seamless">
-                            <textarea class="form-control" id="labnote" rows="3"></textarea>
+                            <textarea class="form-control" id="labnote" rows="3">@Model.FirstOrDefault().Labnote</textarea>
                             <div class="invalid-feedback">
                                 Lab note required
                             </div>

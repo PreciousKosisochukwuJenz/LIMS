@@ -11,6 +11,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public int ServiceID { get; set; }
         public string BillInvoiceNumber { get; set; }
         public int KeyID { get; set; }
+        public string Labnote { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
         public int RangeID { get; set; }

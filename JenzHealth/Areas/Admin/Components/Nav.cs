@@ -36,14 +36,14 @@ namespace JenzHealth.Areas.Admin.Components
             }),
 
                 // Laboratory
-            new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
+            new Menu(url: "#",stringText:"Laboratory Management", icon: "apartment", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/Preparations",stringText:"Preparations", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.Preparations", childMenus: null),
             }),
 
              // Seed
-              new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
+              new Menu(url: "#",stringText:"Seed Management", icon: "settings", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
@@ -89,14 +89,14 @@ namespace JenzHealth.Areas.Admin.Components
             }),
 
               // Laboratory
-            new Menu(url: "#",stringText:"Laboratory Management", icon: "settings", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
+            new Menu(url: "#",stringText:"Laboratory Management", icon: "apartment", isMenu: true,claim: "laboratory", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/Preparations",stringText:"Preparations", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.Preparations", childMenus: null),
             }),
 
              // Seed
-            new Menu(url: "#",stringText:"Seed Management", icon: "apartment", isMenu: true, claim: "user", childMenus: new List<Menu>(){
+            new Menu(url: "#",stringText:"Seed Management", icon: "settings", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Seed/ManageRevenueDepartments",stringText:"Revenue Departments", icon: null ?? defaultIcon, isMenu: true,claim: "seed.revenuedepartment", childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServiceDepartments",stringText:"Service Departments", icon: null ?? defaultIcon, isMenu: true, claim: "seed.servicedepartment",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageServices",stringText:"Services", icon: null ?? defaultIcon, isMenu: true, claim: "seed.Services",childMenus: null),
