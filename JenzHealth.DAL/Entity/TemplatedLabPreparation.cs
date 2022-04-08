@@ -16,6 +16,7 @@ namespace JenzHealth.DAL.Entity
         public int? ServiceRangeID { get; set; }
         public int? ServiceParameterID { get; set; }
         public int? ServiceParameterSetupID { get; set; }
+        public string Labnote { get; set; }
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }
         [ForeignKey("ServiceParameterID")]

@@ -339,6 +339,11 @@
       <DependentUpon>SpeciemenCollectionDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TemplatedDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TemplatedDataSet.xsd</DependentUpon>
+    </Compile>
     <Content Include="Areas\Admin\Views\web.config" />
     <Compile Include="App_Start\SearchBotFilter.cs" />
     <Compile Include="App_Start\Startup.cs" />
@@ -599,6 +604,17 @@
     <Content Include="SpeciemenCollectionDataSet.xss">
       <DependentUpon>SpeciemenCollectionDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="TemplatedDataSet.xsc">
+      <DependentUpon>TemplatedDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="TemplatedDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TemplatedDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="TemplatedDataSet.xss">
+      <DependentUpon>TemplatedDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -618,8 +634,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Areas\Admin\Reports\Laboratory\NonTemplatedLabResult.rdlc" />
     <EmbeddedResource Include="Areas\Admin\Reports\Laboratory\TemplatedLabResult.rdlc" />
+    <EmbeddedResource Include="Areas\Admin\Reports\Laboratory\NonTemplatedLabResult.rdlc" />
     <EmbeddedResource Include="Areas\Admin\Reports\Payment\PaymentReciept.rdlc" />
     <EmbeddedResource Include="Areas\Admin\Reports\Payment\BillInvoice.rdlc" />
   </ItemGroup>

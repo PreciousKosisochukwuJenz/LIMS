@@ -193,10 +193,10 @@ namespace JenzHealth.Areas.Admin.Controllers
 
         #region Laboratory report
 
-        public ActionResult NonTemplateLabReport(string billnumber, int templateID)
+        public ActionResult LabReport(string billnumber, int templateID, bool templated)
         {
             LocalReport lr = new LocalReport();
-            string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
+            string path = !templated ? Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "TemplatedLabResult.rdlc") : Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
@@ -207,22 +207,41 @@ namespace JenzHealth.Areas.Admin.Controllers
             }
             var header = _settingService.GetReportHeader();
             var customer = _paymentService.GetCustomerForReport(billnumber);
-            var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber);
-            var nonTemplateOrganism = _laboratoryService.GetComputedOrganismXAntibiotics(nonTemplateResult.FirstOrDefault().Id);
             var specimenCollection = _laboratoryService.GetSpecimenCollectedForReport(billnumber, templateID);
             ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
-            ReportDataSource NonTemplateResult = new ReportDataSource("NonTemplatedLabResultDataSet", nonTemplateResult);
-            ReportDataSource NonTemplateOrganism = new ReportDataSource("NonTemplatedOrganismDataSet", nonTemplateOrganism);
             ReportDataSource SpecimenCollection = new ReportDataSource("SpecimenCollectionDataSet", specimenCollection);
-            if (Header != null && Customer != null && NonTemplateResult != null && NonTemplateOrganism != null && SpecimenCollection != null)
+            if (Header != null && Customer != null && SpecimenCollection != null)
             {
                 lr.DataSources.Add(Header);
                 lr.DataSources.Add(Customer);
-                lr.DataSources.Add(NonTemplateResult);
-                lr.DataSources.Add(NonTemplateOrganism);
                 lr.DataSources.Add(SpecimenCollection);
             }
+
+            if (!templated)
+            {
+                var templatedResult = _laboratoryService.GetTemplatedLabResultForReport(templateID, billnumber);
+                ReportDataSource TemplatedLabResult = new ReportDataSource("TemplatedDataSet", templatedResult);
+                if (TemplatedLabResult != null)
+                {
+                    lr.DataSources.Add(TemplatedLabResult);
+                }
+            }
+            else
+            {
+                var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber);
+                var nonTemplateOrganism = _laboratoryService.GetComputedOrganismXAntibiotics(nonTemplateResult.FirstOrDefault().Id);
+
+                ReportDataSource NonTemplateResult = new ReportDataSource("NonTemplatedLabResultDataSet", nonTemplateResult);
+                ReportDataSource NonTemplateOrganism = new ReportDataSource("NonTemplatedOrganismDataSet", nonTemplateOrganism);
+
+                if (NonTemplateResult != null && NonTemplateOrganism != null)
+                {
+                    lr.DataSources.Add(NonTemplateResult);
+                    lr.DataSources.Add(NonTemplateOrganism);
+                }
+            }
+         
             string reportType = "PDF";
             string mimeType;
             string encoding;

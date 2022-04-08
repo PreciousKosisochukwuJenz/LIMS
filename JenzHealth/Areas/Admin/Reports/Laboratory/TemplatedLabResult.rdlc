@@ -2,50 +2,6 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Textbox2">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Paid on : </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Date Paid</Label>
-                <Value>=First(Fields!DatePaid.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Italic</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>f</Format>
-                  <Color>Red</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.72444in</Top>
-        <Left>3.77083in</Left>
-        <Height>0.25in</Height>
-        <Width>3.5625in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox3">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -53,7 +9,31 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Customer Payment Reciept</Value>
+                <Value>DEPARTMENT OF </Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Service Department</Label>
+                <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>LABORATORY REPORT</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -67,11 +47,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.28694in</Top>
-        <Left>1.82167in</Left>
-        <Height>0.32292in</Height>
-        <Width>3.875in</Width>
-        <ZIndex>1</ZIndex>
+        <Top>2.17485in</Top>
+        <Left>0.10289in</Left>
+        <Height>0.64458in</Height>
+        <Width>6.86223in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -262,9 +241,266 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.13069in</Top>
-        <Left>0.20708in</Left>
+        <Top>2.87499in</Top>
+        <Left>0.10289in</Left>
         <Height>1.87153in</Height>
+        <Width>6.86223in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <TopBorder>
+            <Style>Solid</Style>
+          </TopBorder>
+          <BottomBorder>
+            <Style>Solid</Style>
+          </BottomBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>TEST BASIC INFORMATION</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>LAB NUMBER:                                 </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Lab number</Label>
+                <Value>=First(Fields!LabNumber.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>DATE PREPARED:                           </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Date Prepared</Label>
+                <Value>=First(Fields!RequestingDate.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>f</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>NATURE OF SPECIMEN:                </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Specimen</Label>
+                <Value>=First(Fields!Specimen.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SPECIMEN COLLECTION DATE:    </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Collection Date</Label>
+                <Value>=First(Fields!DateTimeCreated.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>f</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SPECIMEN COLLECTED BY:           </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Collected By</Label>
+                <Value>=First(Fields!CollectedBy.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">     </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>REQUESTING CLINCIAN:               </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Requestion Clinican</Label>
+                <Value>=First(Fields!RequestingPhysician.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">  </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>4.7743in</Top>
+        <Left>0.10289in</Left>
+        <Height>2.59723in</Height>
         <Width>6.86223in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -283,20 +519,106 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Brand Name</Label>
+                <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>20pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox26</rd:DefaultName>
+        <Top>1.53237in</Top>
+        <Left>0.10289in</Left>
+        <Height>0.40625in</Height>
+        <Width>6.96643in</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="Logo">
+        <Source>Database</Source>
+        <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
+        <MIMEType>image/jpeg</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.23375in</Top>
+        <Left>3.0775in</Left>
+        <Height>1.22917in</Height>
+        <Width>1.52083in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>TEST PARAMETER DETAILS</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox10</rd:DefaultName>
+        <Top>7.44097in</Top>
+        <Left>0.10289in</Left>
+        <Height>0.32861in</Height>
+        <Width>6.86223in</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
       <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.29356in</Width>
+              <Width>1.9263in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.41856in</Width>
+              <Width>1.65547in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.51042in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.66634in</Width>
+              <Width>1.35417in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -312,10 +634,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Service</Value>
+                              <Value>Parameter</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -328,7 +650,6 @@
                       <rd:DefaultName>Textbox6</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -348,10 +669,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Quantity</Value>
+                              <Value>Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -364,7 +685,6 @@
                       <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -377,17 +697,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox27">
+                    <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Cost Amount</Value>
+                              <Value>Unit</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>14pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -397,46 +717,9 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox10">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Gross Amount</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox10</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -454,14 +737,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ServiceName">
+                    <Textbox Name="Parameter">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ServiceName.Value</Value>
+                              <Value>=Fields!Parameter.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -473,10 +756,9 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ServiceName</rd:DefaultName>
+                      <rd:DefaultName>Parameter</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -489,14 +771,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Quantity">
+                    <Textbox Name="Value">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Quantity.Value</Value>
+                              <Value>=Fields!Value.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -508,10 +790,9 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Quantity</rd:DefaultName>
+                      <rd:DefaultName>Value</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -524,19 +805,17 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="SellingPrice">
+                    <Textbox Name="Unit">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SellingPrice.Value</Value>
+                              <Value>=Fields!Unit.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>12pt</FontSize>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -545,47 +824,9 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>SellingPrice</rd:DefaultName>
+                      <rd:DefaultName>Unit</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="GrossAmount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!GrossAmount.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>GrossAmount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -605,740 +846,173 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
+              <TablixHeader>
+                <Size>1.9263in</Size>
+                <CellContents>
+                  <Textbox Name="Textbox13">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Service</Value>
+                            <Style>
+                              <FontFamily>Calibri</FontFamily>
+                              <FontSize>14pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="Details" />
-            </TablixMember>
-          </TablixMembers>
-        </TablixRowHierarchy>
-        <RepeatColumnHeaders>true</RepeatColumnHeaders>
-        <KeepTogether>true</KeepTogether>
-        <DataSetName>BillingDataSet</DataSetName>
-        <Top>5.95362in</Top>
-        <Left>0.20709in</Left>
-        <Height>0.5in</Height>
-        <Width>6.88888in</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
-      <Textbox Name="Textbox25">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>THIS DOCUMENT IS A PROOF OF PAYMENT</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Color>Red</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>8.14112in</Top>
-        <Left>0.20709in</Left>
-        <Height>0.3125in</Height>
-        <Width>6.88889in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Tablix Name="Tablix4">
-        <TablixBody>
-          <TablixColumns>
-            <TablixColumn>
-              <Width>1.51042in</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.63968in</Width>
-            </TablixColumn>
-          </TablixColumns>
-          <TablixRows>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox30">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Net Amount</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox30</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="NetAmount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!NetAmount.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>NetAmount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox35">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Waived Amount</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox35</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="WaivedAmount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!WaivedAmount.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>WaivedAmount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Total Amount Paid</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox5">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Label>Total Amount Paid</Label>
-                              <Value>=Fields!TotalAmountPaid.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.25in</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox37">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Balance To Pay</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox37</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="BalanceAmount">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!BalanceAmount.Value</Value>
-                              <Style>
-                                <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                                <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>BalanceAmount</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-          </TablixRows>
-        </TablixBody>
-        <TablixColumnHierarchy>
-          <TablixMembers>
-            <TablixMember />
-            <TablixMember />
-          </TablixMembers>
-        </TablixColumnHierarchy>
-        <TablixRowHierarchy>
-          <TablixMembers>
-            <TablixMember>
-              <Group Name="Details1" />
+              <Group Name="Service">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Service.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!Service.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>1.9263in</Size>
+                <CellContents>
+                  <Textbox Name="Service1">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!Service.Value</Value>
+                            <Style>
+                              <FontFamily>Calibri</FontFamily>
+                              <FontSize>12pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Center</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Service1</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
               <TablixMembers>
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>PaymentDataSet</DataSetName>
-        <Top>6.4814in</Top>
-        <Left>3.91922in</Left>
-        <Height>1in</Height>
-        <Width>3.1501in</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Tablix>
-      <Textbox Name="Textbox7">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>PAYMENT RECIEPT INFORMATION</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>BILL NUMBER:                                                </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Bill Invoice Number</Label>
-                <Value>=First(Fields!BillInvoiceNumber.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>INSTALLMENT TYPE:                                     </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Installment Type</Label>
-                <Value>=First(Fields!InstallmentType.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>INSTALLMENT:                                               </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Installment Type</Label>
-                <Value>=First(Fields!PartPayment.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>AMOUNT PAID:                                             </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Amount Paid</Label>
-                <Value>=First(Fields!AmountPaid.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>'₦'#,0.00;('₦'#,0.00)</Format>
-                  <TextDecoration>None</TextDecoration>
-                  <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>PAYMENT TYPE:                                            </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Payment Type</Label>
-                <Value>=First(Fields!PaymentTypee.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>RECIEPT NUMBER:                                        </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Reciept Number</Label>
-                <Value>=First(Fields!PaymentReciept.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>TRANSACTION REFERENCE NUMBER:      </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Reference Number</Label>
-                <Value>=First(Fields!TransactionReferenceNumber.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>COLLECTED BY:                                               </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Collected By</Label>
-                <Value>=First(Fields!CollectedBy.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>SHIFT NUMBER:                                             </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Shift Number</Label>
-                <Value>=First(Fields!ShiftNumber.Value, "PaymentDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>3.00222in</Top>
-        <Left>0.20708in</Left>
-        <Height>2.77778in</Height>
+        <DataSetName>TemplatedDataSet</DataSetName>
+        <Top>7.83903in</Top>
+        <Left>0.10289in</Left>
+        <Height>0.5in</Height>
         <Width>6.86223in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <TopBorder>
-            <Style>Solid</Style>
-          </TopBorder>
-          <BottomBorder>
-            <Style>Solid</Style>
-          </BottomBorder>
+        </Style>
+      </Tablix>
+      <Textbox Name="Textbox20">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>LAB NOTE:</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Lab note</Label>
+                <Value>=First(Fields!Labnote.Value, "TemplatedDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>8.515in</Top>
+        <Left>0.10354in</Left>
+        <Height>1.38542in</Height>
+        <Width>6.86223in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1346,7 +1020,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>8.68625in</Height>
+    <Height>10.22791in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -1358,72 +1032,8 @@
       </BackgroundImage>
     </Style>
   </Body>
-  <Width>7.3482in</Width>
+  <Width>7.06932in</Width>
   <Page>
-    <PageHeader>
-      <Height>2.05208in</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <ReportItems>
-        <Textbox Name="Textbox26">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Label>Brand Name</Label>
-                  <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
-                  <Style>
-                    <FontFamily>Tahoma</FontFamily>
-                    <FontSize>20pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>1.42236in</Top>
-          <Left>0.20708in</Left>
-          <Height>0.40625in</Height>
-          <Width>6.86223in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Image Name="Logo">
-          <Source>Database</Source>
-          <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
-          <MIMEType>image/jpeg</MIMEType>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.13763in</Top>
-          <Left>3.11333in</Left>
-          <Height>1.22917in</Height>
-          <Width>1.52083in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
-      </ReportItems>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-        <BackgroundColor>White</BackgroundColor>
-      </Style>
-    </PageHeader>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
     <TopMargin>1in</TopMargin>
@@ -1446,26 +1056,19 @@
       </ConnectionProperties>
       <rd:DataSourceID>5f34bacc-34ba-47f4-a881-dc7e0edb4178</rd:DataSourceID>
     </DataSource>
-    <DataSource Name="BillingDataSet">
+    <DataSource Name="SpeciemenCollectionDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>5f88750e-0e0b-4f12-8193-5f6436896f13</rd:DataSourceID>
+      <rd:DataSourceID>b64d35a5-38c0-49b0-9c16-205076c99ef5</rd:DataSourceID>
     </DataSource>
-    <DataSource Name="BillingDetailsDataSet">
+    <DataSource Name="TemplatedDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8cbb678c-1b4e-42e4-9ee8-1ec7520a3e87</rd:DataSourceID>
-    </DataSource>
-    <DataSource Name="PaymentDataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>409cce6e-8bbb-494c-9418-bbb56fe20e63</rd:DataSourceID>
+      <rd:DataSourceID>733d6d9b-af32-4710-b314-612ac17f5b69</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -1593,105 +1196,9 @@
         <rd:TableAdapterName>CustomersTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="BillingDataSet">
+    <DataSet Name="SpecimenCollectionDataSet">
       <Query>
-        <DataSourceName>BillingDataSet</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CustomerUniqueID">
-          <DataField>CustomerUniqueID</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CustomerType">
-          <DataField>CustomerType</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CustomerName">
-          <DataField>CustomerName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CustomerGender">
-          <DataField>CustomerGender</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CustomerAge">
-          <DataField>CustomerAge</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CustomerPhoneNumber">
-          <DataField>CustomerPhoneNumber</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ServiceID">
-          <DataField>ServiceID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="Quantity">
-          <DataField>Quantity</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="GrossAmount">
-          <DataField>GrossAmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="InvoiceNumber">
-          <DataField>InvoiceNumber</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="IsDeleted">
-          <DataField>IsDeleted</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
-        </Field>
-        <Field Name="DateCreated">
-          <DataField>DateCreated</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="BilledByID">
-          <DataField>BilledByID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="ServiceName">
-          <DataField>ServiceName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BilledBy">
-          <DataField>BilledBy</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="NetAmount">
-          <DataField>NetAmount</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="WaivedAmount">
-          <DataField>WaivedAmount</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BalanceAmount">
-          <DataField>BalanceAmount</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SellingPrice">
-          <DataField>SellingPrice</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>BillingDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\BillingDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>Billings</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>BillingsTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="PaymentDataSet">
-      <Query>
-        <DataSourceName>PaymentDataSet</DataSourceName>
+        <DataSourceName>SpeciemenCollectionDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -1703,98 +1210,130 @@
           <DataField>BillInvoiceNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="AmountPaid">
-          <DataField>AmountPaid</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="RequestingDate">
+          <DataField>RequestingDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="PaymentReciept">
-          <DataField>PaymentReciept</DataField>
+        <Field Name="RequestingPhysician">
+          <DataField>RequestingPhysician</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="InstallmentType">
-          <DataField>InstallmentType</DataField>
+        <Field Name="LabNumber">
+          <DataField>LabNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PartPaymentID">
-          <DataField>PartPaymentID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="NetAmount">
-          <DataField>NetAmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="WaivedAmount">
-          <DataField>WaivedAmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="BalanceAmount">
-          <DataField>BalanceAmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TransactionReferenceNumber">
-          <DataField>TransactionReferenceNumber</DataField>
+        <Field Name="ClinicalSummary">
+          <DataField>ClinicalSummary</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PaymentType">
-          <DataField>PaymentType</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="ProvitionalDiagnosis">
+          <DataField>ProvitionalDiagnosis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="IsCancelled">
-          <DataField>IsCancelled</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
+        <Field Name="OtherInformation">
+          <DataField>OtherInformation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="IsDeleted">
           <DataField>IsDeleted</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="ShiftID">
-          <DataField>ShiftID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DatePaid">
-          <DataField>DatePaid</DataField>
+        <Field Name="DateTimeCreated">
+          <DataField>DateTimeCreated</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="Comment">
-          <DataField>Comment</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CanceledByID">
-          <DataField>CanceledByID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CollectedByID">
-          <DataField>CollectedByID</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="CollectedBy">
           <DataField>CollectedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ShiftNumber">
-          <DataField>ShiftNumber</DataField>
+        <Field Name="Specimen">
+          <DataField>Specimen</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PaymentTypee">
-          <DataField>PaymentTypee</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PartPayment">
-          <DataField>PartPayment</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TotalAmountPaid">
-          <DataField>TotalAmountPaid</DataField>
+        <Field Name="ServiceDepartment">
+          <DataField>ServiceDepartment</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>PaymentDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\PaymentDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>CashCollections</rd:TableName>
+        <rd:DataSetName>SpeciemenCollectionDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\SpeciemenCollectionDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>SpecimenCollections</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>CashCollectionsTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>SpecimenCollectionsTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="TemplatedDataSet">
+      <Query>
+        <DataSourceName>TemplatedDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BillInvoiceNumber">
+          <DataField>BillInvoiceNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Key">
+          <DataField>Key</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Value">
+          <DataField>Value</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ServiceRangeID">
+          <DataField>ServiceRangeID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ServiceParameterID">
+          <DataField>ServiceParameterID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ServiceParameterSetupID">
+          <DataField>ServiceParameterSetupID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DateCreated">
+          <DataField>DateCreated</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="IsDeleted">
+          <DataField>IsDeleted</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Unit">
+          <DataField>Unit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Service">
+          <DataField>Service</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Parameter">
+          <DataField>Parameter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Labnote">
+          <DataField>Labnote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>TemplatedDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\TemplatedDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>TemplatedLabPreparations</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>TemplatedLabPreparationsTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
