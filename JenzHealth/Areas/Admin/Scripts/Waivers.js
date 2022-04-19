@@ -15,10 +15,12 @@ $("input[name='WaiveBy']").change(function () {
 
     if ($("input[name='WaiveBy']:checked").val() == "AMOUNT") {
         $("#waiverAmount").show();
+        $("#waiverAmount").val("");
         $("#waiverPercentage").hide();
     }
     else {
         $("#waiverPercentage").show();
+        $("#waiverPercentage").val("0");
         $("#waiverAmount").hide();
     }
 })

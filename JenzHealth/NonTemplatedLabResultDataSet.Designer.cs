@@ -433,6 +433,10 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnMicroscopyTypee;
             
+            private global::System.Data.DataColumn columnScienticComment;
+            
+            private global::System.Data.DataColumn columnPreparedBy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public NonTemplatedLabPreparationsDataTable() {
@@ -1084,6 +1088,22 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ScienticCommentColumn {
+                get {
+                    return this.columnScienticComment;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PreparedByColumn {
+                get {
+                    return this.columnPreparedBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1195,7 +1215,9 @@ namespace JenzHealth {
                         string ServiceDepartment, 
                         string Template, 
                         string StainTypee, 
-                        string MicroscopyTypee) {
+                        string MicroscopyTypee, 
+                        string ScienticComment, 
+                        string PreparedBy) {
                 NonTemplatedLabPreparationsRow rowNonTemplatedLabPreparationsRow = ((NonTemplatedLabPreparationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1274,7 +1296,9 @@ namespace JenzHealth {
                         ServiceDepartment,
                         Template,
                         StainTypee,
-                        MicroscopyTypee};
+                        MicroscopyTypee,
+                        ScienticComment,
+                        PreparedBy};
                 rowNonTemplatedLabPreparationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNonTemplatedLabPreparationsRow);
                 return rowNonTemplatedLabPreparationsRow;
@@ -1381,6 +1405,8 @@ namespace JenzHealth {
                 this.columnTemplate = base.Columns["Template"];
                 this.columnStainTypee = base.Columns["StainTypee"];
                 this.columnMicroscopyTypee = base.Columns["MicroscopyTypee"];
+                this.columnScienticComment = base.Columns["ScienticComment"];
+                this.columnPreparedBy = base.Columns["PreparedBy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1540,6 +1566,10 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnStainTypee);
                 this.columnMicroscopyTypee = new global::System.Data.DataColumn("MicroscopyTypee", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMicroscopyTypee);
+                this.columnScienticComment = new global::System.Data.DataColumn("ScienticComment", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnScienticComment);
+                this.columnPreparedBy = new global::System.Data.DataColumn("PreparedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPreparedBy);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -3022,6 +3052,40 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ScienticComment {
+                get {
+                    try {
+                        return ((string)(this[this.tableNonTemplatedLabPreparations.ScienticCommentColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ScienticComment\' in table \'NonTemplatedLabPreparations\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNonTemplatedLabPreparations.ScienticCommentColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PreparedBy {
+                get {
+                    try {
+                        return ((string)(this[this.tableNonTemplatedLabPreparations.PreparedByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PreparedBy\' in table \'NonTemplatedLabPreparations\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableNonTemplatedLabPreparations.PreparedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsBillInvoiceNumberNull() {
                 return this.IsNull(this.tableNonTemplatedLabPreparations.BillInvoiceNumberColumn);
             }
@@ -3882,6 +3946,30 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMicroscopyTypeeNull() {
                 this[this.tableNonTemplatedLabPreparations.MicroscopyTypeeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsScienticCommentNull() {
+                return this.IsNull(this.tableNonTemplatedLabPreparations.ScienticCommentColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetScienticCommentNull() {
+                this[this.tableNonTemplatedLabPreparations.ScienticCommentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPreparedByNull() {
+                return this.IsNull(this.tableNonTemplatedLabPreparations.PreparedByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPreparedByNull() {
+                this[this.tableNonTemplatedLabPreparations.PreparedByColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -27,5 +27,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public int? CollectedByID { get; set; }
         public string Specimen { get; set; }
         public string ServiceDepartment { get; set; }
+        public bool HasPaidAllBill { get; set; }
     }
 }

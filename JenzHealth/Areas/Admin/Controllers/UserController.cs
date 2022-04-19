@@ -67,13 +67,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "User added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "User updated successfully.";
             }
             ViewBag.Roles = new SelectList(db.Roles.Where(x => x.IsDeleted == false), "Id", "Description");
@@ -128,7 +128,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Updated == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Password changed successfully.";
             }
             return View();
@@ -159,13 +159,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Role added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Role updated successfully.";
             }
             ViewBag.Roles = _userService.GetRoles();
@@ -210,7 +210,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             {
                 ViewBag.ShowAlert = true;
                 TempData["AlertMessage"] = "Permissions updated successfully";
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
             }
             Nav.SavePermissionForRole(RoleID);
             ViewBag.RoleName = db.Roles.FirstOrDefault(x => x.Id == RoleID).Description;

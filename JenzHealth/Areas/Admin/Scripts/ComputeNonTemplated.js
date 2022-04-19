@@ -4,10 +4,9 @@ $(function () {
 
     // Set  Customer Type
     var selectedMicroscopy = $("input[name='MicroscopyType']:checked").val();
-
     var radios = $(".MicroscopyTypeStatus");
     $.each(radios, function (i, radio) {
-        if (selectedMicroscopy == "") {
+        if (selectedMicroscopy == undefined) {
             if (radio.id == "NA") {
                 radio.checked = true;
                 $("#WetAmountDiv").hide();
@@ -71,7 +70,7 @@ $(function () {
     var selectedStain = $("input[name='StainType']:checked").val();
     var radios = $(".StainTypeStatus");
     $.each(radios, function (i, radio) {
-        if (selectedStain == "") {
+        if (selectedStain == undefined) {
             if (radio.id == "GRAIN_STAIN") {
                 radio.checked = true;
                 $("#GrainStainDiv").show();

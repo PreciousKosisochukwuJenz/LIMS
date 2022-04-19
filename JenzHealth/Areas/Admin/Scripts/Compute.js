@@ -12,6 +12,7 @@
         }).then((result) => {
             if (result.value) {
                 var labnote = $("#labnote").val();
+                var comment = $("#comment").val();
                 var billnumber = $("#billnumber").val();
                 var specimencollectedID = $("#specimencollectedID").val();
 
@@ -38,7 +39,7 @@
                     url: 'UpdateLabResults',
                     method: 'Post',
                     dataType: "json",
-                    data: { results: results, labnote: labnote },
+                    data: { results: results, labnote: labnote, comment: comment },
                     success: function (response) {
                         Swal.fire({
                             title: 'Test computed duccessfully successfully',

@@ -52,6 +52,7 @@ $("#Search").click(function (e) {
                                     $("#ClinicalSummary").val(datas.ClinicalSummary)
                                     $("#ProvitionalDiagnosis").val(datas.ProvitionalDiagnosis)
                                     $("#OtherInformation").val(datas.OtherInformation)
+                                    $("#LabNumber").val(datas.LabNumber)
 
                                     $("#ServiceBody").empty()
 
@@ -192,7 +193,8 @@ $("#FinishBtn").click(function () {
                     RequestingPhysician: $("#RequestingPhysician").val(),
                     ClinicalSummary: $("#ClinicalSummary").val(),
                     ProvitionalDiagnosis: $("#ProvitionalDiagnosis").val(),
-                    OtherInformation: $("#OtherInformation").val()
+                    OtherInformation: $("#OtherInformation").val(),
+                    LabNumber: $("#LabNumber").val()
                 };
 
                 let ServiceList = [];

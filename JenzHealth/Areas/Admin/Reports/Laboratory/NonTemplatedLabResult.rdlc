@@ -469,7 +469,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>RESULT PREPARED BY:                  </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Prepared By</Label>
+                <Value>=First(Fields!PreparedBy.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2485,7 +2494,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Incubatio:           </Value>
+                <Value>Incubation:           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -3078,7 +3087,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAB NOTE:</Value>
+                <Value>SCIENTIST COMMENT:</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -3105,7 +3114,7 @@
             <TextRuns>
               <TextRun>
                 <Label>Lab note</Label>
-                <Value>=First(Fields!Labnote.Value, "NonTemplatedLabResultDataSet")</Value>
+                <Value>=First(Fields!ScienticComment.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -3185,8 +3194,45 @@
           </Border>
         </Style>
       </Image>
+      <Textbox Name="Textbox6">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>RESULT ENDS HERE.</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>29.40972in</Top>
+        <Left>0.4675in</Left>
+        <Height>0.5625in</Height>
+        <Width>6in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>29.40501in</Height>
+    <Height>30.13418in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -3681,6 +3727,14 @@
         </Field>
         <Field Name="MicroscopyTypee">
           <DataField>MicroscopyTypee</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ScienticComment">
+          <DataField>ScienticComment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PreparedBy">
+          <DataField>PreparedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

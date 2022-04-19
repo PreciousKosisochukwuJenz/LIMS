@@ -17,5 +17,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Template { get; set; }
         public string BillNumber { get; set; }
         public bool Templated { get; set; }
+        public bool HasBeenComputed { get; set; }
     }
 }

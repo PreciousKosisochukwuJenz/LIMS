@@ -89,6 +89,15 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="LabNumber">Lab Number</label>
+                            <div class="input-group input-group-seamless">
+                                @Html.EditorFor(model => model.LabNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Lab number" } })
+                                <div class="invalid-feedback">
+                                    LabNumber required
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

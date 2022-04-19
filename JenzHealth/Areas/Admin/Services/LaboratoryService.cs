@@ -13,15 +13,18 @@ namespace JenzHealth.Areas.Admin.Services
     {
         readonly DatabaseEntities _db;
         readonly ISeedService _seedService;
+        readonly IPaymentService _paymentService;
         public LaboratoryService()
         {
             _db = new DatabaseEntities();
             _seedService = new SeedService();
+            _paymentService = new PaymentService();
         }
         public LaboratoryService(DatabaseEntities db)
         {
             _db = db;
             _seedService = new SeedService(db);
+            _paymentService = new PaymentService(db, new UserService());
         }
 
         public ServiceParameterVM GetServiceParameter(string ServiceName)
@@ -163,6 +166,7 @@ namespace JenzHealth.Areas.Admin.Services
                 sampleExist.OtherInformation = specimenCollected.OtherInformation;
                 sampleExist.RequestingDate = specimenCollected.RequestingDate;
                 sampleExist.CollectedByID = Global.AuthenticatedUserID;
+                sampleExist.LabNumber = specimenCollected.LabNumber;
                 _db.Entry(sampleExist).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
                 specimenCollectionID = sampleExist.Id;
@@ -171,7 +175,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 var labCount = _db.ApplicationSettings.FirstOrDefault().LabCount;
                 labCount++;
-                var labnumber = string.Format("LAB/{0}", labCount.ToString("D6"));
+                //var labnumber = string.Format("LAB/{0}", labCount.ToString("D6"));
 
                 var specimenCollection = new SpecimenCollection()
                 {
@@ -183,7 +187,7 @@ namespace JenzHealth.Areas.Admin.Services
                     RequestingDate = specimenCollected.RequestingDate,
                     IsDeleted = false,
                     DateTimeCreated = DateTime.Now,
-                    LabNumber = labnumber,
+                    LabNumber = specimenCollected.LabNumber,
                     CollectedByID = Global.AuthenticatedUserID
                 };
 
@@ -281,13 +285,13 @@ namespace JenzHealth.Areas.Admin.Services
                 CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
                 DateTimeCreated = b.DateTimeCreated
             }).ToList();
-            foreach(var specimenColl in specimenCollected)
+            foreach (var specimenColl in specimenCollected)
             {
                 var specimens = this.GetCheckList(specimenColl.Id);
-                foreach(var spec in specimens)
+                foreach (var spec in specimens)
                 {
                     var parameterSetup = this.GetServiceParameter(spec.Service);
-                    if(parameterSetup.TemplateID == templateID)
+                    if (parameterSetup.TemplateID == templateID)
                     {
                         specimenColl.Specimen = parameterSetup.Specimen;
                         specimenColl.ServiceDepartment = _seedService.GetService((int)parameterSetup.ServiceID).ServiceDepartment.ToUpper();
@@ -322,6 +326,12 @@ namespace JenzHealth.Areas.Admin.Services
                     CustomerPhoneNumber = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
                     CustomerUniqueID = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
                 }).ToList();
+            List<SpecimenCollectionVM> DataToRemoveFromList = new List<SpecimenCollectionVM>();
+            foreach (var record in preparations)
+            {
+                record.HasPaidAllBill = _paymentService.CheckIfPaymentIsCompleted(record.BillInvoiceNumber);
+            }
+            preparations.RemoveAll(x => x.HasPaidAllBill == false);
             return preparations;
         }
         public SpecimenCollectionVM GetSpecimensForPreparation(int Id)
@@ -346,12 +356,33 @@ namespace JenzHealth.Areas.Admin.Services
                 BillNumber = b.InvoiceNumber,
                 Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters
             }).ToList();
-
             return model;
+        }
+        public bool CheckIfTestHasBeenComputed(int templateID, string billnumber)
+        {
+            var template = _db.Templates.FirstOrDefault(x => x.Id == templateID);
+            if (!template.UseDefaultParameters)
+            {
+                var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID).FirstOrDefault();
+                if (exist != null)
+                    return true;
+            }
+            else
+            {
+                var exist = _db.NonTemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber).FirstOrDefault();
+                if (exist != null)
+                    return true;
+            }
+            return false;
         }
         public List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices)
         {
-            return billedServices.Distinct(o => o.TemplateID).ToList();
+            var distinctTemplate = billedServices.Distinct(o => o.TemplateID).ToList();
+            foreach (var record in distinctTemplate)
+            {
+                record.HasBeenComputed = CheckIfTestHasBeenComputed((int)record.TemplateID, record.BillNumber);
+            }
+            return distinctTemplate;
         }
 
         public List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber)
@@ -376,11 +407,12 @@ namespace JenzHealth.Areas.Admin.Services
                 // Check for database record and map
                 foreach (var parametersetup in parameterSetups)
                 {
-                    var record = this.GetParamaterValue(billNumber,parametersetup.Id);
+                    var record = this.GetParamaterValue(billNumber, parametersetup.Id);
                     var range = _db.ServiceParameterRangeSetups.FirstOrDefault(x => x.Id == record.RangeID);
 
                     parametersetup.Value = record.Value;
                     parametersetup.Labnote = record.Labnote;
+                    parametersetup.ScientificComment = record.ScientificComment;
                     parametersetup.Range = range == null ? " " : range.Range;
                     parametersetup.Unit = range == null ? " " : range.Unit;
                 }
@@ -405,20 +437,40 @@ namespace JenzHealth.Areas.Admin.Services
                 model.Add(billservice);
             }
             model[0].Labnote = model[0].Parameters[0].Parameter.Labnote;
+            model[0].ScientificComment = model[0].Parameters[0].Parameter.ScientificComment;
 
             return model;
         }
         public List<TemplateServiceCompuationVM> GetTemplatedLabResultForReport(int templateID, string billnumber)
         {
             var result = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.IsDeleted == false && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID)
-                .Select(b => new TemplateServiceCompuationVM() { 
-                  Parameter = b.ServiceParameterSetup.Name,
-                  Value = b.Value,
-                  Unit = b.ServiceRange.Unit,
-                  Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
-                  Labnote = b.Labnote
+                .Select(b => new TemplateServiceCompuationVM()
+                {
+                    Parameter = b.ServiceParameterSetup.Name,
+                    Value = b.Value,
+                    Unit = b.ServiceRange.Unit,
+                    Range = b.ServiceRange.Range,
+                    Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
+                    Labnote = b.Labnote,
+                    ScientificComment = b.ScienticComment,
+                    PreparedBy =  b.PreparedBy.Firstname + " "+ b.PreparedBy.Lastname
                 }).ToList();
+
+            foreach (var item in result)
+            {
+                item.Status = GetStatusForTemplateReport(int.Parse(item.Value), item.Range);
+            }
             return result;
+        }
+        private string GetStatusForTemplateReport(int value, string range)
+        {
+            int[] rangeValues = Array.ConvertAll(range.Split('-'), rangeValue => int.Parse(rangeValue));
+            if (value < rangeValues[0])
+                return "LOW";
+            else if (value > rangeValues[1])
+                return "HIGH";
+            else
+                return "NORMAL";
         }
         public RequestComputedResultVM GetParamaterValue(string billnumber, int SetupID)
         {
@@ -427,14 +479,15 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     Value = b.Value,
                     RangeID = (int)b.ServiceRangeID,
-                    Labnote = b.Labnote
+                    Labnote = b.Labnote,
+                    ScientificComment = b.ScienticComment
                 }).FirstOrDefault();
             if (record != null)
                 return record;
             else
                 return new RequestComputedResultVM();
         }
-        public bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote)
+        public bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
         {
             foreach (var result in results)
             {
@@ -444,7 +497,10 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     exist.Value = result.Value;
                     exist.Labnote = labnote;
+                    exist.ScienticComment = comment;
                     exist.ServiceRangeID = result.RangeID;
+                    exist.PreparedByID = Global.AuthenticatedUserID;
+
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
                 }
                 else
@@ -457,8 +513,10 @@ namespace JenzHealth.Areas.Admin.Services
                         Value = result.Value,
                         ServiceRangeID = result.RangeID,
                         Labnote = labnote,
+                        ScienticComment = comment,
                         IsDeleted = false,
-                        DateCreated = DateTime.Now
+                        DateCreated = DateTime.Now,
+                        PreparedByID = Global.AuthenticatedUserID
                     };
                     _db.TemplatedLabPreparations.Add(templateLabPreparation);
                 }
@@ -527,7 +585,7 @@ namespace JenzHealth.Areas.Admin.Services
                 OthersResult = b.OthersResult,
                 Ova = b.Ova,
                 PH = b.PH,
-                Protozoa = b.Protozoa,  
+                Protozoa = b.Protozoa,
                 PusCells = b.PusCells,
                 RedBloodCells = b.RedBloodCells,
                 TimeExamined = b.TimeExamined,
@@ -622,9 +680,11 @@ namespace JenzHealth.Areas.Admin.Services
                 WetMountYesats = b.WetMountYesats,
                 WhiteBloodCells = b.WhiteBloodCells,
                 YeastCells = b.YeastCells,
-                ZiehlOthers = b.ZiehlOthers
+                ZiehlOthers = b.ZiehlOthers,
+                ScienticComment = b.ScienticComment,
+                PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname
             }).ToList();
-            foreach(var item in model)
+            foreach (var item in model)
             {
                 item.MicroscopyTypee = item.MicroscopyType.DisplayName();
                 item.StainTypee = item.StainType.DisplayName();
@@ -635,7 +695,7 @@ namespace JenzHealth.Areas.Admin.Services
         public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
         {
             var checkResultIfExist = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == vmodel.BillInvoiceNumber).FirstOrDefault();
-            if(checkResultIfExist != null)
+            if (checkResultIfExist != null)
             {
                 checkResultIfExist.IsDeleted = true;
                 _db.Entry(checkResultIfExist).State = System.Data.Entity.EntityState.Modified;
@@ -713,8 +773,10 @@ namespace JenzHealth.Areas.Admin.Services
                 WhiteBloodCells = vmodel.WhiteBloodCells,
                 YeastCells = vmodel.YeastCells,
                 ZiehlOthers = vmodel.ZiehlOthers,
+                ScienticComment = vmodel.ScienticComment,
                 IsDeleted = false,
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.Now,
+                PreparedByID = Global.AuthenticatedUserID
             };
             _db.NonTemplatedLabPreparations.Add(model);
             _db.SaveChanges();
@@ -723,7 +785,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 foreach (var organism in organisms)
                 {
-                    if(checkResultIfExist != null)
+                    if (checkResultIfExist != null)
                     {
                         var checkIfOrganismExist = _db.NonTemplatedLabResultOrganismXAntibiotics.FirstOrDefault(x => x.IsDeleted == false && x.OrganismID == organism.OrganismID && x.NonTemplateLabResultID == checkResultIfExist.Id);
                         if (checkIfOrganismExist != null)
@@ -733,7 +795,7 @@ namespace JenzHealth.Areas.Admin.Services
                             _db.SaveChanges();
                         }
                     }
-                  
+
                     var organismModel = new NonTemplatedLabResultOrganismXAntibiotics()
                     {
                         AntiBioticID = organism.AntiBioticID,
@@ -760,7 +822,7 @@ namespace JenzHealth.Areas.Admin.Services
                 {
                     Id = b.Id,
                     NonTemplateLabResultID = b.NonTemplateLabResultID,
-                    SensitiveDegree = b.SensitiveDegree == null ? "N/A": b.SensitiveDegree,
+                    SensitiveDegree = b.SensitiveDegree == null ? "N/A" : b.SensitiveDegree,
                     IsSensitive = b.IsSensitive,
                     IsResistance = b.IsResistance,
                     AntiBioticID = b.AntiBioticID,

@@ -53,7 +53,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Customer Billing Invoice</Value>
+                <Value>Customer Bill Invoice</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -290,7 +290,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>INVOICE NUMBER: </Value>
+                <Value>BILL NUMBER: </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -959,7 +959,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>

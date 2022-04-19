@@ -79,13 +79,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = string.Format("Bill was generated successfully for inoivce number '{0}'.", invoicenumber);
             }
             if (Updated == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = string.Format("Bill was re-generated successfully for inoivce number '{0}'.", invoicenumber); ;
             }
             ViewBag.SearchBy = new SelectList(CustomData.SearchBy, "Value", "Text");
@@ -122,7 +122,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Amount was waived successfully.";
             }
             return View();
@@ -146,7 +146,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Part payment was mapped successfully.";
             }
             return View();
@@ -161,7 +161,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Deposited successfully.";
             }
             return View();
@@ -182,7 +182,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Cash Collected successfully.";
             }
             return View();
@@ -258,7 +258,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Refund was successfully.";
             }
             return View();
@@ -273,7 +273,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Reciept cancelled successfully.";
             }
             return View();

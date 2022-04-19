@@ -106,7 +106,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Saved == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Result computation saved successfully";
             }
             var record = _laboratoryService.GetSpecimensForPreparation(ID);
@@ -135,9 +135,9 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View();
         }
 
-        public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote)
+        public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
         {
-            var status = _laboratoryService.UpdateLabResults(results, labnote);
+            var status = _laboratoryService.UpdateLabResults(results, labnote, comment);
             return Json(status, JsonRequestBehavior.AllowGet);
         }
         public JsonResult UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)

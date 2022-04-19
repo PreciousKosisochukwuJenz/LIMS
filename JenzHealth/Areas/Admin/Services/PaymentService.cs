@@ -30,7 +30,7 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var billCount = _db.ApplicationSettings.FirstOrDefault().BillCount;
             billCount++;
-            var invoiceNumber = string.Format("BILL/{0}", billCount.ToString("D6"));
+            var invoiceNumber = string.Format("BN{0}", billCount.ToString("D6"));
 
             foreach (var service in serviceList)
             {
@@ -147,14 +147,14 @@ namespace JenzHealth.Areas.Admin.Services
 
             var bill = _db.Billings.Where(x => x.IsDeleted == false && x.InvoiceNumber == billnumber).Select(b => new BillDetailsVM()
             {
-                BilledBy = b.BilledBy.Firstname + " "+ b.BilledBy.Lastname,
+                BilledBy = b.BilledBy.Firstname + " " + b.BilledBy.Lastname,
                 BillInvoiceNumber = b.InvoiceNumber.ToUpper(),
             }).FirstOrDefault();
             var waived = GetWaivedAmountForBillInvoiceNumber(billnumber);
             decimal waivedAmount = 0;
             if (waived != null)
                 waivedAmount = waived.WaiveAmount;
-        
+
             bill.WaivedAmount = waivedAmount;
             bill.NetAmount = GetBillServices(billnumber).Sum(x => x.GrossAmount);
             bill.BalanceAmount = (bill.NetAmount - bill.WaivedAmount);
@@ -210,7 +210,7 @@ namespace JenzHealth.Areas.Admin.Services
                 PartPaymentAmount = b.PartPaymentAmount,
                 IsPaidPartPayment = b.IsPaidPartPayment,
             }).ToList();
-            foreach(var partpayment in model)
+            foreach (var partpayment in model)
             {
                 partpayment.HasPaid = this.HasPaidInstallment(partpayment.Id);
             }
@@ -269,7 +269,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Description = vmodel.Description,
                 PaymentType = vmodel.PaymentType,
                 ReferenceNumber = vmodel.ReferenceNumber,
-                DepositeReciept = String.Format("TR/{0}", depositeCount.ToString("D6")),
+                DepositeReciept = String.Format("DP{0}", depositeCount.ToString("D6")),
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
                 DepositedByID = Global.AuthenticatedUserID
@@ -307,7 +307,7 @@ namespace JenzHealth.Areas.Admin.Services
                         PartPaymentID = vmodel.PartPaymentID,
                         PaymentType = vmodel.PaymentType,
                         ShiftID = shift.Id,
-                        PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6")),
+                        PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
                         CollectedByID = Global.AuthenticatedUserID
                     };
                     _db.CashCollections.Add(billCashCollection);
@@ -344,7 +344,7 @@ namespace JenzHealth.Areas.Admin.Services
                             PartPaymentID = vmodel.PartPaymentID,
                             InstallmentType = "FULL",
                             ShiftID = shift.Id,
-                            PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6")),
+                            PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
                             CollectedByID = Global.AuthenticatedUserID
                         };
 
@@ -379,7 +379,7 @@ namespace JenzHealth.Areas.Admin.Services
                             PartPaymentID = vmodel.PartPaymentID,
                             InstallmentType = "FULL",
                             ShiftID = shift.Id,
-                            PaymentReciept = String.Format("TR/{0}", paymentCount.ToString("D6")),
+                            PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
                             CollectedByID = Global.AuthenticatedUserID
                         };
 
@@ -411,7 +411,7 @@ namespace JenzHealth.Areas.Admin.Services
                 CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
                 ShiftNumber = b.Shift.ShiftUniqueID
             }).ToList();
-            foreach(var payment in payments)
+            foreach (var payment in payments)
             {
                 payment.PaymentTypee = payment.PaymentType.DisplayName();
                 var waived = GetWaivedAmountForBillInvoiceNumber(payment.BillInvoiceNumber);
@@ -568,6 +568,17 @@ namespace JenzHealth.Areas.Admin.Services
             }
 
             return totalbillamount;
+        }
+
+        public bool CheckIfPaymentIsCompleted(string billnumber)
+        {
+            var totalAmountToPay = GetBillingDetails(billnumber).FirstOrDefault().BalanceAmount;
+            var totalAmountPaid = GetTotalPaidBillAmount(billnumber);
+
+            if (totalAmountPaid != totalAmountToPay)
+                return false;
+            else
+                return true;
         }
     }
 
