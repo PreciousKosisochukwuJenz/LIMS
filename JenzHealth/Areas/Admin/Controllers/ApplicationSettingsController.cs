@@ -72,7 +72,7 @@ namespace JenzHealth.Areas.Admin.Controllers
                 {
                     ViewBag.ShowAlert = true;
                     TempData["AlertMessage"] = "Application settings updated successfully.";
-                    TempData["AlertType"] = "alert-success";
+                    TempData["AlertType"] = "alert-primary";
                 }
             }
             return View(_settingService.GetApplicationSettings());

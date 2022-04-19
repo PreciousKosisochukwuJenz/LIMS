@@ -12,8 +12,13 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Service { get; set; }
         public string Parameter { get; set; }
         public string Labnote { get; set; }
+        public string ScientificComment { get; set; }
+        public string Range { get; set; }
+        public string Status { get; set; }
         public string Value { get; set; }
         public string Unit { get; set; }
+        public int PreparedByID { get; set; }
+        public string PreparedBy { get; set; }
         public List<ServiceParameterAndRange> Parameters { get; set; }
     }
     public class ServiceParameterAndRange

@@ -32,5 +32,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         void CancelReciept(CashCollectionVM vmodel);
         List<CashCollectionVM> GetPaymentDetails(string recieptnumber);
         decimal GetTotalPaidBillAmount(string billnumber);
+        bool CheckIfPaymentIsCompleted(string billnumber);
     }
 }

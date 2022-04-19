@@ -66,13 +66,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Revenue department added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Revenue department updated successfully.";
             }
             ViewBag.RevenueDepartments = _seedService.GetRevenueDepartment();
@@ -121,13 +121,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Service department added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Service department updated successfully.";
             }
             ViewBag.ServiceDepartments = _seedService.GetServiceDepartment();
@@ -182,13 +182,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Priviledge added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Priviledge updated successfully.";
             }
             ViewBag.Priviledges = _seedService.GetPriviledges();
@@ -237,13 +237,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Template added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Template updated successfully.";
             }
             ViewBag.ServiceDepartments = new SelectList(db.ServiceDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
@@ -301,13 +301,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Vendor added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Vendor updated successfully.";
             }
             ViewBag.Vendors = _seedService.GetVendors();
@@ -357,13 +357,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Service added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Service updated successfully.";
             }
             ViewBag.ServiceDepartments = new SelectList(db.ServiceDepartments.Where(x => x.IsDeleted == false), "Id", "Name");
@@ -438,13 +438,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Specimen added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Specimen updated successfully.";
             }
             ViewBag.Specimens = _seedService.GetSpecimens();
@@ -494,13 +494,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Organism added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Organism updated successfully.";
             }
             ViewBag.Organisms = _seedService.GetOrganisms();
@@ -550,13 +550,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "AntiBotic added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "AntiBotic updated successfully.";
             }
             var data = (AntiBioticVM)TempData["AntiBiotic"];

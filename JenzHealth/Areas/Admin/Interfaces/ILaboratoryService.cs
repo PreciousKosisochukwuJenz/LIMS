@@ -23,7 +23,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ServiceParameterVM> GetServicesToPrepare(string invoiceNumber);
         List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices);
         List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber);
-        bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote);
+        bool UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment);
         NonTemplatedLabPreparationVM GetNonTemplatedLabPreparation(string billnumber);
         List<NonTemplatedLabPreparationVM> GetNonTemplatedLabPreparationForReport(string billnumber);
         bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms);

@@ -83,7 +83,11 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string KOHPrepareation { get; set; }
         public string KOHResult { get; set; }
         public string OtherStainResult { get; set; }
+        public string ScienticComment { get; set; }
+
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
+        public int? PreparedByID { get; set; }
+        public string PreparedBy { get; set; }
     }
 }

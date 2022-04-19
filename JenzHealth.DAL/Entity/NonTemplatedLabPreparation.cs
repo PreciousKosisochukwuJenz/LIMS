@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,5 +83,11 @@ namespace JenzHealth.DAL.Entity
         public string OtherStainResult { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
+        public string ScienticComment { get; set; }
+        public int? PreparedByID { get; set; }
+
+
+        [ForeignKey("PreparedByID")]
+        public User PreparedBy { get; set; }
     }
 }

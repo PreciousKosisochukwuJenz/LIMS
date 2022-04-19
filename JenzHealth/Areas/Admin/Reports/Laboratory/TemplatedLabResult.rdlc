@@ -47,8 +47,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>2.17485in</Top>
-        <Left>0.10289in</Left>
+        <Top>1.99418in</Top>
+        <Left>0.10354in</Left>
         <Height>0.64458in</Height>
         <Width>6.86223in</Width>
         <Style>
@@ -241,8 +241,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.87499in</Top>
-        <Left>0.10289in</Left>
+        <Top>2.69431in</Top>
+        <Left>0.10224in</Left>
         <Height>1.87153in</Height>
         <Width>6.86223in</Width>
         <ZIndex>1</ZIndex>
@@ -469,7 +469,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>RESULT PREPARED BY:                 </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Prepared By</Label>
+                <Value>=First(Fields!PreparedBy.Value, "TemplatedDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -498,8 +507,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>4.7743in</Top>
-        <Left>0.10289in</Left>
+        <Top>4.59362in</Top>
+        <Left>0.10224in</Left>
         <Height>2.59723in</Height>
         <Width>6.86223in</Width>
         <ZIndex>2</ZIndex>
@@ -579,7 +588,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>TEST PARAMETER DETAILS</Value>
+                <Value>INVESTIGATION RESULT</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -593,8 +602,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>7.44097in</Top>
-        <Left>0.10289in</Left>
+        <Top>7.26029in</Top>
+        <Left>0.10224in</Left>
         <Height>0.32861in</Height>
         <Width>6.86223in</Width>
         <ZIndex>5</ZIndex>
@@ -612,13 +621,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.9263in</Width>
+              <Width>1.45755in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.65547in</Width>
+              <Width>1.41589in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.35417in</Width>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.85481in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.71966in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -697,6 +712,41 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Range</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>14pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -718,6 +768,41 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Status</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>14pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -805,6 +890,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Range">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Range.Value</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Range</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Unit">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -837,6 +956,40 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Status">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Status.Value</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Status</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
@@ -846,13 +999,15 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.9263in</Size>
+                <Size>1.41432in</Size>
                 <CellContents>
                   <Textbox Name="Textbox13">
                     <CanGrow>true</CanGrow>
@@ -904,7 +1059,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.9263in</Size>
+                <Size>1.41432in</Size>
                 <CellContents>
                   <Textbox Name="Service1">
                     <CanGrow>true</CanGrow>
@@ -947,8 +1102,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>TemplatedDataSet</DataSetName>
-        <Top>7.83903in</Top>
-        <Left>0.10289in</Left>
+        <Top>7.65835in</Top>
+        <Left>0.10224in</Left>
         <Height>0.5in</Height>
         <Width>6.86223in</Width>
         <ZIndex>6</ZIndex>
@@ -965,7 +1120,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAB NOTE:</Value>
+                <Value>SCIENTIST COMMENT:</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -992,7 +1147,7 @@
             <TextRuns>
               <TextRun>
                 <Label>Lab note</Label>
-                <Value>=First(Fields!Labnote.Value, "TemplatedDataSet")</Value>
+                <Value>=First(Fields!ScienticComment.Value, "TemplatedDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
@@ -1004,8 +1159,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>8.515in</Top>
-        <Left>0.10354in</Left>
+        <Top>8.33432in</Top>
+        <Left>0.10289in</Left>
         <Height>1.38542in</Height>
         <Width>6.86223in</Width>
         <ZIndex>7</ZIndex>
@@ -1019,8 +1174,45 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>RESULT ENDS HERE.</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>22pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox6</rd:DefaultName>
+        <Top>9.7753in</Top>
+        <Left>0.73257in</Left>
+        <Height>0.5625in</Height>
+        <Width>6in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>10.22791in</Height>
+    <Height>10.47791in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -1032,7 +1224,7 @@
       </BackgroundImage>
     </Style>
   </Body>
-  <Width>7.06932in</Width>
+  <Width>7.46513in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -1324,6 +1516,22 @@
         </Field>
         <Field Name="Labnote">
           <DataField>Labnote</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Range">
+          <DataField>Range</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ScienticComment">
+          <DataField>ScienticComment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PreparedBy">
+          <DataField>PreparedBy</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

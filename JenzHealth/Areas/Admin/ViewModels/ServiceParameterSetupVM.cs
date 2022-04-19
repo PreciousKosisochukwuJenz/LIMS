@@ -14,6 +14,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Unit { get; set; }
         public string Range { get; set; }
         public string Labnote { get; set; }
+        public string ScientificComment { get; set; }
         public int Rank { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }

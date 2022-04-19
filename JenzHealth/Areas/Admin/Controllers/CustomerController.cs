@@ -66,13 +66,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (Added == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Customer with unique ID -  "+  uID +"   - added successfully.";
             }
             if (Editted == true)
             {
                 ViewBag.ShowAlert = true;
-                TempData["AlertType"] = "alert-success";
+                TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "Customer updated successfully.";
             }
             ViewBag.GenderList = new SelectList(CustomData.GenderList, "Value", "Text");

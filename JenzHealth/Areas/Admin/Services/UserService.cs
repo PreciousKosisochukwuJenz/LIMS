@@ -260,7 +260,7 @@ namespace JenzHealth.Areas.Admin.Services
                 UserID = userID,
                 DateTimeCreated = DateTime.Now,
                 ExpiresDateTime = DateTime.Now.Date.AddSeconds(86400 - 1),
-                ShiftUniqueID = String.Format("SHT/{0}", shiftCount.ToString("D6")),
+                ShiftUniqueID = String.Format("SHT{0}", shiftCount.ToString("D6")),
                 HasExpired = false,
             };
             _db.Shifts.Add(shift);

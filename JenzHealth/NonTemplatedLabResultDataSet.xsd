@@ -728,6 +728,8 @@
               <xs:element name="Template" msprop:Generator_ColumnVarNameInTable="columnTemplate" msprop:Generator_ColumnPropNameInRow="Template" msprop:Generator_ColumnPropNameInTable="TemplateColumn" msprop:Generator_UserColumnName="Template" type="xs:string" minOccurs="0" />
               <xs:element name="StainTypee" msprop:Generator_ColumnVarNameInTable="columnStainTypee" msprop:Generator_ColumnPropNameInRow="StainTypee" msprop:Generator_ColumnPropNameInTable="StainTypeeColumn" msprop:Generator_UserColumnName="StainTypee" type="xs:string" minOccurs="0" />
               <xs:element name="MicroscopyTypee" msprop:Generator_ColumnVarNameInTable="columnMicroscopyTypee" msprop:Generator_ColumnPropNameInRow="MicroscopyTypee" msprop:Generator_ColumnPropNameInTable="MicroscopyTypeeColumn" msprop:Generator_UserColumnName="MicroscopyTypee" type="xs:string" minOccurs="0" />
+              <xs:element name="ScienticComment" msprop:Generator_ColumnVarNameInTable="columnScienticComment" msprop:Generator_ColumnPropNameInRow="ScienticComment" msprop:Generator_ColumnPropNameInTable="ScienticCommentColumn" msprop:Generator_UserColumnName="ScienticComment" type="xs:string" minOccurs="0" />
+              <xs:element name="PreparedBy" msprop:Generator_ColumnVarNameInTable="columnPreparedBy" msprop:Generator_ColumnPropNameInRow="PreparedBy" msprop:Generator_ColumnPropNameInTable="PreparedByColumn" msprop:Generator_UserColumnName="PreparedBy" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -740,7 +740,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="socialGitHub">Incubatio</label>
+                                <label for="socialGitHub">Incubation</label>
                                 <div class="input-group input-group-seamless">
                                     @Html.EditorFor(model => model.Incubatio, new { htmlAttributes = new { @class = "form-control", placeholder = "", required = true } })
                                     <div class="invalid-feedback">
@@ -794,13 +794,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group col-md-12">
+                            <label for="ScienticComment">Scientic Comment</label>
+                            <div class="input-group input-group-seamless">
+                                @Html.TextAreaFor(model => model.ScienticComment, 5, 0, new { @class = "form-control", placeholder = "", required = true })
+                                <div class="invalid-feedback">
+                                    Scientic comment required
+                                </div>
+                            </div>
+                        </div>
                         <input type="hidden" id="billnumber" name="BillInvoiceNumber" value="@TempData["BillNumber"]" />
                         <input type="hidden" id="SpecimenCollectedID" name="SpecimenCollectedID" value="@TempData["SpecimenCollectedID"]" />
                         @*<div class="col-md-12 text-center">
-                                <button class="btn btn-primary" id="FinishBtn" type="button">
-                                    Save
-                                </button>
-                            </div>*@
+            <button class="btn btn-primary" id="FinishBtn" type="button">
+                Save
+            </button>
+        </div>*@
                     </div>
                 </section>
             </div>
