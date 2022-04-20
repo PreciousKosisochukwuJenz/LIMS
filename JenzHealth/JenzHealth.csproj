@@ -17,7 +17,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44307</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Scripts\AntiBiotic.js" />
+    <Content Include="Areas\Admin\Scripts\ApproveResult.js" />
     <Content Include="Areas\Admin\Scripts\Billings.js" />
     <Content Include="Areas\Admin\Scripts\CashCollections.js" />
     <Content Include="Areas\Admin\Scripts\Compute.js" />
@@ -170,12 +172,14 @@
     <Content Include="Content\css\all.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\extras.1.3.1.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\jquery-step.css" />
     <Content Include="Content\css\jquery.autocomplete.css" />
     <Content Include="Content\css\responsive.dataTables.min.css" />
     <Content Include="Content\css\shards-dashboards.1.3.1.min.css" />
     <Content Include="Content\css\toastr.css" />
     <Content Include="Content\fonts\font.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\Labrole.jpg" />
     <Content Include="Content\images\Logo.jpg" />
@@ -298,6 +302,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\BillDetailsVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\SettingsDataSetVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ResultApprovalVM.cs" />
     <Compile Include="BillingDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -500,6 +505,9 @@
     <Content Include="BillingDataSet.xsc">
       <DependentUpon>BillingDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Laboratory\ResultApproval.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\ComputeTemplatedResult.cshtml" />
+    <Content Include="Areas\Admin\Views\Laboratory\ComputeNonTemplatedResult.cshtml" />
     <None Include="BillingDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BillingDataSet.Designer.cs</LastGenOutput>
@@ -519,6 +527,11 @@
     <Content Include="BillingDetailsDataSet.xss">
       <DependentUpon>BillingDetailsDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="CustomerDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CustomerDataSet.Designer.cs</LastGenOutput>
@@ -654,7 +667,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57894</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44388/</IISUrl>
+          <IISUrl>http://localhost:44388/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

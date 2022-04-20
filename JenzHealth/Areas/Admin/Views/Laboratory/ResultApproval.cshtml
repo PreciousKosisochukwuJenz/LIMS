@@ -1,0 +1,118 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.ResultApprovalVM
+@{
+    ViewBag.Title = "Result Approval";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Result Approval</h3>
+    </div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+        <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Computed Test
+                </h6>
+                <br />
+                <div class="m-0">
+                    @using (Html.BeginForm("ResultApproval", "Laboratory", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="socialGitHub">Search By</label>
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="material-icons">bloodtype</i>
+                                        </div>
+                                    </div>
+                                    @Html.EditorFor(model => model.BillNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter bill invoice number " } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button class="btn btn-primary">
+                                    <i class="material-icons">search</i> Search
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex ml-lg-auto my-auto">
+                                    <div class="btn-group btn-group-sm mr-2 ml-lg-auto" role="group" aria-label="Table row actions">
+                                        <button type="button" class="btn btn-white" onclick="window.location.reload(true);">
+                                            <i class="fa fa-1x fa-retweet"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+            <table class="transaction-history d-none" style="white-space:nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">S/N</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Template</th>
+                        <th scope="col">Approved?</th>
+                        <th scope="col">Approved By?</th>
+                        <th scope="col">Date Approved</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (ViewBag.TableData != null)
+                        {
+                            var counter = 0;
+                            foreach (var row in ViewBag.TableData)
+                            {
+                                counter++;
+                                        <tr>
+                                            <td>@counter</td>
+                                            <td>@row.Service</td>
+                                            <td>@row.Template</td>
+                                            <td>
+                                                @if (!row.HasApproved)
+                                                {
+                                                    <i class="fa fa-close fa-2x text-danger"></i>
+                                                }
+                                                else
+                                                {
+                                                   <i class="fa fa-check fa-2x text-success"></i>
+                                                }
+                                            </td>
+                                            <td>@row.ApprovedBy</td>
+                                            <td>@row.DateApproved</td>
+                                            <td>
+                                                @if (!row.HasApproved)
+                                                {
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+                                                        <a href="@Url.Action("ComputedResult",new{serviceParameterID = row.ServiceParameterID, billnumber = row.BillNumber, templateID = row.TemplateID, Id = row.Id })" class="btn btn-white" title="Click to vet and approve">
+                                                            <i class="material-icons">&#xE870;</i> Vet and Approve
+                                                        </a>
+                                                    </div>
+                                                }
+
+                                            </td>
+                                        </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Preparations.js"></script>
+}
+

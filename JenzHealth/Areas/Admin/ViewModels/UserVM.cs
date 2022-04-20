@@ -18,6 +18,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
         public bool IsDeleted { get; set; }
+        public bool RememberMe { get; set; }
         public bool IsActive { get; set; }
         public DateTime DateCreated { get; set; }
         public int? RoleID { get; set; }

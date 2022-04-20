@@ -3,6 +3,7 @@ using JenzHealth.Areas.Admin.Services;
 using JenzHealth.Areas.Admin.ViewModels;
 using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace JenzHealth.Controllers
             var user = _userService.CheckCreditials(userVM);
             if (user.Count > 0)
             {
-                LoginSession(user);
+                LoginSession(user, userVM.RememberMe);
                 if (Session["UserId"] != null)
                 {
                     Global.AuthenticatedUserID = Convert.ToInt32(Session["UserId"].ToString());
@@ -77,6 +78,9 @@ namespace JenzHealth.Controllers
             {
                 Session.Clear();
             }
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+            authManager.SignOut();
             return RedirectToAction("Login", "Account", new { area = "" });
         }
         public JsonResult CheckSessionExists()
@@ -98,7 +102,7 @@ namespace JenzHealth.Controllers
         #endregion
         // Methods
         #region Methods
-        public void LoginSession(List<User> user)
+        public void LoginSession(List<User> user, bool rememberMe)
         {
             var Firstname = user.FirstOrDefault().Firstname;
             var Lastname = user.FirstOrDefault().Lastname;
@@ -110,19 +114,23 @@ namespace JenzHealth.Controllers
             var RoleID = user.FirstOrDefault().RoleID;
 
             var identity = new ClaimsIdentity(new[] {
-                    new Claim(ClaimTypes.Name, Firstname),
-                    new Claim(ClaimTypes.Name, Lastname),
-                    new Claim(ClaimTypes.DateOfBirth, DateCreated.ToString()),
                     new Claim(ClaimTypes.Email, Email),
-                    new Claim(ClaimTypes.PrimarySid, ID.ToString()),
                     new Claim(ClaimTypes.Name, Username)
                 },
                 "ApplicationCookie");
 
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
+            var option = new AuthenticationProperties()
+            {
+                IsPersistent = rememberMe,
+                RedirectUri = "~/Admin/Home/Home",
+                IssuedUtc = DateTime.Now,
+                ExpiresUtc = DateTime.Now.AddDays(7),
+                AllowRefresh = true
+            };
+            authManager.SignIn(option,identity);
 
-            authManager.SignIn(identity);
             Session["UserId"] = ID.ToString();
             Session["Username"] = Username;
             Session["DateCreated"] = Convert.ToDateTime(DateCreated).ToLongDateString();

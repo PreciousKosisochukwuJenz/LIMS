@@ -40,6 +40,7 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/Preparations",stringText:"Preparations", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.Preparations", childMenus: null),
+                new Menu(url: "/Admin/Laboratory/ResultApproval",stringText:"Result Approval", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.ResultApproval", childMenus: null),
             }),
 
              // Seed
@@ -93,6 +94,7 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Laboratory/ParameterSetups",stringText:"Parameter Setups", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.parametersetups", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/SpecimenCollections",stringText:"Specimen Collections", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.specimencollection", childMenus: null),
                 new Menu(url: "/Admin/Laboratory/Preparations",stringText:"Preparations", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.Preparations", childMenus: null),
+                new Menu(url: "/Admin/Laboratory/ResultApproval",stringText:"Result Approval", icon: null ?? defaultIcon, isMenu: true,claim: "laboratory.ResultApproval", childMenus: null),
             }),
 
              // Seed
@@ -163,13 +165,16 @@ namespace JenzHealth.Areas.Admin.Components
                     {
                         foreach (var submenu in menu._childMenus)
                         {
-                            var childpermission = new Permission()
+                            if (!CheckPermissionExist(submenu._stringText))
                             {
-                                Description = submenu._stringText,
-                                Claim = submenu._claim,
-                                Url = submenu._url
-                            };
-                            model.Add(childpermission);
+                                var childpermission = new Permission()
+                                {
+                                    Description = submenu._stringText,
+                                    Claim = submenu._claim,
+                                    Url = submenu._url
+                                };
+                                model.Add(childpermission);
+                            }
                         }
                     }
                     db.Permissions.AddRange(model);
@@ -180,11 +185,35 @@ namespace JenzHealth.Areas.Admin.Components
                     permission.Description = menu._stringText;
                     permission.Claim = menu._claim;
                     permission.Url = menu._url;
-
                     db.Entry(permission).State = System.Data.Entity.EntityState.Modified;
+
+                    if (menu._childMenus.Count > 0)
+                    {
+                        foreach (var submenu in menu._childMenus)
+                        {
+                            if (!CheckPermissionExist(submenu._stringText))
+                            {
+                                var childpermission = new Permission()
+                                {
+                                    Description = submenu._stringText,
+                                    Claim = submenu._claim,
+                                    Url = submenu._url
+                                };
+                                db.Permissions.Add(childpermission);
+                            }
+                            else
+                            {
+                                var childpermission = db.Permissions.Where(x => x.Description == submenu._stringText).FirstOrDefault();
+                                childpermission.Description = submenu._stringText;
+                                childpermission.Claim = submenu._claim;
+                                childpermission.Url = submenu._url;
+                                db.Entry(childpermission).State = System.Data.Entity.EntityState.Modified;
+                            }
+                        }
+                    }
                 }
+                db.SaveChanges();
             }
-            db.SaveChanges();
         }
 
         public static void GetRolePermissionMenu(List<Menu> applicationMenus, List<RolePermission> permissionMenus)

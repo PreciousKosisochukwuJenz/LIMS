@@ -85,9 +85,12 @@ namespace JenzHealth.DAL.Entity
         public DateTime DateCreated { get; set; }
         public string ScienticComment { get; set; }
         public int? PreparedByID { get; set; }
+        public int? ServiceID { get; set; }
 
 
         [ForeignKey("PreparedByID")]
         public User PreparedBy { get; set; }
+        [ForeignKey("ServiceID")]
+        public Service Service { get; set; }
     }
 }

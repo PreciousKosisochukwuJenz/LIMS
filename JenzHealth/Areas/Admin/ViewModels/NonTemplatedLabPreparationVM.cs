@@ -89,5 +89,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime DateCreated { get; set; }
         public int? PreparedByID { get; set; }
         public string PreparedBy { get; set; }
+        public string Service { get; set; }
+        public int? ServiceID { get; set; }
     }
 }
