@@ -19,6 +19,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Unit { get; set; }
         public int PreparedByID { get; set; }
         public string PreparedBy { get; set; }
+        public DateTime? DatePrepared { get; set; }
+        public string Specimen { get; set; }
+        public string Labnumber { get; set; }
         public List<ServiceParameterAndRange> Parameters { get; set; }
     }
     public class ServiceParameterAndRange

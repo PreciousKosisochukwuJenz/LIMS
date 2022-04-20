@@ -48,6 +48,7 @@ namespace JenzHealth.DAL.DataConnection
         public virtual DbSet<TemplatedLabPreparation> TemplatedLabPreparations { get; set; }
         public virtual DbSet<NonTemplatedLabPreparation> NonTemplatedLabPreparations { get; set; }
         public virtual DbSet<NonTemplatedLabResultOrganismXAntibiotics> NonTemplatedLabResultOrganismXAntibiotics { get; set; }
+        public virtual DbSet<ResultApproval> ResultApprovals { get; set; }
  
     }
 }

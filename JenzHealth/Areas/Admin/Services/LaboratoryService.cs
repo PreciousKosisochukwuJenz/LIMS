@@ -43,6 +43,23 @@ namespace JenzHealth.Areas.Admin.Services
 
             return model;
         }
+
+        public ServiceParameterVM GetServiceParameter(int serviceID)
+        {
+            var model = _db.ServiceParameters.Where(x => x.ServiceID == serviceID).Select(b => new ServiceParameterVM()
+            {
+                Id = b.Id,
+                ServiceID = b.ServiceID,
+                Service = b.Service.Description,
+                SpecimenID = b.SpecimenID,
+                Specimen = b.Specimen.Name,
+                TemplateID = b.TemplateID,
+                Template = b.Template.Name,
+                RequireApproval = b.RequireApproval,
+            }).FirstOrDefault();
+
+            return model;
+        }
         public void UpdateParamterSetup(ServiceParameterVM serviceParamter, List<ServiceParameterSetupVM> paramterSetups)
         {
             var ExistingServiceParamterExist = _db.ServiceParameters.Where(x => x.Service.Description == serviceParamter.Service).FirstOrDefault();
@@ -106,7 +123,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Id = b.Id,
                 Name = b.Name,
                 Rank = b.Rank,
-                ServiceParameterID = b.ServiceParameterID
+                ServiceParameterID = b.ServiceParameterID,
             }).ToList();
             return serviceparamtersetups;
         }
@@ -491,10 +508,12 @@ namespace JenzHealth.Areas.Admin.Services
         {
             foreach (var result in results)
             {
-                var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == result.BillInvoiceNumber && x.IsDeleted == false && x.ServiceParameterSetupID == result.KeyID).FirstOrDefault();
+                string service =  string.Empty;
+                var existData = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == result.BillInvoiceNumber && x.IsDeleted == false && x.ServiceParameterSetupID == result.KeyID);
 
-                if (exist != null)
+                if (existData.FirstOrDefault() != null)
                 {
+                    var exist = existData.FirstOrDefault();
                     exist.Value = result.Value;
                     exist.Labnote = labnote;
                     exist.ScienticComment = comment;
@@ -502,6 +521,10 @@ namespace JenzHealth.Areas.Admin.Services
                     exist.PreparedByID = Global.AuthenticatedUserID;
 
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                    var ID = existData.Select(b => b.ServiceParameterSetup.ServiceParameterID).FirstOrDefault();
+                    int serviceParameterID = Convert.ToInt32(ID);
+                    service = GetServiceParameter(serviceParameterID).Service;
                 }
                 else
                 {
@@ -519,14 +542,31 @@ namespace JenzHealth.Areas.Admin.Services
                         PreparedByID = Global.AuthenticatedUserID
                     };
                     _db.TemplatedLabPreparations.Add(templateLabPreparation);
+                    _db.SaveChanges();
+                    service = templateLabPreparation.ServiceParameterSetup.ServiceParameter.Service.Description;
+                }
+                // Update Result Approval 
+                var serviceParameter = GetServiceParameter(service);
+                if (serviceParameter.RequireApproval)
+                {
+                    var checkIfExist = _db.ResultApprovals.Where(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == result.BillInvoiceNumber).FirstOrDefault();
+                    if(checkIfExist == null)
+                    {
+                        var approvalModel = new ResultApproval()
+                        {
+                            ServiceParameterID = serviceParameter.Id,
+                            BillNumber = result.BillInvoiceNumber,
+                        };
+                        _db.ResultApprovals.Add(approvalModel);
+                        _db.SaveChanges();
+                    }
                 }
             }
-            _db.SaveChanges();
             return true;
         }
-        public NonTemplatedLabPreparationVM GetNonTemplatedLabPreparation(string billnumber)
+        public NonTemplatedLabPreparationVM GetNonTemplatedLabPreparation(string billnumber, int serviceID)
         {
-            var model = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new NonTemplatedLabPreparationVM()
+            var model = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber && x.ServiceID == serviceID).Select(b => new NonTemplatedLabPreparationVM()
             {
                 Id = b.Id,
                 Temperature = b.Temperature,
@@ -600,8 +640,16 @@ namespace JenzHealth.Areas.Admin.Services
                 WetMountYesats = b.WetMountYesats,
                 WhiteBloodCells = b.WhiteBloodCells,
                 YeastCells = b.YeastCells,
-                ZiehlOthers = b.ZiehlOthers
+                ZiehlOthers = b.ZiehlOthers,
+                Service = b.Service.Description,
+                ServiceID = b.ServiceID
             }).FirstOrDefault();
+            if (model == null)
+            {
+                model = new NonTemplatedLabPreparationVM();
+                model.ServiceID = serviceID;
+            }
+            
             return model;
         }
         public List<NonTemplatedLabPreparationVM> GetNonTemplatedLabPreparationForReport(string billnumber)
@@ -774,6 +822,7 @@ namespace JenzHealth.Areas.Admin.Services
                 YeastCells = vmodel.YeastCells,
                 ZiehlOthers = vmodel.ZiehlOthers,
                 ScienticComment = vmodel.ScienticComment,
+                ServiceID = vmodel.ServiceID,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
                 PreparedByID = Global.AuthenticatedUserID
@@ -813,6 +862,22 @@ namespace JenzHealth.Areas.Admin.Services
                     _db.SaveChanges();
                 }
             }
+            var service = _seedService.GetService((int)model.ServiceID).Description;
+            var serviceParameter = GetServiceParameter(service);
+            if (serviceParameter.RequireApproval)
+            {
+                var checkIfExist = _db.ResultApprovals.Where(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == vmodel.BillInvoiceNumber).FirstOrDefault();
+                if (checkIfExist == null)
+                {
+                    var approvalModel = new ResultApproval()
+                    {
+                        ServiceParameterID = serviceParameter.Id,
+                        BillNumber = vmodel.BillInvoiceNumber,
+                    };
+                    _db.ResultApprovals.Add(approvalModel);
+                    _db.SaveChanges();
+                }
+            }
             return true;
         }
         public List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> GetComputedOrganismXAntibiotics(int nonTemplatedId)
@@ -833,6 +898,56 @@ namespace JenzHealth.Areas.Admin.Services
                     ResistanceDegree = b.ResistanceDegree == null ? "N/A" : b.ResistanceDegree,
                 }).ToList();
             return results;
+        }
+        public List<ResultApprovalVM> GetAllTestForApprovalByBillNumber(string billnumber)
+        {
+            var records = _db.ResultApprovals.Where(x => x.BillNumber == billnumber).Select(b => new ResultApprovalVM()
+            {
+                Id = b.Id,
+                Service = b.ServiceParameter.Service.Description,
+                Template = b.ServiceParameter.Template.Name,
+                TemplateID = b.ServiceParameter.TemplateID,
+                HasApproved = b.HasApproved,
+                ApprovedBy = b.ApprovedBy.Firstname + " " + b.ApprovedBy.Lastname,
+                DateApproved = b.DateApproved,
+                ApprovedByID = b.ApprovedByID,
+                ServiceParameterID = b.ServiceParameterID,
+                BillNumber = b.BillNumber
+            }).ToList();
+            return records;
+        }
+        public List<TemplateServiceCompuationVM> GetComputedResultForTemplatedService(string billnumber, int serviceParameterID)
+        {
+            var record = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetup.ServiceParameterID == serviceParameterID).Select(b => new TemplateServiceCompuationVM()
+            {
+                Parameter = b.ServiceParameterSetup.Name,
+                Value = b.Value,
+                Unit = b.ServiceRange.Unit,
+                Range = b.ServiceRange.Range,
+                Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
+                Labnote = b.Labnote,
+                ScientificComment = b.ScienticComment,
+                PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
+                DatePrepared = b.DateCreated,
+                Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
+            }).ToList();
+            foreach (var item in record)
+            {
+                item.Status = GetStatusForTemplateReport(int.Parse(item.Value), item.Range);
+            }
+            return record;
+        }
+        public bool ApproveTestResult(int Id)
+        {
+            var test = _db.ResultApprovals.FirstOrDefault(x => x.Id == Id);
+            test.HasApproved = true;
+            test.ApprovedByID = Global.AuthenticatedUserID;
+            test.DateApproved = DateTime.Now;
+
+            _db.Entry(test).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+
+            return true;
         }
     }
 }

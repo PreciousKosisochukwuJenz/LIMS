@@ -804,6 +804,7 @@
                             </div>
                         </div>
                         <input type="hidden" id="billnumber" name="BillInvoiceNumber" value="@TempData["BillNumber"]" />
+                        @Html.HiddenFor(model => model.ServiceID)
                         <input type="hidden" id="SpecimenCollectedID" name="SpecimenCollectedID" value="@TempData["SpecimenCollectedID"]" />
                         @*<div class="col-md-12 text-center">
             <button class="btn btn-primary" id="FinishBtn" type="button">

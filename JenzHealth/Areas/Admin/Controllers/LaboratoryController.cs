@@ -119,22 +119,57 @@ namespace JenzHealth.Areas.Admin.Controllers
             ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
             return View();
         }
-        public ActionResult Compute(int templateID, string billNumber)
+        public ActionResult Compute(int templateID, string billNumber,string serviceIds)
         {
             TempData["BillNumber"] = billNumber;
             TempData["SpecimenCollectedID"] = SpecimenCollectionID;
-
+            int[] serviceIDs = Array.ConvertAll(serviceIds.Split(','), element => int.Parse(element));
             var template = _seedService.GetTemplate(templateID);
             switch (template.UseDefaultParameters)
             {
                 case true:
-                    return View("ComputeNonTemplatedServicePreparation", _laboratoryService.GetNonTemplatedLabPreparation(billNumber));
+                    return View("ComputeNonTemplatedServicePreparation", _laboratoryService.GetNonTemplatedLabPreparation(billNumber, serviceIDs[0]));
                 case false:
                     return View("ComputeTemplatedServicePreparation", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
             }
             return View();
         }
 
+        public ActionResult ResultApproval()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ResultApproval(ResultApprovalVM vmodel)
+        {
+            ViewBag.TableData = _laboratoryService.GetAllTestForApprovalByBillNumber(vmodel.BillNumber);
+            return View(vmodel);
+        }
+
+        public ActionResult ComputedResult(int serviceParameterID, string billnumber,int templateID, int Id)
+        {
+            var template = _seedService.GetTemplate(templateID);
+            ViewBag.Id = Id;
+            switch (!template.UseDefaultParameters)
+            {
+                case true:
+                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber,serviceParameterID));
+                case false:
+                    return View("ComputeNonTemplatedResult", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billnumber));
+            }
+            return View();
+        }
+
+        public JsonResult ApproveResult(int Id)
+        {
+            var status = _laboratoryService.ApproveTestResult(Id);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
         {
             var status = _laboratoryService.UpdateLabResults(results, labnote, comment);

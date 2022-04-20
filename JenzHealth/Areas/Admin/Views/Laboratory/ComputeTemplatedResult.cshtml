@@ -1,0 +1,119 @@
+﻿@using JenzHealth.DAL.Entity;
+@model IEnumerable<JenzHealth.Areas.Admin.ViewModels.TemplateServiceCompuationVM>
+@{
+    ViewBag.Title = "Computed Result";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Computed Result</h3>
+    </div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+        <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <fieldset>
+                <legend class="text-center">Test Information</legend>
+                <div id="customerinfoDiv">
+
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
+                        <thead class="bg-light">
+                            <tr>
+                                <th scope="col" class="border-0">Prepared By</th>
+                                <th scope="col" class="border-0">Date Prepared </th>
+                                <th scope="col" class="border-0">Specimen Used</th>
+                                @*<th scope="col" class="border-0">Lab number</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.FirstOrDefault().PreparedBy</td>
+                                <td>@Model.FirstOrDefault().DatePrepared.Value.ToLongDateString() @Model.FirstOrDefault().DatePrepared.Value.ToShortTimeString()</td>
+                                <td>@Model.FirstOrDefault().Specimen</td>
+                                @*<td></td>*@
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="card  card-small h-auto">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Service/Test</h6>
+                <div class="block-handle"></div>
+            </div>
+            <div class="card-body p-0">
+                <div class="container-fluid" id="resultBody">
+
+                    <div class="row px-3">
+                        <div class="col-md-3 sc-stats__title"><strong style="line-height: 20px">@Model.FirstOrDefault().Service</strong></div>
+                        <div class="col-md-9">
+                            <table class="file-manager file-manager-list2 d-none table-responsive">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th scope="col">Parameter</th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col">Range</th>
+                                        <th scope="col">Unit</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var paramater in Model)
+                                    {
+                                        <tr>
+                                            <td>@paramater.Parameter</td>
+                                            <td>@paramater.Value</td>
+                                            <td>
+                                                @paramater.Range
+                                            </td>
+                                            <td>
+                                                @paramater.Unit
+                                            </td>
+                                            <td>
+                                                @paramater.Status
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><hr />
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="labnote">Lab Note</label>
+                            <p>@Model.FirstOrDefault().Labnote</p>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="ScientificComment">Scientifc Comment</label>
+                            <p>@Model.FirstOrDefault().ScientificComment</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary" onclick="Approve(@ViewBag.Id)">
+                            Approve
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+@section Scripts{
+    <script src="~/areas/admin/scripts/ApproveResult.js"></script>
+}
+
+

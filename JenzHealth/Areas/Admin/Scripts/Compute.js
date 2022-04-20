@@ -42,7 +42,7 @@
                     data: { results: results, labnote: labnote, comment: comment },
                     success: function (response) {
                         Swal.fire({
-                            title: 'Test computed duccessfully successfully',
+                            title: 'Test computed successfully',
                             showCancelButton: false,
                             confirmButtonText: 'Ok',
                             showLoaderOnConfirm: true,

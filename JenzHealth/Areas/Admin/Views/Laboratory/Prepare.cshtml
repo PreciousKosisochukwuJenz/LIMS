@@ -51,6 +51,7 @@
                     <tbody>
                         @foreach (var row in ViewBag.Templates)
                         {
+                            string serviceIds = "";
                             <tr>
                                 <td>
                                     @row.Template
@@ -61,6 +62,7 @@
                                         {
                                             if (service.TemplateID == row.TemplateID)
                                             {
+                                                serviceIds += serviceIds == "" ? service.ServiceID : "," + service.ServiceID;
                                                 <li class="list-group-item d-flex px-3">
                                                     <span class="text-semibold text-fiord-blue ">@service.Service</span>
                                                 </li>
@@ -70,7 +72,7 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
-                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber })" class="btn btn-white" title="Click to compute">
+                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = serviceIds })" class="btn btn-white" title="Click to compute">
                                             <i class="material-icons">&#xE870;</i> Compute
                                         </a>
                                         @if (row.HasBeenComputed)

@@ -575,7 +575,8 @@ function Update() {
                 KOHPrepareation: $("#KOHPrepareation").val(),
                 KOHResult: $("#KOHResult").val(),
                 OthersResult: $("#OthersResult").val(),
-                Labnote: $("#Labnote").val()
+                Labnote: $("#Labnote").val(),
+                ServiceID: $("#ServiceID").val()
             }
             var specimencollectedID = $("#SpecimenCollectedID").val();
             let OrganismList = [];
