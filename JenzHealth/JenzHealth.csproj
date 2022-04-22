@@ -146,6 +146,7 @@
     <Content Include="Areas\Admin\Scripts\Billings.js" />
     <Content Include="Areas\Admin\Scripts\CashCollections.js" />
     <Content Include="Areas\Admin\Scripts\Compute.js" />
+    <Content Include="Areas\Admin\Scripts\ComputedNonTemplated.js" />
     <Content Include="Areas\Admin\Scripts\ComputeNonTemplated.js" />
     <Content Include="Areas\Admin\Scripts\Customer.js" />
     <Content Include="Areas\Admin\Scripts\Deposite.js" />

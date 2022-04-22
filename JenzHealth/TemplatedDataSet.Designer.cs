@@ -315,6 +315,18 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnPreparedBy;
             
+            private global::System.Data.DataColumn columnApprovedBy;
+            
+            private global::System.Data.DataColumn columnDatePrepared;
+            
+            private global::System.Data.DataColumn columnSpecimen;
+            
+            private global::System.Data.DataColumn columnSpecimenCollectedBy;
+            
+            private global::System.Data.DataColumn columnDateCollected;
+            
+            private global::System.Data.DataColumn columnDateApproved;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TemplatedLabPreparationsDataTable() {
@@ -494,6 +506,54 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ApprovedByColumn {
+                get {
+                    return this.columnApprovedBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DatePreparedColumn {
+                get {
+                    return this.columnDatePrepared;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SpecimenColumn {
+                get {
+                    return this.columnSpecimen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SpecimenCollectedByColumn {
+                get {
+                    return this.columnSpecimenCollectedBy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateCollectedColumn {
+                get {
+                    return this.columnDateCollected;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateApprovedColumn {
+                get {
+                    return this.columnDateApproved;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -546,7 +606,13 @@ namespace JenzHealth {
                         string Range, 
                         string Status, 
                         string ScienticComment, 
-                        string PreparedBy) {
+                        string PreparedBy, 
+                        string ApprovedBy, 
+                        string DatePrepared, 
+                        string Specimen, 
+                        string SpecimenCollectedBy, 
+                        string DateCollected, 
+                        string DateApproved) {
                 TemplatedLabPreparationsRow rowTemplatedLabPreparationsRow = ((TemplatedLabPreparationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -566,7 +632,13 @@ namespace JenzHealth {
                         Range,
                         Status,
                         ScienticComment,
-                        PreparedBy};
+                        PreparedBy,
+                        ApprovedBy,
+                        DatePrepared,
+                        Specimen,
+                        SpecimenCollectedBy,
+                        DateCollected,
+                        DateApproved};
                 rowTemplatedLabPreparationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTemplatedLabPreparationsRow);
                 return rowTemplatedLabPreparationsRow;
@@ -614,6 +686,12 @@ namespace JenzHealth {
                 this.columnStatus = base.Columns["Status"];
                 this.columnScienticComment = base.Columns["ScienticComment"];
                 this.columnPreparedBy = base.Columns["PreparedBy"];
+                this.columnApprovedBy = base.Columns["ApprovedBy"];
+                this.columnDatePrepared = base.Columns["DatePrepared"];
+                this.columnSpecimen = base.Columns["Specimen"];
+                this.columnSpecimenCollectedBy = base.Columns["SpecimenCollectedBy"];
+                this.columnDateCollected = base.Columns["DateCollected"];
+                this.columnDateApproved = base.Columns["DateApproved"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -655,6 +733,18 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnScienticComment);
                 this.columnPreparedBy = new global::System.Data.DataColumn("PreparedBy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPreparedBy);
+                this.columnApprovedBy = new global::System.Data.DataColumn("ApprovedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnApprovedBy);
+                this.columnDatePrepared = new global::System.Data.DataColumn("DatePrepared", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDatePrepared);
+                this.columnSpecimen = new global::System.Data.DataColumn("Specimen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecimen);
+                this.columnSpecimenCollectedBy = new global::System.Data.DataColumn("SpecimenCollectedBy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecimenCollectedBy);
+                this.columnDateCollected = new global::System.Data.DataColumn("DateCollected", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateCollected);
+                this.columnDateApproved = new global::System.Data.DataColumn("DateApproved", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateApproved);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1088,6 +1178,106 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ApprovedBy {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.ApprovedByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ApprovedBy\' in table \'TemplatedLabPreparations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.ApprovedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DatePrepared {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.DatePreparedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DatePrepared\' in table \'TemplatedLabPreparations\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.DatePreparedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Specimen {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.SpecimenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Specimen\' in table \'TemplatedLabPreparations\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.SpecimenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SpecimenCollectedBy {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.SpecimenCollectedByColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SpecimenCollectedBy\' in table \'TemplatedLabPreparations\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.SpecimenCollectedByColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DateCollected {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.DateCollectedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateCollected\' in table \'TemplatedLabPreparations\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.DateCollectedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DateApproved {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.DateApprovedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateApproved\' in table \'TemplatedLabPreparations\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.DateApprovedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsBillInvoiceNumberNull() {
                 return this.IsNull(this.tableTemplatedLabPreparations.BillInvoiceNumberColumn);
             }
@@ -1264,6 +1454,78 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPreparedByNull() {
                 this[this.tableTemplatedLabPreparations.PreparedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsApprovedByNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.ApprovedByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetApprovedByNull() {
+                this[this.tableTemplatedLabPreparations.ApprovedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDatePreparedNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.DatePreparedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDatePreparedNull() {
+                this[this.tableTemplatedLabPreparations.DatePreparedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSpecimenNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.SpecimenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSpecimenNull() {
+                this[this.tableTemplatedLabPreparations.SpecimenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSpecimenCollectedByNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.SpecimenCollectedByColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSpecimenCollectedByNull() {
+                this[this.tableTemplatedLabPreparations.SpecimenCollectedByColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateCollectedNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.DateCollectedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateCollectedNull() {
+                this[this.tableTemplatedLabPreparations.DateCollectedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDateApprovedNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.DateApprovedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDateApprovedNull() {
+                this[this.tableTemplatedLabPreparations.DateApprovedColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -12,6 +12,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public int? TemplateID { get; set; }
         public string Template { get; set; }
         public string Service { get; set; }
+        public int? ServiceID { get; set; }
         public string BillNumber { get; set; }
         public bool HasApproved { get; set; }
         public int? ApprovedByID { get; set; }

@@ -151,16 +151,16 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View(vmodel);
         }
 
-        public ActionResult ComputedResult(int serviceParameterID, string billnumber,int templateID, int Id)
+        public ActionResult ComputedResult(int serviceParameterID, string billnumber,int templateID, int Id, int serviceID)
         {
             var template = _seedService.GetTemplate(templateID);
             ViewBag.Id = Id;
-            switch (!template.UseDefaultParameters)
+            switch (template.UseDefaultParameters)
             {
-                case true:
-                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber,serviceParameterID));
                 case false:
-                    return View("ComputeNonTemplatedResult", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billnumber));
+                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber,serviceParameterID));
+                case true:
+                    return View("ComputeNonTemplatedResult", _laboratoryService.GetNonTemplatedLabPreparation(billnumber,serviceID));
             }
             return View();
         }

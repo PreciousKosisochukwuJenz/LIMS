@@ -64,7 +64,15 @@
                                             {
                                                 serviceIds += serviceIds == "" ? service.ServiceID : "," + service.ServiceID;
                                                 <li class="list-group-item d-flex px-3">
-                                                    <span class="text-semibold text-fiord-blue ">@service.Service</span>
+                                                    <span class="text-semibold text-fiord-blue ">@service.Service &emsp; &emsp;&emsp;</span>
+                                                    @if (service.RequireApproval)
+                                                    {
+                                                        <span class="badge badge-pill badge-primary">Requires approval</span>
+                                                    }
+                                                    @if (service.Approved && service.RequireApproval)
+                                                    {
+                                                        <span class="badge badge-pill badge-success">Approved</span>
+                                                    }
                                                 </li>
                                             }
                                         }

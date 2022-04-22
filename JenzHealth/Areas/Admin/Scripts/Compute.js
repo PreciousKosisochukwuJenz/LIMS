@@ -23,6 +23,7 @@
                         // Prepare result
                         let result = {};
                         result.ServiceID = tr.children[0].dataset.parent;
+                        result.Service = tr.children[0].dataset.service;
                         result.BillInvoiceNumber = billnumber;
                         result.KeyID = tr.children[0].dataset.child;
                         result.Key = tr.children[0].innerText;
