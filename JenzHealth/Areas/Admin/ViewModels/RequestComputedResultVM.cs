@@ -8,6 +8,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
     public class RequestComputedResultVM
     {
         public int Id { get; set; }
+        public string Service { get; set; }
         public int ServiceID { get; set; }
         public string BillInvoiceNumber { get; set; }
         public int KeyID { get; set; }

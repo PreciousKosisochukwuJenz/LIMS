@@ -371,8 +371,15 @@ namespace JenzHealth.Areas.Admin.Services
                 Template = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.Name,
                 TemplateID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).TemplateID,
                 BillNumber = b.InvoiceNumber,
-                Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters
+                Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters,
+                RequireApproval = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).RequireApproval
             }).ToList();
+            foreach(var item in model)
+            {
+                var serviceParameter = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == item.ServiceID);
+                var checkApproval = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == item.BillNumber);
+                item.Approved = checkApproval != null ? checkApproval.HasApproved : false;
+            }
             return model;
         }
         public bool CheckIfTestHasBeenComputed(int templateID, string billnumber)
@@ -454,7 +461,7 @@ namespace JenzHealth.Areas.Admin.Services
                 model.Add(billservice);
             }
             model[0].Labnote = model[0].Parameters[0].Parameter.Labnote;
-            model[0].ScientificComment = model[0].Parameters[0].Parameter.ScientificComment;
+            model[0].ScienticComment = model[0].Parameters[0].Parameter.ScientificComment;
 
             return model;
         }
@@ -468,9 +475,20 @@ namespace JenzHealth.Areas.Admin.Services
                     Unit = b.ServiceRange.Unit,
                     Range = b.ServiceRange.Range,
                     Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
-                    Labnote = b.Labnote,
-                    ScientificComment = b.ScienticComment,
-                    PreparedBy =  b.PreparedBy.Firstname + " "+ b.PreparedBy.Lastname
+                    ScienticComment = b.ScienticComment,
+                    PreparedBy =  b.PreparedBy.Firstname + " "+ b.PreparedBy.Lastname,
+                    SpecimenCollectedBy = _db.SpecimenCollections.FirstOrDefault(x=>x.BillInvoiceNumber == b.BillInvoiceNumber).CollectedBy.Firstname + " "+
+                     _db.SpecimenCollections.FirstOrDefault(x => x.BillInvoiceNumber == b.BillInvoiceNumber).CollectedBy.Lastname,
+                    DateCollected = _db.SpecimenCollections.FirstOrDefault(x => x.BillInvoiceNumber == b.BillInvoiceNumber).DateTimeCreated,
+                    DatePrepared = b.DateCreated,
+                    DateApproved = _db.ResultApprovals.FirstOrDefault(x=>x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID) != null ?
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).DateApproved : null,
+                    ApprovedBy = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID) != null ?
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Firstname + " "+
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Lastname :
+                    "NIL",
+                    Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
+                    
                 }).ToList();
 
             foreach (var item in result)
@@ -508,7 +526,7 @@ namespace JenzHealth.Areas.Admin.Services
         {
             foreach (var result in results)
             {
-                string service =  string.Empty;
+                string service = result.Service;
                 var existData = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == result.BillInvoiceNumber && x.IsDeleted == false && x.ServiceParameterSetupID == result.KeyID);
 
                 if (existData.FirstOrDefault() != null)
@@ -524,7 +542,6 @@ namespace JenzHealth.Areas.Admin.Services
                     _db.SaveChanges();
                     var ID = existData.Select(b => b.ServiceParameterSetup.ServiceParameterID).FirstOrDefault();
                     int serviceParameterID = Convert.ToInt32(ID);
-                    service = GetServiceParameter(serviceParameterID).Service;
                 }
                 else
                 {
@@ -543,7 +560,6 @@ namespace JenzHealth.Areas.Admin.Services
                     };
                     _db.TemplatedLabPreparations.Add(templateLabPreparation);
                     _db.SaveChanges();
-                    service = templateLabPreparation.ServiceParameterSetup.ServiceParameter.Service.Description;
                 }
                 // Update Result Approval 
                 var serviceParameter = GetServiceParameter(service);
@@ -904,6 +920,7 @@ namespace JenzHealth.Areas.Admin.Services
             var records = _db.ResultApprovals.Where(x => x.BillNumber == billnumber).Select(b => new ResultApprovalVM()
             {
                 Id = b.Id,
+                ServiceID = b.ServiceParameter.ServiceID,
                 Service = b.ServiceParameter.Service.Description,
                 Template = b.ServiceParameter.Template.Name,
                 TemplateID = b.ServiceParameter.TemplateID,
@@ -926,7 +943,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Range = b.ServiceRange.Range,
                 Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
                 Labnote = b.Labnote,
-                ScientificComment = b.ScienticComment,
+                ScienticComment = b.ScienticComment,
                 PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
                 DatePrepared = b.DateCreated,
                 Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,

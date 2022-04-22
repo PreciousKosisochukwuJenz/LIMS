@@ -1,17 +1,482 @@
-﻿
+﻿@using JenzHealth.DAL.Entity;
+@model JenzHealth.Areas.Admin.ViewModels.NonTemplatedLabPreparationVM
 @{
-    Layout = null;
+    ViewBag.Title = "Compute Result";
+
+    ViewBag.Motility = new List<SelectListItem>()
+{
+        new SelectListItem(){ Value = "Active",Text = "Active"},
+        new SelectListItem(){ Value = "Sluggish",Text = "Sluggish"},
+        new SelectListItem(){ Value = "Non-motile",Text = "Non-motile"},
+    };
+
+    ViewBag.Spillage = new List<SelectListItem>()
+{
+        new SelectListItem(){ Value = "Yes",Text = "Yes"},
+        new SelectListItem(){ Value = "No",Text = "No"},
+    };
+
+}
+<link href="~/Content/css/jquery-step.css" rel="stylesheet" />
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Laboratory management</span>
+        <h3 class="page-title">Compute Result</h3>
+    </div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+        <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
+    </div>
+</div>
+@using (Html.BeginForm("Transactions", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+{
+    <div class="row">
+        <div class="col">
+            <p style="display:none" id="Idd">@Model.Id</p>
+            <p style="display:none" id="ResultApprovalID">@ViewBag.Id</p>
+            <div id="step">
+                <h3>Macroscopy</h3>
+                <section>
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Appearance</label>
+                                <p>@Model.Appearance</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Color</label>
+                                <p>@Model.Color</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Blood</label>
+                                <p>@Model.MacrosopyBlood</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Adult Warm</label>
+                                <p>@Model.AdultWarm</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Mucus</label>
+                                <p>@Model.Mucus</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <h3>Dipstick</h3>
+                <section>
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Specific Gravity</label>
+                                <p>@Model.SpecificGravity</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Blirubin</label>
+                                <p>@Model.Blirubin</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Acidity (PH)</label>
+                                <p>@Model.Acidity</p>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Urobilinogen</label>
+                                <p>@Model.Urobilinogen</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Glucose</label>
+                                <p>@Model.Glucose</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Ascorbic Acid</label>
+                                <p>@Model.AscorbicAcid</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Protein</label>
+                                <p>@Model.Protein</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Blood</label>
+                                <p>@Model.DipstickBlood</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Niterite</label>
+                                <p>@Model.Niterite</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Leucocyte Esterase</label>
+                                <p>@Model.LeucocyteEsterase</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Ketones</label>
+                                <p>@Model.Ketones</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <h3>Microscopy</h3>
+                <section>
+                    <div class="form-group col-md-12">
+                        <div class="input-group">
+                            @foreach (var item in Enum.GetValues(typeof(MicroscopyType)).Cast<MicroscopyType>().ToList())
+                            {
+                                <span style="margin:25px; flex:1 0 auto;display:flex; flex-direction:column;align-items:center">
+                                    @Html.RadioButtonFor(model => model.MicroscopyType, item, new { id = item, @class = "MicroscopyTypeStatus", required = true })
+                                    <label for="@item"><strong>@item.DisplayName()</strong></label>
+                                </span>
+                            }
+                        </div>
+                        <hr />
+                    </div>
+                    <div id="WetAmountDiv">
+                        <div class="form-row mx-4">
+                            <div class="col mb-3">
+                                <h5 class="text-center text-uppercase"><strong>Wet Mount</strong></h5>
+                            </div>
+                        </div>
+                        <div class="row m-0">
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Pus Cells</label>
+                                <p>@Model.PusCells</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Cystals</label>
+                                <p>@Model.Cystals</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">White Blood Cells</label>
+                                <p>@Model.WhiteBloodCells</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Ova</label>
+                                <p>@Model.Ova</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Reb Blood Cells</label>
+                                <p>@Model.RedBloodCells</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Parasite</label>
+                                <p>@Model.WetMountParasite</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Bacteria</label>
+                                <p>@Model.WetMountBacteria</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Epithelial Cells</label>
+                                <p>@Model.EpithelialCells</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Yeast</label>
+                                <p>@Model.WetMountYesats</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Protozoa</label>
+                                <p>@Model.Protozoa</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Casts</label>
+                                <p>@Model.Casts</p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="socialGitHub">Others</label>
+                                <p>@Model.WetMountOthers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="StainDiv">
+                        <div class="form-row mx-4">
+                            <div class="col mb-3">
+                                <h5 class="text-center text-uppercase"><strong>STAIN</strong></h5>
+                            </div>
+                        </div>
+                        <div class="row m-0">
+                            <div style="background: #c1cee7; border-radius:10px">
+                                <div class="input-group">
+                                    @foreach (var item in Enum.GetValues(typeof(StainType)).Cast<StainType>().ToList())
+                                    {
+                                        <span style="margin:10px; flex:1 0 auto;display:flex; flex-direction:column;align-items:center">
+                                            @Html.RadioButtonFor(model => model.StainType, item, new { id = item, @class = "StainTypeStatus", required = true })
+                                            <label for="@item"><strong>@item.DisplayName()</strong></label>
+                                        </span>
+                                    }
+                                </div>
+                            </div><hr />
+                        </div>
+                        <div id="GrainStainDiv">
+                            <div class="row m-0">
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Gram Positive Cocci</label>
+                                    <p>@Model.GramPositiveCocci</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Gram Negative Cocci</label>
+                                    <p>@Model.GramNegativeCocci</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Gram Positive Rods</label>
+                                    <p>@Model.GramPositiveRods</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Gram Negative Rods</label>
+                                    <p>@Model.GramNegativeRods</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Trichnomas Vaginalis</label>
+                                    <p>@Model.TrichomonasVaginalis</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Vicnents Organisms</label>
+                                    <p>@Model.VincetsOrganisms</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Yeast Cells</label>
+                                    <p>@Model.YeastCells</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="GiemsStainDiv">
+                            <div class="row m-0">
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Parasite</label>
+                                    <p>@Model.GiemsaStainParasite</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Others</label>
+                                    <p>@Model.GiemsaOthers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ZiehlStainDiv">
+                            <div class="row m-0">
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Acis Fast Bacilli</label>
+                                    <p>@Model.AcisFastBacilli</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Others</label>
+                                    <div class="input-group input-group-seamless">
+                                        <p>@Model.ZiehlOthers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="IndiaStainDiv">
+                                <div class="row m-0">
+                                    <div class="form-group col-md-12">
+                                        <label for="socialGitHub">Result</label>
+                                        <p>@Model.IndiaInkResult</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="IodineStainDiv">
+                                <div class="row m-0">
+                                    <div class="form-group col-md-12">
+                                        <label for="socialGitHub">Result</label>
+                                        <p>@Model.IodineResult</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="MethyleneStainDiv">
+                                <div class="row m-0">
+                                    <div class="form-group col-md-12">
+                                        <label for="socialGitHub">Result</label>
+                                        <p>@Model.MethyleneResult</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="OthersStainDiv">
+                                <div class="row m-0">
+                                    <div class="form-group col-md-12">
+                                        <label for="socialGitHub">Result</label>
+                                        <p>@Model.OtherStainResult</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="SFADiv">
+                            <div class="form-row mx-4">
+                                <div class="col mb-3">
+                                    <h5 class="text-center text-uppercase"><strong>SFA</strong></h5>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Duration Of Abstinence</label>
+                                    <p>@Model.DurationOfAbstinence</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Date Time Of Production</label>
+                                    @if (Model.DateOfProduction != null)
+                                    {
+                                        <p>@Model.DateOfProduction.Value.ToLongDateString() @Model.DateOfProduction.Value.ToLongTimeString()</p>
+                                    }
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Time Recieved</label>
+                                    @if (Model.TimeRecieved != null)
+                                    {
+                                        <p>@Model.TimeRecieved.Value.ToLongDateString() @Model.TimeRecieved.Value.ToLongTimeString()</p>
+                                    }
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Mode Of Production</label>
+                                    <p>@Model.ModeOfProduction</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Viscosity</label>
+                                    <p>@Model.Viscosity</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Time Examined</label>
+                                    @if (Model.TimeExamined != null)
+                                    {
+                                        <p>@Model.TimeExamined.Value.ToLongDateString() @Model.TimeExamined.Value.ToLongTimeString()</p>
+                                    }
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Morphology</label>
+                                    <p>@Model.Morphology</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="socialGitHub">Motility</label>
+                                    <p>@Model.Motility</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Total Sperm Count</label>
+                                    <p>@Model.TotalSpermCount</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Immature Cells</label>
+                                    <p>@Model.ImmatureCells</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">WBCS</label>
+                                    <p>@Model.WBCS</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">Any Spillage</label>
+                                    <p>@Model.AnySpillage</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">RBCS</label>
+                                    <p>@Model.RBCS</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="socialGitHub">PH</label>
+                                    <p>@Model.PH</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="KOHDiv">
+                            <div class="form-row mx-4">
+                                <div class="col mb-3">
+                                    <h5 class="text-center text-uppercase"><strong>KOH</strong></h5>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="form-group col-md-12">
+                                    <label for="socialGitHub">Preparation</label>
+                                    <p>@Model.KOHPrepareation</p>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="socialGitHub">Result</label>
+                                    <p>@Model.KOHResult</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="MicroOthersDiv">
+                            <div class="form-row mx-4">
+                                <div class="col mb-3">
+                                    <h5 class="text-center text-uppercase"><strong>OTHERS</strong></h5>
+                                </div>
+                            </div>
+                            <div class="row m-0">
+                                <div class="form-group col-md-12">
+                                    <label for="socialGitHub">Result</label>
+                                    <p>@Model.OthersResult</p>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+                <h3>Culture</h3>
+                <section>
+                    <div class="m-0">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Temperature</label>
+                                <p>@Model.Temperature</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Duration</label>
+                                <p>@Model.Duration</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Atomsphere</label>
+                                <p>@Model.Atomsphere</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Plate</label>
+                                <p>@Model.Plate</p>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub">Incubation</label>
+                                <p>@Model.Incubatio</p>
+                            </div>
+                            <div class="card-body p-0 pb-3 text-center">
+                                <div id="OrganismTableLoader" style="display:none" class="col text-center">
+                                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                                </div>
+                                <div id="OrganismTableDiv">
+                                    <table class="file-manager file-manager-list2 d-none table-responsive">
+                                        <thead class="bg-light">
+                                            <tr>
+                                                <th scope="col" class="border-0">Organism</th>
+                                                <th scope="col" class="border-0">Anti Biotics</th>
+                                                <th scope="col" class="border-0">Senstive</th>
+                                                <th scope="col" class="border-0">Intermediate</th>
+                                                <th scope="col" class="border-0">Resistance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="OrganismBody">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <h3>Summary</h3>
+                <section>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="labnote">Lab Note</label>
+                            <p>@Model.Labnote</p>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="ScienticComment">Scientic Comment</label>
+                            <p>@Model.ScienticComment</p>
+                        </div>
+                        <input type="hidden" id="billnumber" name="BillInvoiceNumber" value="@TempData["BillNumber"]" />
+                        @Html.HiddenFor(model => model.ServiceID)
+                        <input type="hidden" id="SpecimenCollectedID" name="SpecimenCollectedID" value="@TempData["SpecimenCollectedID"]" />
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}
+<br />
+@section Scripts{
+    <script src="~/Scripts/jquery.steps.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/ComputedNonTemplated.js"></script>
+    <script src="~/Areas/Admin/Scripts/ApproveResult.js"></script>
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ComputeNonTemplatedResult</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>

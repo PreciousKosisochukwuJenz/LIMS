@@ -96,7 +96,7 @@
                                                 @if (!row.HasApproved)
                                                 {
                                                     <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
-                                                        <a href="@Url.Action("ComputedResult",new{serviceParameterID = row.ServiceParameterID, billnumber = row.BillNumber, templateID = row.TemplateID, Id = row.Id })" class="btn btn-white" title="Click to vet and approve">
+                                                        <a href="@Url.Action("ComputedResult",new{serviceParameterID = row.ServiceParameterID, billnumber = row.BillNumber, templateID = row.TemplateID, Id = row.Id, serviceID = row.ServiceID })" class="btn btn-white" title="Click to vet and approve">
                                                             <i class="material-icons">&#xE870;</i> Vet and Approve
                                                         </a>
                                                     </div>
