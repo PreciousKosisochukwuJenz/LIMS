@@ -730,6 +730,9 @@
               <xs:element name="MicroscopyTypee" msprop:Generator_ColumnVarNameInTable="columnMicroscopyTypee" msprop:Generator_ColumnPropNameInRow="MicroscopyTypee" msprop:Generator_ColumnPropNameInTable="MicroscopyTypeeColumn" msprop:Generator_UserColumnName="MicroscopyTypee" type="xs:string" minOccurs="0" />
               <xs:element name="ScienticComment" msprop:Generator_ColumnVarNameInTable="columnScienticComment" msprop:Generator_ColumnPropNameInRow="ScienticComment" msprop:Generator_ColumnPropNameInTable="ScienticCommentColumn" msprop:Generator_UserColumnName="ScienticComment" type="xs:string" minOccurs="0" />
               <xs:element name="PreparedBy" msprop:Generator_ColumnVarNameInTable="columnPreparedBy" msprop:Generator_ColumnPropNameInRow="PreparedBy" msprop:Generator_ColumnPropNameInTable="PreparedByColumn" msprop:Generator_UserColumnName="PreparedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="Service" msprop:Generator_ColumnVarNameInTable="columnService" msprop:Generator_ColumnPropNameInRow="Service" msprop:Generator_ColumnPropNameInTable="ServiceColumn" msprop:Generator_UserColumnName="Service" type="xs:string" minOccurs="0" />
+              <xs:element name="ApprovedBy" msprop:Generator_ColumnVarNameInTable="columnApprovedBy" msprop:Generator_ColumnPropNameInRow="ApprovedBy" msprop:Generator_ColumnPropNameInTable="ApprovedByColumn" msprop:Generator_UserColumnName="ApprovedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="DateApproved" msprop:Generator_ColumnVarNameInTable="columnDateApproved" msprop:Generator_ColumnPropNameInRow="DateApproved" msprop:Generator_ColumnPropNameInTable="DateApprovedColumn" msprop:Generator_UserColumnName="DateApproved" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

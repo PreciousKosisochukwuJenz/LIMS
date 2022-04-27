@@ -19,6 +19,7 @@ namespace JenzHealth.DAL.Entity
         public string Labnote { get; set; }
         public string ScienticComment { get; set; }
         public int? PreparedByID { get; set; }
+        public string FilmingReport { get; set; }
 
         public DateTime DateCreated { get; set; }
         public bool IsDeleted { get; set; }
