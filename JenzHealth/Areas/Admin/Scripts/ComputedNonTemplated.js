@@ -163,7 +163,6 @@ $(function () {
     })
 
     UpdateOrganismTbl();
-
 })
 
 function UpdateOrganismTbl() {

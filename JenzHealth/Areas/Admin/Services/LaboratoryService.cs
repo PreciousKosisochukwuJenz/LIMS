@@ -436,6 +436,7 @@ namespace JenzHealth.Areas.Admin.Services
 
                     parametersetup.Value = record.Value;
                     parametersetup.Labnote = record.Labnote;
+                    parametersetup.FilmingReport = record.FilmingReport;
                     parametersetup.ScientificComment = record.ScientificComment;
                     parametersetup.Range = range == null ? " " : range.Range;
                     parametersetup.Unit = range == null ? " " : range.Unit;
@@ -458,6 +459,8 @@ namespace JenzHealth.Areas.Admin.Services
                 }
                 billservice.Service = service.Service;
                 billservice.ServiceID = (int)service.ServiceID;
+                billservice.FilmingReport = parameterSetups.FirstOrDefault().FilmingReport;
+                //billservice.FilmingReport = 
                 model.Add(billservice);
             }
             model[0].Labnote = model[0].Parameters[0].Parameter.Labnote;
@@ -474,28 +477,54 @@ namespace JenzHealth.Areas.Admin.Services
                     Value = b.Value,
                     Unit = b.ServiceRange.Unit,
                     Range = b.ServiceRange.Range,
+                    ServiceID = (int)b.ServiceParameterSetup.ServiceParameter.ServiceID,
                     Service = b.ServiceParameterSetup.ServiceParameter.Service.Description,
+                    ServiceParameterID = b.ServiceParameterSetup.ServiceParameterID,
+                    RequireApproval = b.ServiceParameterSetup.ServiceParameter.RequireApproval,
                     ScienticComment = b.ScienticComment,
-                    PreparedBy =  b.PreparedBy.Firstname + " "+ b.PreparedBy.Lastname,
-                    SpecimenCollectedBy = _db.SpecimenCollections.FirstOrDefault(x=>x.BillInvoiceNumber == b.BillInvoiceNumber).CollectedBy.Firstname + " "+
+                    PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
+                    SpecimenCollectedBy = _db.SpecimenCollections.FirstOrDefault(x => x.BillInvoiceNumber == b.BillInvoiceNumber).CollectedBy.Firstname + " " +
                      _db.SpecimenCollections.FirstOrDefault(x => x.BillInvoiceNumber == b.BillInvoiceNumber).CollectedBy.Lastname,
                     DateCollected = _db.SpecimenCollections.FirstOrDefault(x => x.BillInvoiceNumber == b.BillInvoiceNumber).DateTimeCreated,
                     DatePrepared = b.DateCreated,
-                    DateApproved = _db.ResultApprovals.FirstOrDefault(x=>x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID) != null ?
+                    DateApproved = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID) != null ?
                     _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).DateApproved : null,
                     ApprovedBy = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID) != null ?
-                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Firstname + " "+
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Firstname + " " +
                     _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Lastname :
                     "NIL",
                     Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
-                    
                 }).ToList();
 
             foreach (var item in result)
             {
                 item.Status = GetStatusForTemplateReport(int.Parse(item.Value), item.Range);
             }
-            return result;
+
+            List<TemplateServiceCompuationVM> ServicesForReport = new List<TemplateServiceCompuationVM>();
+            // Check for approved test
+            var distinctServices = result.Distinct(o => o.ServiceID).ToList();
+            foreach(var service in distinctServices)
+            {
+                if (!service.RequireApproval)
+                {
+                    var serviceResults = result.Where(x => x.ServiceID == service.ServiceID).ToList();
+                    ServicesForReport.AddRange(serviceResults);
+                }
+                else
+                {
+                    var checkIfApproved = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == service.ServiceParameterID && x.BillNumber == billnumber);
+                    if(checkIfApproved != null)
+                    {
+                        if (checkIfApproved.HasApproved)
+                        {
+                            var serviceResults = result.Where(x => x.ServiceID == service.ServiceID).ToList();
+                            ServicesForReport.AddRange(serviceResults);
+                        }
+                    }
+                }
+            }
+            return ServicesForReport;
         }
         private string GetStatusForTemplateReport(int value, string range)
         {
@@ -515,7 +544,8 @@ namespace JenzHealth.Areas.Admin.Services
                     Value = b.Value,
                     RangeID = (int)b.ServiceRangeID,
                     Labnote = b.Labnote,
-                    ScientificComment = b.ScienticComment
+                    ScientificComment = b.ScienticComment,
+                    FilmingReport = b.FilmingReport
                 }).FirstOrDefault();
             if (record != null)
                 return record;
@@ -536,6 +566,7 @@ namespace JenzHealth.Areas.Admin.Services
                     exist.Labnote = labnote;
                     exist.ScienticComment = comment;
                     exist.ServiceRangeID = result.RangeID;
+                    exist.FilmingReport = result.FilmingReport;
                     exist.PreparedByID = Global.AuthenticatedUserID;
 
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
@@ -554,6 +585,7 @@ namespace JenzHealth.Areas.Admin.Services
                         ServiceRangeID = result.RangeID,
                         Labnote = labnote,
                         ScienticComment = comment,
+                        FilmingReport = result.FilmingReport,
                         IsDeleted = false,
                         DateCreated = DateTime.Now,
                         PreparedByID = Global.AuthenticatedUserID
@@ -620,6 +652,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Cystals = b.Cystals,
                 DateCreated = b.DateCreated,
                 DateOfProduction = b.DateOfProduction,
+                DateOfProductionn = b.DateOfProduction,
                 DurationOfAbstinence = b.DurationOfAbstinence,
                 EpithelialCells = b.EpithelialCells,
                 GiemsaOthers = b.GiemsaOthers,
@@ -638,6 +671,7 @@ namespace JenzHealth.Areas.Admin.Services
                 ModeOfProduction = b.ModeOfProduction,
                 Morphology = b.Morphology,
                 Motility = b.Motility,
+                Motilityy = b.Motility,
                 OthersResult = b.OthersResult,
                 Ova = b.Ova,
                 PH = b.PH,
@@ -645,8 +679,10 @@ namespace JenzHealth.Areas.Admin.Services
                 PusCells = b.PusCells,
                 RedBloodCells = b.RedBloodCells,
                 TimeExamined = b.TimeExamined,
+                TimeExaminedd = b.TimeExamined,
                 TimeOfProduction = b.TimeOfProduction,
                 TimeRecieved = b.TimeRecieved,
+                TimeRecievedd = b.TimeRecieved,
                 TrichomonasVaginalis = b.TrichomonasVaginalis,
                 VincetsOrganisms = b.VincetsOrganisms,
                 Viscosity = b.Viscosity,
@@ -658,7 +694,8 @@ namespace JenzHealth.Areas.Admin.Services
                 YeastCells = b.YeastCells,
                 ZiehlOthers = b.ZiehlOthers,
                 Service = b.Service.Description,
-                ServiceID = b.ServiceID
+                ServiceID = b.ServiceID,
+                ScienticComment = b.ScienticComment
             }).FirstOrDefault();
             if (model == null)
             {
@@ -746,14 +783,51 @@ namespace JenzHealth.Areas.Admin.Services
                 YeastCells = b.YeastCells,
                 ZiehlOthers = b.ZiehlOthers,
                 ScienticComment = b.ScienticComment,
-                PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname
+                Service = b.Service.Description,
+                ServiceID = b.ServiceID,
+                PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
+                DateApproved = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o=>o.ServiceID == b.ServiceID).Id) != null ?
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id).DateApproved : null,
+                ApprovedBy = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id) != null ?
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id).ApprovedBy.Firstname + " " +
+                    _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id).ApprovedBy.Lastname :
+                    "NIL",
             }).ToList();
             foreach (var item in model)
             {
                 item.MicroscopyTypee = item.MicroscopyType.DisplayName();
                 item.StainTypee = item.StainType.DisplayName();
             }
-            return model;
+
+            List<NonTemplatedLabPreparationVM> ServicesForReport = new List<NonTemplatedLabPreparationVM>();
+            // Check for approved test
+            var distinctServices = model.Distinct(o => o.ServiceID).ToList();
+            foreach (var service in distinctServices)
+            {
+                var serviceParameter = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == service.ServiceID);
+                if (!serviceParameter.RequireApproval)
+                {
+                    var serviceResults = model.Where(x => x.ServiceID == service.ServiceID).ToList();
+                    ServicesForReport.AddRange(serviceResults);
+                }
+                else
+                {
+                    var checkIfApproved = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == billnumber);
+                    if (checkIfApproved != null)
+                    {
+                        if (checkIfApproved.HasApproved)
+                        {
+                            var serviceResults = model.Where(x => x.ServiceID == service.ServiceID).ToList();
+                            ServicesForReport.AddRange(serviceResults);
+                        }
+                    }
+                }
+            }
+            if(ServicesForReport.Count() == 0)
+            {
+                throw new Exception("This Test can not be printed without approval. Please Approve Test Result and try again.");
+            }
+            return ServicesForReport;
         }
 
         public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
@@ -947,6 +1021,7 @@ namespace JenzHealth.Areas.Admin.Services
                 PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
                 DatePrepared = b.DateCreated,
                 Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
+                FilmingReport = b.FilmingReport
             }).ToList();
             foreach (var item in record)
             {

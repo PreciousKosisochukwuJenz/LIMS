@@ -29,11 +29,12 @@
                         result.Key = tr.children[0].innerText;
                         result.Value = tr.children[1].getElementsByClassName("value")[0].value;
                         result.RangeID = tr.children[2].getElementsByClassName("rangeID")[0].value;
-
+                        result.FilmingReport = $("#FilmingReport-" + result.ServiceID).val();
                         // Add to result to list
                         results.push(result);
                     });
                 });
+                debugger
 
                 //Send ajax call to server
                 $.ajax({

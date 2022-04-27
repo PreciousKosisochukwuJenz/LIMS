@@ -164,7 +164,48 @@ $(function () {
 
     UpdateOrganismTbl();
 
+    debugger
+    var dateOfProduction = $("#DateOfProductionn").val();
+    var timeRecieved = $("#TimeRecievedd").val();
+    var timeExamined = $("#TimeExaminedd").val();
+    var motility = $("#Motilityy").val();
+
+    $('#TimeRecieved').val(FormatDate(timeRecieved));
+    $('#TimeExamined').val(FormatDate(timeExamined));
+    $('#DateOfProduction').val(FormatDate(dateOfProduction));
+
+     $("#Motility > option").each((i, elem) => {
+        if (elem.value == motility) {
+            elem.setAttribute("selected", true);
+        }
+    });
+
 })
+
+function FormatDate(dateToSet) {
+    const [date, time] = formatDate(new Date(dateToSet)).split(' ');
+    return date + "T" + time;
+}
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+    return (
+        [
+            date.getFullYear(),
+            padTo2Digits(date.getMonth() + 1),
+            padTo2Digits(date.getDate()),
+        ].join('-') +
+        ' ' +
+        [
+            padTo2Digits(date.getHours()),
+            padTo2Digits(date.getMinutes()),
+            // padTo2Digits(date.getSeconds()),  // 👈️ can also add seconds
+        ].join(':')
+    );
+}
 
 function UpdateOrganismTbl() {
     var id = $("#Id").val();
@@ -576,7 +617,8 @@ function Update() {
                 KOHResult: $("#KOHResult").val(),
                 OthersResult: $("#OthersResult").val(),
                 Labnote: $("#Labnote").val(),
-                ServiceID: $("#ServiceID").val()
+                ServiceID: $("#ServiceID").val(),
+                ScienticComment: $("#ScienticComment").val()
             }
             var specimencollectedID = $("#SpecimenCollectedID").val();
             let OrganismList = [];

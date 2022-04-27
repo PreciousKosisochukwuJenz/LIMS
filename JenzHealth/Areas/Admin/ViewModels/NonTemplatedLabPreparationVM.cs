@@ -67,13 +67,17 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string OthersResult { get; set; }
         public string DurationOfAbstinence { get; set; }
         public DateTime? DateOfProduction { get; set; }
+        public DateTime? DateOfProductionn { get; set; }
         public DateTime? TimeRecieved { get; set; }
+        public DateTime? TimeRecievedd { get; set; }
         public DateTime? TimeOfProduction { get; set; }
         public string ModeOfProduction { get; set; }
         public string Viscosity { get; set; }
         public DateTime? TimeExamined { get; set; }
+        public DateTime? TimeExaminedd { get; set; }
         public string Morphology { get; set; }
         public string Motility { get; set; }
+        public string Motilityy { get; set; }
         public int? TotalSpermCount { get; set; }
         public string ImmatureCells { get; set; }
         public string WBCS { get; set; }
@@ -89,6 +93,8 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime DateCreated { get; set; }
         public int? PreparedByID { get; set; }
         public string PreparedBy { get; set; }
+        public string ApprovedBy { get; set; }
+        public DateTime? DateApproved { get; set; }
         public string Service { get; set; }
         public int? ServiceID { get; set; }
     }

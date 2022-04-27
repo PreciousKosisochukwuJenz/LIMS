@@ -26,6 +26,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime? DateCollected { get; set; }
         public DateTime? DateApproved { get; set; }
         public string Labnumber { get; set; }
+        public string FilmingReport { get; set; }
+        public bool RequireApproval { get; set; }
+        public int? ServiceParameterID { get; set; }
         public List<ServiceParameterAndRange> Parameters { get; set; }
     }
     public class ServiceParameterAndRange
