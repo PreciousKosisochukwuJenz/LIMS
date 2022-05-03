@@ -26,7 +26,6 @@ namespace JenzHealth.Areas.Admin.Services
             _seedService = new SeedService(db);
             _paymentService = new PaymentService(db, new UserService());
         }
-
         public ServiceParameterVM GetServiceParameter(string ServiceName)
         {
             var model = _db.ServiceParameters.Where(x => x.Service.Description == ServiceName).Select(b => new ServiceParameterVM()
@@ -43,7 +42,6 @@ namespace JenzHealth.Areas.Admin.Services
 
             return model;
         }
-
         public ServiceParameterVM GetServiceParameter(int serviceID)
         {
             var model = _db.ServiceParameters.Where(x => x.ServiceID == serviceID).Select(b => new ServiceParameterVM()
@@ -90,17 +88,38 @@ namespace JenzHealth.Areas.Admin.Services
 
             if (paramterSetups != null)
             {
-                var existingParameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID);
-                if (existingParameterSetups.Any())
+                List<ServiceParameterSetupVM> parameterToAdd = new List<ServiceParameterSetupVM>();
+                List<ServiceParameterSetup> parameterToDelete = new List<ServiceParameterSetup>();
+
+                var existingParameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID && x.IsDeleted == false).ToList();
+                if (existingParameterSetups.Count() > 0)
                 {
                     foreach (var existingparamtersetup in existingParameterSetups)
                     {
                         existingparamtersetup.IsDeleted = true;
                         _db.Entry(existingparamtersetup).State = System.Data.Entity.EntityState.Modified;
                     }
+                    foreach (var parametersetup in paramterSetups)
+                    {
+                        var existing = existingParameterSetups.Where(x => x.Name == parametersetup.Name && x.ServiceParameterID == serviceParameterID).FirstOrDefault();
+                        if (existing != null)
+                        {
+                            existing.Name = parametersetup.Name;
+                            existing.Rank = parametersetup.Rank;
+                            existing.IsDeleted = false;
+                        }
+                        else
+                        {
+                            parameterToAdd.Add(parametersetup);
+                        }
+                    }
+                }
+                else
+                {
+                    parameterToAdd.AddRange(paramterSetups);
                 }
 
-                foreach (var paramter in paramterSetups)
+                foreach (var paramter in parameterToAdd)
                 {
                     var serviceparamtersetup = new ServiceParameterSetup()
                     {
@@ -142,21 +161,38 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public void UpdateParameterRangeSetup(List<ServiceParameterRangeSetupVM> rangeSetups)
         {
+            List<ServiceParameterRangeSetupVM> rangeToAdd = new List<ServiceParameterRangeSetupVM>();
             var uniqueIDs = rangeSetups.Distinct(o => o.ServiceParameterSetupID).ToList();
             if (uniqueIDs.Any())
             {
                 foreach (var id in uniqueIDs)
                 {
-                    var existingRangesSetups = _db.ServiceParameterRangeSetups.Where(x => x.ServiceParameterSetupID == id.ServiceParameterSetupID && x.IsDeleted == false);
+                    var existingRangesSetups = _db.ServiceParameterRangeSetups.Where(x => x.ServiceParameterSetupID == id.ServiceParameterSetupID && x.IsDeleted == false).ToList();
                     foreach (var existingrangesetup in existingRangesSetups)
                     {
                         existingrangesetup.IsDeleted = true;
                         _db.Entry(existingrangesetup).State = System.Data.Entity.EntityState.Modified;
                     }
+                    var rangeForParameterSetups = rangeSetups.Where(x => x.ServiceParameterSetupID == id.ServiceParameterSetupID).ToList();
+                    foreach(var rangesetup in rangeForParameterSetups)
+                    {
+                        var existingRangeSetup = _db.ServiceParameterRangeSetups.Where(x => x.Unit == rangesetup.Unit && x.Range == rangesetup.Range && x.ServiceParameterSetupID == rangesetup.ServiceParameterSetupID).FirstOrDefault();
+                        if(existingRangeSetup != null)
+                        {
+                            existingRangeSetup.Range = rangesetup.Range;
+                            existingRangeSetup.Unit = rangesetup.Unit;
+                            existingRangeSetup.IsDeleted = false;
+                            _db.Entry(existingRangeSetup).State = System.Data.Entity.EntityState.Modified;
+                        }
+                        else
+                        {
+                            rangeToAdd.Add(rangesetup);
+                        }
+                    }
                     _db.SaveChanges();
                 }
             }
-            foreach (var rangesetup in rangeSetups)
+            foreach (var rangesetup in rangeToAdd)
             {
                 var rangeSetup = new ServiceParameterRangeSetup()
                 {
@@ -170,7 +206,6 @@ namespace JenzHealth.Areas.Admin.Services
                 _db.SaveChanges();
             }
         }
-
         public void UpdateSpecimenSampleCollection(SpecimenCollectionVM specimenCollected, List<SpecimenCollectionCheckListVM> checklist)
         {
             int specimenCollectionID = 0;
@@ -272,7 +307,6 @@ namespace JenzHealth.Areas.Admin.Services
             else
                 return false;
         }
-
         public SpecimenCollectionVM GetSpecimenCollected(string billnumber)
         {
             var specimenCollected = _db.SpecimenCollections.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new SpecimenCollectionVM()
@@ -317,7 +351,6 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return specimenCollected;
         }
-
         public List<SpecimenCollectionCheckListVM> GetCheckList(int SpecimentCollectionID)
         {
             var checklist = _db.SpecimenCollectionCheckLists.Where(x => x.IsDeleted == false && x.SpecimenCollectionID == SpecimentCollectionID)
@@ -374,7 +407,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters,
                 RequireApproval = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).RequireApproval
             }).ToList();
-            foreach(var item in model)
+            foreach (var item in model)
             {
                 var serviceParameter = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == item.ServiceID);
                 var checkApproval = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == item.BillNumber);
@@ -494,6 +527,7 @@ namespace JenzHealth.Areas.Admin.Services
                     _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == b.ServiceParameterSetup.ServiceParameterID).ApprovedBy.Lastname :
                     "NIL",
                     Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
+                    FilmingReport = b.FilmingReport
                 }).ToList();
 
             foreach (var item in result)
@@ -504,7 +538,7 @@ namespace JenzHealth.Areas.Admin.Services
             List<TemplateServiceCompuationVM> ServicesForReport = new List<TemplateServiceCompuationVM>();
             // Check for approved test
             var distinctServices = result.Distinct(o => o.ServiceID).ToList();
-            foreach(var service in distinctServices)
+            foreach (var service in distinctServices)
             {
                 if (!service.RequireApproval)
                 {
@@ -514,7 +548,7 @@ namespace JenzHealth.Areas.Admin.Services
                 else
                 {
                     var checkIfApproved = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == service.ServiceParameterID && x.BillNumber == billnumber);
-                    if(checkIfApproved != null)
+                    if (checkIfApproved != null)
                     {
                         if (checkIfApproved.HasApproved)
                         {
@@ -598,7 +632,7 @@ namespace JenzHealth.Areas.Admin.Services
                 if (serviceParameter.RequireApproval)
                 {
                     var checkIfExist = _db.ResultApprovals.Where(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == result.BillInvoiceNumber).FirstOrDefault();
-                    if(checkIfExist == null)
+                    if (checkIfExist == null)
                     {
                         var approvalModel = new ResultApproval()
                         {
@@ -702,7 +736,7 @@ namespace JenzHealth.Areas.Admin.Services
                 model = new NonTemplatedLabPreparationVM();
                 model.ServiceID = serviceID;
             }
-            
+
             return model;
         }
         public List<NonTemplatedLabPreparationVM> GetNonTemplatedLabPreparationForReport(string billnumber)
@@ -786,7 +820,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Service = b.Service.Description,
                 ServiceID = b.ServiceID,
                 PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
-                DateApproved = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o=>o.ServiceID == b.ServiceID).Id) != null ?
+                DateApproved = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id) != null ?
                     _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id).DateApproved : null,
                 ApprovedBy = _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id) != null ?
                     _db.ResultApprovals.FirstOrDefault(x => x.BillNumber == b.BillInvoiceNumber && x.ServiceParameterID == _db.ServiceParameters.FirstOrDefault(o => o.ServiceID == b.ServiceID).Id).ApprovedBy.Firstname + " " +
@@ -823,7 +857,7 @@ namespace JenzHealth.Areas.Admin.Services
                     }
                 }
             }
-            if(ServicesForReport.Count() == 0)
+            if (ServicesForReport.Count() == 0)
             {
                 throw new Exception("This Test can not be printed without approval. Please Approve Test Result and try again.");
             }

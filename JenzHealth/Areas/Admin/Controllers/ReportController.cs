@@ -203,7 +203,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             }
             else
             {
-                throw new Exception(String.Format("Report path not found in the specified directory: {0", path));
+                throw new Exception(String.Format("Report path not found in the specified directory: {0}", path));
             }
             var header = _settingService.GetReportHeader();
             var customer = _paymentService.GetCustomerForReport(billnumber);

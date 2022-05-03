@@ -119,7 +119,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             ViewBag.Templates = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
             return View();
         }
-        public ActionResult Compute(int templateID, string billNumber,string serviceIds)
+        public ActionResult Compute(int templateID, string billNumber, string serviceIds)
         {
             TempData["BillNumber"] = billNumber;
             TempData["SpecimenCollectedID"] = SpecimenCollectionID;
@@ -151,16 +151,16 @@ namespace JenzHealth.Areas.Admin.Controllers
             return View(vmodel);
         }
 
-        public ActionResult ComputedResult(int serviceParameterID, string billnumber,int templateID, int Id, int serviceID)
+        public ActionResult ComputedResult(int serviceParameterID, string billnumber, int templateID, int Id, int serviceID)
         {
             var template = _seedService.GetTemplate(templateID);
             ViewBag.Id = Id;
             switch (template.UseDefaultParameters)
             {
                 case false:
-                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber,serviceParameterID));
+                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber, serviceParameterID));
                 case true:
-                    return View("ComputeNonTemplatedResult", _laboratoryService.GetNonTemplatedLabPreparation(billnumber,serviceID));
+                    return View("ComputeNonTemplatedResult", _laboratoryService.GetNonTemplatedLabPreparation(billnumber, serviceID));
             }
             return View();
         }
@@ -198,8 +198,19 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
         public ActionResult CheckSpecimenCollection(string invoicenumber)
         {
-            var exist = _laboratoryService.CheckSpecimenCollectionWithBillNumber(invoicenumber);
-            return Json(exist, JsonRequestBehavior.AllowGet);
+            bool exists = false;
+            bool hasCompletedPayment = false;
+            if (_paymentService.CheckIfPaymentIsCompleted(invoicenumber))
+            {
+                hasCompletedPayment = true;
+                exists = _laboratoryService.CheckSpecimenCollectionWithBillNumber(invoicenumber);
+            }
+            var response = new
+            {
+                HasCompletedPayment = hasCompletedPayment,
+                Exists = exists
+            };
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetSpecimenCollected(string invoicenumber)
         {
