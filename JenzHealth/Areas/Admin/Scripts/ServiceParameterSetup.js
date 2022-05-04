@@ -114,8 +114,6 @@ $(function () {
     });
 
 })
-
-
 $("#FinishBtn").click(function () {
     var service = $("#Service").val();
     var specimen = $("#Specimen").val();
@@ -144,8 +142,9 @@ $("#FinishBtn").click(function () {
                     Service: $("#Service").val(),
                     Specimen: $("#Specimen").val(),
                     Template: $("#Template").val(),
-                    RequireApproval: $("#newProjectsEmailsToggle").val()
+                    RequireApproval: $("#newProjectsEmailsToggle").prop("checked")
                 };
+                debugger
 
                 let ParameterSetupList = [];
                 var table = $("#ParameterBody")[0].children;

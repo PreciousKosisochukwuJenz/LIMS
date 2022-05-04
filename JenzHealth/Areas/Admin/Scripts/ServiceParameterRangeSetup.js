@@ -107,6 +107,7 @@ $("#FinishBtn").click(function () {
                     // Create Parameter
                     let setup = {};
                     setup.ParameterID = tr.children[1].id;
+                    setup.ServiceParameterSetupID = tr.children[1].dataset.id;
                     setup.Range = tr.children[2].innerText;
                     setup.Unit = tr.children[3].innerText;
 
@@ -182,7 +183,7 @@ function Populate(service) {
                 $("#RangeBody").empty()
                 $.each(datas, function (i, data) {
                     let html = "";
-                    html = "<tr><td><button class='btn btn-danger' onclick='DeleteRange(this)'>Remove</button></td><td id='" + data.ServiceParameterSetupID + "'>" + data.ServiceParameterSetup + "</td><td class='range'>" + data.Range + "</td><td>" + data.Unit + "</td></tr>";
+                    html = "<tr><td><button class='btn btn-danger' onclick='DeleteRange(this)'>Remove</button></td><td data-id='"+data.Id+"' id='" + data.ServiceParameterSetupID + "'>" + data.ServiceParameterSetup + "</td><td class='range'>" + data.Range + "</td><td>" + data.Unit + "</td></tr>";
                     $("#RangeBody").append(html);
                 });
             }

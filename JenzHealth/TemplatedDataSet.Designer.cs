@@ -327,6 +327,8 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnDateApproved;
             
+            private global::System.Data.DataColumn columnFilmingReport;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TemplatedLabPreparationsDataTable() {
@@ -554,6 +556,14 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FilmingReportColumn {
+                get {
+                    return this.columnFilmingReport;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -612,7 +622,8 @@ namespace JenzHealth {
                         string Specimen, 
                         string SpecimenCollectedBy, 
                         string DateCollected, 
-                        string DateApproved) {
+                        string DateApproved, 
+                        string FilmingReport) {
                 TemplatedLabPreparationsRow rowTemplatedLabPreparationsRow = ((TemplatedLabPreparationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -638,7 +649,8 @@ namespace JenzHealth {
                         Specimen,
                         SpecimenCollectedBy,
                         DateCollected,
-                        DateApproved};
+                        DateApproved,
+                        FilmingReport};
                 rowTemplatedLabPreparationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTemplatedLabPreparationsRow);
                 return rowTemplatedLabPreparationsRow;
@@ -692,6 +704,7 @@ namespace JenzHealth {
                 this.columnSpecimenCollectedBy = base.Columns["SpecimenCollectedBy"];
                 this.columnDateCollected = base.Columns["DateCollected"];
                 this.columnDateApproved = base.Columns["DateApproved"];
+                this.columnFilmingReport = base.Columns["FilmingReport"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -745,6 +758,8 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnDateCollected);
                 this.columnDateApproved = new global::System.Data.DataColumn("DateApproved", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateApproved);
+                this.columnFilmingReport = new global::System.Data.DataColumn("FilmingReport", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFilmingReport);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1278,6 +1293,23 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FilmingReport {
+                get {
+                    try {
+                        return ((string)(this[this.tableTemplatedLabPreparations.FilmingReportColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FilmingReport\' in table \'TemplatedLabPreparations\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableTemplatedLabPreparations.FilmingReportColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsBillInvoiceNumberNull() {
                 return this.IsNull(this.tableTemplatedLabPreparations.BillInvoiceNumberColumn);
             }
@@ -1526,6 +1558,18 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDateApprovedNull() {
                 this[this.tableTemplatedLabPreparations.DateApprovedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFilmingReportNull() {
+                return this.IsNull(this.tableTemplatedLabPreparations.FilmingReportColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFilmingReportNull() {
+                this[this.tableTemplatedLabPreparations.FilmingReportColumn] = global::System.Convert.DBNull;
             }
         }
         
