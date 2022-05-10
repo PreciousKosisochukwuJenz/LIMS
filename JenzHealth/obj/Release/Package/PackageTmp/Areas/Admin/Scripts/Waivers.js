@@ -15,10 +15,12 @@ $("input[name='WaiveBy']").change(function () {
 
     if ($("input[name='WaiveBy']:checked").val() == "AMOUNT") {
         $("#waiverAmount").show();
+        $("#waiverAmount").val("");
         $("#waiverPercentage").hide();
     }
     else {
         $("#waiverPercentage").show();
+        $("#waiverPercentage").val("0");
         $("#waiverAmount").hide();
     }
 })
@@ -146,5 +148,13 @@ $("#waiverPercentage").keyup(function () {
         $("#AvailableAmount").val(balance);
         $("#WaiveAmount").val(waiveAmount);
 
+    }
+})
+
+document.addEventListener("keyup", function (e) {
+    if (e.target.value === "") {
+        e.target.classList.add("is-invalid");
+    } else {
+        e.target.classList.remove("is-invalid");
     }
 })

@@ -5,10 +5,12 @@
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (result) {
+            var date = new Date(+result.DOB.replace(/\D/g, '') + 3600 * 1000 * 24);
+
             $('#Id').val(result.Id);
             $('#Firstname').val(result.Firstname);
             $('#Lastname').val(result.Lastname);
-            $('#DOB').val(new Date(result.DOB).to());
+            $('#DOB').val(date.toISOString().substr(0, 10));
             $('#Gender').val(result.Gender);
             $('#Email').val(result.Email);
             $('#PhoneNumber').val(result.PhoneNumber);

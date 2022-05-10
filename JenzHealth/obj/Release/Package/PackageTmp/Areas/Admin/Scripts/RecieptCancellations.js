@@ -220,7 +220,20 @@ $("#FinishBtn").click(function () {
                     data: { vmodel: data },
                     success: function (response) {
                         if (response == "success") {
-                            location.href = "RecieptCancellations?Saved=true";
+                            Swal.fire({
+                                title: 'Reciept cancelled successfully',
+                                showCancelButton: false,
+                                confirmButtonText: 'Ok',
+                                showLoaderOnConfirm: true,
+                            }).then((result) => {
+                                if (result.value) {
+                                    location.href = "RecieptCancellations?Saved=true";
+                                } else if (
+                                    result.dismiss === Swal.DismissReason.cancel
+                                ) {
+                                    location.href = "RecieptCancellations?Saved=true";
+                                }
+                            })
                         }
                     }
                 })
@@ -272,3 +285,11 @@ function UpdateBalanceAmount() {
     var balance = ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount);
     $("#BalanceAmount").html("₦" + numberWithCommas(balance) + ".00")
 }
+
+document.addEventListener("keyup", function (e) {
+    if (e.target.value === "") {
+        e.target.classList.add("is-invalid");
+    } else {
+        e.target.classList.remove("is-invalid");
+    }
+})

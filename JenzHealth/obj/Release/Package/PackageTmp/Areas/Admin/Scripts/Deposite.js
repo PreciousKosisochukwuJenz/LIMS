@@ -61,3 +61,10 @@ $("#PaymentType").change(function () {
         $("#refDiv").show();
     }
 })
+document.addEventListener("keyup", function (e) {
+    if (e.target.value === "") {
+        e.target.classList.add("is-invalid");
+    } else {
+        e.target.classList.remove("is-invalid");
+    }
+})

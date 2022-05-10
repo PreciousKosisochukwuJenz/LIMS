@@ -9,3 +9,7 @@ function numberWithCommas(x) {
 function ConvertToDecimal(amount) {
     return Number(amount.replace(/[^0-9.-]+/g, ""));
 }
+
+$("#close").click(function () {
+    $(".main-content-container").empty();
+});

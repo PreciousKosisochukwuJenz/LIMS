@@ -12,7 +12,7 @@
                 <Value>DEPARTMENT OF </Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -21,7 +21,7 @@
                 <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -36,7 +36,7 @@
                 <Value>LABORATORY REPORT</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -47,10 +47,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>2.17485in</Top>
-        <Left>0.1029in</Left>
-        <Height>0.64458in</Height>
-        <Width>6.86223in</Width>
+        <Top>0.64695in</Top>
+        <Left>1.64982in</Left>
+        <Height>0.51958in</Height>
+        <Width>3.88479in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -72,7 +72,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -106,7 +106,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -117,8 +116,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -134,7 +132,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -145,8 +142,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -162,7 +158,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -173,8 +168,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -190,7 +184,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -201,8 +194,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -218,7 +210,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -229,8 +220,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -241,9 +231,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.87499in</Top>
-        <Left>0.1029in</Left>
-        <Height>1.87153in</Height>
+        <Top>1.53584in</Top>
+        <Left>0.12267in</Left>
+        <Height>1.65278in</Height>
         <Width>6.86223in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -269,10 +259,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>TEST BASIC INFORMATION</Value>
+                <Value>LABORATORY INFORMATION</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -299,18 +289,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>NATURE OF SPECIMEN: </Value>
+                <Value>NATURE OF SPECIMEN:               </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">               </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -319,8 +300,7 @@
                 <Value>=First(Fields!Specimen.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -331,18 +311,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTED BY: </Value>
+                <Value>SPECIMEN COLLECTED BY:          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">          </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -351,15 +322,13 @@
                 <Value>=First(Fields!CollectedBy.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
                 <Value xml:space="preserve">   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -371,18 +340,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTION ON: </Value>
+                <Value>ON:                                                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">       </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -391,8 +351,7 @@
                 <Value>=First(Fields!DateTimeCreated.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
               </TextRun>
@@ -400,7 +359,6 @@
                 <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -412,18 +370,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RESULT PREPARED BY:   </Value>
+                <Value>RESULT PREPARED BY:                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">              </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -432,8 +381,7 @@
                 <Value>=First(Fields!PreparedBy.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -444,10 +392,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RESULT PREPARED ON:                  </Value>
+                <Value>ON:                                                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -456,8 +403,7 @@
                 <Value>=First(Fields!RequestingDate.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
               </TextRun>
@@ -469,10 +415,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RESULT APPROVED BY:                   </Value>
+                <Value>RESULT APPROVED BY:                </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -481,8 +426,7 @@
                 <Value>=First(Fields!ApprovedBy.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -493,10 +437,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RESULT APPROVED ON:                  </Value>
+                <Value>ON:                                                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -505,8 +448,7 @@
                 <Value>=First(Fields!DateApproved.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
               </TextRun>
@@ -517,9 +459,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>4.7743in</Top>
-        <Left>0.1029in</Left>
-        <Height>2.59723in</Height>
+        <Top>2.93167in</Top>
+        <Left>0.12853in</Left>
+        <Height>1.71529in</Height>
         <Width>6.86223in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -548,7 +490,7 @@
                 <Value>TEST INVESTIGATION FOR "</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -557,7 +499,7 @@
                 <Value>=First(Fields!Service.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -565,7 +507,7 @@
                 <Value>"</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -595,7 +537,7 @@
                 <Value>MACROSCOPY</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -610,7 +552,7 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -625,23 +567,13 @@
                 <Value>Appearance</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>: </Value>
+                <Value>:       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">      </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -650,7 +582,6 @@
                 <Value>=First(Fields!Appearance.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -658,7 +589,6 @@
                 <Value xml:space="preserve">               </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -673,23 +603,13 @@
                 <Value>Colour</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>:  </Value>
+                <Value>:                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">              </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -698,7 +618,6 @@
                 <Value>=First(Fields!Color.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -713,23 +632,13 @@
                 <Value>Blood</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>:</Value>
+                <Value>:                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                 </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -738,7 +647,6 @@
                 <Value>=First(Fields!MacrosopyBlood.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -746,7 +654,6 @@
                 <Value xml:space="preserve">                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -761,23 +668,13 @@
                 <Value>Adult Warm</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>: </Value>
+                <Value>:      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">      </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -786,7 +683,6 @@
                 <Value>=First(Fields!AdultWarm.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -801,23 +697,13 @@
                 <Value>Mucus</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>: </Value>
+                <Value>:                 </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">               </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -826,7 +712,6 @@
                 <Value>=First(Fields!Mucus.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -867,9 +752,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>7.38541in</Top>
-        <Left>0.1029in</Left>
-        <Height>1.94444in</Height>
+        <Top>4.64696in</Top>
+        <Left>0.12853in</Left>
+        <Height>1.77777in</Height>
         <Width>6.86223in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -897,7 +782,7 @@
                 <Value>CULTURE</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -920,18 +805,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Temperature:</Value>
+                <Value>Temperature:    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">    </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -940,7 +816,6 @@
                 <Value>=First(Fields!Temperature.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -948,7 +823,6 @@
                 <Value xml:space="preserve">             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -958,18 +832,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Duration:</Value>
+                <Value>Duration:            </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">           </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -978,7 +843,6 @@
                 <Value>=First(Fields!Duration.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -988,18 +852,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Atmosphere:  </Value>
+                <Value>Atmosphere:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">   </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1008,7 +863,6 @@
                 <Value>=First(Fields!Atomsphere.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1016,7 +870,6 @@
                 <Value xml:space="preserve">          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1026,18 +879,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Plate:</Value>
+                <Value>Plate:                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1046,7 +890,6 @@
                 <Value>=First(Fields!Plate.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1056,18 +899,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Incubation:</Value>
+                <Value>Incubation:         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">       </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1076,7 +910,6 @@
                 <Value>=First(Fields!Incubatio.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1084,7 +917,6 @@
                 <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1110,7 +942,7 @@
                 <Value>Line Organisms:</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1119,9 +951,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>27.44445in</Top>
-        <Left>0.10293in</Left>
-        <Height>1.9375in</Height>
+        <Top>21.8878in</Top>
+        <Left>0.12857in</Left>
+        <Height>1.80208in</Height>
         <Width>6.86223in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -1172,7 +1004,7 @@
                               <Value>Anti-botic</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1207,7 +1039,7 @@
                               <Value>Sensitivity</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1242,7 +1074,7 @@
                               <Value>Intermediate</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1277,7 +1109,7 @@
                               <Value>Resistivity</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1317,7 +1149,6 @@
                               <Value>=Fields!AntiBiotic.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1352,7 +1183,6 @@
                               <Value>=iif(Fields!IsSensitive.Value, Chr(80),Chr(79))</Value>
                               <Style>
                                 <FontFamily>Wingdings 2</FontFamily>
-                                <FontSize>22pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1367,7 +1197,6 @@
                               <Value />
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1382,7 +1211,6 @@
                               <Value>=Fields!SensitiveDegree.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1413,10 +1241,23 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Wingdings 2</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
                               <Value>=iif(Fields!IsIntermediate.Value, Chr(80),Chr(79))</Value>
                               <Style>
                                 <FontFamily>Wingdings 2</FontFamily>
-                                <FontSize>20pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1451,7 +1292,6 @@
                               <Value>=iif(Fields!IsResistance.Value, Chr(80),Chr(79))</Value>
                               <Style>
                                 <FontFamily>Wingdings 2</FontFamily>
-                                <FontSize>22pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1466,7 +1306,6 @@
                               <Value />
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1481,7 +1320,6 @@
                               <Value>=Fields!ResistanceDegree.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>14pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1541,7 +1379,7 @@
                             <Value>Organism</Value>
                             <Style>
                               <FontFamily>Calibri</FontFamily>
-                              <FontSize>14pt</FontSize>
+                              <FontSize>11pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -1582,7 +1420,6 @@
                             <Value />
                             <Style>
                               <FontFamily>Calibri</FontFamily>
-                              <FontSize>12pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1596,7 +1433,6 @@
                             <Value />
                             <Style>
                               <FontFamily>Calibri</FontFamily>
-                              <FontSize>12pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1610,7 +1446,6 @@
                             <Value>=Fields!Organism.Value</Value>
                             <Style>
                               <FontFamily>Calibri</FontFamily>
-                              <FontSize>12pt</FontSize>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -1642,8 +1477,8 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>NonTemplatedOrganismDataSet</DataSetName>
-        <Top>29.4375in</Top>
-        <Left>0.10293in</Left>
+        <Top>23.70378in</Top>
+        <Left>0.1345in</Left>
         <Height>0.90626in</Height>
         <Width>6.86222in</Width>
         <ZIndex>5</ZIndex>
@@ -1663,7 +1498,6 @@
                 <Value>SCIENTIST COMMENT:</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1676,7 +1510,6 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1690,7 +1523,6 @@
                 <Value>=First(Fields!ScienticComment.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1699,9 +1531,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>31.29861in</Top>
-        <Left>0.10876in</Left>
-        <Height>1.38542in</Height>
+        <Top>24.63781in</Top>
+        <Left>0.12857in</Left>
+        <Height>0.59375in</Height>
         <Width>6.86223in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -1725,7 +1557,7 @@
                 <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>20pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1736,10 +1568,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>1.53237in</Top>
-        <Left>0.1029in</Left>
+        <Top>0.2407in</Top>
+        <Left>1.64982in</Left>
         <Height>0.40625in</Height>
-        <Width>6.96643in</Width>
+        <Width>3.8709in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -1756,8 +1588,8 @@
         <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>0.23375in</Top>
-        <Left>3.07751in</Left>
+        <Top>0.11917in</Top>
+        <Left>5.5485in</Left>
         <Height>1.22917in</Height>
         <Width>1.52083in</Width>
         <ZIndex>8</ZIndex>
@@ -1778,7 +1610,7 @@
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>22pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <Color>Red</Color>
                 </Style>
@@ -1790,9 +1622,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>32.75347in</Top>
-        <Left>0.47337in</Left>
-        <Height>0.5625in</Height>
+        <Top>25.28712in</Top>
+        <Left>0.33693in</Left>
+        <Height>0.34375in</Height>
         <Width>6in</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -1815,7 +1647,6 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1825,18 +1656,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Pus Cells:  </Value>
+                <Value>Pus Cells:                    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                  </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1844,7 +1666,6 @@
                 <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1853,7 +1674,6 @@
                 <Value>=First(Fields!PusCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1861,7 +1681,6 @@
                 <Value xml:space="preserve">    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1869,7 +1688,6 @@
                 <Value xml:space="preserve">                       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1881,18 +1699,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Crystals:</Value>
+                <Value>Crystals:                       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                      </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1901,7 +1710,6 @@
                 <Value>=First(Fields!Cystals.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1909,7 +1717,6 @@
                 <Value xml:space="preserve">  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1921,18 +1728,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>White Blood Cells:</Value>
+                <Value>White Blood Cells:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">       </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1941,7 +1739,6 @@
                 <Value>=First(Fields!WhiteBloodCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1949,7 +1746,6 @@
                 <Value xml:space="preserve">                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1961,18 +1757,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Ova:</Value>
+                <Value>Ova:                              </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                            </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -1981,7 +1768,6 @@
                 <Value>=First(Fields!Ova.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -1993,18 +1779,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Red Blood Cells:</Value>
+                <Value>Red Blood Cells:         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">          </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2013,7 +1790,6 @@
                 <Value>=First(Fields!RedBloodCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2021,7 +1797,6 @@
                 <Value xml:space="preserve">                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2033,18 +1808,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Parasite:</Value>
+                <Value>Parasite:                      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                     </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2053,7 +1819,6 @@
                 <Value>=First(Fields!WetMountParasite.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2061,7 +1826,6 @@
                 <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2073,18 +1837,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Bacteria:</Value>
+                <Value>Bacteria:                      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                     </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2093,7 +1848,6 @@
                 <Value>=First(Fields!WetMountBacteria.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2101,7 +1855,6 @@
                 <Value xml:space="preserve">                          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2113,18 +1866,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Epithelial Cells:</Value>
+                <Value>Epithelial Cells:           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">           </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2133,7 +1877,6 @@
                 <Value>=First(Fields!EpithelialCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2145,18 +1888,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Yeasts: </Value>
+                <Value>Yeasts:                          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                        </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2165,7 +1899,6 @@
                 <Value>=First(Fields!WetMountYesats.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2173,7 +1906,6 @@
                 <Value xml:space="preserve">                           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2185,18 +1917,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Protozoa:</Value>
+                <Value>Protozoa:                     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                   </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2205,7 +1928,6 @@
                 <Value>=First(Fields!Protozoa.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2213,7 +1935,6 @@
                 <Value xml:space="preserve">  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2225,18 +1946,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Casts: </Value>
+                <Value>Casts:                            </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                         </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2245,7 +1957,6 @@
                 <Value>=First(Fields!Casts.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2253,7 +1964,6 @@
                 <Value xml:space="preserve">                           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2265,18 +1975,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Others:</Value>
+                <Value>Others:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                       </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2285,7 +1986,6 @@
                 <Value>=First(Fields!WetMountOthers.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2293,7 +1993,6 @@
                 <Value xml:space="preserve"> </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2308,7 +2007,6 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2319,9 +2017,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>12.06944in</Top>
-        <Left>0.10292in</Left>
-        <Height>2.59847in</Height>
+        <Top>8.80668in</Top>
+        <Left>0.12266in</Left>
+        <Height>2.2443in</Height>
         <Width>6.86221in</Width>
         <ZIndex>10</ZIndex>
         <Visibility>
@@ -2347,7 +2045,7 @@
                 <Value>DIPSTICK</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2360,7 +2058,6 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2373,7 +2070,6 @@
                 <Value>Specific Gravity:           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2382,7 +2078,6 @@
                 <Value>=First(Fields!SpecificGravity.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2390,7 +2085,6 @@
                 <Value xml:space="preserve">                </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2402,10 +2096,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Blirubin:                          </Value>
+                <Value>Blirubin:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2414,7 +2107,6 @@
                 <Value>=First(Fields!Blirubin.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2429,7 +2121,6 @@
                 <Value>Acidity (PH):                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2438,7 +2129,6 @@
                 <Value>=First(Fields!Acidity.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2446,7 +2136,6 @@
                 <Value xml:space="preserve">                                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2458,10 +2147,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Urobilinogen:               </Value>
+                <Value>Urobilinogen:                </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2470,7 +2158,6 @@
                 <Value>=First(Fields!Urobilinogen.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2482,10 +2169,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Glucose:                          </Value>
+                <Value>Glucose:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2494,7 +2180,6 @@
                 <Value>=First(Fields!Glucose.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2502,7 +2187,6 @@
                 <Value xml:space="preserve">                     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2517,7 +2201,6 @@
                 <Value>Ascorbic:                        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2526,7 +2209,6 @@
                 <Value>=First(Fields!AscorbicAcid.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2538,10 +2220,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Protein:                          </Value>
+                <Value>Protein:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2550,7 +2231,6 @@
                 <Value>=First(Fields!Protein.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2558,7 +2238,6 @@
                 <Value xml:space="preserve">                          </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2570,10 +2249,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Blood:                              </Value>
+                <Value>Blood:                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2582,7 +2260,6 @@
                 <Value>=First(Fields!DipstickBlood.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2597,7 +2274,6 @@
                 <Value>Niterite:                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2606,7 +2282,6 @@
                 <Value>=First(Fields!Niterite.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2614,7 +2289,6 @@
                 <Value xml:space="preserve">                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2626,10 +2300,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Leucocyte Esterase:   </Value>
+                <Value>Leucocyte Esterase:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2638,7 +2311,6 @@
                 <Value>=First(Fields!LeucocyteEsterase.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2650,10 +2322,9 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Ketones:                         </Value>
+                <Value>Ketones:                        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2662,7 +2333,6 @@
                 <Value>=First(Fields!Ketones.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2673,8 +2343,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>9.34374in</Top>
-        <Left>0.10291in</Left>
+        <Top>6.42473in</Top>
+        <Left>0.12266in</Left>
         <Height>2.07292in</Height>
         <Width>6.86222in</Width>
         <ZIndex>11</ZIndex>
@@ -2701,7 +2371,7 @@
                 <Value>MICROSCOPY                                     MICROSCOPY TYPE: </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2710,7 +2380,7 @@
                 <Value>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2719,9 +2389,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>11.67013in</Top>
-        <Left>0.10292in</Left>
-        <Height>0.34375in</Height>
+        <Top>8.51154in</Top>
+        <Left>0.12266in</Left>
+        <Height>0.28125in</Height>
         <Width>6.86222in</Width>
         <ZIndex>12</ZIndex>
         <Style>
@@ -2744,7 +2414,7 @@
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2753,7 +2423,7 @@
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2766,7 +2436,6 @@
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2779,7 +2448,6 @@
                 <Value>Gram Positive Cocci:       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2788,7 +2456,6 @@
                 <Value>=First(Fields!GramPositiveCocci.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2796,7 +2463,6 @@
                 <Value xml:space="preserve">           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2809,7 +2475,6 @@
                 <Value>Gram Negative Cocci:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2818,7 +2483,6 @@
                 <Value>=First(Fields!GramNegativeCocci.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2831,7 +2495,6 @@
                 <Value>Gram Positive Rods:       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2840,7 +2503,6 @@
                 <Value>=First(Fields!GramPositiveRods.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2848,7 +2510,6 @@
                 <Value xml:space="preserve">        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2861,7 +2522,6 @@
                 <Value>Gram Negative Rods:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2870,7 +2530,6 @@
                 <Value>=First(Fields!GramNegativeRods.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2883,7 +2542,6 @@
                 <Value>Trichnomas Vaginalis:    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2892,7 +2550,6 @@
                 <Value>=First(Fields!TrichomonasVaginalis.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2900,7 +2557,6 @@
                 <Value xml:space="preserve">                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2913,7 +2569,6 @@
                 <Value>Vincents Organisms:      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2922,7 +2577,6 @@
                 <Value>=First(Fields!VincetsOrganisms.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2935,7 +2589,6 @@
                 <Value>Yeast Cells:                       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2944,7 +2597,6 @@
                 <Value>=First(Fields!YeastCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -2966,8 +2618,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>14.72346in</Top>
-        <Left>0.1029in</Left>
+        <Top>11.06487in</Top>
+        <Left>0.12264in</Left>
         <Height>1.625in</Height>
         <Width>6.86223in</Width>
         <ZIndex>13</ZIndex>
@@ -2995,7 +2647,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3004,7 +2656,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3017,7 +2669,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3030,7 +2682,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>Parasite:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3039,7 +2690,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>=First(Fields!GiemsaStainParasite.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3047,7 +2697,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value xml:space="preserve">                    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3060,7 +2709,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>Others:       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3069,7 +2717,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value>=First(Fields!GiemsaOthers.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3082,7 +2729,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3091,8 +2737,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>16.37624in</Top>
-        <Left>0.1029in</Left>
+        <Top>12.68987in</Top>
+        <Left>0.1286in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>14</ZIndex>
@@ -3120,7 +2766,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3129,7 +2775,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3155,7 +2801,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value>Asic Fast Bacilli:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3164,7 +2809,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value>=First(Fields!AcisFastBacilli.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3172,7 +2816,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value xml:space="preserve">                     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3182,10 +2825,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Others:                      </Value>
+                <Value>Others:                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3194,7 +2836,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                 <Value>=First(Fields!ZiehlOthers.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3216,8 +2857,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>17.33804in</Top>
-        <Left>0.1029in</Left>
+        <Top>13.65167in</Top>
+        <Left>0.1286in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>15</ZIndex>
@@ -3245,7 +2886,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3254,7 +2895,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3280,7 +2921,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value>Result:      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3289,7 +2929,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value>=First(Fields!IndiaInkResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3297,7 +2936,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value xml:space="preserve">                                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3310,7 +2948,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3319,8 +2956,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>18.31374in</Top>
-        <Left>0.10876in</Left>
+        <Top>14.62737in</Top>
+        <Left>0.13446in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>16</ZIndex>
@@ -3348,7 +2985,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3357,7 +2994,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3370,7 +3007,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3383,7 +3020,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                 <Value>Result:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3392,12 +3028,18 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                 <Value>=First(Fields!IodineResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value xml:space="preserve">                                              </Value>
+                <Value xml:space="preserve">   </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                           </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -3422,8 +3064,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>19.26166in</Top>
-        <Left>0.10876in</Left>
+        <Top>15.57529in</Top>
+        <Left>0.13446in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>17</ZIndex>
@@ -3451,7 +3093,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3460,7 +3102,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3473,7 +3115,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3486,7 +3128,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value>Result:      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3495,7 +3136,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value>=First(Fields!MethyleneResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3503,7 +3143,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value xml:space="preserve">                                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3516,7 +3155,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3525,8 +3163,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>20.20958in</Top>
-        <Left>0.1029in</Left>
+        <Top>16.52321in</Top>
+        <Left>0.1286in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>18</ZIndex>
@@ -3554,7 +3192,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
                 <Value>STAIN                                              STAIN TYPE:  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3563,7 +3201,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
                 <Value>=First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3589,7 +3227,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
                 <Value>Result:    </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3598,12 +3235,18 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
                 <Value>=First(Fields!OtherStainResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
               <TextRun>
-                <Value xml:space="preserve">                                               </Value>
+                <Value xml:space="preserve">             </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                  </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>14pt</FontSize>
@@ -3628,8 +3271,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>21.1575in</Top>
-        <Left>0.1029in</Left>
+        <Top>17.47113in</Top>
+        <Left>0.1286in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>19</ZIndex>
@@ -3657,7 +3300,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>SFA</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3670,7 +3313,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3683,7 +3325,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Duration Of Abstinence:       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3692,7 +3333,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!DurationOfAbstinence.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3705,7 +3345,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Date Time Of Production:     </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3714,7 +3353,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!DateOfProduction.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
@@ -3728,7 +3366,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Time Recieved:                        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3737,7 +3374,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!TimeRecieved.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
@@ -3751,7 +3387,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Mode Of Production:             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3760,7 +3395,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!ModeOfProduction.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3773,7 +3407,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Viscosity:                                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3782,7 +3415,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!Viscosity.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3795,7 +3427,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Time Examined:                      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3804,7 +3435,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!TimeExamined.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                 </Style>
@@ -3818,7 +3448,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Morphology:                            </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3827,7 +3456,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!Morphology.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3837,10 +3465,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Motility:                                    </Value>
+                <Value>Motility:                                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3849,7 +3476,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!Motility.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3859,10 +3485,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total Sperm Count:                 </Value>
+                <Value>Total Sperm Count:                </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3871,7 +3496,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!TotalSpermCount.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3881,10 +3505,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Immature Cells:                       </Value>
+                <Value>Immature Cells:                      </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3893,7 +3516,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!ImmatureCells.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3903,10 +3525,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>WBCS:                                        </Value>
+                <Value>WBCS:                                       </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3915,7 +3536,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!WBCS.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3928,7 +3548,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Any Spillage:                            </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3937,7 +3556,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!AnySpillage.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3950,7 +3568,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>RBCS:                                         </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3959,7 +3576,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!RBCS.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3969,10 +3585,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>PH:                                              </Value>
+                <Value>PH:                                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3981,7 +3596,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!PH.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -3990,9 +3604,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>22.16098in</Top>
-        <Left>0.10876in</Left>
-        <Height>4.02083in</Height>
+        <Top>18.47461in</Top>
+        <Left>0.13446in</Left>
+        <Height>2.66666in</Height>
         <Width>6.85635in</Width>
         <ZIndex>20</ZIndex>
         <Visibility>
@@ -4018,7 +3632,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Preparation:        </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -4027,7 +3640,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!KOHPrepareation.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -4040,7 +3652,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Result:                   </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -4049,7 +3660,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!KOHResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -4058,9 +3668,9 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>26.25125in</Top>
-        <Left>0.10292in</Left>
-        <Height>0.625in</Height>
+        <Top>21.14128in</Top>
+        <Left>0.1345in</Left>
+        <Height>0.4375in</Height>
         <Width>6.86219in</Width>
         <ZIndex>21</ZIndex>
         <Visibility>
@@ -4086,7 +3696,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>Result:               </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -4095,7 +3704,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Value>=First(Fields!OthersResult.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                 </Style>
               </TextRun>
@@ -4104,10 +3712,10 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>26.9457in</Top>
-        <Left>0.10876in</Left>
-        <Height>0.34375in</Height>
-        <Width>6.85635in</Width>
+        <Top>21.57878in</Top>
+        <Left>0.12857in</Left>
+        <Height>0.28125in</Height>
+        <Width>6.86812in</Width>
         <ZIndex>22</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Others"</Hidden>
@@ -4123,7 +3731,7 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>33.59722in</Height>
+    <Height>25.8368in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>

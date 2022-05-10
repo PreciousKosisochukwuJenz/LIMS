@@ -8,6 +8,7 @@
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
             $('#ServiceDepartmentID').val(result.ServiceDepartmentID);
+            $("#newProjectsEmailsToggle").prop("checked", result.UseDefaultParameters);
         },
         error: function (errormessage) {
             var message = errormessage.responseText;

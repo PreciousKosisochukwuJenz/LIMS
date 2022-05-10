@@ -114,7 +114,7 @@ $("#SearchCustomer").click(function (e) {
                     e.target.innerHTML = "Search"
                 },
                 error: function (err) {
-                    toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
+                    toastr.error(err.responseText, "No Data Found", { showDuration: 500 })
                     e.target.innerHTML = "Search"
                     $("#customerInfoLoader").hide();
                     $("#customerinfoDiv").show();

@@ -12,7 +12,7 @@
                 <Value>DEPARTMENT OF </Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -21,7 +21,7 @@
                 <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -36,7 +36,7 @@
                 <Value>LABORATORY REPORT</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -47,10 +47,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>1.99418in</Top>
-        <Left>0.10419in</Left>
-        <Height>0.64458in</Height>
-        <Width>6.96578in</Width>
+        <Top>0.62958in</Top>
+        <Left>1.36331in</Left>
+        <Height>0.55083in</Height>
+        <Width>4.0081in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -72,7 +72,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -89,7 +89,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -102,11 +102,20 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>NAME:                        </Value>
+                <Value>NAME: </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                       </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -117,8 +126,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -130,11 +138,20 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>AGE:                            </Value>
+                <Value>AGE:      </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                      </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -145,8 +162,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -158,11 +174,20 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>GENDER:                    </Value>
+                <Value>GENDER: </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                   </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -173,8 +198,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -186,11 +210,20 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>PHONE NUMBER:     </Value>
+                <Value>PHONE NUMBER:</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">      </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -201,8 +234,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -214,11 +246,20 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>UNIQUE ID:                </Value>
+                <Value>UNIQUE ID:     </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">           </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -229,8 +270,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -241,9 +281,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.69431in</Top>
+        <Top>1.41778in</Top>
         <Left>0.10289in</Left>
-        <Height>1.87153in</Height>
+        <Height>1.73611in</Height>
         <Width>6.96708in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -273,7 +313,7 @@
                 <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>20pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -284,10 +324,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>1.53237in</Top>
-        <Left>0.10354in</Left>
-        <Height>0.40625in</Height>
-        <Width>6.96643in</Width>
+        <Top>0.31361in</Top>
+        <Left>1.36331in</Left>
+        <Height>0.30208in</Height>
+        <Width>4.0081in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -304,8 +344,8 @@
         <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>0.23375in</Top>
-        <Left>3.07815in</Left>
+        <Top>0.11917in</Top>
+        <Left>5.41307in</Left>
         <Height>1.22917in</Height>
         <Width>1.52083in</Width>
         <ZIndex>3</ZIndex>
@@ -324,7 +364,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>3in</Height>
+              <Height>1.83333in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -351,7 +391,7 @@
                             </TablixColumns>
                             <TablixRows>
                               <TablixRow>
-                                <Height>0.3125in</Height>
+                                <Height>0.21875in</Height>
                                 <TablixCells>
                                   <TablixCell>
                                     <CellContents>
@@ -365,7 +405,7 @@
                                                 <Value>PARAMETER</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>14pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
                                               </TextRun>
@@ -378,7 +418,9 @@
                                         <rd:DefaultName>Textbox16</rd:DefaultName>
                                         <Style>
                                           <Border>
+                                            <Color>DimGray</Color>
                                             <Style>Solid</Style>
+                                            <Width>1.5pt</Width>
                                           </Border>
                                           <PaddingLeft>2pt</PaddingLeft>
                                           <PaddingRight>2pt</PaddingRight>
@@ -400,7 +442,7 @@
                                                 <Value>VALUE</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>14pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
                                               </TextRun>
@@ -435,7 +477,7 @@
                                                 <Value>RANGE</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>14pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
                                               </TextRun>
@@ -470,7 +512,7 @@
                                                 <Value>UNIT</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>14pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
                                               </TextRun>
@@ -505,7 +547,7 @@
                                                 <Value>STATUS</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>14pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
                                                 </Style>
                                               </TextRun>
@@ -531,7 +573,7 @@
                                 </TablixCells>
                               </TablixRow>
                               <TablixRow>
-                                <Height>0.32292in</Height>
+                                <Height>0.21875in</Height>
                                 <TablixCells>
                                   <TablixCell>
                                     <CellContents>
@@ -545,7 +587,7 @@
                                                 <Value>=Fields!Parameter.Value</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>12pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -579,7 +621,7 @@
                                                 <Value>=Fields!Value.Value</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>12pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -613,7 +655,7 @@
                                                 <Value>=Fields!Range.Value</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>12pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -647,7 +689,7 @@
                                                 <Value>=Fields!Unit.Value</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>12pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -681,7 +723,7 @@
                                                 <Value>=Fields!Status.Value</Value>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>12pt</FontSize>
+                                                  <FontSize>9pt</FontSize>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -727,9 +769,9 @@
                             </TablixMembers>
                           </TablixRowHierarchy>
                           <DataSetName>TemplatedDataSet</DataSetName>
-                          <Top>0.78359in</Top>
+                          <Top>0.57528in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.63542in</Height>
+                          <Height>0.4375in</Height>
                           <Width>6.55208in</Width>
                           <Style>
                             <Border>
@@ -744,10 +786,18 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>TEST INVESTIGATION FOR "</Value>
+                                  <Value>TEST INVESTIGATION FOR </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>"</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -756,7 +806,7 @@
                                   <Value>=Fields!Service.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -764,7 +814,7 @@
                                   <Value>"</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -775,8 +825,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <Top>0.05556in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.37388in</Height>
+                          <Height>0.24888in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
@@ -799,7 +850,6 @@
                                   <Value>NATURE OF SPECIMEN:  </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -808,8 +858,7 @@
                                   <Value>=Fields!Specimen.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -817,67 +866,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>0.44333in</Top>
+                          <Top>0.33222in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.2882in</Height>
+                          <Height>0.21528in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>2</ZIndex>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox35">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>SCIENTIST COMMENT</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>14pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>:</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>16pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Label>Scientist Comment</Label>
-                                  <Value>=Fields!ScienticComment.Value</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox35</rd:DefaultName>
-                          <Top>1.77666in</Top>
-                          <Left>0.15628in</Left>
-                          <Height>0.52083in</Height>
-                          <Width>6.55208in</Width>
-                          <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -898,7 +891,6 @@
                                   <Value>APPROVED BY:   </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -907,8 +899,7 @@
                                   <Value>=Fields!ApprovedBy.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -916,11 +907,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>2.32527in</Top>
+                          <Top>1.25932in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.27431in</Height>
+                          <Height>0.21875in</Height>
                           <Width>6.55208in</Width>
-                          <ZIndex>4</ZIndex>
+                          <ZIndex>3</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -938,10 +929,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ON:                       </Value>
+                                  <Value>ON:  </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -950,8 +940,7 @@
                                   <Value>=Fields!DateApproved.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontWeight>Normal</FontWeight>
                                     <Format>dddd, MMMM d, yyyy h:mm:ss tt</Format>
                                   </Style>
                                 </TextRun>
@@ -960,11 +949,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>2.59958in</Top>
+                          <Top>1.47807in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.29167in</Height>
+                          <Height>0.25in</Height>
                           <Width>6.55208in</Width>
-                          <ZIndex>5</ZIndex>
+                          <ZIndex>4</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -985,7 +974,6 @@
                                   <Value>FILM REPORT: </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>14pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -994,8 +982,7 @@
                                   <Value>=Fields!FilmingReport.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1003,11 +990,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.46068in</Top>
+                          <Top>1.04056in</Top>
                           <Left>0.15628in</Left>
-                          <Height>0.2882in</Height>
+                          <Height>0.20487in</Height>
                           <Width>6.55208in</Width>
-                          <ZIndex>6</ZIndex>
+                          <ZIndex>5</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1024,6 +1011,12 @@
                         <Border>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
                       </Style>
                     </Rectangle>
                   </CellContents>
@@ -1049,9 +1042,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>TemplatedDataSet</DataSetName>
-        <Top>6.39223in</Top>
-        <Left>0.10419in</Left>
-        <Height>3in</Height>
+        <Top>4.35528in</Top>
+        <Left>0.10289in</Left>
+        <Height>1.83333in</Height>
         <Width>6.96708in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -1071,7 +1064,7 @@
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>22pt</FontSize>
+                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <Color>Red</Color>
                 </Style>
@@ -1083,10 +1076,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>9.46168in</Top>
-        <Left>0.40667in</Left>
-        <Height>0.5625in</Height>
-        <Width>6in</Width>
+        <Top>6.83445in</Top>
+        <Left>1.36331in</Left>
+        <Height>0.33333in</Height>
+        <Width>4.89586in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -1109,7 +1102,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1126,7 +1119,6 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1139,11 +1131,29 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>LAB NUMBER:                            </Value>
+                <Value>LAB NUMBER:    </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">     </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                      </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1154,8 +1164,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -1167,11 +1176,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>REQUESTING PHYSICIAN:       </Value>
+                <Value>REQUESTING PHYSICIAN:            </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1182,8 +1190,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -1195,11 +1202,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTED BY:      </Value>
+                <Value>SPECIMEN COLLECTED BY:         </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1210,8 +1216,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -1223,11 +1228,29 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ON:                                               </Value>
+                <Value>ON:    </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">   </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                          </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1238,8 +1261,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1252,11 +1274,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RESULT PREPARED BY:             </Value>
+                <Value>RESULT PREPARED BY:                </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1267,8 +1288,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
               </TextRun>
@@ -1280,11 +1300,29 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ON:                                               </Value>
+                <Value>ON:      </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">   </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">                                        </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1295,8 +1333,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontWeight>Normal</FontWeight>
                   <Format>f</Format>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -1308,9 +1345,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>4.56584in</Top>
+        <Top>2.89348in</Top>
         <Left>0.10289in</Left>
-        <Height>1.79861in</Height>
+        <Height>1.43403in</Height>
         <Width>6.96708in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -1318,11 +1355,56 @@
             <Style>None</Style>
           </Border>
           <TopBorder>
+            <Color>Black</Color>
             <Style>Solid</Style>
+            <Width>1pt</Width>
           </TopBorder>
-          <BottomBorder>
-            <Style>Solid</Style>
-          </BottomBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox35">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SCIENTIST COMMENT:</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Scientist Comment</Label>
+                <Value>=First(Fields!ScienticComment.Value, "TemplatedDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox35</rd:DefaultName>
+        <Top>6.24417in</Top>
+        <Left>0.25917in</Left>
+        <Height>0.52083in</Height>
+        <Width>6.55208in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1330,7 +1412,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>10.20474in</Height>
+    <Height>7.22681in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -1342,7 +1424,7 @@
       </BackgroundImage>
     </Style>
   </Body>
-  <Width>7.21747in</Width>
+  <Width>7.13417in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

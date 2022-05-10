@@ -132,7 +132,7 @@
                         <div class="form-group col-md-6">
                             <label for="ClinicalSummary">Clinical Summary</label>
                             <div class="input-group input-group-seamless">
-                                @Html.TextAreaFor(model => model.ClinicalSummary, 2, 0, new { @class = "form-control", required = true })
+                                @Html.TextAreaFor(model => model.ClinicalSummary, 2, 0, new { @class = "form-control" })
                                 <div class="invalid-feedback">
                                     Clinical summary required
                                 </div>
@@ -150,7 +150,7 @@
                         <div class="form-group col-md-6">
                             <label for="OtherInformation">Other Information</label>
                             <div class="input-group input-group-seamless">
-                                @Html.TextAreaFor(model => model.OtherInformation, 2, 0, new { @class = "form-control", required = true })
+                                @Html.TextAreaFor(model => model.OtherInformation, 2, 0, new { @class = "form-control" })
                                 <div class="invalid-feedback">
                                     Other information required
                                 </div>
