@@ -517,8 +517,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public List<ServiceVM> GetServiceAutoComplete(string query)
         {
-            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-            var model = _db.Services.Where(x => x.Description.StartsWith(query)).Select(b => new ServiceVM()
+            var model = _db.Services.Where(x => x.Description.StartsWith(query) || x.Description.Contains(query)).Select(b => new ServiceVM()
             {
                 Id = b.Id,
                 Description = b.Description,
@@ -532,7 +531,7 @@ namespace JenzHealth.Areas.Admin.Services
         public List<string> GetServiceNameAutoComplete(string term)
         {
             List<string> services;
-            services = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term)).Select(b => b.Description).ToList();
+            services = _db.Services.Where(x => x.IsDeleted == false && x.Description.StartsWith(term) || x.Description.Contains(term)).Select(b => b.Description).ToList();
             return services;
         }
         public List<string> GetSpecimenAutoComplete(string term)

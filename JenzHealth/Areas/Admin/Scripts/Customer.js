@@ -22,6 +22,11 @@
         }
     });
 }
+
+function CapsLock(e) {
+    e.value = e.value.toString().toUpperCase();
+}
+
 const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
         confirmButton: 'btn btn-success',

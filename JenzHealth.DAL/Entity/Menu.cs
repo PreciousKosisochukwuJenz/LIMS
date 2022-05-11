@@ -23,7 +23,7 @@ namespace JenzHealth.DAL.Entity
         public string _icon { get; set; }
         public List<Menu> _childMenus { get; set; }
         public bool _isMenu { get; set; }
-        public bool isAssigned { get; set; }
+        public bool isAssigned { get; set; } = false;
         public string _parent { get; set; }
         public string _claim { get; set; }
     }

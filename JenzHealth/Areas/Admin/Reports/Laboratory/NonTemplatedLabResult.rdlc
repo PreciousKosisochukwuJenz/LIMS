@@ -1107,7 +1107,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Line Organisms:</Value>
+                <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -1119,9 +1119,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>27.44445in</Top>
-        <Left>0.10293in</Left>
-        <Height>1.9375in</Height>
+        <Top>27.7257in</Top>
+        <Left>0.10881in</Left>
+        <Height>2.21944in</Height>
         <Width>6.86223in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -1129,11 +1129,10 @@
             <Style>None</Style>
           </Border>
           <TopBorder>
+            <Color>Black</Color>
             <Style>Solid</Style>
+            <Width>1pt</Width>
           </TopBorder>
-          <BottomBorder>
-            <Style>Solid</Style>
-          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1642,8 +1641,8 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>NonTemplatedOrganismDataSet</DataSetName>
-        <Top>29.4375in</Top>
-        <Left>0.10293in</Left>
+        <Top>30.35069in</Top>
+        <Left>0.11465in</Left>
         <Height>0.90626in</Height>
         <Width>6.86222in</Width>
         <ZIndex>5</ZIndex>
@@ -1699,9 +1698,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>31.29861in</Top>
-        <Left>0.10876in</Left>
-        <Height>1.38542in</Height>
+        <Top>31.37014in</Top>
+        <Left>0.12048in</Left>
+        <Height>0.91042in</Height>
         <Width>6.86223in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -1790,8 +1789,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>32.75347in</Top>
-        <Left>0.47337in</Left>
+        <Top>32.35in</Top>
+        <Left>0.37676in</Left>
         <Height>0.5625in</Height>
         <Width>6in</Width>
         <ZIndex>9</ZIndex>
@@ -2319,8 +2318,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>12.06944in</Top>
-        <Left>0.10292in</Left>
+        <Top>12.35069in</Top>
+        <Left>0.1088in</Left>
         <Height>2.59847in</Height>
         <Width>6.86221in</Width>
         <ZIndex>10</ZIndex>
@@ -2719,8 +2718,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>11.67013in</Top>
-        <Left>0.10292in</Left>
+        <Top>11.95138in</Top>
+        <Left>0.1088in</Left>
         <Height>0.34375in</Height>
         <Width>6.86222in</Width>
         <ZIndex>12</ZIndex>
@@ -2966,8 +2965,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>14.72346in</Top>
-        <Left>0.1029in</Left>
+        <Top>15.00471in</Top>
+        <Left>0.10878in</Left>
         <Height>1.625in</Height>
         <Width>6.86223in</Width>
         <ZIndex>13</ZIndex>
@@ -3091,8 +3090,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>16.37624in</Top>
-        <Left>0.1029in</Left>
+        <Top>16.65749in</Top>
+        <Left>0.10878in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>14</ZIndex>
@@ -3216,8 +3215,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>17.33804in</Top>
-        <Left>0.1029in</Left>
+        <Top>17.61929in</Top>
+        <Left>0.10878in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>15</ZIndex>
@@ -3319,8 +3318,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>18.31374in</Top>
-        <Left>0.10876in</Left>
+        <Top>18.59499in</Top>
+        <Left>0.11464in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>16</ZIndex>
@@ -3422,8 +3421,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>19.26166in</Top>
-        <Left>0.10876in</Left>
+        <Top>19.54291in</Top>
+        <Left>0.11464in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>17</ZIndex>
@@ -3525,8 +3524,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>20.20958in</Top>
-        <Left>0.1029in</Left>
+        <Top>20.49083in</Top>
+        <Left>0.10878in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>18</ZIndex>
@@ -3628,8 +3627,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>21.1575in</Top>
-        <Left>0.1029in</Left>
+        <Top>21.43875in</Top>
+        <Left>0.10878in</Left>
         <Height>0.94792in</Height>
         <Width>6.86223in</Width>
         <ZIndex>19</ZIndex>
@@ -3990,8 +3989,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>22.16098in</Top>
-        <Left>0.10876in</Left>
+        <Top>22.44223in</Top>
+        <Left>0.11464in</Left>
         <Height>4.02083in</Height>
         <Width>6.85635in</Width>
         <ZIndex>20</ZIndex>
@@ -4058,8 +4057,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>26.25125in</Top>
-        <Left>0.10292in</Left>
+        <Top>26.5325in</Top>
+        <Left>0.1088in</Left>
         <Height>0.625in</Height>
         <Width>6.86219in</Width>
         <ZIndex>21</ZIndex>
@@ -4104,8 +4103,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>26.9457in</Top>
-        <Left>0.10876in</Left>
+        <Top>27.22695in</Top>
+        <Left>0.11464in</Left>
         <Height>0.34375in</Height>
         <Width>6.85635in</Width>
         <ZIndex>22</ZIndex>
@@ -4122,8 +4121,42 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Line Organisms:</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>29.9868in</Top>
+        <Left>0.12639in</Left>
+        <Height>0.35in</Height>
+        <Width>6.84465in</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>33.59722in</Height>
+    <Height>33.04722in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>

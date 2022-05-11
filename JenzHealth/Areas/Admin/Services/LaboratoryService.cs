@@ -562,7 +562,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         private string GetStatusForTemplateReport(int value, string range)
         {
-            int[] rangeValues = Array.ConvertAll(range.Split('-'), rangeValue => int.Parse(rangeValue));
+            var rangeValues = Array.ConvertAll(range.Split('-'), rangeValue => rangeValue.Contains('.') ? float.Parse(rangeValue) : int.Parse(rangeValue));
             if (value < rangeValues[0])
                 return "LOW";
             else if (value > rangeValues[1])

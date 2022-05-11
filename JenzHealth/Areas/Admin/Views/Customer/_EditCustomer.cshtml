@@ -9,110 +9,110 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+            @using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true, onKeyup = "CapsLock(this)" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(model => model.Id)
-        <div class="modal-body">
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Firstname</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Firstname</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name", required = true, onKeyup = "CapsLock(this)" } })
+                            <div class="invalid-feedback">
+                                Firstname required
+                            </div>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name", required = true } })
-                    <div class="invalid-feedback">
-                        Firstname required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Lastname</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Lastname</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name", required = true, onKeyup = "CapsLock(this)" } })
+                            <div class="invalid-feedback">
+                                Lastname required
+                            </div>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name", required = true } })
-                    <div class="invalid-feedback">
-                        Lastname required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Gender</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Gender</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.DropDownListFor(model => model.Gender, (IEnumerable<SelectListItem>)ViewBag.GenderList, "-- Select gender --", new { @class = "form-control", required = true, onKeyup = "CapsLock(this)" })
+                            <div class="invalid-feedback">
+                                Gender required
+                            </div>
                         </div>
                     </div>
-                    @Html.DropDownListFor(model => model.Gender, (IEnumerable<SelectListItem>)ViewBag.GenderList, "-- Select gender --", new { @class = "form-control", required = true })
-                    <div class="invalid-feedback">
-                        Gender required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Date of birth</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Date of birth</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true, type = "date", onKeyup = "CapsLock(this)" } })
+                            <div class="invalid-feedback">
+                                Date of birth required
+                            </div>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true, type = "date" } })
-                    <div class="invalid-feedback">
-                        Date of birth required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Phone number</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Phone number</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number", required = true, onKeyup = "CapsLock(this)" } })
+                            <div class="invalid-feedback">
+                                Phone number required
+                            </div>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number", required = true } })
-                    <div class="invalid-feedback">
-                        Phone number required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Email address</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Email address</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter email address", required = true, onKeyup = "CapsLock(this)" } })
+                            <div class="invalid-feedback">
+                                Email required
+                            </div>
                         </div>
                     </div>
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter email address", required = true } })
-                    <div class="invalid-feedback">
-                        Email required
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-12">
-                <label for="socialGitHub">Address</label>
-                <div class="input-group input-group-seamless">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="material-icons">bloodtype</i>
+                    <div class="form-group col-md-12">
+                        <label for="socialGitHub">Address</label>
+                        <div class="input-group input-group-seamless">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="material-icons">bloodtype</i>
+                                </div>
+                            </div>
+                            @Html.TextAreaFor(model => model.Address, 0, 5, new { @class = "form-control", placeholder = "Enter address", required = true, onKeyup = "CapsLock(this)" })
+                            <div class="invalid-feedback">
+                                Address required
+                            </div>
                         </div>
                     </div>
-                    @Html.TextAreaFor(model => model.Address,0,5,new { @class = "form-control", placeholder = "Enter address", required = true })
-                    <div class="invalid-feedback">
-                        Address required
-                    </div>
                 </div>
-            </div>
-        </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="ladda-button btn btn-shadow btn-primary" data-style="zoom-in">

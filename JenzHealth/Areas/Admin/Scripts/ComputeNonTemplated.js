@@ -225,14 +225,14 @@ function UpdateOrganismTbl() {
                             </td>
                             <td>
                                 <input type="checkbox" ${data.IsSensitive ? "checked" : ""} onchange="ToggleDegree(this)">
-                                <input type="text" class="form-control" value="${data.SensitiveDegree == null ? "" : data.SensitiveDegree}" ${!data.IsSensitive ? "disabled" : ""} />
+                                <input type="text" class="form-control" placeholder='Degree' value="${data.SensitiveDegree == null ? "" : data.SensitiveDegree}" ${!data.IsSensitive ? "disabled" : ""} />
                             </td>
                             <td>
                                  <input type="checkbox" ${data.IsIntermediate ? "checked" : ""}>
                             </td>
                             <td>
                                 <input type="checkbox" ${data.IsResistance ? "checked" : ""} onchange="ToggleDegree(this)">
-                                <input type="text" class="form-control" value="${data.ResistanceDegree == null ? "" : data.ResistanceDegree}" ${!data.IsResistance ? "disabled" : ""}/>
+                                <input type="text" class="form-control"  placeholder='Degree' value="${data.ResistanceDegree == null ? "" : data.ResistanceDegree}" ${!data.IsResistance ? "disabled" : ""}/>
                             </td>
                        </tr>`;
                 $("#OrganismBody").append(html);
