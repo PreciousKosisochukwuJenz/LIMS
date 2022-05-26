@@ -98,7 +98,8 @@
                                                 </div>
                                                 <div class="form-group mb-3 d-table mx-auto">
                                                     <div class="custom-control custom-checkbox mb-1">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                        @Html.CheckBoxFor(model => model.RememberMe, new {id="customCheck2", @class="custom-control-input"})
+                                                        @*<input type="checkbox" class="custom-control-input" name="RememberMe" id="customCheck2">*@
                                                         <label class="custom-control-label" for="customCheck2">Remember me?</label>
                                                     </div>
                                                 </div>

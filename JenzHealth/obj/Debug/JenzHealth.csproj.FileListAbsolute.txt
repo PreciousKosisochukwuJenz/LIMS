@@ -383,8 +383,6 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\ru\Microsoft.ReportViewer.Win
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\JenzHealth.csproj.AssemblyReference.cache
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\RdlCompile.cache
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\RdlCompile.compiled
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\JenzHealth.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\JenzHealth.csproj.CopyComplete
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\JenzHealth.dll
@@ -441,3 +439,4 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\vbc.exe.config
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\vbc.rsp
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\VBCSCompiler.exe
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\EnvDTE.xml

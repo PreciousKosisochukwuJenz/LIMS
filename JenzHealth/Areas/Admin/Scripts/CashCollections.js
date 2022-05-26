@@ -23,46 +23,53 @@ $("#PaymentType").change(function () {
         $("#refDiv").show();
     }
 })
+
+function SetupWalkin() {
+    let CustomerNameField = "<input type='text' class='form-control' name='CustomerName'  placeholder='Enter name'/>";
+    let CustomerAgeField = "<input type='number' class='form-control' name='CustomerAge'  placeholder='Enter age' />";
+    let CustomerPhoneNumberField = "<input type='text' class='form-control' name='CustomerPhoneNumber' placeholder='Enter phone number' />";
+    let CustomerGender = "<select class='form-control' name='CustomerGender' id='genderFll'><option value='Male'>Male</option><option value='Female'>Female</option></select>"
+    $("#Customername").html(CustomerNameField);
+    $("#Customerage").html(CustomerAgeField);
+    $("#Customerphonenumber").html(CustomerPhoneNumberField);
+    $("#Customergender").html(CustomerGender);
+    $("#searchform").hide();
+    $("#ServiceBody").empty();
+    $("#WaiveAmount").html("₦0.00");
+    $("#BalanceAmount").html("₦0.00");
+    $("#NetAmount").html("₦0.00");
+    $("#InstallmentDiv").hide();
+    updateNetAmount();
+}
+
+function unSetupWalkin() {
+    $("#Customername").empty();
+    $("#Customerage").empty();
+    $("#Customerphonenumber").empty();
+    $("#Customergender").empty();
+    $("#searchform").show();
+    $("#ServiceBody").empty();
+    $("#WaiveAmount").html("₦0.00");
+    $("#BalanceAmount").html("₦0.00");
+    $("#NetAmount").html("₦0.00");
+    $("#InstallmentDiv").hide();
+
+    updateNetAmount();
+}
 $("input[name='CollectionType']").change(function () {
 
     if ($("input[name='CollectionType']:checked").val() == "WALK_IN") {
-        let CustomerNameField = "<input type='text' class='form-control' name='CustomerName'  placeholder='Enter name'/>";
-        let CustomerAgeField = "<input type='number' class='form-control' name='CustomerAge'  placeholder='Enter age' />";
-        let CustomerPhoneNumberField = "<input type='text' class='form-control' name='CustomerPhoneNumber' placeholder='Enter phone number' />";
-        let CustomerGender = "<select class='form-control' name='CustomerGender' id='genderFll'><option value='Male'>Male</option><option value='Female'>Female</option></select>"
-        $("#Customername").html(CustomerNameField);
-        $("#Customerage").html(CustomerAgeField);
-        $("#Customerphonenumber").html(CustomerPhoneNumberField);
-        $("#Customergender").html(CustomerGender);
-        $("#searchform").hide();
-        $("#ServiceBody").empty();
-        $("#WaiveAmount").html("₦0.00");
-        $("#BalanceAmount").html("₦0.00");
-        $("#NetAmount").html("₦0.00");
-        $("#InstallmentDiv").hide();
-
-        updateNetAmount();
+        SetupWalkin();
     }
     else {
-        $("#Customername").empty();
-        $("#Customerage").empty();
-        $("#Customerphonenumber").empty();
-        $("#Customergender").empty();
-        $("#searchform").show();
-        $("#ServiceBody").empty();
-        $("#WaiveAmount").html("₦0.00");
-        $("#BalanceAmount").html("₦0.00");
-        $("#NetAmount").html("₦0.00");
-        $("#InstallmentDiv").hide();
-
-        updateNetAmount();
+        unSetupWalkin();
     }
 })
 $(window).ready(function () {
     // Set  Customer Type
-    var radios = $(".Status");
+    var radios = $(".C-Status");
     $.each(radios, function (i, radio) {
-        if (radio.id == "BILLED") {
+        if (radio.id == "WALK_IN") {
             radio.checked = true;
         }
         else {
@@ -73,14 +80,29 @@ $(window).ready(function () {
     if ($("input[name='CollectionType']:checked").val() == "BILLED") {
         $("#CustomerIDDiv").hide();
         $("#InvoiceDiv").show();
+        unSetupWalkin();
     }
     else if ($("input[name='CollectionType']:checked").val() == "UNBILLED") {
         $("#CustomerIDDiv").show();
         $("#InvoiceDiv").hide();
+        unSetupWalkin();
     } else {
         $("#CustomerIDDiv").hide();
         $("#InvoiceDiv").hide();
+        SetupWalkin();
     }
+
+
+    // Set  Customer Type
+    var radios = $(".Status");
+    $.each(radios, function (i, radio) {
+        if (radio.id == "AMOUNT") {
+            radio.checked = true;
+        }
+        else {
+            radio.checked = false;
+        }
+    })
 });
 
 $("#SearchCustomer").click(function (e) {
@@ -333,11 +355,9 @@ function AddService(servicename) {
             CalculateGrossAmount(1, response.SellingPrice, response.Id);
             updateNetAmount();
             UpdateBalanceAmount();
-            e.target.innerHTML = "Add"
         },
         error: function (err) {
             toastr.error(err.responseText, "An Error Occurred", { showDuration: 500 })
-            e.target.innerHTML = "Add"
         }
     });
 
@@ -361,12 +381,9 @@ $("#ServiceName").on("blur",function (e) {
 })
 $("#FinishBtn").click(function () {
     var valName = $("input[name='CustomerName']").val();
-    var valAge = $("input[name='CustomerAge']").val();
     var valPhoneNumber = $("input[name='CustomerPhoneNumber']").val();
-    if (valName === "" || valAge == "" || valPhoneNumber == "") {
+    if (valName === ""  || valPhoneNumber == "") {
         $("input[name='CustomerName']").addClass("is-invalid");
-        $("input[name='CustomerAge']").addClass("is-invalid");
-        $("#genderFll").addClass("is-invalid");
         $("input[name='CustomerPhoneNumber']").addClass("is-invalid");
         toastr.error("Please, fill the form properly", "Validation error", { showDuration: 500 })
 
@@ -374,8 +391,6 @@ $("#FinishBtn").click(function () {
     else {
 
         $("input[name='CustomerName']").removeClass("is-invalid");
-        $("input[name='CustomerAge']").removeClass("is-invalid");
-        $("#genderFll").removeClass("is-invalid");
         $("input[name='CustomerPhoneNumber']").removeClass("is-invalid");
         Swal.fire({
             title: 'Confirmation',
@@ -402,7 +417,9 @@ $("#FinishBtn").click(function () {
                     NetAmount: ConvertToDecimal($("#NetAmount").html()),
                     PaymentType: $("#PaymentType").val(),
                     PartPaymentID: $("#installmentdrp").val(),
-                    TransactionReferenceNumber: $("#TransactionReferenceNumber").val()
+                    TransactionReferenceNumber: $("#TransactionReferenceNumber").val(),
+                    WaiveBy: $("input[name='WaiveBy']:checked").val(),
+                    BalanceAmount: ConvertToDecimal($("#BalanceAmount").html())
                 };
 
                 var table = $("#ServiceBody")[0].children;
@@ -507,18 +524,64 @@ function updateNetAmount() {
     });
     $("#NetAmount").empty();
     $("#NetAmount").html("₦" + numberWithCommas(total) + ".00")
+    $("#netAmountDisplay").html("₦" + numberWithCommas(total) + ".00")
 }
 function UpdateBalanceAmount() {
     var netamount = $("#NetAmount").html();
     var waiveamount = $("#WaiveAmount").html();
 
     var balance = ConvertToDecimal(netamount) - ConvertToDecimal(waiveamount);
-    $("#BalanceAmount").html("₦" + numberWithCommas(balance) + ".00")
+    $("#BalanceAmount").html("₦" + numberWithCommas(balance) + ".00");
+    $("#balanceAmountDisplay").html("₦" + numberWithCommas(balance) + ".00");
 }
 document.addEventListener("keyup", function (e) {
     if (e.target.value === "") {
         e.target.classList.add("is-invalid");
     } else {
         e.target.classList.remove("is-invalid");
+    }
+})
+
+
+$("#waiverAmount").keyup(function () {
+    var waiveby = $("input[name='WaiveBy']:checked").val();
+    if (waiveby == "AMOUNT") {
+        let netAmount = $("#NetAmount").html();
+        let balance = (ConvertToDecimal(netAmount) - ConvertToDecimal($("#waiverAmount").val()));
+        $("#balanceAmountDisplay").html("₦" + numberWithCommas(balance) + ".00");
+        $("#BalanceAmount").html("₦" + numberWithCommas(balance) + ".00");
+        $("#AvailableAmount").val(balance);
+        $("#WaiveAmount").val(ConvertToDecimal($("#waiverAmount").val()));
+        $("#WaiveAmount").html($("#waiverAmount").val());
+    }
+});
+
+$("#waiverPercentage").keyup(function () {
+    var waiveby = $("input[name='WaiveBy']:checked").val();
+    if (waiveby == "PERCENTAGE") {
+        let netAmount = $("#NetAmount").html();
+
+        let waiveAmount = (ConvertToDecimal(netAmount) * ($("#waiverPercentage").val() / 100));
+        let balance = ConvertToDecimal(netAmount) - waiveAmount;
+        $("#balanceAmountDisplay").html("₦" + numberWithCommas(balance) + ".00");
+        $("#BalanceAmount").html("₦" + numberWithCommas(balance) + ".00");
+        $("#WaiveAmount").html("₦" + numberWithCommas(waiveAmount) + ".00");
+        $("#AvailableAmount").val(balance);
+        $("#WaiveAmount").val(waiveAmount);
+
+    }
+})
+
+$("input[name='WaiveBy']").change(function () {
+
+    if ($("input[name='WaiveBy']:checked").val() == "AMOUNT") {
+        $("#waiverAmount").show();
+        $("#waiverAmount").val("");
+        $("#waiverPercentage").hide();
+    }
+    else {
+        $("#waiverPercentage").show();
+        $("#waiverPercentage").val("0");
+        $("#waiverAmount").hide();
     }
 })

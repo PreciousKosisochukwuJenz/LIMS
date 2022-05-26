@@ -170,6 +170,13 @@ namespace JenzHealth.Areas.Admin.Controllers
             var status = _laboratoryService.ApproveTestResult(Id);
             return Json(status, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult UpdateCollector(LabResultCollection model)
+        {
+            var status = _laboratoryService.UpdateCollector(model);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
         {
             var status = _laboratoryService.UpdateLabResults(results, labnote, comment);

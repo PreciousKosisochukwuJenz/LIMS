@@ -1075,5 +1075,24 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
+
+        public bool UpdateCollector(LabResultCollection model)
+        {
+            var exist = _db.LabResultCollections.Where(x => x.BillNumber == model.BillNumber && x.TemplateID == model.TemplateID).FirstOrDefault();
+            if(exist != null)
+            {
+                exist.Collector = model.Collector;
+                exist.IssuerID = Global.AuthenticatedUserID;
+                _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
+            }
+            else
+            {
+                model.IssuerID = Global.AuthenticatedUserID;
+                _db.LabResultCollections.Add(model);
+            }
+            _db.SaveChanges();
+
+            return true;
+        }
     }
 }

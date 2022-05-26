@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DatabaseEntities-Web.config Connection String" description="DatabaseEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-VLV1EGS;Initial Catalog=JenzHealthDB;Integrated Security=True;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\DELL\\source\\repos\\JenzHealth\\JenzHealth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DatabaseEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\DELL\\Documents\\KAYCEE\\LIMS\\JenzHealth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DatabaseEntities']/@connectionString" />
   </parameter>
 </parameters>

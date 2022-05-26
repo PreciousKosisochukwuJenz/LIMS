@@ -168,7 +168,20 @@ $("#FinishBtn").click(function () {
                     dataType: "json",
                     data: { vmodel: InstallmentList },
                     success: function (response) {
-                        location.href = "PartPayments?Saved=true";
+                        Swal.fire({
+                            title: 'Part payment mapped successfully',
+                            showCancelButton: false,
+                            confirmButtonText: 'Ok',
+                            showLoaderOnConfirm: true,
+                        }).then((result) => {
+                            if (result.value) {
+                                location.href = "PartPayments?Saved=true";
+                            } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                            ) {
+                                location.href = "PartPayments?Saved=true";
+                            }
+                        })
                     }
                 })
             }
@@ -247,7 +260,7 @@ function updateInstallmentNetAmount() {
         total += amount;
     });
     $("#InstallmentNetAmount").empty();
-    $("#InstallmentNetAmount").html("₦" + numberWithCommas(total) + ".00")
+    $("#InstallmentNetAmount").html("₦" + numberWithCommas(total) + ".00");
 }
 function DeleteInstallment(e) {
     Swal.fire({
@@ -276,3 +289,11 @@ function DeleteInstallment(e) {
         }
     })
 }
+
+document.addEventListener("keyup", function (e) {
+    if (e.target.value === "") {
+        e.target.classList.add("is-invalid");
+    } else {
+        e.target.classList.remove("is-invalid");
+    }
+})
