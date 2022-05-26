@@ -184,7 +184,7 @@ function UpdateOrganismTbl() {
                                      ${data.IsSensitive ? "<i class='fa fa-check fa-2x text-success'></i>" : "<i class='fa fa-close fa-2x text-danger'></i>"}
                                     </li>
                                     <li class="list-group-item d-flex px-3">
-                                     <p class='text-center'>${data.SensitiveDegree}</p>
+                                     <p class='text-center'  style='font-size: 15px; font-weight: bold'>${data.SensitiveDegree}</p>
                                     </li>
                                 </ul>
                             </td>
@@ -197,7 +197,7 @@ function UpdateOrganismTbl() {
                                      ${data.IsResistance ? "<i class='fa fa-check fa-2x text-success'></i>" : "<i class='fa fa-close fa-2x text-danger'></i>"}
                                     </li>
                                     <li class="list-group-item d-flex px-3">
-                                     <p class='text-center'>${data.ResistanceDegree}</p>
+                                     <p class='text-center' style='font-size: 15px; font-weight: bold'>${data.ResistanceDegree}</p>
                                     </li>
                                 </ul>
                             </td>

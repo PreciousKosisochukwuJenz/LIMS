@@ -297,7 +297,7 @@ namespace JenzHealth.Areas.Admin.Services
                     var billCashCollection = new CashCollection()
                     {
                         BillInvoiceNumber = vmodel.BillInvoiceNumber,
-                        AmountPaid = vmodel.PartPaymentID == null ? vmodel.NetAmount : _db.PartPayments.FirstOrDefault(x => x.Id == vmodel.PartPaymentID).PartPaymentAmount,
+                        AmountPaid = vmodel.PartPaymentID == null ? (vmodel.NetAmount - vmodel.WaivedAmount) : _db.PartPayments.FirstOrDefault(x => x.Id == vmodel.PartPaymentID).PartPaymentAmount,
                         NetAmount = vmodel.NetAmount,
                         DatePaid = DateTime.Now,
                         WaivedAmount = vmodel.WaivedAmount,

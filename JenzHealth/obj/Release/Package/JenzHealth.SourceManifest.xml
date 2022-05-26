@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
+<<<<<<< HEAD
   <IisApp path="C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\Package\PackageTmp" />
   <setAcl path="C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
   <setAcl path="C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+=======
+  <IisApp path="C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+>>>>>>> 3655071df5069435a61ce1bcb127a07d962812bc
 </sitemanifest>
