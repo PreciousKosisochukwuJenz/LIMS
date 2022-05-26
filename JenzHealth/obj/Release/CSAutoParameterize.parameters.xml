@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
+<<<<<<< HEAD
   <parameter name="DatabaseEntities-Web.config Connection String" description="DatabaseEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=DESKTOP-VLV1EGS;Initial Catalog=JenzHealthDB;Integrated Security=True;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\DELL\\source\\repos\\JenzHealth\\JenzHealth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DatabaseEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\DELL\\Documents\\KAYCEE\\LIMS\\JenzHealth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DatabaseEntities']/@connectionString" />
+=======
+  <parameter name="DatabaseEntities-Web.config Connection String" description="DatabaseEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=LEGENDARY;Initial Catalog=JenzHealthDB;Integrated Security=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\kc\\Documents\\WEB\ PROJECTS\\LIMS\\JenzHealth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DatabaseEntities']/@connectionString" />
+>>>>>>> 3655071df5069435a61ce1bcb127a07d962812bc
   </parameter>
 </parameters>

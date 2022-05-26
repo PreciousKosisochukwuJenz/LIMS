@@ -36,5 +36,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string CollectedBy { get; set; }
         public string ShiftNumber { get; set; }
         public decimal TotalAmountPaid { get; set; }
+        public WaiveBy WaiveBy { get; set; }
     }
 }

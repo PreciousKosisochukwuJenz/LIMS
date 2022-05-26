@@ -52,7 +52,8 @@ namespace JenzHealth.Areas.Admin.Services
                 LabCount = model.LabCount,
                 SessionTimeOut = model.SessionTimeOut,
                 PaymentCount = model.PaymentCount,
-                ShiftCount = model.ShiftCount
+                ShiftCount = model.ShiftCount,
+                ExpressWaiver = model.ExpressWaiver
             };
             return Vmodel;
         }
@@ -69,6 +70,7 @@ namespace JenzHealth.Areas.Admin.Services
             model.SalesRecieptCopyCount = Vmodel.SalesRecieptCopyCount;
             model.CodeGenSeed = Vmodel.CodeGenSeed;
             model.SessionTimeOut = Vmodel.SessionTimeOut;
+            model.ExpressWaiver = Vmodel.ExpressWaiver;
             if (Logo != null)
                 model.Logo = CustomSerializer.Serialize(Logo);
             if (Watermark != null)

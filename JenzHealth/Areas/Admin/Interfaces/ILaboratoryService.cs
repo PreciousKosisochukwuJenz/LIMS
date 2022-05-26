@@ -1,4 +1,5 @@
 ﻿using JenzHealth.Areas.Admin.ViewModels;
+using JenzHealth.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,5 +34,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<ResultApprovalVM> GetAllTestForApprovalByBillNumber(string billnumber);
         List<TemplateServiceCompuationVM> GetComputedResultForTemplatedService(string billnumber, int serviceParameterID);
         bool ApproveTestResult(int Id);
+        bool UpdateCollector(LabResultCollection model);
     }
 }

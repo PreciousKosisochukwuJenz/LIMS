@@ -150,6 +150,7 @@
     <Content Include="Areas\Admin\Scripts\ComputeNonTemplated.js" />
     <Content Include="Areas\Admin\Scripts\Customer.js" />
     <Content Include="Areas\Admin\Scripts\Deposite.js" />
+    <Content Include="Areas\Admin\Scripts\LabPreparation.js" />
     <Content Include="Areas\Admin\Scripts\Organism.js" />
     <Content Include="Areas\Admin\Scripts\PartPayments.js" />
     <Content Include="Areas\Admin\Scripts\Preparations.js" />
@@ -599,6 +600,7 @@
     <Content Include="SettingsDataSet.xsc">
       <DependentUpon>SettingsDataSet.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\IISProfile1.pubxml" />
     <None Include="SettingsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SettingsDataSet.Designer.cs</LastGenOutput>

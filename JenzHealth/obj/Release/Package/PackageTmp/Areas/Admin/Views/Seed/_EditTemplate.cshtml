@@ -42,6 +42,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-row mx-4">
+                        <label for="conversationsEmailsToggle" class="col col-form-label">
+                            Use Default Parameters? <small class="form-text text-muted"> If check, parameters are defined statically </small>
+                        </label>
+                        <div class="col d-flex">
+                            <div class="custom-control custom-toggle ml-auto my-auto">
+                                @Html.CheckBoxFor(model => model.UseDefaultParameters, new { @class = "custom-control-input", id = "newProjectsEmailsToggle" })
+                                <label class="custom-control-label" for="newProjectsEmailsToggle"></label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -16,7 +16,6 @@ namespace JenzHealth.DAL.Entity
         public byte[] Watermark { get; set; }
         public bool AllowSetupRouteAccess { get; set; }
         public int CodeGenSeed { get; set; }
-
         public bool EnablePartPayment { get; set; }
         public bool EnableSpecimentCollectedBy { get; set; }
         public string CustomerNumberPrefix { get; set; }
@@ -27,6 +26,6 @@ namespace JenzHealth.DAL.Entity
         public int DepositeCount { get; set; }
         public int LabCount { get; set; }
         public int SessionTimeOut { get; set; }
-
+        public bool ExpressWaiver { get; set; }
     }
 }

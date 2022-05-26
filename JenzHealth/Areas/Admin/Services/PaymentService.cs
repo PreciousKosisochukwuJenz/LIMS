@@ -289,6 +289,7 @@ namespace JenzHealth.Areas.Admin.Services
             var shift = _userService.GetShift();
             var paymentCount = _db.ApplicationSettings.FirstOrDefault().PaymentCount;
             paymentCount++;
+            string billInvoiceNumber = string.Empty;
             switch (vmodel.CollectionType)
             {
                 case CollectionType.BILLED:
@@ -296,7 +297,7 @@ namespace JenzHealth.Areas.Admin.Services
                     var billCashCollection = new CashCollection()
                     {
                         BillInvoiceNumber = vmodel.BillInvoiceNumber,
-                        AmountPaid = vmodel.PartPaymentID == null ? vmodel.NetAmount : _db.PartPayments.FirstOrDefault(x => x.Id == vmodel.PartPaymentID).PartPaymentAmount,
+                        AmountPaid = vmodel.PartPaymentID == null ? (vmodel.NetAmount - vmodel.WaivedAmount) : _db.PartPayments.FirstOrDefault(x => x.Id == vmodel.PartPaymentID).PartPaymentAmount,
                         NetAmount = vmodel.NetAmount,
                         DatePaid = DateTime.Now,
                         WaivedAmount = vmodel.WaivedAmount,
@@ -328,7 +329,7 @@ namespace JenzHealth.Areas.Admin.Services
                     };
                     if (serviceList.Count > 0)
                     {
-                        var billInvoiceNumber = this.CreateBilling(registeredCustomerBill, serviceList);
+                         billInvoiceNumber = this.CreateBilling(registeredCustomerBill, serviceList);
 
                         var unbilledCashCollection = new CashCollection()
                         {
@@ -364,7 +365,7 @@ namespace JenzHealth.Areas.Admin.Services
                     };
                     if (serviceList.Count > 0)
                     {
-                        var billInvoiceNumber = this.CreateBilling(walkinBill, serviceList);
+                         billInvoiceNumber = this.CreateBilling(walkinBill, serviceList);
 
                         var walkinCashCollection = new CashCollection()
                         {
@@ -390,9 +391,24 @@ namespace JenzHealth.Areas.Admin.Services
             }
             var updatesettings = _db.ApplicationSettings.FirstOrDefault();
             updatesettings.PaymentCount = paymentCount;
-
+            vmodel.BillInvoiceNumber = billInvoiceNumber;
             _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
+
+            if (updatesettings.ExpressWaiver)
+            {
+                var waiver = new WaiverVM()
+                {
+                    BillInvoiceNumber = billInvoiceNumber,
+                    AvailableAmount = vmodel.BalanceAmount,
+                    NetAmount = vmodel.NetAmount,
+                    WaiveAmount = vmodel.WaivedAmount,
+                    WaiveBy = vmodel.WaiveBy,
+                };
+
+                this.WaiveAmountForCustomer(waiver);
+            }
+
             return vmodel;
         }
         public List<CashCollectionVM> GetPaymentDetails(string recieptnumber)

@@ -56,6 +56,13 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Seed/ManageVendors",stringText:"Vendors", icon: null ?? defaultIcon, isMenu: true, claim: "seed.vendors",childMenus: null),
             }),
 
+              
+            // Report
+            new Menu(url: "#",stringText:"Report Management", icon: "money", isMenu: true,claim: "Report", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
+                //new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
+            }),
+
               // User
             new Menu(url: "#",stringText:"User Management", icon: "&#xE7FD;", isMenu: true, claim: "user", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/User/Manage",stringText:"Users", icon: null ?? defaultIcon, isMenu: true,claim: "user.manageusers", childMenus: null),
@@ -108,6 +115,12 @@ namespace JenzHealth.Areas.Admin.Components
                 new Menu(url: "/Admin/Seed/ManagePriviledges",stringText:"Priviledges", icon: null ?? defaultIcon, isMenu: true, claim: "seed.priviledges",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageTemplates",stringText:"Templates", icon: null ?? defaultIcon, isMenu: true, claim: "seed.templates",childMenus: null),
                 new Menu(url: "/Admin/Seed/ManageVendors",stringText:"Vendors", icon: null ?? defaultIcon, isMenu: true, claim: "seed.vendors",childMenus: null),
+            }),
+
+             // Report
+            new Menu(url: "#",stringText:"Report Management", icon: "money", isMenu: true,claim: "Report", childMenus: new List<Menu>(){
+                new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
+                //new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
             }),
 
               // User

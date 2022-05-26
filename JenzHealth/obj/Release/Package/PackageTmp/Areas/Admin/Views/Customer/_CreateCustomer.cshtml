@@ -21,7 +21,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name", required = true } })
+                            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter first name", required = true, onKeyup = "CapsLock(this)" } })
                             <div class="invalid-feedback">
                                 Firstname required
                             </div>
@@ -35,7 +35,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name", required = true } })
+                            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter last name", required = true, onKeyup= "CapsLock(this)" } })
                             <div class="invalid-feedback">
                                 Lastname required
                             </div>
@@ -49,7 +49,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.DropDownListFor(model => model.Gender, (IEnumerable<SelectListItem>)ViewBag.GenderList, "-- Select gender --", new { @class = "form-control", required = true })
+                            @Html.DropDownListFor(model => model.Gender, (IEnumerable<SelectListItem>)ViewBag.GenderList, "-- Select gender --", new { @class = "form-control", required = true, onKeyup = "CapsLock(this)" })
                             <div class="invalid-feedback">
                                 Gender required
                             </div>
@@ -63,7 +63,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true, type="date" } })
+                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Date of birth", required = true, type="date", onKeyup = "CapsLock(this)" } })
                             <div class="invalid-feedback">
                                 Date of birth required
                             </div>
@@ -77,7 +77,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number", required = true } })
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter phone number", required = true, onKeyup = "CapsLock(this)" } })
                             <div class="invalid-feedback">
                                 Phone number required
                             </div>
@@ -91,7 +91,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter email address", required = true } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter email address", required = true, onKeyup = "CapsLock(this)" } })
                             <div class="invalid-feedback">
                                 Email required
                             </div>
@@ -105,7 +105,7 @@
                                     <i class="material-icons">bloodtype</i>
                                 </div>
                             </div>
-                            @Html.TextAreaFor(model => model.Address, 0, 5, new { @class = "form-control", placeholder = "Enter address", required = true })
+                            @Html.TextAreaFor(model => model.Address, 0, 5, new { @class = "form-control", placeholder = "Enter address", required = true, onKeyup = "CapsLock(this)" })
                             <div class="invalid-feedback">
                                 Address required
                             </div>
