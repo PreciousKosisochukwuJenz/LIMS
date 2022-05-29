@@ -48,8 +48,8 @@ namespace JenzHealth.Areas.Admin.Services
                     ServiceID = service.ServiceID,
                     GrossAmount = service.GrossAmount,
                     Quantity = service.Quantity,
-                    BilledByID = Global.AuthenticatedUserID
-                };
+                    BilledByID = _userService.GetCurrentUser().Id
+            };
                 _db.Billings.Add(model);
             }
             var updateSettings = _db.ApplicationSettings.FirstOrDefault();
@@ -89,8 +89,8 @@ namespace JenzHealth.Areas.Admin.Services
                         ServiceID = service.ServiceID,
                         GrossAmount = service.GrossAmount,
                         Quantity = service.Quantity,
-                        BilledByID = Global.AuthenticatedUserID,
-                    };
+                        BilledByID = _userService.GetCurrentUser().Id
+                };
                     _db.Billings.Add(model);
                 }
             }
@@ -174,7 +174,7 @@ namespace JenzHealth.Areas.Admin.Services
                 model.WaiveAmount = vmodel.WaiveAmount;
                 model.NetAmount = vmodel.NetAmount;
                 model.WaiveBy = vmodel.WaiveBy;
-                model.WaivedByID = Global.AuthenticatedUserID;
+                model.WaivedByID = _userService.GetCurrentUser().Id;
 
                 _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             }
@@ -189,8 +189,8 @@ namespace JenzHealth.Areas.Admin.Services
                     WaiveBy = vmodel.WaiveBy,
                     IsDeleted = false,
                     DateCreated = DateTime.Now,
-                    WaivedByID = Global.AuthenticatedUserID
-                };
+                    WaivedByID = _userService.GetCurrentUser().Id
+            };
                 _db.Waivers.Add(model);
             }
             _db.SaveChanges();
@@ -249,8 +249,8 @@ namespace JenzHealth.Areas.Admin.Services
                         IsPaidPartPayment = false,
                         IsDeleted = false,
                         DateCreated = DateTime.Now,
-                        CreatedByID = Global.AuthenticatedUserID
-                    };
+                        CreatedByID = _userService.GetCurrentUser().Id
+                };
                     _db.PartPayments.Add(model);
                 }
                 _db.SaveChanges();
@@ -272,8 +272,8 @@ namespace JenzHealth.Areas.Admin.Services
                 DepositeReciept = String.Format("DP{0}", depositeCount.ToString("D6")),
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
-                DepositedByID = Global.AuthenticatedUserID
-            };
+                DepositedByID = _userService.GetCurrentUser().Id
+        };
             _db.DepositeCollections.Add(model);
 
             var updatesettings = _db.ApplicationSettings.FirstOrDefault();
@@ -309,8 +309,8 @@ namespace JenzHealth.Areas.Admin.Services
                         PaymentType = vmodel.PaymentType,
                         ShiftID = shift.Id,
                         PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
-                        CollectedByID = Global.AuthenticatedUserID
-                    };
+                        CollectedByID = _userService.GetCurrentUser().Id
+            };
                     _db.CashCollections.Add(billCashCollection);
                     vmodel.PaymentReciept = billCashCollection.PaymentReciept;
                     break;
@@ -346,8 +346,8 @@ namespace JenzHealth.Areas.Admin.Services
                             InstallmentType = "FULL",
                             ShiftID = shift.Id,
                             PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
-                            CollectedByID = Global.AuthenticatedUserID
-                        };
+                            CollectedByID = _userService.GetCurrentUser().Id
+                    };
 
                         _db.CashCollections.Add(unbilledCashCollection);
                         vmodel.PaymentReciept = unbilledCashCollection.PaymentReciept;
@@ -381,8 +381,8 @@ namespace JenzHealth.Areas.Admin.Services
                             InstallmentType = "FULL",
                             ShiftID = shift.Id,
                             PaymentReciept = String.Format("PR{0}", paymentCount.ToString("D6")),
-                            CollectedByID = Global.AuthenticatedUserID
-                        };
+                            CollectedByID = _userService.GetCurrentUser().Id
+                    };
 
                         _db.CashCollections.Add(walkinCashCollection);
                         vmodel.PaymentReciept = walkinCashCollection.PaymentReciept;
@@ -565,7 +565,7 @@ namespace JenzHealth.Areas.Admin.Services
             var cashcollection = _db.CashCollections.FirstOrDefault(x => x.PaymentReciept == vmodel.PaymentReciept);
             cashcollection.IsCancelled = true;
             cashcollection.Comment = vmodel.Comment;
-            cashcollection.CanceledByID = Global.AuthenticatedUserID;
+            cashcollection.CanceledByID = _userService.GetCurrentUser().Id;
 
             _db.Entry(cashcollection).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();

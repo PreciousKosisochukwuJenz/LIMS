@@ -12,7 +12,7 @@
         preConfirm: (input) => {
             if (input === '') {
                 Swal.showValidationMessage(
-                    `Validation failed: Collector Required`
+                    `Collector's Name Required`
                 )
             }
             const billnumber = e.target.dataset.billnumber;

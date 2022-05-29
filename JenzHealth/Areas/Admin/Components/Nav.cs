@@ -1,4 +1,5 @@
-﻿using JenzHealth.DAL.DataConnection;
+﻿using JenzHealth.Areas.Admin.Services;
+using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace JenzHealth.Areas.Admin.Components
     public static class Nav
     {
         private static DatabaseEntities db = new DatabaseEntities();
+        private static UserService _userService = new UserService();
         private static string defaultIcon = "";
         public static List<Menu> AllMenus = new List<Menu>();
         public static List<Menu> ApplicationMenu = new List<Menu>()
@@ -302,7 +304,8 @@ namespace JenzHealth.Areas.Admin.Components
 
         public static bool CheckAuthorization(string resourceUrl)
         {
-            var permissionResourceURLs = db.RolePermissions.Where(x => x.IsDeleted == false && x.RoleID == Global.AuthenticatedUserRoleID && x.IsAssigned == true).Select(b => b.Permissions.Url).ToList();
+            var currentUser = _userService.GetCurrentUser();
+            var permissionResourceURLs = db.RolePermissions.Where(x => x.IsDeleted == false && x.RoleID == currentUser.RoleID && x.IsAssigned == true).Select(b => b.Permissions.Url).ToList();
             if (permissionResourceURLs.Contains(resourceUrl))
                 return true;
             else

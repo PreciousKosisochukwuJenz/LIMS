@@ -148,7 +148,7 @@ namespace JenzHealth.Areas.Admin.Services
 
         public bool ChangePassword(UserVM vmodel)
         {
-            var model = _db.Users.FirstOrDefault(x => x.Id == Global.AuthenticatedUserID);
+            var model = _db.Users.FirstOrDefault(x => x.Id == GetCurrentUser().Id);
             model.Password = CustomEnrypt.Encrypt(vmodel.Password);
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
@@ -237,8 +237,8 @@ namespace JenzHealth.Areas.Admin.Services
 
         public Shift GetShift()
         {
-            var userID = Global.AuthenticatedUserID;
-            var userRoleID = Global.AuthenticatedUserRoleID;
+            var userID = GetCurrentUser().Id;
+            var userRoleID = GetCurrentUser().RoleID;
             var existingShift = _db.Shifts.Where(x => x.UserID == userID && x.HasExpired == false).OrderByDescending(x=>x.Id).FirstOrDefault();
             var shiftCount = _db.ApplicationSettings.FirstOrDefault().ShiftCount;
             shiftCount++;
@@ -277,10 +277,21 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var model = _db.Shifts.FirstOrDefault(x => x.Id == Id);
             model.HasExpired = true;
-            model.ClosedBy = _db.Users.FirstOrDefault(x => x.Id == Global.AuthenticatedUserID).Username;
+            model.ClosedBy = _db.Users.FirstOrDefault(x => x.Id == GetCurrentUser().Id).Username;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
+        }
+
+        public User GetCurrentUser()
+        {
+            HttpContext context = HttpContext.Current;
+            var userID =  Convert.ToInt32(context.Session["UserId"]);
+            if(userID == 0)
+            {
+               System.Web.HttpContext.Current.Response.Redirect("/Account/Login");
+            }
+            return _db.Users.FirstOrDefault(x => x.Id == userID);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<User> CheckCreditials(UserVM userVM);
         Shift GetShift();
         void CloseShift(int Id);
+        User GetCurrentUser();
 
     }
 }

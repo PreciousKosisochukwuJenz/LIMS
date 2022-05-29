@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PowerfulExtensions.Linq;
+using JenzHealth.Areas.Admin.ViewModels.Report;
+
 namespace JenzHealth.Areas.Admin.Services
 {
     public class LaboratoryService : ILaboratoryService
@@ -14,11 +16,13 @@ namespace JenzHealth.Areas.Admin.Services
         readonly DatabaseEntities _db;
         readonly ISeedService _seedService;
         readonly IPaymentService _paymentService;
+        readonly IUserService _userService;
         public LaboratoryService()
         {
             _db = new DatabaseEntities();
             _seedService = new SeedService();
             _paymentService = new PaymentService();
+            _userService = new UserService();
         }
         public LaboratoryService(DatabaseEntities db)
         {
@@ -217,7 +221,7 @@ namespace JenzHealth.Areas.Admin.Services
                 sampleExist.ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis;
                 sampleExist.OtherInformation = specimenCollected.OtherInformation;
                 sampleExist.RequestingDate = specimenCollected.RequestingDate;
-                sampleExist.CollectedByID = Global.AuthenticatedUserID;
+                sampleExist.CollectedByID = _userService.GetCurrentUser().Id;
                 sampleExist.LabNumber = specimenCollected.LabNumber;
                 _db.Entry(sampleExist).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();
@@ -240,8 +244,8 @@ namespace JenzHealth.Areas.Admin.Services
                     IsDeleted = false,
                     DateTimeCreated = DateTime.Now,
                     LabNumber = specimenCollected.LabNumber,
-                    CollectedByID = Global.AuthenticatedUserID
-                };
+                    CollectedByID = _userService.GetCurrentUser().Id
+            };
 
                 _db.SpecimenCollections.Add(specimenCollection);
                 _db.SaveChanges();
@@ -601,7 +605,7 @@ namespace JenzHealth.Areas.Admin.Services
                     exist.ScienticComment = comment;
                     exist.ServiceRangeID = result.RangeID;
                     exist.FilmingReport = result.FilmingReport;
-                    exist.PreparedByID = Global.AuthenticatedUserID;
+                    exist.PreparedByID = _userService.GetCurrentUser().Id;
 
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
@@ -622,8 +626,8 @@ namespace JenzHealth.Areas.Admin.Services
                         FilmingReport = result.FilmingReport,
                         IsDeleted = false,
                         DateCreated = DateTime.Now,
-                        PreparedByID = Global.AuthenticatedUserID
-                    };
+                        PreparedByID = _userService.GetCurrentUser().Id
+                };
                     _db.TemplatedLabPreparations.Add(templateLabPreparation);
                     _db.SaveChanges();
                 }
@@ -949,8 +953,8 @@ namespace JenzHealth.Areas.Admin.Services
                 ServiceID = vmodel.ServiceID,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
-                PreparedByID = Global.AuthenticatedUserID
-            };
+                PreparedByID = _userService.GetCurrentUser().Id
+        };
             _db.NonTemplatedLabPreparations.Add(model);
             _db.SaveChanges();
 
@@ -1067,7 +1071,7 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var test = _db.ResultApprovals.FirstOrDefault(x => x.Id == Id);
             test.HasApproved = true;
-            test.ApprovedByID = Global.AuthenticatedUserID;
+            test.ApprovedByID = _userService.GetCurrentUser().Id;
             test.DateApproved = DateTime.Now;
 
             _db.Entry(test).State = System.Data.Entity.EntityState.Modified;
@@ -1082,18 +1086,18 @@ namespace JenzHealth.Areas.Admin.Services
             if(exist != null)
             {
                 exist.Collector = model.Collector;
-                exist.IssuerID = Global.AuthenticatedUserID;
+                exist.IssuerID = _userService.GetCurrentUser().Id;
                 _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
             }
             else
             {
-                model.IssuerID = Global.AuthenticatedUserID;
+                model.IssuerID = _userService.GetCurrentUser().Id;
                 _db.LabResultCollections.Add(model);
             }
             _db.SaveChanges();
 
-
             return true;
         }
+
     }
 }
