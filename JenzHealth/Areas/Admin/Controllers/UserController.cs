@@ -246,7 +246,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         {
             _userService.CloseShift(Id);
             return Json("Success",JsonRequestBehavior.AllowGet);
-        }
+        }        
 
     }
 }
