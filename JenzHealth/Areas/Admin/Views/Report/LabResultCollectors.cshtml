@@ -1,0 +1,115 @@
+﻿@model JenzHealth.Areas.Admin.ViewModels.LabResultCollectionVM
+@{
+    ViewBag.Title = "Lab Result Collection Report";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Report management</span>
+        <h3 class="page-title">Lab Result Collection</h3>
+    </div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+        <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Lab Reports
+                </h6>
+                <br />
+                <div class="m-0">
+                    @using (Html.BeginForm("LabResultCollectors", "Report", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+                    {
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="socialGitHub">Search By</label>
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="material-icons">bloodtype</i>
+                                        </div>
+                                    </div>
+                                    @Html.EditorFor(model => model.BillNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter bill number" } })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="socialGitHub" class="fa-pull-right">Date range</label>
+                                <div id="analytics-overview-date-range" class="input-daterange input-group input-group-sm ml-auto">
+                                    <input type="text" class="input-sm form-control" name="StartDate" placeholder="Start Date" id="analytics-overview-date-range-1">
+                                    <input type="text" class="input-sm form-control" name="EndDate" placeholder="End Date" id="analytics-overview-date-range-2">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">&#xE916;</i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button class="btn btn-primary">
+                                    <i class="material-icons">search</i> Search
+                                </button>
+                            </div>
+                            <div class="col">
+                                <div class="d-flex ml-lg-auto my-auto">
+                                    <div class="btn-group btn-group-sm mr-2 ml-lg-auto" role="group" aria-label="Table row actions">
+                                        <button type="button" class="btn btn-white" onclick="window.location.reload(true);">
+                                            <i class="fa fa-1x fa-retweet"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+            <table class="transaction-history d-none" style="white-space:nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">S/N</th>
+                        <th scope="col">Bill Number</th>
+                        <th scope="col">Patient</th>
+                        <th scope="col">Template</th>
+                        <th scope="col">Collector</th>
+                        <th scope="col">Date Collected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        if (ViewBag.TableData != null)
+                        {
+                            var counter = 0;
+                            foreach (var row in ViewBag.DistinctBills)
+                            {
+                                counter++;
+                                <tr>
+                                    <td>@counter</td>
+                                    <td>@row.BillNumber</td>
+                                    <td>@row.PatientName</td>
+                                    @foreach (var record in ViewBag.TableData)
+                                    {
+                                        if (record.BillNumber == row.BillNumber)
+                                        {
+                                            <td>@record.Template</td>
+                                            <td>@record.CollectorName</td>
+                                            <td>@record.DateCollected.ToLongDateString()</td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Preparations.js"></script>
+}
+

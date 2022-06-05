@@ -178,10 +178,10 @@ namespace JenzHealth.Areas.Admin.Services
                         _db.Entry(existingrangesetup).State = System.Data.Entity.EntityState.Modified;
                     }
                     var rangeForParameterSetups = rangeSetups.Where(x => x.ServiceParameterSetupID == id.ServiceParameterSetupID).ToList();
-                    foreach(var rangesetup in rangeForParameterSetups)
+                    foreach (var rangesetup in rangeForParameterSetups)
                     {
                         var existingRangeSetup = _db.ServiceParameterRangeSetups.Where(x => x.Unit == rangesetup.Unit && x.Range == rangesetup.Range && x.ServiceParameterSetupID == rangesetup.ServiceParameterSetupID).FirstOrDefault();
-                        if(existingRangeSetup != null)
+                        if (existingRangeSetup != null)
                         {
                             existingRangeSetup.Range = rangesetup.Range;
                             existingRangeSetup.Unit = rangesetup.Unit;
@@ -245,7 +245,7 @@ namespace JenzHealth.Areas.Admin.Services
                     DateTimeCreated = DateTime.Now,
                     LabNumber = specimenCollected.LabNumber,
                     CollectedByID = _userService.GetCurrentUser().Id
-            };
+                };
 
                 _db.SpecimenCollections.Add(specimenCollection);
                 _db.SaveChanges();
@@ -321,7 +321,9 @@ namespace JenzHealth.Areas.Admin.Services
                 OtherInformation = b.OtherInformation,
                 RequestingPhysician = b.RequestingPhysician,
                 RequestingDate = b.RequestingDate,
-                LabNumber = b.LabNumber
+                LabNumber = b.LabNumber,
+                CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
+                DateTimeCreated = b.DateTimeCreated
             }).FirstOrDefault();
             specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
             return specimenCollected;
@@ -627,7 +629,7 @@ namespace JenzHealth.Areas.Admin.Services
                         IsDeleted = false,
                         DateCreated = DateTime.Now,
                         PreparedByID = _userService.GetCurrentUser().Id
-                };
+                    };
                     _db.TemplatedLabPreparations.Add(templateLabPreparation);
                     _db.SaveChanges();
                 }
@@ -954,7 +956,7 @@ namespace JenzHealth.Areas.Admin.Services
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
                 PreparedByID = _userService.GetCurrentUser().Id
-        };
+            };
             _db.NonTemplatedLabPreparations.Add(model);
             _db.SaveChanges();
 
@@ -1082,21 +1084,45 @@ namespace JenzHealth.Areas.Admin.Services
 
         public bool UpdateCollector(LabResultCollection model)
         {
+            var currentUser = _userService.GetCurrentUser();
             var exist = _db.LabResultCollections.Where(x => x.BillNumber == model.BillNumber && x.TemplateID == model.TemplateID).FirstOrDefault();
-            if(exist != null)
+            if (exist != null)
             {
                 exist.Collector = model.Collector;
-                exist.IssuerID = _userService.GetCurrentUser().Id;
+                exist.DateCollected = DateTime.Now;
+                exist.IssuerID = currentUser.Id;
                 _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
             }
             else
             {
-                model.IssuerID = _userService.GetCurrentUser().Id;
+                model.IssuerID = currentUser.Id;
+                model.DateCollected = DateTime.Now;
                 _db.LabResultCollections.Add(model);
             }
             _db.SaveChanges();
 
             return true;
+        }
+
+        public List<LabResultCollectionVM> GetLabResultCollections(LabResultCollectionVM vmodel)
+        {
+            var records = _db.LabResultCollections.Where(x => x.BillNumber == vmodel.BillNumber || (x.DateCollected >= vmodel.StartDate && x.DateCollected <= vmodel.EndDate))
+                .Select(b => new LabResultCollectionVM()
+                {
+                    Id = b.Id,
+                    DateCollected = b.DateCollected,
+                    BillNumber = b.BillNumber,
+
+                    CollectorName = b.Collector.ToUpper(),
+                    TemplateID = b.TemplateID,
+                    Template = b.Template.Name
+                }).ToList();
+
+            foreach (var record in records)
+            {
+                record.PatientName = _paymentService.GetCustomerForBill(record.BillNumber).CustomerName;
+            }
+            return records;
         }
 
     }
