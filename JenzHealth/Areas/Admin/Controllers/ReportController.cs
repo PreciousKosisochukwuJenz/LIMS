@@ -1,14 +1,18 @@
-﻿using JenzHealth.Areas.Admin.Interfaces;
+﻿using JenzHealth.Areas.Admin.Components;
+using JenzHealth.Areas.Admin.Interfaces;
 using JenzHealth.Areas.Admin.Services;
+using JenzHealth.Areas.Admin.ViewModels;
 using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
 using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
+using PowerfulExtensions.Linq;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using JenzHealth.Areas.Admin.ViewModels.Report;
 
 namespace JenzHealth.Areas.Admin.Controllers
 {
@@ -50,6 +54,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         ISeedService _seedService;
         IUserService _userService;
         ILaboratoryService _laboratoryService;
+        IReportService _reportService;
         public ReportController()
         {
             _customerService = new CustomerService(db);
@@ -58,6 +63,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             _seedService = new SeedService(db);
             _settingService = new ApplicationSettingsService(db);
             _userService = new UserService(db);
+            _reportService = new ReportService(db, new PaymentService(), new LaboratoryService(), new SeedService());
         }
         public ReportController(
             CustomerService customerService,
@@ -65,7 +71,8 @@ namespace JenzHealth.Areas.Admin.Controllers
             PaymentService paymentService,
             SeedService seedService,
             ApplicationSettingsService settingService,
-            UserService userService
+            UserService userService,
+            ReportService reportService
             )
         {
             _customerService = customerService;
@@ -74,8 +81,46 @@ namespace JenzHealth.Areas.Admin.Controllers
             _seedService = seedService;
             _settingService = settingService;
             _userService = userService;
+            _reportService = reportService;
         }
         #endregion
+
+        public ActionResult RequestTracker()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RequestTracker(RequestTrackerVM vmodel)
+        {
+            var records = _reportService.TrackRequest(vmodel);
+
+            ViewBag.TableData = records;
+            return View(vmodel);
+        }
+
+        public ActionResult LabResultCollectors()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LabResultCollectors(LabResultCollectionVM vmodel)
+        {
+            var records = _laboratoryService.GetLabResultCollections(vmodel);
+            var distinctBills = records.Distinct(o => o.BillNumber).ToList();
+
+            ViewBag.TableData = records;
+            ViewBag.DistinctBills = distinctBills;
+            return View(vmodel);
+        }
+
         // GET: Admin/Report
 
         #region Payment Report

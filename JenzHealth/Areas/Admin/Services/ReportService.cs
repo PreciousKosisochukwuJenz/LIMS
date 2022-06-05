@@ -22,23 +22,30 @@ namespace JenzHealth.Areas.Admin.Services
             _laboratoryService = new LaboratoryService();
         }
 
-        public ReportService(DatabaseEntities db)
+        public ReportService(DatabaseEntities db, PaymentService paymentService, LaboratoryService laboratoryService, SeedService seedService)
         {
             _db = db;
+            _seedService = seedService;
+            _paymentService = paymentService;
+            _laboratoryService = laboratoryService;
         }
 
-        List<RequestTrackerVM> TrackRequest(RequestTrackerVM vmodel)
+        public List<RequestTrackerVM> TrackRequest(RequestTrackerVM vmodel)
         {
             List<RequestTrackerVM> trackedRequest = new List<RequestTrackerVM>();
-            var bills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.BillNumber || (x.DateCreated >= vmodel.StartDate && x.DateCreated <= vmodel.EndDate) && x.IsDeleted == false).ToList();
+            var bills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.BillNumber && x.IsDeleted == false || (x.DateCreated >= vmodel.StartDate && x.DateCreated <= vmodel.EndDate) ).ToList();
             foreach(var bill in bills)
             {
+                var specimenCollected = _laboratoryService.GetSpecimenCollected(bill.InvoiceNumber);
                 var request = new RequestTrackerVM()
                 {
                     BillNumber = bill.InvoiceNumber,
-                    SampleCollected = _laboratoryService.GetSpecimenCollected(bill.InvoiceNumber) != null ? true : false,
+                    SampleCollected = specimenCollected != null ? true : false,
                     HasCompletedPayment = _paymentService.CheckIfPaymentIsCompleted(bill.InvoiceNumber),
+                    SampleCollectedBy = specimenCollected.CollectedBy,
+                    SampleCollectedOn = specimenCollected.DateTimeCreated,
                 };
+                trackedRequest.Add(request);
             }
             return trackedRequest;
         }

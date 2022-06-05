@@ -35,5 +35,6 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<TemplateServiceCompuationVM> GetComputedResultForTemplatedService(string billnumber, int serviceParameterID);
         bool ApproveTestResult(int Id);
         bool UpdateCollector(LabResultCollection model);
+        List<LabResultCollectionVM> GetLabResultCollections(LabResultCollectionVM vmodel);
     }
 }

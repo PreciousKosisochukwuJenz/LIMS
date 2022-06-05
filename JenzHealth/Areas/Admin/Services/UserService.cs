@@ -282,7 +282,6 @@ namespace JenzHealth.Areas.Admin.Services
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
         }
-
         public User GetCurrentUser()
         {
             HttpContext context = HttpContext.Current;

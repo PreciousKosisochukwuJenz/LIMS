@@ -304,6 +304,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\Interfaces\IReportService.cs" />
     <Compile Include="Areas\Admin\Services\ReportService.cs" />
+    <Compile Include="Areas\Admin\ViewModels\LabResultCollectionVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\BillDetailsVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\RequestTrackerVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\SettingsDataSetVM.cs" />
@@ -513,6 +514,8 @@
     <Content Include="Areas\Admin\Views\Laboratory\ResultApproval.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\ComputeTemplatedResult.cshtml" />
     <Content Include="Areas\Admin\Views\Laboratory\ComputeNonTemplatedResult.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\LabResultCollectors.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\RequestTracker.cshtml" />
     <None Include="BillingDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BillingDataSet.Designer.cs</LastGenOutput>
@@ -643,7 +646,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Report\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>

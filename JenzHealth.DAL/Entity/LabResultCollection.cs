@@ -16,5 +16,8 @@ namespace JenzHealth.DAL.Entity
         public int? IssuerID { get; set; }
         [ForeignKey("IssuerID")]
         public User Issuer { get; set; }
+        [ForeignKey("TemplateID")]
+        public Template Template { get; set; }
+        public DateTime DateCollected { get; set; }
     }
 }
