@@ -29,6 +29,7 @@ namespace JenzHealth.Areas.Admin.Services
             _db = db;
             _seedService = new SeedService(db);
             _paymentService = new PaymentService(db, new UserService());
+            _userService = new UserService(db);
         }
         public ServiceParameterVM GetServiceParameter(string ServiceName)
         {
@@ -325,7 +326,10 @@ namespace JenzHealth.Areas.Admin.Services
                 CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
                 DateTimeCreated = b.DateTimeCreated
             }).FirstOrDefault();
-            specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
+            if(specimenCollected != null)
+            {
+                specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
+            }
             return specimenCollected;
         }
         public List<SpecimenCollectionVM> GetSpecimenCollectedForReport(string billnumber, int templateID)

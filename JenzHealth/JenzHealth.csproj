@@ -170,6 +170,7 @@
     <Content Include="Areas\Admin\Scripts\TransactionDetails.js" />
     <Content Include="Areas\Admin\Scripts\User.js" />
     <Content Include="Areas\Admin\Scripts\Vendor.js" />
+    <Content Include="Areas\Admin\Scripts\ViewRequestTracker.js" />
     <Content Include="Areas\Admin\Scripts\Waivers.js" />
     <Content Include="Content\css\all.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -516,6 +517,7 @@
     <Content Include="Areas\Admin\Views\Laboratory\ComputeNonTemplatedResult.cshtml" />
     <Content Include="Areas\Admin\Views\Report\LabResultCollectors.cshtml" />
     <Content Include="Areas\Admin\Views\Report\RequestTracker.cshtml" />
+    <Content Include="Areas\Admin\Views\Report\_ViewRequestTracker.cshtml" />
     <None Include="BillingDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BillingDataSet.Designer.cs</LastGenOutput>

@@ -4,6 +4,7 @@ using JenzHealth.DAL.DataConnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PowerfulExtensions.Linq;
 using System.Web;
 
 namespace JenzHealth.Areas.Admin.Services
@@ -34,16 +35,17 @@ namespace JenzHealth.Areas.Admin.Services
         {
             List<RequestTrackerVM> trackedRequest = new List<RequestTrackerVM>();
             var bills = _db.Billings.Where(x => x.InvoiceNumber == vmodel.BillNumber && x.IsDeleted == false || (x.DateCreated >= vmodel.StartDate && x.DateCreated <= vmodel.EndDate) ).ToList();
-            foreach(var bill in bills)
+            foreach(var bill in bills.Distinct(x=>x.InvoiceNumber))
             {
                 var specimenCollected = _laboratoryService.GetSpecimenCollected(bill.InvoiceNumber);
                 var request = new RequestTrackerVM()
                 {
                     BillNumber = bill.InvoiceNumber,
+                    PatientName = bill.CustomerName,
                     SampleCollected = specimenCollected != null ? true : false,
                     HasCompletedPayment = _paymentService.CheckIfPaymentIsCompleted(bill.InvoiceNumber),
-                    SampleCollectedBy = specimenCollected.CollectedBy,
-                    SampleCollectedOn = specimenCollected.DateTimeCreated,
+                    SampleCollectedBy = specimenCollected != null ? specimenCollected.CollectedBy: "",
+                    SampleCollectedOn = specimenCollected != null ? specimenCollected.DateTimeCreated: new DateTime(),
                 };
                 trackedRequest.Add(request);
             }
