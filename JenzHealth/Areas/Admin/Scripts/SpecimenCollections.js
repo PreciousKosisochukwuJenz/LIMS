@@ -163,26 +163,14 @@ $("#Search").click(function (e) {
 $("#FinishBtn").click(function () {
     var requestDate = $("#RequestingDate").val();
     var requestPhysician = $("#RequestingPhysician").val();
-<<<<<<< HEAD
     var clinicalSummary = $("#ClinicalSummary").val();
-=======
     var provitionalDiagnosis = $("#ProvitionalDiagnosis").val();
->>>>>>> 3655071df5069435a61ce1bcb127a07d962812bc
 
     if (requestDate === "") {
         $("#RequestingDate").addClass("is-invalid");
     } else if (requestPhysician === "") {
         $("#RequestingPhysician").addClass("is-invalid");
     }
-<<<<<<< HEAD
-    else if (clinicalSummary === "") {
-        $("#ClinicalSummary").addClass("is-invalid");
-    }
-    else {
-        $("#RequestingDate").removeClass("is-invalid");
-        $("#RequestingPhysician").removeClass("is-invalid");
-        $("#ClinicalSummary").removeClass("is-invalid");
-=======
     else if (provitionalDiagnosis === "") {
         $("#ProvitionalDiagnosis").addClass("is-invalid");
     }
@@ -191,7 +179,6 @@ $("#FinishBtn").click(function () {
         $("#RequestingDate").removeClass("is-invalid");
         $("#RequestingPhysician").removeClass("is-invalid");
         $("#ProvitionalDiagnosis").removeClass("is-invalid");
->>>>>>> 3655071df5069435a61ce1bcb127a07d962812bc
 
 
         Swal.fire({

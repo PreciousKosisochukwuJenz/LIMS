@@ -316,6 +316,15 @@ namespace JenzHealth.Areas.Admin.Controllers
             return File(renderedBytes, mimeType);
         }
 
+        public ActionResult ViewResult(string billnumber)
+        {
+            var billedServices = _laboratoryService.GetServicesToPrepare(billnumber);
+            var distinctServices = _laboratoryService.GetDistinctTemplateForBilledServices(billedServices);
+
+            var response = new { distinctServices, billedServices };
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
     }
 }

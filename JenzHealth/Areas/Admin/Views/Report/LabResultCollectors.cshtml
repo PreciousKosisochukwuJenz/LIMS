@@ -91,15 +91,9 @@
                                     <td>@counter</td>
                                     <td>@row.BillNumber</td>
                                     <td>@row.PatientName</td>
-                                    @foreach (var record in ViewBag.TableData)
-                                    {
-                                        if (record.BillNumber == row.BillNumber)
-                                        {
-                                            <td>@record.Template</td>
-                                            <td>@record.CollectorName</td>
-                                            <td>@record.DateCollected.ToLongDateString()</td>
-                                        }
-                                    }
+                                    <td>@row.Template</td>
+                                    <td>@row.CollectorName</td>
+                                    <td>@row.DateCollected</td>
                                 </tr>
                             }
                         }

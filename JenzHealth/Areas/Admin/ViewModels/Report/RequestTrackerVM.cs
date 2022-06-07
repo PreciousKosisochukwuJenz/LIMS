@@ -9,6 +9,7 @@ namespace JenzHealth.Areas.Admin.ViewModels.Report
     {
         public int Id { get; set; }
         public string BillNumber { get; set; }
+        public string PatientName { get; set; }
         public bool HasCompletedPayment { get; set; }
         public bool SampleCollected { get; set; }
         public DateTime? SampleCollectedOn { get; set; }
