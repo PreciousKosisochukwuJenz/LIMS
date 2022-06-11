@@ -33,4 +33,3 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.cspr
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CopyComplete
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.AssemblyReference.cache

@@ -439,4 +439,5 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\vbc.exe.config
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\vbc.rsp
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\VBCSCompiler.exe
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\EnvDTE.xml
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\RdlCompile.cache
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Debug\RdlCompile.compiled

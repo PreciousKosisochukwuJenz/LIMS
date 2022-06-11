@@ -442,3 +442,5 @@ C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\JenzHealth.csproj
 C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\JenzHealth.dll
 C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\obj\Release\JenzHealth.pdb
 >>>>>>> 3655071df5069435a61ce1bcb127a07d962812bc
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\RdlCompile.cache
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\RdlCompile.compiled
