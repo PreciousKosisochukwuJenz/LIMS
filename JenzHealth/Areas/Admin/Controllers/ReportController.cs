@@ -91,6 +91,8 @@ namespace JenzHealth.Areas.Admin.Controllers
             {
                 throw new UnauthorizedAccessException();
             }
+            var records = _reportService.TrackRequest(null);
+            ViewBag.TableData = records;
             return View();
         }
         [HttpPost]
@@ -108,6 +110,11 @@ namespace JenzHealth.Areas.Admin.Controllers
             {
                 throw new UnauthorizedAccessException();
             }
+            var records = _laboratoryService.GetLabResultCollections(null);
+            var distinctBills = records.Distinct(o => o.BillNumber).ToList();
+
+            ViewBag.TableData = records;
+            ViewBag.DistinctBills = distinctBills;
             return View();
         }
         [HttpPost]

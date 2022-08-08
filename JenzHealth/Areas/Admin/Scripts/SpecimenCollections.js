@@ -49,7 +49,7 @@ $("#Search").click(function (e) {
                                     success: function (datas) {
                                         var date = new Date(+datas.RequestingDate.replace(/\D/g, '') + 3600 * 1000 * 24);
                                         $("#RequestingDate").val(date.toISOString().substr(0, 10))
-                                        $("#RequestingPhysician").val(datas.RequestingPhysician)
+                                        $("#Referrer").val(datas.Referrer)
                                         $("#ClinicalSummary").val(datas.ClinicalSummary)
                                         $("#ProvitionalDiagnosis").val(datas.ProvitionalDiagnosis)
                                         $("#OtherInformation").val(datas.OtherInformation)
@@ -149,7 +149,7 @@ $("#Search").click(function (e) {
                     e.target.innerHTML = "Search";
 
                 }
-                 
+
             },
             error: function (err) {
                 toastr.error(err.fail, "Data not retrieved successfully", { showDuration: 500 })
@@ -161,95 +161,72 @@ $("#Search").click(function (e) {
 
 })
 $("#FinishBtn").click(function () {
-    var requestDate = $("#RequestingDate").val();
-    var requestPhysician = $("#RequestingPhysician").val();
-    var clinicalSummary = $("#ClinicalSummary").val();
-    var provitionalDiagnosis = $("#ProvitionalDiagnosis").val();
 
-    if (requestDate === "") {
-        $("#RequestingDate").addClass("is-invalid");
-    } else if (requestPhysician === "") {
-        $("#RequestingPhysician").addClass("is-invalid");
-    }
-    else if (provitionalDiagnosis === "") {
-        $("#ProvitionalDiagnosis").addClass("is-invalid");
-    }
-  
-    else {
-        $("#RequestingDate").removeClass("is-invalid");
-        $("#RequestingPhysician").removeClass("is-invalid");
-        $("#ProvitionalDiagnosis").removeClass("is-invalid");
+    Swal.fire({
+        title: 'Confirmation',
+        text: "Are you sure, you want to proceed with this operation?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, proceed!'
+    }).then((result) => {
+        if (result.value) {
 
+            var SpecimentCollected = {
+                BillInvoiceNumber: $("#Searchby").val(),
+                ClinicalSummary: $("#ClinicalSummary").val(),
+                ProvitionalDiagnosis: $("#ProvitionalDiagnosis").val(),
+                OtherInformation: $("#OtherInformation").val(),
+            };
 
-        Swal.fire({
-            title: 'Confirmation',
-            text: "Are you sure, you want to proceed with this operation?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, proceed!'
-        }).then((result) => {
-            if (result.value) {
+            let ServiceList = [];
+            var table = $("#ServiceBody")[0].children;
+            $.each(table, function (i, tr) {
+                i += 1;
+                // Create Parameter
+                let setup = {};
+                setup.Service = tr.children[0].innerText;
+                setup.Specimen = tr.children[1].innerText;
+                setup.IsCollected = tr.children[2].children[0].checked;
 
-                var SpecimentCollected = {
-                    BillInvoiceNumber: $("#Searchby").val(),
-                    RequestingDate: $("#RequestingDate").val(),
-                    RequestingPhysician: $("#RequestingPhysician").val(),
-                    ClinicalSummary: $("#ClinicalSummary").val(),
-                    ProvitionalDiagnosis: $("#ProvitionalDiagnosis").val(),
-                    OtherInformation: $("#OtherInformation").val(),
-                    LabNumber: $("#LabNumber").val()
-                };
-
-                let ServiceList = [];
-                var table = $("#ServiceBody")[0].children;
-                $.each(table, function (i, tr) {
-                    i += 1;
-                    // Create Parameter
-                    let setup = {};
-                    setup.Service = tr.children[0].innerText;
-                    setup.Specimen = tr.children[1].innerText;
-                    setup.IsCollected = tr.children[2].children[0].checked;
-
-                    // Add to Parameter list
-                    ServiceList.push(setup);
-                });
-                // Send ajax call to server
-                $.ajax({
-                    url: 'UpdateSpecimenCollection',
-                    method: 'Post',
-                    dataType: "json",
-                    data: { specimenCollection: SpecimentCollected, checkList: ServiceList },
-                    success: function (response) {
-                        Swal.fire({
-                            title: 'Specimen collected successfully',
-                            showCancelButton: false,
-                            confirmButtonText: 'Ok',
-                            showLoaderOnConfirm: true,
-                        }).then((result) => {
-                            if (result.value) {
-                                window.location.reload(true);
-                            } else if (
-                                result.dismiss === Swal.DismissReason.cancel
-                            ) {
-                                window.location.reload(true);
-                            }
-                        })
-                    }
-                })
-            }
-            else if (
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                    'Cancelled :)',
-                    'error'
-                )
-            }
-        })
-    }
+                // Add to Parameter list
+                ServiceList.push(setup);
+            });
+            // Send ajax call to server
+            $.ajax({
+                url: 'UpdateSpecimenCollection',
+                method: 'Post',
+                dataType: "json",
+                data: { specimenCollection: SpecimentCollected, checkList: ServiceList },
+                success: function (response) {
+                    Swal.fire({
+                        title: 'Specimen collected successfully',
+                        showCancelButton: false,
+                        confirmButtonText: 'Ok',
+                        showLoaderOnConfirm: true,
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.reload(true);
+                        } else if (
+                            result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                            window.location.reload(true);
+                        }
+                    })
+                }
+            })
+        }
+        else if (
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Cancelled :)',
+                'error'
+            )
+        }
+    })
 
 
 })

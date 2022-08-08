@@ -156,6 +156,7 @@
     <Content Include="Areas\Admin\Scripts\Preparations.js" />
     <Content Include="Areas\Admin\Scripts\Priviledge.js" />
     <Content Include="Areas\Admin\Scripts\RecieptCancellations.js" />
+    <Content Include="Areas\Admin\Scripts\Referrer.js" />
     <Content Include="Areas\Admin\Scripts\Refunds.js" />
     <Content Include="Areas\Admin\Scripts\RevenueDepartment.js" />
     <Content Include="Areas\Admin\Scripts\Role.js" />
@@ -306,6 +307,7 @@
     <Compile Include="Areas\Admin\Interfaces\IReportService.cs" />
     <Compile Include="Areas\Admin\Services\ReportService.cs" />
     <Compile Include="Areas\Admin\ViewModels\LabResultCollectionVM.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ReferrerVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\BillDetailsVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\RequestTrackerVM.cs" />
     <Compile Include="Areas\Admin\ViewModels\Report\SettingsDataSetVM.cs" />
@@ -518,6 +520,9 @@
     <Content Include="Areas\Admin\Views\Report\LabResultCollectors.cshtml" />
     <Content Include="Areas\Admin\Views\Report\RequestTracker.cshtml" />
     <Content Include="Areas\Admin\Views\Report\_ViewRequestTracker.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\ManageReferrers.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_CreateReferrer.cshtml" />
+    <Content Include="Areas\Admin\Views\Seed\_EditReferrer.cshtml" />
     <None Include="BillingDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BillingDataSet.Designer.cs</LastGenOutput>

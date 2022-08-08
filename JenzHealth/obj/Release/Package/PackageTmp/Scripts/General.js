@@ -13,3 +13,12 @@ function ConvertToDecimal(amount) {
 $("#close").click(function () {
     $(".main-content-container").empty();
 });
+
+var url = window.location.href.split('?')[0];
+for (let i = 0; i < document.links.length; i++) {
+    let link = document.links[i];
+    if (link.href == url) {
+        //link.parentNode.className = 'show';
+        //link.parentNode.parentNode.className = 'show';
+    }
+}

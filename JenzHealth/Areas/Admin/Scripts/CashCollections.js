@@ -419,7 +419,8 @@ $("#FinishBtn").click(function () {
                     PartPaymentID: $("#installmentdrp").val(),
                     TransactionReferenceNumber: $("#TransactionReferenceNumber").val(),
                     WaiveBy: $("input[name='WaiveBy']:checked").val(),
-                    BalanceAmount: ConvertToDecimal($("#BalanceAmount").html())
+                    BalanceAmount: ConvertToDecimal($("#BalanceAmount").html()),
+                    Referrer: $("#Referrer").val()
                 };
 
                 var table = $("#ServiceBody")[0].children;
@@ -584,4 +585,24 @@ $("input[name='WaiveBy']").change(function () {
         $("#waiverPercentage").val("0");
         $("#waiverAmount").hide();
     }
+})
+
+$(function () {
+    $("#Referrer").autoComplete({
+        resolver: "custom",
+        events: {
+            search: function (qry, callback) {
+                $.ajax({
+                    url: "/Admin/Seed/GeReferrerAutoComplete",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: qry },
+                }).done(function (res) {
+                    callback(res)
+                });
+            }
+        },
+        minLength: 1
+    });
+
 })

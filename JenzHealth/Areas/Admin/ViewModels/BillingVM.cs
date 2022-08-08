@@ -14,7 +14,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public CustomerType CustomerType { get; set; }
         public string CustomerName { get; set; }
         public string CustomerGender { get; set; }
-        public int CustomerAge { get; set; }
+        public string CustomerAge { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public int ServiceID { get; set; }
         public string ServiceName { get; set; }

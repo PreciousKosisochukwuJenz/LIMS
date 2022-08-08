@@ -13,7 +13,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string PaymentReciept { get; set; }
         public string CustomerName { get; set; }
         public string CustomerUniqueID { get; set; }
-        public int CustomerAge { get; set; }
+        public string CustomerAge { get; set; }
         public string CustomerGender { get; set; }
         public string CustomerType { get; set; }
         public string CustomerPhoneNumber { get; set; }
@@ -30,6 +30,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public bool IsDeleted { get; set; }
         public DateTime DatePaid { get; set; }
         public string ServiceName { get; set; }
+        public string Referrer { get; set; }
         public string AmountPaidString { get; set; }
         public string Comment { get; set; }
         public string PaymentTypee { get; set; }

@@ -105,7 +105,7 @@ namespace JenzHealth.Areas.Admin.Services
                 CustomerName = b.CustomerName == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " " + _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
                 CustomerGender = b.CustomerGender == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender : b.CustomerGender,
                 CustomerPhoneNumber = b.CustomerPhoneNumber == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber : b.CustomerPhoneNumber,
-                CustomerAge = b.CustomerAge == 0 ? DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year : b.CustomerAge,
+                CustomerAge = b.CustomerAge == null ? (DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year).ToString() : b.CustomerAge,
                 InvoiceNumber = b.InvoiceNumber
             }).FirstOrDefault();
             return model;
@@ -117,7 +117,7 @@ namespace JenzHealth.Areas.Admin.Services
                 CustomerName = b.CustomerName == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Firstname + " " + _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Lastname : b.CustomerName,
                 CustomerGender = b.CustomerGender == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).Gender : b.CustomerGender,
                 CustomerPhoneNumber = b.CustomerPhoneNumber == null ? _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).PhoneNumber : b.CustomerPhoneNumber,
-                CustomerAge = b.CustomerAge == 0 ? DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year : b.CustomerAge,
+                CustomerAge = b.CustomerAge == null ? (DateTime.Now.Year - _db.Customers.FirstOrDefault(x => x.CustomerUniqueID == b.CustomerUniqueID).DOB.Year).ToString() : b.CustomerAge,
                 CustomerUniqueID = b.CustomerUniqueID,
                 InvoiceNumber = b.InvoiceNumber.ToUpper()
             }).ToList();
@@ -322,7 +322,7 @@ namespace JenzHealth.Areas.Admin.Services
                         CustomerUniqueID = vmodel.CustomerUniqueID,
                         CustomerName = string.Format("{0} {1}", customer.Firstname, customer.Lastname),
                         CustomerGender = customer.Gender,
-                        CustomerAge = (DateTime.Now.Year - customer.DOB.Year),
+                        CustomerAge = (DateTime.Now.Year - customer.DOB.Year).ToString(),
                         CustomerPhoneNumber = customer.PhoneNumber,
                         CustomerType = CustomerType.REGISTERED_CUSTOMER,
                         CustomerID = customer.Id,
@@ -394,6 +394,37 @@ namespace JenzHealth.Areas.Admin.Services
             vmodel.BillInvoiceNumber = billInvoiceNumber;
             _db.Entry(updatesettings).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
+
+            var specimenCollection = new SpecimenCollection()
+            {
+                BillInvoiceNumber = vmodel.BillInvoiceNumber,
+                Referrer = vmodel.Referrer,
+                RequestingDate = DateTime.Now,
+                IsDeleted = false,
+                DateTimeCreated = DateTime.Now,
+                LabNumber = new SeedService().GenerateLabNumber(),
+                CollectedByID = _userService.GetCurrentUser().Id
+            };
+            _db.SpecimenCollections.Add(specimenCollection);
+            _db.SaveChanges();
+
+
+            foreach(var service in serviceList)
+            {
+                var specimen = new SpecimenCollectionCheckList()
+                {
+                    SpecimenCollectionID = specimenCollection.Id,
+                    ServiceID = service.ServiceID,
+                    SpecimenID = _db.ServiceParameters.FirstOrDefault(x=>x.ServiceID == service.ServiceID).SpecimenID,
+                    IsDeleted = false,
+                    IsCollected = false,
+                    DateTimeCreated = DateTime.Now
+                };
+                _db.SpecimenCollectionCheckLists.Add(specimen);
+            }
+            _db.SaveChanges();
+
+
 
             if (updatesettings.ExpressWaiver)
             {

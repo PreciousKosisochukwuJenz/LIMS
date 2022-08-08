@@ -14,7 +14,7 @@ namespace JenzHealth.DAL.Entity
         public int Id { get; set; }
         public string BillInvoiceNumber { get; set; }
         public DateTime RequestingDate { get; set; }
-        public string RequestingPhysician { get; set; }
+        public string Referrer { get; set; }
         public string LabNumber { get; set; }
         public string ClinicalSummary { get; set; }
         public string ProvitionalDiagnosis { get; set; }

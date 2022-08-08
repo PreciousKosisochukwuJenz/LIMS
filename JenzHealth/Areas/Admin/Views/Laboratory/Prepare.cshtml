@@ -85,7 +85,7 @@
                                         </a>
                                         @if (row.HasBeenComputed)
                                         {
-                                            <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-white print" title="Click to print">
+                                            <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated})" target="_blank" class="btn btn-white" title="Click to print">
                                                 <i class="material-icons">print</i> Print result
                                             </a>
                                         }

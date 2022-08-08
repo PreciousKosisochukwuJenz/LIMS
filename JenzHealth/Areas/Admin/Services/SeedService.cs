@@ -358,14 +358,14 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var model = _db.Vendors.Where(x => x.Id == ID).Select(b => new VendorVM()
             {
-                Id =b.Id,
+                Id = b.Id,
                 Name = b.Name,
                 OfficeAddress = b.OfficeAddress,
                 CompanyRegistrationNumber = b.CompanyRegistrationNumber,
                 PostalAddress = b.PostalAddress,
                 Website = b.Website,
                 Email = b.Email,
-                PhoneNumber =b.PhoneNumber,
+                PhoneNumber = b.PhoneNumber,
             }).FirstOrDefault();
             return model;
         }
@@ -421,7 +421,7 @@ namespace JenzHealth.Areas.Admin.Services
                 CostPrice = b.CostPrice,
                 SellingPrice = b.SellingPrice,
             }).ToList();
-            foreach(var each in model)
+            foreach (var each in model)
             {
                 each.SellingPriceString = "₦" + each.SellingPrice.ToString("N", nfi);
                 each.CostPriceString = "₦" + each.CostPrice.ToString("N", nfi);
@@ -772,5 +772,98 @@ namespace JenzHealth.Areas.Admin.Services
             return organisms;
         }
 
+
+
+
+        /* *************************************************************************** */
+        //Referrer
+
+        // Fetching Organism
+        public List<ReferrerVM> GetReferrers()
+        {
+            var model = _db.Referrers.Where(x => x.IsDeleted == false).Select(b => new ReferrerVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+                Hospital = b.Hospital
+            }).ToList();
+            return model;
+        }
+
+        // Creating Organism
+        public bool CreateReferrer(ReferrerVM vmodel)
+        {
+            bool HasSaved = false;
+            Referrer model = new Referrer()
+            {
+                Name = vmodel.Name,
+                Hospital = vmodel.Hospital,
+                IsDeleted = false,
+                DateCreated = DateTime.Now,
+            };
+            _db.Referrers.Add(model);
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Getting Organism
+        public ReferrerVM GeReferrer(int ID)
+        {
+            var model = _db.Referrers.Where(x => x.Id == ID).Select(b => new ReferrerVM()
+            {
+                Id = b.Id,
+                Name = b.Name,
+                Hospital = b.Hospital
+            }).FirstOrDefault();
+            return model;
+        }
+
+        // Editting and updating Organism
+        public bool EditReferrer(ReferrerVM vmodel)
+        {
+            bool HasSaved = false;
+            var model = _db.Referrers.Where(x => x.Id == vmodel.Id).FirstOrDefault();
+            model.Name = vmodel.Name;
+            model.Hospital = vmodel.Hospital;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasSaved = true;
+            return HasSaved;
+        }
+
+        // Deleting Organism
+        public bool DeleteReferrer(int ID)
+        {
+            bool HasDeleted = false;
+            var model = _db.Referrers.Where(x => x.Id == ID).FirstOrDefault();
+            model.IsDeleted = true;
+
+            _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+            _db.SaveChanges();
+            HasDeleted = true;
+            return HasDeleted;
+        }
+
+        public List<string> GetReferrerAutoComplete(string term)
+        {
+            List<string> referrers;
+            referrers = _db.Referrers.Where(x => x.IsDeleted == false && x.Name.StartsWith(term) || x.Name.Contains(term) || x.Hospital.Contains(term)).Select(b => b.Name + " | " + b.Hospital).ToList();
+            return referrers;
+        }
+
+
+        public string GenerateLabNumber()
+        {
+            var currentYear = DateTime.Now.Year;
+            var newYear = new DateTime(DateTime.Now.Year, 01, 01);
+            if(DateTime.Now >= newYear)
+            {
+                currentYear = newYear.Year;
+            }
+            var labCount = _db.SpecimenCollections.Count(x => x.DateTimeCreated.Year == currentYear);
+            return string.Format("LAB|{0}|{1}", currentYear, labCount.ToString("D4"));
+        }
     }
 }

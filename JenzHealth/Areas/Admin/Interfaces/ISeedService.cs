@@ -72,5 +72,13 @@ namespace JenzHealth.Areas.Admin.Interfaces
         bool EditAntiBiotic(AntiBioticVM vmodel);
         bool DeleteAntiBiotic(int ID);
         List<string> GetOrganismAutoComplete(string term);
+
+        List<ReferrerVM> GetReferrers();
+        bool CreateReferrer(ReferrerVM vmodel);
+        ReferrerVM GeReferrer(int ID);
+        bool EditReferrer(ReferrerVM vmodel);
+        bool DeleteReferrer(int ID);
+        List<string> GetReferrerAutoComplete(string term);
+        string GenerateLabNumber();
     }
 }

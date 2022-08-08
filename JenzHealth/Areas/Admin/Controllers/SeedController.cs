@@ -540,7 +540,7 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
 
 
-        // Organism
+        // AntiBiotics
         public ActionResult ManageAntiBiotics(bool? Added, bool? Editted)
         {
             if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
@@ -609,6 +609,68 @@ namespace JenzHealth.Areas.Admin.Controllers
         public JsonResult GetOrganismAutoComplete(string term)
         {
             var response = _seedService.GetOrganismAutoComplete(term);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        // Referrer
+        public ActionResult ManageReferrers(bool? Added, bool? Editted)
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            if (Added == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-primary";
+                TempData["AlertMessage"] = "Referrer added successfully.";
+            }
+            if (Editted == true)
+            {
+                ViewBag.ShowAlert = true;
+                TempData["AlertType"] = "alert-primary";
+                TempData["AlertMessage"] = "Referrer updated successfully.";
+            }
+            ViewBag.Referrers = _seedService.GetReferrers();
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateReferrer(ReferrerVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.CreateReferrer(vmodel);
+            }
+            return RedirectToAction("ManageReferrers", new { Added = hasSaved });
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditReferrer(ReferrerVM vmodel)
+        {
+            bool hasSaved = false;
+            if (ModelState.IsValid)
+            {
+                hasSaved = _seedService.EditReferrer(vmodel);
+            }
+            return RedirectToAction("ManageReferrers", new { Editted = hasSaved });
+        }
+        public JsonResult GetReferrer(int id)
+        {
+            var model = _seedService.GeReferrer(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteReferrer(int id)
+        {
+            var model = _seedService.DeleteReferrer(id);
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GeReferrerAutoComplete(string term)
+        {
+            var response = _seedService.GetReferrerAutoComplete(term);
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 

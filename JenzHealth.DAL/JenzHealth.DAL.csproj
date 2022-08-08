@@ -59,6 +59,7 @@
     <Compile Include="Entity\LabResultCollection.cs" />
     <Compile Include="Entity\NonTemplatedLabPreparation.cs" />
     <Compile Include="Entity\NonTemplatedLabResultOrganismXAntibiotics.cs" />
+    <Compile Include="Entity\Referrer.cs" />
     <Compile Include="Entity\ResultApproval.cs" />
     <Compile Include="Entity\TemplatedLabPreparation.cs" />
     <Compile Include="Entity\Organism.cs" />

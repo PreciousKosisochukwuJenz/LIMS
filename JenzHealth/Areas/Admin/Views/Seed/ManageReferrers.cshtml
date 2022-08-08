@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Manage Specimens";
+}
+<!-- Page Header -->
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Seed management</span>
+        <h3 class="page-title">Manage Referrers</h3>
+    </div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+        <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">
+                    Active Referrer
+                    <button class="btn btn-primary fa-pull-right" data-toggle="modal"
+                            data-target="#Create">
+                        <i class="material-icons">add</i> Add Referrer
+                    </button>
+                </h6>
+            </div>
+            <table class="file-manager file-manager-list d-none table-responsive">
+                <thead class="bg-light">
+                    <tr>
+                        <th scope="col" class="border-0">Name</th>
+                        <th scope="col" class="border-0">Hospital</th>
+                        <th scope="col" class="border-0">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in ViewBag.Referrers)
+                    {
+                        <tr>
+                            <td>@row.Name</td>
+                            <td>@row.Hospital</td>
+                            <td>
+                                <button type="button" onclick="Edit(@row.Id)" class="btn btn-outline-accent" data-toggle="modal" data-target="#Edit">
+                                    <i class="dropdown-icon lnr-pencil"> </i><span>Edit</span>
+                                </button>
+                                <button type="button" onclick="Prompt(@row.Id)" class="btn btn-outline-danger">
+                                    <i class="dropdown-icon lnr-trash"> </i><span>Delete</span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Areas/Admin/Scripts/Referrer.js"></script>
+}
+@Html.Partial("_EditReferrer")
+@Html.Partial("_CreateReferrer")
