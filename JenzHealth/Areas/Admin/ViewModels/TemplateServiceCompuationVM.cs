@@ -28,6 +28,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Labnumber { get; set; }
         public string FilmingReport { get; set; }
         public bool RequireApproval { get; set; }
+        public bool UseFilmReport { get; set; }
+        public string Comment { get; set; }
+
         public int? ServiceParameterID { get; set; }
         public List<ServiceParameterAndRange> Parameters { get; set; }
     }

@@ -35,7 +35,7 @@
                 </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT Id, BillInvoiceNumber, [Key], Value, ServiceRangeID, ServiceParameterID, ServiceParameterSetupID, DateCreated, IsDeleted FROM dbo.TemplatedLabPreparations</CommandText>
+                    <CommandText>SELECT Id, BillInvoiceNumber, [Key], Value, ServiceRangeID, ServiceParameterID, ServiceParameterSetupID, DateCreated, IsDeleted FROM TemplatedLabPreparations</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>

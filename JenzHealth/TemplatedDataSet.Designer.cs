@@ -1788,8 +1788,7 @@ namespace JenzHealth.TemplatedDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, BillInvoiceNumber, [Key], Value, ServiceRangeID, ServiceParameterID, S" +
-                "erviceParameterSetupID, DateCreated, IsDeleted FROM dbo.TemplatedLabPreparations" +
-                "";
+                "erviceParameterSetupID, DateCreated, IsDeleted FROM TemplatedLabPreparations";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

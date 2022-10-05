@@ -142,9 +142,9 @@ $("#FinishBtn").click(function () {
                     Service: $("#Service").val(),
                     Specimen: $("#Specimen").val(),
                     Template: $("#Template").val(),
-                    RequireApproval: $("#newProjectsEmailsToggle").prop("checked")
+                    RequireApproval: $("#newProjectsEmailsToggle").prop("checked"),
+                    UseFilmReport: $("#conversationsEmailsToggle").prop("checked")
                 };
-                debugger
 
                 let ParameterSetupList = [];
                 var table = $("#ParameterBody")[0].children;
@@ -207,6 +207,7 @@ function Populate(service) {
             $("#Specimen").val(data.Specimen);
             $("#Template").val(data.Template);
             $("#newProjectsEmailsToggle").prop("checked", data.RequireApproval);
+            $("#conversationsEmailsToggle").prop("checked", data.UseFilmReport);
 
             $.ajax({
                 url: 'GetServiceParameterSetups?service=' + service,

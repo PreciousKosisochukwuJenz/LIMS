@@ -15,6 +15,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Labnote { get; set; }
         public string ScientificComment { get; set; }
         public string FilmingReport { get; set; }
+        public string Comment { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
         public int RangeID { get; set; }

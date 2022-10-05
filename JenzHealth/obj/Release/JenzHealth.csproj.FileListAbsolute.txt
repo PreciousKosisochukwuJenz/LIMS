@@ -166,9 +166,9 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\pt\Microsoft.ReportViewer.Win
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\RdlCompile.cache
-C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\RdlCompile.compiled
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\JenzHealth.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\JenzHealth.csproj.CopyComplete
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\JenzHealth.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\JenzHealth.pdb
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\bin\EnvDTE.xml
+C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\obj\Release\JenzHealth.csproj.AssemblyReference.cache

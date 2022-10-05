@@ -66,12 +66,27 @@
                                     </tbody>
                                 </table>
                                 <div class="row">
-                                    <div class="form-group col-md-12"><hr />
-                                        <label for="FilmingReport">Film Report</label>
-                                        <div class="input-group input-group-seamless">
-                                            <input type="text" class="form-control" id="FilmingReport-@billedService.ServiceID" value="@billedService.FilmingReport" />
+                                    @if (billedService.UseFilmReport)
+                                    {
+                                        <div class="form-group col-md-12">
+                                            <hr />
+                                            <label for="FilmingReport">Film Report</label>
+                                            <div class="input-group input-group-seamless">
+                                                <input type="text" class="form-control" id="FilmingReport-@billedService.ServiceID" value="@billedService.FilmingReport" />
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group col-md-12">
+                                            <hr />
+                                            <label for="Comment">Comment</label>
+                                            <div class="input-group input-group-seamless">
+                                                <input type="text" class="form-control" id="Comment-@billedService.ServiceID" value="@billedService.Comment" />
+                                            </div>
+                                        </div>
+                                    }
+
                                 </div>
                             </div>
                         </div><hr />
@@ -81,21 +96,21 @@
             </div>
             <div class="card-footer">
                 <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="labnote">Lab Note</label>
-                        <div class="input-group input-group-seamless">
-                            <textarea class="form-control" id="labnote" rows="3">@Model.FirstOrDefault().Labnote</textarea>
-                            <div class="invalid-feedback">
-                                Lab note required
+                    @*<div class="form-group col-md-12">
+                            <label for="labnote">Lab Note</label>
+                            <div class="input-group input-group-seamless">
+                                <textarea class="form-control" id="labnote" rows="3">@Model.FirstOrDefault().Labnote</textarea>
+                                <div class="invalid-feedback">
+                                    Lab note required
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>*@
                     <div class="form-group col-md-12">
                         <label for="ScientificComment">Scientist Comment</label>
                         <div class="input-group input-group-seamless">
                             <textarea class="form-control" id="comment" rows="3">@Model.FirstOrDefault().ScienticComment</textarea>
                             <div class="invalid-feedback">
-                                Scientic comment required
+                                Scientist comment required
                             </div>
                         </div>
                     </div>

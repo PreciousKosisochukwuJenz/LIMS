@@ -1,4 +1,4 @@
-﻿$(".print").click(function (e) {
+﻿function Print(e) {
     e.preventDefault();
     Swal.fire({
         title: 'Enter Collector\'s Name',
@@ -26,7 +26,7 @@
             window.open(reportUrl, 'blank');
         }
     })
-})
+}
 
 function PostCollector(collector, billnumber, templateID) {
     const data = {

@@ -364,7 +364,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.83333in</Height>
+              <Height>2.22223in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -769,7 +769,7 @@
                             </TablixMembers>
                           </TablixRowHierarchy>
                           <DataSetName>TemplatedDataSet</DataSetName>
-                          <Top>0.57528in</Top>
+                          <Top>0.87971in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.4375in</Height>
                           <Width>6.55208in</Width>
@@ -786,32 +786,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>TEST INVESTIGATION FOR </Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>"</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Label>Service</Label>
-                                  <Value>=Fields!Service.Value</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Value>"</Value>
+                                  <Value>TEST INVESTIGATIONS</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -847,7 +822,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>NATURE OF SPECIMEN:  </Value>
+                                  <Value>SAMPLE TYPE:  </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -866,7 +841,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>0.33222in</Top>
+                          <Top>0.63665in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.21528in</Height>
                           <Width>6.55208in</Width>
@@ -907,11 +882,14 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.25932in</Top>
+                          <Top>1.56375in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.21875in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>3</ZIndex>
+                          <Visibility>
+                            <Hidden>=(Fields!ApprovedBy.Value) &lt;&gt; ""</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -949,11 +927,14 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.47807in</Top>
+                          <Top>1.7825in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.25in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>4</ZIndex>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!DateApproved.Value &gt; 0, false, true)</Hidden>
+                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -990,11 +971,51 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.04056in</Top>
+                          <Top>1.34499in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.20487in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>5</ZIndex>
+                          <Visibility>
+                            <Hidden>=IIF(Fields!FilmingReport.Value, false, true)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <Textbox Name="Textbox25">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Label>Service</Label>
+                                  <Value>=Fields!Service.Value</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <Top>0.37388in</Top>
+                          <Left>0.15628in</Left>
+                          <Height>0.24888in</Height>
+                          <Width>6.55208in</Width>
+                          <ZIndex>6</ZIndex>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1042,9 +1063,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>TemplatedDataSet</DataSetName>
-        <Top>4.35528in</Top>
+        <Top>3.97473in</Top>
         <Left>0.10289in</Left>
-        <Height>1.83333in</Height>
+        <Height>2.22223in</Height>
         <Width>6.96708in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -1076,7 +1097,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>6.83445in</Top>
+        <Top>7.46611in</Top>
         <Left>1.36331in</Left>
         <Height>0.33333in</Height>
         <Width>4.89586in</Width>
@@ -1176,7 +1197,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>REQUESTING PHYSICIAN:            </Value>
+                <Value>REFERRER:                                     </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
@@ -1185,8 +1206,8 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Label>Physican</Label>
-                <Value>=First(Fields!RequestingPhysician.Value, "SpecimenCollectionDataSet")</Value>
+                <Label>Referrer</Label>
+                <Value>=First(Fields!Referrer.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
@@ -1202,33 +1223,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>SPECIMEN COLLECTED BY:         </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Collected By</Label>
-                <Value>=First(Fields!SpecimenCollectedBy.Value, "TemplatedDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>ON:    </Value>
+                <Value>SAMPLE DATE:    </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
@@ -1247,7 +1242,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value xml:space="preserve">                                          </Value>
+                <Value xml:space="preserve">                       </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
@@ -1257,79 +1252,7 @@
               </TextRun>
               <TextRun>
                 <Label>Collected On</Label>
-                <Value>=First(Fields!DateCollected.Value, "TemplatedDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                  <Format>f</Format>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>RESULT PREPARED BY:                </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Prepare By</Label>
-                <Value>=First(Fields!PreparedBy.Value, "TemplatedDataSet")</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>ON:      </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">   </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value xml:space="preserve">                                        </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Date Prepared</Label>
-                <Value>=First(Fields!DatePrepared.Value, "TemplatedDataSet")</Value>
+                <Value>=First(Fields!RequestingDate.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
@@ -1347,7 +1270,7 @@
         <rd:DefaultName>Textbox4</rd:DefaultName>
         <Top>2.89348in</Top>
         <Left>0.10289in</Left>
-        <Height>1.43403in</Height>
+        <Height>1.06736in</Height>
         <Width>6.96708in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -1396,7 +1319,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>6.24417in</Top>
+        <Top>6.23862in</Top>
         <Left>0.25917in</Left>
         <Height>0.52083in</Height>
         <Width>6.55208in</Width>
@@ -1411,8 +1334,65 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Result prepared by:</Value>
+                <Style>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Prepare By</Label>
+                <Value>=First(Fields!PreparedBy.Value, "TemplatedDataSet")</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>(MEDICAL LAB SCIENIST)</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>7.01333in</Top>
+        <Left>3.03039in</Left>
+        <Height>0.31667in</Height>
+        <Width>4.03958in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>7.22681in</Height>
+    <Height>7.90181in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
@@ -1606,10 +1586,6 @@
           <DataField>RequestingDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="RequestingPhysician">
-          <DataField>RequestingPhysician</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="LabNumber">
           <DataField>LabNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1646,10 +1622,14 @@
           <DataField>ServiceDepartment</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Referrer">
+          <DataField>Referrer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SpeciemenCollectionDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\SpeciemenCollectionDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\SpeciemenCollectionDataSet.xsd</rd:SchemaPath>
         <rd:TableName>SpecimenCollections</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -1765,7 +1745,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>TemplatedDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\TemplatedDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth\TemplatedDataSet.xsd</rd:SchemaPath>
         <rd:TableName>TemplatedLabPreparations</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

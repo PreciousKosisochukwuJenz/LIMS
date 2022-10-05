@@ -285,8 +285,6 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnRequestingDate;
             
-            private global::System.Data.DataColumn columnRequestingPhysician;
-            
             private global::System.Data.DataColumn columnLabNumber;
             
             private global::System.Data.DataColumn columnClinicalSummary;
@@ -304,6 +302,8 @@ namespace JenzHealth {
             private global::System.Data.DataColumn columnSpecimen;
             
             private global::System.Data.DataColumn columnServiceDepartment;
+            
+            private global::System.Data.DataColumn columnReferrer;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -359,14 +359,6 @@ namespace JenzHealth {
             public global::System.Data.DataColumn RequestingDateColumn {
                 get {
                     return this.columnRequestingDate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn RequestingPhysicianColumn {
-                get {
-                    return this.columnRequestingPhysician;
                 }
             }
             
@@ -444,6 +436,14 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ReferrerColumn {
+                get {
+                    return this.columnReferrer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,13 +479,12 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SpecimenCollectionsRow AddSpecimenCollectionsRow(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, string CollectedBy, string Specimen, string ServiceDepartment) {
+            public SpecimenCollectionsRow AddSpecimenCollectionsRow(string BillInvoiceNumber, System.DateTime RequestingDate, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, string CollectedBy, string Specimen, string ServiceDepartment, string Referrer) {
                 SpecimenCollectionsRow rowSpecimenCollectionsRow = ((SpecimenCollectionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         BillInvoiceNumber,
                         RequestingDate,
-                        RequestingPhysician,
                         LabNumber,
                         ClinicalSummary,
                         ProvitionalDiagnosis,
@@ -494,7 +493,8 @@ namespace JenzHealth {
                         DateTimeCreated,
                         CollectedBy,
                         Specimen,
-                        ServiceDepartment};
+                        ServiceDepartment,
+                        Referrer};
                 rowSpecimenCollectionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSpecimenCollectionsRow);
                 return rowSpecimenCollectionsRow;
@@ -527,7 +527,6 @@ namespace JenzHealth {
                 this.columnId = base.Columns["Id"];
                 this.columnBillInvoiceNumber = base.Columns["BillInvoiceNumber"];
                 this.columnRequestingDate = base.Columns["RequestingDate"];
-                this.columnRequestingPhysician = base.Columns["RequestingPhysician"];
                 this.columnLabNumber = base.Columns["LabNumber"];
                 this.columnClinicalSummary = base.Columns["ClinicalSummary"];
                 this.columnProvitionalDiagnosis = base.Columns["ProvitionalDiagnosis"];
@@ -537,6 +536,7 @@ namespace JenzHealth {
                 this.columnCollectedBy = base.Columns["CollectedBy"];
                 this.columnSpecimen = base.Columns["Specimen"];
                 this.columnServiceDepartment = base.Columns["ServiceDepartment"];
+                this.columnReferrer = base.Columns["Referrer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -548,8 +548,6 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnBillInvoiceNumber);
                 this.columnRequestingDate = new global::System.Data.DataColumn("RequestingDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequestingDate);
-                this.columnRequestingPhysician = new global::System.Data.DataColumn("RequestingPhysician", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRequestingPhysician);
                 this.columnLabNumber = new global::System.Data.DataColumn("LabNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLabNumber);
                 this.columnClinicalSummary = new global::System.Data.DataColumn("ClinicalSummary", typeof(string), null, global::System.Data.MappingType.Element);
@@ -568,6 +566,8 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnSpecimen);
                 this.columnServiceDepartment = new global::System.Data.DataColumn("ServiceDepartment", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnServiceDepartment);
+                this.columnReferrer = new global::System.Data.DataColumn("Referrer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReferrer);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -578,7 +578,6 @@ namespace JenzHealth {
                 this.columnId.Unique = true;
                 this.columnBillInvoiceNumber.MaxLength = 2147483647;
                 this.columnRequestingDate.AllowDBNull = false;
-                this.columnRequestingPhysician.MaxLength = 2147483647;
                 this.columnLabNumber.MaxLength = 2147483647;
                 this.columnClinicalSummary.MaxLength = 2147483647;
                 this.columnProvitionalDiagnosis.MaxLength = 2147483647;
@@ -766,23 +765,6 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string RequestingPhysician {
-                get {
-                    try {
-                        return ((string)(this[this.tableSpecimenCollections.RequestingPhysicianColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RequestingPhysician\' in table \'SpecimenCollections\' is DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableSpecimenCollections.RequestingPhysicianColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string LabNumber {
                 get {
                     try {
@@ -920,6 +902,22 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Referrer {
+                get {
+                    try {
+                        return ((string)(this[this.tableSpecimenCollections.ReferrerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Referrer\' in table \'SpecimenCollections\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSpecimenCollections.ReferrerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsBillInvoiceNumberNull() {
                 return this.IsNull(this.tableSpecimenCollections.BillInvoiceNumberColumn);
             }
@@ -928,18 +926,6 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetBillInvoiceNumberNull() {
                 this[this.tableSpecimenCollections.BillInvoiceNumberColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsRequestingPhysicianNull() {
-                return this.IsNull(this.tableSpecimenCollections.RequestingPhysicianColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetRequestingPhysicianNull() {
-                this[this.tableSpecimenCollections.RequestingPhysicianColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1024,6 +1010,18 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetServiceDepartmentNull() {
                 this[this.tableSpecimenCollections.ServiceDepartmentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsReferrerNull() {
+                return this.IsNull(this.tableSpecimenCollections.ReferrerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetReferrerNull() {
+                this[this.tableSpecimenCollections.ReferrerColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1189,7 +1187,6 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("BillInvoiceNumber", "BillInvoiceNumber");
             tableMapping.ColumnMappings.Add("RequestingDate", "RequestingDate");
-            tableMapping.ColumnMappings.Add("RequestingPhysician", "RequestingPhysician");
             tableMapping.ColumnMappings.Add("LabNumber", "LabNumber");
             tableMapping.ColumnMappings.Add("ClinicalSummary", "ClinicalSummary");
             tableMapping.ColumnMappings.Add("ProvitionalDiagnosis", "ProvitionalDiagnosis");
@@ -1199,16 +1196,15 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[SpecimenCollections] WHERE (([Id] = @Original_Id))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [SpecimenCollections] WHERE (([Id] = @Original_Id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[SpecimenCollections] ([BillInvoiceNumber], [RequestingDate], [RequestingPhysician], [LabNumber], [ClinicalSummary], [ProvitionalDiagnosis], [OtherInformation], [IsDeleted], [DateTimeCreated]) VALUES (@BillInvoiceNumber, @RequestingDate, @RequestingPhysician, @LabNumber, @ClinicalSummary, @ProvitionalDiagnosis, @OtherInformation, @IsDeleted, @DateTimeCreated)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [SpecimenCollections] ([BillInvoiceNumber], [RequestingDate], [LabNumber], [ClinicalSummary], [ProvitionalDiagnosis], [OtherInformation], [IsDeleted], [DateTimeCreated]) VALUES (@BillInvoiceNumber, @RequestingDate, @LabNumber, @ClinicalSummary, @ProvitionalDiagnosis, @OtherInformation, @IsDeleted, @DateTimeCreated)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BillInvoiceNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BillInvoiceNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingPhysician", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingPhysician", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicalSummary", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicalSummary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProvitionalDiagnosis", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProvitionalDiagnosis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1217,11 +1213,10 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTimeCreated", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTimeCreated", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SpecimenCollections] SET [BillInvoiceNumber] = @BillInvoiceNumber, [RequestingDate] = @RequestingDate, [RequestingPhysician] = @RequestingPhysician, [LabNumber] = @LabNumber, [ClinicalSummary] = @ClinicalSummary, [ProvitionalDiagnosis] = @ProvitionalDiagnosis, [OtherInformation] = @OtherInformation, [IsDeleted] = @IsDeleted, [DateTimeCreated] = @DateTimeCreated WHERE (([Id] = @Original_Id))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [SpecimenCollections] SET [BillInvoiceNumber] = @BillInvoiceNumber, [RequestingDate] = @RequestingDate, [LabNumber] = @LabNumber, [ClinicalSummary] = @ClinicalSummary, [ProvitionalDiagnosis] = @ProvitionalDiagnosis, [OtherInformation] = @OtherInformation, [IsDeleted] = @IsDeleted, [DateTimeCreated] = @DateTimeCreated WHERE (([Id] = @Original_Id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BillInvoiceNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BillInvoiceNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RequestingPhysician", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RequestingPhysician", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LabNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LabNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClinicalSummary", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClinicalSummary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ProvitionalDiagnosis", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProvitionalDiagnosis", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1244,9 +1239,9 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, BillInvoiceNumber, RequestingDate, RequestingPhysician, LabNumber, Cli" +
-                "nicalSummary, ProvitionalDiagnosis, OtherInformation, IsDeleted, DateTimeCreated" +
-                " FROM dbo.SpecimenCollections";
+            this._commandCollection[0].CommandText = "SELECT Id, BillInvoiceNumber, RequestingDate, LabNumber, ClinicalSummary, Proviti" +
+                "onalDiagnosis, OtherInformation, IsDeleted, DateTimeCreated FROM SpecimenCollect" +
+                "ions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1329,7 +1324,7 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated) {
+        public virtual int Insert(string BillInvoiceNumber, System.DateTime RequestingDate, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated) {
             if ((BillInvoiceNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1337,38 +1332,32 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(BillInvoiceNumber));
             }
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(RequestingDate));
-            if ((RequestingPhysician == null)) {
+            if ((LabNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(RequestingPhysician));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LabNumber));
             }
-            if ((LabNumber == null)) {
+            if ((ClinicalSummary == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(LabNumber));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ClinicalSummary));
             }
-            if ((ClinicalSummary == null)) {
+            if ((ProvitionalDiagnosis == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ClinicalSummary));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(ProvitionalDiagnosis));
             }
-            if ((ProvitionalDiagnosis == null)) {
+            if ((OtherInformation == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(ProvitionalDiagnosis));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(OtherInformation));
             }
-            if ((OtherInformation == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(OtherInformation));
-            }
-            this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(IsDeleted));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(DateTimeCreated));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(IsDeleted));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(DateTimeCreated));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1389,7 +1378,7 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string BillInvoiceNumber, System.DateTime RequestingDate, string RequestingPhysician, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, int Original_Id) {
+        public virtual int Update(string BillInvoiceNumber, System.DateTime RequestingDate, string LabNumber, string ClinicalSummary, string ProvitionalDiagnosis, string OtherInformation, bool IsDeleted, System.DateTime DateTimeCreated, int Original_Id) {
             if ((BillInvoiceNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1397,39 +1386,33 @@ namespace JenzHealth.SpeciemenCollectionDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(BillInvoiceNumber));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(RequestingDate));
-            if ((RequestingPhysician == null)) {
+            if ((LabNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(RequestingPhysician));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LabNumber));
             }
-            if ((LabNumber == null)) {
+            if ((ClinicalSummary == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(LabNumber));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ClinicalSummary));
             }
-            if ((ClinicalSummary == null)) {
+            if ((ProvitionalDiagnosis == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ClinicalSummary));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(ProvitionalDiagnosis));
             }
-            if ((ProvitionalDiagnosis == null)) {
+            if ((OtherInformation == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(ProvitionalDiagnosis));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(OtherInformation));
             }
-            if ((OtherInformation == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(OtherInformation));
-            }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(IsDeleted));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(DateTimeCreated));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(IsDeleted));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(DateTimeCreated));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

@@ -785,6 +785,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Name = b.Name,
+                Phonenumber = b.Phonenumber,
                 Hospital = b.Hospital
             }).ToList();
             return model;
@@ -798,6 +799,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Name = vmodel.Name,
                 Hospital = vmodel.Hospital,
+                Phonenumber = vmodel.Phonenumber,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
             };
@@ -814,7 +816,8 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Name = b.Name,
-                Hospital = b.Hospital
+                Hospital = b.Hospital,
+                Phonenumber = b.Phonenumber
             }).FirstOrDefault();
             return model;
         }
@@ -826,6 +829,7 @@ namespace JenzHealth.Areas.Admin.Services
             var model = _db.Referrers.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Name = vmodel.Name;
             model.Hospital = vmodel.Hospital;
+            model.Phonenumber = vmodel.Phonenumber;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();

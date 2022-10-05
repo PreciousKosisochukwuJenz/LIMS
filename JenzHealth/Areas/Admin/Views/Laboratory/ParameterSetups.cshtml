@@ -64,6 +64,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-row mx-4">
+                            <label for="conversationsEmailsToggle" class="col col-form-label">
+                                Use Film report? <small class="form-text text-muted"> If check, service uses film report </small>
+                            </label>
+                            <div class="col d-flex">
+                                <div class="custom-control custom-toggle ml-auto my-auto">
+                                    @Html.CheckBoxFor(model => model.RequireApproval, new { @class = "custom-control-input", id = "conversationsEmailsToggle" })
+                                    <label class="custom-control-label" for="conversationsEmailsToggle"></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,8 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public int? SpecimenID { get; set; }
         public int? TemplateID { get; set; }
         public bool RequireApproval { get; set; }
+        public bool UseFilmReport { get; set; }
+
         public string Service { get; set; }
         public string Specimen { get; set; }
         public string Template { get; set; }

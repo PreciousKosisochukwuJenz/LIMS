@@ -43,6 +43,7 @@ namespace JenzHealth.Areas.Admin.Services
                 TemplateID = b.TemplateID,
                 Template = b.Template.Name,
                 RequireApproval = b.RequireApproval,
+                UseFilmReport = b.UseFilmReport
             }).FirstOrDefault();
 
             return model;
@@ -59,6 +60,7 @@ namespace JenzHealth.Areas.Admin.Services
                 TemplateID = b.TemplateID,
                 Template = b.Template.Name,
                 RequireApproval = b.RequireApproval,
+                UseFilmReport = b.UseFilmReport
             }).FirstOrDefault();
 
             return model;
@@ -70,6 +72,7 @@ namespace JenzHealth.Areas.Admin.Services
             if (ExistingServiceParamterExist != null)
             {
                 ExistingServiceParamterExist.RequireApproval = serviceParamter.RequireApproval;
+                ExistingServiceParamterExist.UseFilmReport = serviceParamter.UseFilmReport;
                 ExistingServiceParamterExist.SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == serviceParamter.Specimen).Id;
                 ExistingServiceParamterExist.TemplateID = _db.Templates.FirstOrDefault(x => x.Name == serviceParamter.Template).Id;
                 _db.Entry(ExistingServiceParamterExist).State = System.Data.Entity.EntityState.Modified;
@@ -85,6 +88,7 @@ namespace JenzHealth.Areas.Admin.Services
                     SpecimenID = _db.Specimens.FirstOrDefault(x => x.Name == serviceParamter.Specimen).Id,
                     TemplateID = _db.Templates.FirstOrDefault(x => x.Name == serviceParamter.Template).Id,
                     RequireApproval = serviceParamter.RequireApproval,
+                    UseFilmReport = serviceParamter.UseFilmReport
                 };
                 _db.ServiceParameters.Add(serviceParameter);
                 _db.SaveChanges();
@@ -151,7 +155,6 @@ namespace JenzHealth.Areas.Admin.Services
             }).ToList();
             return serviceparamtersetups;
         }
-
         public List<ServiceParameterRangeSetupVM> GetRangeSetups(string serviceName)
         {
             var rangesetups = _db.ServiceParameterRangeSetups.Where(x => x.ServiceParameterSetup.ServiceParameter.Service.Description == serviceName && x.IsDeleted == false).Select(b => new ServiceParameterRangeSetupVM()
@@ -366,7 +369,6 @@ namespace JenzHealth.Areas.Admin.Services
                 }).ToList();
             return checklist;
         }
-
         public List<SpecimenCollectionVM> GetLabPreparations(SpecimenCollectionVM vmodel)
         {
             var preparations = _db.SpecimenCollections.Where(x => (x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == x.BillInvoiceNumber) || (x.DateTimeCreated >= vmodel.StartDate && x.DateTimeCreated <= vmodel.EndDate) && x.IsDeleted == false)
@@ -408,7 +410,8 @@ namespace JenzHealth.Areas.Admin.Services
                 TemplateID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).TemplateID,
                 BillNumber = b.InvoiceNumber,
                 Templated = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).Template.UseDefaultParameters,
-                RequireApproval = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).RequireApproval
+                RequireApproval = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).RequireApproval,
+                UseFilmReport = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == b.ServiceID).UseFilmReport
             }).ToList();
             foreach (var item in model)
             {
@@ -445,7 +448,6 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return distinctTemplate;
         }
-
         public List<TemplateServiceCompuationVM> SetupTemplatedServiceForComputation(int TemplateID, string billNumber)
         {
             List<TemplateServiceCompuationVM> model = new List<TemplateServiceCompuationVM>();
@@ -457,6 +459,8 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 TemplateServiceCompuationVM billservice = new TemplateServiceCompuationVM();
                 billservice.Parameters = new List<ServiceParameterAndRange>();
+                billservice.UseFilmReport = service.UseFilmReport;
+                billservice.RequireApproval = service.RequireApproval;
                 var serviceParameterID = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == service.ServiceID && x.TemplateID == TemplateID).Id;
                 var parameterSetups = _db.ServiceParameterSetups.Where(x => x.ServiceParameterID == serviceParameterID && x.IsDeleted == false).Select(b => new ServiceParameterSetupVM()
                 {
@@ -474,6 +478,7 @@ namespace JenzHealth.Areas.Admin.Services
                     parametersetup.Value = record.Value;
                     parametersetup.Labnote = record.Labnote;
                     parametersetup.FilmingReport = record.FilmingReport;
+                    parametersetup.Comment = record.Comment;
                     parametersetup.ScientificComment = record.ScientificComment;
                     parametersetup.Range = range == null ? " " : range.Range;
                     parametersetup.Unit = range == null ? " " : range.Unit;
@@ -497,7 +502,7 @@ namespace JenzHealth.Areas.Admin.Services
                 billservice.Service = service.Service;
                 billservice.ServiceID = (int)service.ServiceID;
                 billservice.FilmingReport = parameterSetups.FirstOrDefault().FilmingReport;
-                //billservice.FilmingReport = 
+                billservice.Comment = parameterSetups.FirstOrDefault().Comment;
                 model.Add(billservice);
             }
             model[0].Labnote = model[0].Parameters[0].Parameter.Labnote;
@@ -605,6 +610,7 @@ namespace JenzHealth.Areas.Admin.Services
                     exist.ScienticComment = comment;
                     exist.ServiceRangeID = result.RangeID;
                     exist.FilmingReport = result.FilmingReport;
+                    exist.Comment = result.Comment;
                     exist.PreparedByID = _userService.GetCurrentUser().Id;
 
                     _db.Entry(exist).State = System.Data.Entity.EntityState.Modified;
@@ -624,6 +630,7 @@ namespace JenzHealth.Areas.Admin.Services
                         Labnote = labnote,
                         ScienticComment = comment,
                         FilmingReport = result.FilmingReport,
+                        Comment = result.Comment,
                         IsDeleted = false,
                         DateCreated = DateTime.Now,
                         PreparedByID = _userService.GetCurrentUser().Id
@@ -867,7 +874,6 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return ServicesForReport;
         }
-
         public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
         {
             var checkResultIfExist = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == vmodel.BillInvoiceNumber).FirstOrDefault();
@@ -1059,7 +1065,9 @@ namespace JenzHealth.Areas.Admin.Services
                 PreparedBy = b.PreparedBy.Firstname + " " + b.PreparedBy.Lastname,
                 DatePrepared = b.DateCreated,
                 Specimen = b.ServiceParameterSetup.ServiceParameter.Specimen.Name,
-                FilmingReport = b.FilmingReport
+                FilmingReport = b.FilmingReport,
+                UseFilmReport = b.ServiceParameterSetup.ServiceParameter.UseFilmReport,
+                Comment = b.Comment,
             }).ToList();
             foreach (var item in record)
             {
@@ -1079,7 +1087,6 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-
         public bool UpdateCollector(LabResultCollection model)
         {
             var currentUser = _userService.GetCurrentUser();
@@ -1101,7 +1108,6 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-
         public List<LabResultCollectionVM> GetLabResultCollections(LabResultCollectionVM vmodel)
         {
             List<LabResultCollectionVM> records = new List<LabResultCollectionVM>();
@@ -1141,6 +1147,5 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return records;
         }
-
     }
 }
