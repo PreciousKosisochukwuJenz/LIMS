@@ -182,6 +182,15 @@ namespace JenzHealth.Areas.Admin.Services
                     foreach (var rangesetup in rangeForParameterSetups)
                     {
                         var existingRangeSetup = _db.ServiceParameterRangeSetups.Where(x => x.Unit == rangesetup.Unit && x.Range == rangesetup.Range && x.ServiceParameterSetupID == rangesetup.ServiceParameterSetupID).FirstOrDefault();
+                        try
+                        {
+                            var rangeValues = Array.ConvertAll(rangesetup.Range.Split('-'), rangeValue => rangeValue.Contains('.') ? float.Parse(rangeValue.Trim()) : int.Parse(rangeValue.Trim()));
+                        }
+                        catch (Exception)
+                        {
+                            throw new ArgumentException("Invalid character range. Please provide range format of {minNumber} - {maxNumber}");
+                        }
+
                         if (existingRangeSetup != null)
                         {
                             existingRangeSetup.Range = rangesetup.Range;
@@ -221,7 +230,7 @@ namespace JenzHealth.Areas.Admin.Services
                 sampleExist.ClinicalSummary = specimenCollected.ClinicalSummary;
                 sampleExist.ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis;
                 sampleExist.OtherInformation = specimenCollected.OtherInformation;
-                sampleExist.RequestingDate = specimenCollected.RequestingDate;
+                sampleExist.RequestingDate = specimenCollected.RequestingDate ?? null;
                 sampleExist.CollectedByID = _userService.GetCurrentUser().Id;
                 sampleExist.LabNumber = specimenCollected.LabNumber;
                 _db.Entry(sampleExist).State = System.Data.Entity.EntityState.Modified;
@@ -232,7 +241,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 var labCount = _db.ApplicationSettings.FirstOrDefault().LabCount;
                 labCount++;
-                //var labnumber = string.Format("LAB/{0}", labCount.ToString("D6"));
+                var labnumber = string.Format("LAB/{0}", labCount.ToString("D6"));
 
                 var specimenCollection = new SpecimenCollection()
                 {
@@ -241,10 +250,10 @@ namespace JenzHealth.Areas.Admin.Services
                     OtherInformation = specimenCollected.OtherInformation,
                     ProvitionalDiagnosis = specimenCollected.ProvitionalDiagnosis,
                     RequestingPhysician = specimenCollected.RequestingPhysician,
-                    RequestingDate = specimenCollected.RequestingDate,
+                    RequestingDate = specimenCollected.RequestingDate ?? null,
                     IsDeleted = false,
                     DateTimeCreated = DateTime.Now,
-                    LabNumber = specimenCollected.LabNumber,
+                    LabNumber = specimenCollected.LabNumber ?? labnumber,
                     CollectedByID = _userService.GetCurrentUser().Id
                 };
 
@@ -314,7 +323,7 @@ namespace JenzHealth.Areas.Admin.Services
         }
         public SpecimenCollectionVM GetSpecimenCollected(string billnumber)
         {
-            var specimenCollected = _db.SpecimenCollections.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new SpecimenCollectionVM()
+            var specimenCollected = _db.SpecimenCollections.Where(x => !x.IsDeleted && (x.BillInvoiceNumber == billnumber || x.LabNumber == billnumber)).Select(b => new SpecimenCollectionVM()
             {
                 Id = b.Id,
                 ClinicalSummary = b.ClinicalSummary,
@@ -326,7 +335,7 @@ namespace JenzHealth.Areas.Admin.Services
                 CollectedBy = b.CollectedBy.Firstname + " " + b.CollectedBy.Lastname,
                 DateTimeCreated = b.DateTimeCreated
             }).FirstOrDefault();
-            if(specimenCollected != null)
+            if (specimenCollected != null)
             {
                 specimenCollected.CheckList = this.GetCheckList(specimenCollected.Id);
             }
@@ -376,7 +385,7 @@ namespace JenzHealth.Areas.Admin.Services
 
         public List<SpecimenCollectionVM> GetLabPreparations(SpecimenCollectionVM vmodel)
         {
-            var preparations = _db.SpecimenCollections.Where(x => (x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == x.BillInvoiceNumber) || (x.DateTimeCreated >= vmodel.StartDate && x.DateTimeCreated <= vmodel.EndDate) && x.IsDeleted == false)
+            var preparations = _db.SpecimenCollections.Where(x => (x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == vmodel.BillInvoiceNumber) || (x.DateTimeCreated >= vmodel.StartDate && x.DateTimeCreated <= vmodel.EndDate) && !x.IsDeleted)
                 .Select(b => new SpecimenCollectionVM()
                 {
                     Id = b.Id,
@@ -391,7 +400,7 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 record.HasPaidAllBill = _paymentService.CheckIfPaymentIsCompleted(record.BillInvoiceNumber);
             }
-            preparations.RemoveAll(x => x.HasPaidAllBill == false);
+            preparations.RemoveAll(x => !x.HasPaidAllBill);
             return preparations;
         }
         public SpecimenCollectionVM GetSpecimensForPreparation(int Id)
@@ -421,33 +430,73 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 var serviceParameter = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == item.ServiceID);
                 var checkApproval = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == item.BillNumber);
-                item.Approved = checkApproval != null ? checkApproval.HasApproved : false;
+
+                if (checkApproval != null)
+                {
+                    var approvedBy = _db.Users.FirstOrDefault(x => x.Id == checkApproval.ApprovedByID);
+                    item.Approved = checkApproval.HasApproved;
+                    item.DateApproved = checkApproval.DateApproved != null ? checkApproval.DateApproved.Value.ToShortDateString(): "N/A";
+                    item.ApprovedBy = approvedBy != null ? string.Format("{0} {1}", approvedBy.Firstname, approvedBy.Lastname) : "N/A";
+                }
+                else
+                {
+                    item.Approved = false;
+                    item.DateApproved = "N/A";
+                    item.ApprovedBy = "N/A";
+                }
             }
             return model;
         }
-        public bool CheckIfTestHasBeenComputed(int templateID, string billnumber)
+        public ServiceParameterVM CheckIfTestHasBeenComputed(int templateID, string billnumber)
         {
             var template = _db.Templates.FirstOrDefault(x => x.Id == templateID);
             if (!template.UseDefaultParameters)
             {
                 var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID).FirstOrDefault();
                 if (exist != null)
-                    return true;
+                {
+                    var preparedBy = _db.Users.FirstOrDefault(x => x.Id == exist.PreparedByID);
+                    return new ServiceParameterVM()
+                    {
+                        HasBeenComputed = true,
+                        ComputedBy = string.Format("{0} {1}", preparedBy.Firstname, preparedBy.Lastname),
+                        DateComputed = exist.DateCreated.ToShortDateString()
+                    };
+                }
+                    
             }
             else
             {
                 var exist = _db.NonTemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber).FirstOrDefault();
                 if (exist != null)
-                    return true;
+                {
+                    var preparedBy = _db.Users.FirstOrDefault(x => x.Id == exist.PreparedByID);
+
+                    return new ServiceParameterVM()
+                    {
+                        HasBeenComputed = true,
+                        ComputedBy = string.Format("{0} {1}", preparedBy.Firstname, preparedBy.Lastname),
+                        DateComputed = exist.DateCreated.ToShortDateString()
+                    }; 
+                }
+                   
             }
-            return false;
+            return new ServiceParameterVM()
+            {
+                HasBeenComputed = false,
+                ComputedBy = "N/A",
+                DateComputed = "N/A"
+            };
         }
         public List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices)
         {
             var distinctTemplate = billedServices.Distinct(o => o.TemplateID).ToList();
             foreach (var record in distinctTemplate)
             {
-                record.HasBeenComputed = CheckIfTestHasBeenComputed((int)record.TemplateID, record.BillNumber);
+                var data = CheckIfTestHasBeenComputed((int)record.TemplateID, record.BillNumber);
+                record.HasBeenComputed = data.HasBeenComputed;
+                record.DateComputed = data.DateComputed;
+                record.ComputedBy = data.ComputedBy;
             }
             return distinctTemplate;
         }
@@ -542,7 +591,7 @@ namespace JenzHealth.Areas.Admin.Services
 
             foreach (var item in result)
             {
-                item.Status = GetStatusForTemplateReport(int.Parse(item.Value), item.Range);
+                item.Status = GetStatusForTemplateReport(item.Value.Contains('.') ? float.Parse(item.Value.Trim()) : int.Parse(item.Value.Trim()), item.Range);
             }
 
             List<TemplateServiceCompuationVM> ServicesForReport = new List<TemplateServiceCompuationVM>();
@@ -570,9 +619,9 @@ namespace JenzHealth.Areas.Admin.Services
             }
             return ServicesForReport;
         }
-        private string GetStatusForTemplateReport(int value, string range)
+        private string GetStatusForTemplateReport(float value, string range)
         {
-            var rangeValues = Array.ConvertAll(range.Split('-'), rangeValue => rangeValue.Contains('.') ? float.Parse(rangeValue) : int.Parse(rangeValue));
+            var rangeValues = Array.ConvertAll(range.Split('-'), rangeValue => rangeValue.Contains('.') ? float.Parse(rangeValue.Trim()) : int.Parse(rangeValue.Trim()));
             if (value < rangeValues[0])
                 return "LOW";
             else if (value > rangeValues[1])
@@ -1069,7 +1118,7 @@ namespace JenzHealth.Areas.Admin.Services
             }).ToList();
             foreach (var item in record)
             {
-                item.Status = GetStatusForTemplateReport(int.Parse(item.Value), item.Range);
+                item.Status = GetStatusForTemplateReport(item.Value.Contains('.') ? float.Parse(item.Value.Trim()) : int.Parse(item.Value.Trim()), item.Range);
             }
             return record;
         }

@@ -135,6 +135,14 @@ $("#FinishBtn").click(function () {
                                 window.location.reload(true);
                             }
                         })
+                    },
+                    error: function (e) {
+                        Swal.fire({
+                            title:"Invalid character range. Please provide range format of {minNumber} - {maxNumber}",
+                            showCancelButton: false,
+                            confirmButtonText: 'Ok',
+                            showLoaderOnConfirm: true,
+                        });
                     }
                 })
             }

@@ -66,7 +66,15 @@ $("#Search").click(function (e) {
                                                 html = "<tr id='" + data.Id + "' ><td>" + data.Service + "</td><td>" + data.Specimen + "</td><td><input type='checkbox' class='chk' value='" + data.Id + "' /></td></tr>"; $("#ServiceBody").append(html);
                                             }
                                         });
+                                        $(".chk").on("change", function () {
 
+                                            const anyCheckboxChecked = $(".chk:checked").length > 0;
+
+                                            $("#FinishBtn").prop("disabled", !anyCheckboxChecked);
+                                        });
+
+                                        var hasAtleastOneCollected = datas.CheckList.some(x => x.IsCollected)
+                                        $("#FinishBtn").prop("disabled", !hasAtleastOneCollected);
                                         $("#ServiceTableLoader").hide();
                                         $("#serviceTableDiv").show();
                                     },
@@ -117,6 +125,15 @@ $("#Search").click(function (e) {
                                             $("#ServiceBody").append(html);
                                         });
 
+                                        $(".chk").on("change", function () {
+
+                                            const anyCheckboxChecked = $(".chk:checked").length > 0;
+
+                                            $("#FinishBtn").prop("disabled", !anyCheckboxChecked);
+                                        });
+
+
+                                        $("#FinishBtn").prop("disabled", true);
                                         $("#ServiceTableLoader").hide();
                                         $("#serviceTableDiv").show();
                                     },
@@ -160,25 +177,14 @@ $("#Search").click(function (e) {
     }
 
 })
-$("#FinishBtn").click(function () {
-    var requestDate = $("#RequestingDate").val();
-    var requestPhysician = $("#RequestingPhysician").val();
-    var clinicalSummary = $("#ClinicalSummary").val();
-    var provitionalDiagnosis = $("#ProvitionalDiagnosis").val();
+$(".chk").on("change", function () {
 
-    if (requestDate === "") {
-        $("#RequestingDate").addClass("is-invalid");
-    } else if (requestPhysician === "") {
-        $("#RequestingPhysician").addClass("is-invalid");
-    }
-    else if (provitionalDiagnosis === "") {
-        $("#ProvitionalDiagnosis").addClass("is-invalid");
-    }
-  
-    else {
-        $("#RequestingDate").removeClass("is-invalid");
-        $("#RequestingPhysician").removeClass("is-invalid");
-        $("#ProvitionalDiagnosis").removeClass("is-invalid");
+    const anyCheckboxChecked = $(".chk:checked").length > 0;
+
+    $("#FinishBtn").prop("disabled", !anyCheckboxChecked);
+});
+
+$("#FinishBtn").click(function () {
 
 
         Swal.fire({
@@ -249,8 +255,6 @@ $("#FinishBtn").click(function () {
                 )
             }
         })
-    }
-
 
 })
 

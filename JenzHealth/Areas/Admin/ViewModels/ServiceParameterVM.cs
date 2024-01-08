@@ -19,5 +19,9 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public bool Templated { get; set; }
         public bool HasBeenComputed { get; set; }
         public bool Approved { get; set; }
+        public string DateComputed { get; set; }
+        public string DateApproved { get; set; }
+        public string ComputedBy { get; set; }
+        public string ApprovedBy { get; set; }
     }
 }

@@ -12,17 +12,24 @@
                 <div id="loader" style="display:none" class="col text-center">
                     <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
                 </div>
-                <table class="table" id="displayTable" style="white-space:nowrap; display:none">
-                    <thead>
-                        <tr>
-                            <th scope="col">Template</th>
-                            <th scope="col">Services</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                </table>
+                <div style="overflow-x: auto;">
+                    <table class="table" id="displayTable" style="white-space: nowrap; width: 100%; display: none;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Service</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Prepared</th>
+                                <th scope="col">Prepared By</th>
+                                <th scope="col">Date Prepared</th>
+                                <th scope="col">Approved</th>
+                                <th scope="col">Approved By</th>
+                                <th scope="col">Date Approved</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>

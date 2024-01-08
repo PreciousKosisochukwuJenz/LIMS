@@ -2,6 +2,11 @@
 @model JenzHealth.Areas.Admin.ViewModels.CashCollectionVM
 @{
     ViewBag.Title = "Manage Cash Collections";
+    using (JenzHealth.DAL.DataConnection.DatabaseEntities _entities = new JenzHealth.DAL.DataConnection.DatabaseEntities())
+    {
+        var settings = _entities.ApplicationSettings.FirstOrDefault();
+        ViewBag.EnableExpressWaiver = settings.ExpressWaiver;
+    }
 }
 <!-- Page Header -->
 <div class="page-header row no-gutters py-4">
@@ -27,7 +32,7 @@
                                     @foreach (var item in Enum.GetValues(typeof(CollectionType)).Cast<CollectionType>().ToList())
                                     {
                                         <span style="margin:10px;">
-                                            @Html.RadioButtonFor(model => model.CollectionType, item, new { id = item, @class = "Status", required = true })
+                                            @Html.RadioButtonFor(model => model.CollectionType, item, new { id = item, @class = "C-Status", required = true })
                                             <label for="@item"><strong>@item.DisplayName()</strong></label>
                                         </span>
                                     }
@@ -157,6 +162,59 @@
                 </div>
             </div>
         </div>
+
+        @if (ViewBag.EnableExpressWaiver)
+        {
+            <div class="card-header">
+                <div class="m-0">
+                    <div class="fa-pull-right">
+                        <div class="form-group col-md-12">
+                            <div class="input-group">
+                                @foreach (var item in Enum.GetValues(typeof(WaiveBy)).Cast<WaiveBy>().ToList())
+                                {
+                                    <span style="margin:10px;">
+                                        @Html.RadioButtonFor(model => model.WaiveBy, item, new { id = item, @class = "Status", required = true })
+                                        <label for="@item"><strong>@item.DisplayName()</strong></label>
+                                    </span>
+                                }
+                                <div class="invalid-feedback">
+                                    Waiver type required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <div id="ServiceTableLoader" style="display:none" class="col text-center">
+                    <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
+                </div>
+                <div id="serviceTableDiv">
+                    <table class="file-manager file-manager-list2 d-none table-responsive">
+                        <thead class="bg-light">
+                            <tr>
+                                <th scope="col" class="border-0">Net Amount (₦)</th>
+                                <th scope="col" class="border-0">Waive</th>
+                                <th scope="col" class="border-0">Balance (₦)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="netAmountDisplay">₦0.00</td>
+                                <td>
+                                    <input type="text" class="form-control currency" id="waiverAmount" style="font-weight:500" />
+                                    <input type="number" class="form-control" id="waiverPercentage" style="font-weight:500; display:none" />
+                                </td>
+                                <td id="balanceAmountDisplay">
+                                    ₦0.00
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+
         <div class="card card-small mb-4">
             <div class="card-header border-bottom">
                 <div class="m-0">

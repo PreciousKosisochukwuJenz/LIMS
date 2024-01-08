@@ -937,7 +937,7 @@
                                 </TextRun>
                                 <TextRun>
                                   <Label>Approved On</Label>
-                                  <Value>=Fields!DateApproved.Value</Value>
+                                  <Value>=Iif(IsNothing(Fields!DateApproved.Value), "", Fields!DateApproved.Value)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Normal</FontWeight>

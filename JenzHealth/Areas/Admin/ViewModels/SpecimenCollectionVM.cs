@@ -9,7 +9,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
     {
         public int Id { get; set; }
         public string BillInvoiceNumber { get; set; }
-        public DateTime RequestingDate { get; set; }
+        public DateTime? RequestingDate { get; set; }
         public string RequestingPhysician { get; set; }
         public string LabNumber { get; set; }
         public string CustomerName { get; set; }

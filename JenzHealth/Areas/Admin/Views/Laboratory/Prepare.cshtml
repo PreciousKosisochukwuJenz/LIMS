@@ -80,12 +80,12 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
-                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = serviceIds })" class="btn btn-white" title="Click to compute">
+                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = serviceIds })" class="btn btn-primary" title="Click to compute">
                                             <i class="material-icons">&#xE870;</i> Compute
                                         </a>
                                         @if (row.HasBeenComputed)
                                         {
-                                            <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-white print" title="Click to print">
+                                            <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-success print" title="Click to print">
                                                 <i class="material-icons">print</i> Print result
                                             </a>
                                         }

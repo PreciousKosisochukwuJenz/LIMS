@@ -33,3 +33,15 @@ C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.cspr
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CopyComplete
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
 C:\Users\DELL\Documents\KAYCEE\LIMS\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.dll.config
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.dll
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\JenzHealth.DAL.pdb
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.dll
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.xml
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CopyComplete
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.AssemblyReference.cache

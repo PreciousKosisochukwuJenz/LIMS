@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Manage Specimen Collections";
 }
+
 <!-- Page Header -->
 <div class="page-header row no-gutters py-4">
     <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
@@ -74,28 +75,21 @@
                         <div class="form-group col-md-6">
                             <label for="RequestingDate">Requesting Date</label>
                             <div class="input-group input-group-seamless">
-                                @Html.EditorFor(model => model.RequestingDate, new { htmlAttributes = new { @class = "form-control", type = "date", required = true } })
-                                <div class="invalid-feedback">
-                                    Requesting Date required
-                                </div>
+                                @Html.EditorFor(model => model.RequestingDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="RequestingPhysician">Requesting Physician</label>
                             <div class="input-group input-group-seamless">
-                                @Html.EditorFor(model => model.RequestingPhysician, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter physician", required = true } })
-                                <div class="invalid-feedback">
-                                    Requesting physician required
-                                </div>
+                                @Html.EditorFor(model => model.RequestingPhysician, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter physician"} })
+                             
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="LabNumber">Lab Number</label>
                             <div class="input-group input-group-seamless">
                                 @Html.EditorFor(model => model.LabNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Lab number" } })
-                                <div class="invalid-feedback">
-                                    LabNumber required
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -133,27 +127,19 @@
                             <label for="ClinicalSummary">Clinical Summary</label>
                             <div class="input-group input-group-seamless">
                                 @Html.TextAreaFor(model => model.ClinicalSummary, 2, 0, new { @class = "form-control" })
-                                <div class="invalid-feedback">
-                                    Clinical summary required
-                                </div>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ProvitionalDiagnosis">Provitional Diagnosis</label>
                             <div class="input-group input-group-seamless">
-                                @Html.TextAreaFor(model => model.ProvitionalDiagnosis, 2, 0, new { @class = "form-control", required = true })
-                                <div class="invalid-feedback">
-                                    Provitional diagnosis required
-                                </div>
+                                @Html.TextAreaFor(model => model.ProvitionalDiagnosis, 2, 0, new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="OtherInformation">Other Information</label>
                             <div class="input-group input-group-seamless">
                                 @Html.TextAreaFor(model => model.OtherInformation, 2, 0, new { @class = "form-control" })
-                                <div class="invalid-feedback">
-                                    Other information required
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -162,7 +148,7 @@
         </div>
         <hr />
         <div class="col-md-12 text-center">
-            <button class="btn btn-primary" id="FinishBtn">
+            <button class="btn btn-primary" id="FinishBtn" disabled>
                 Save
             </button>
         </div>

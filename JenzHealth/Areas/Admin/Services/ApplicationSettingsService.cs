@@ -40,6 +40,9 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 ID = model.Id,
                 AppName = model.AppName,
+                Address = model.Address,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
                 Logo = model.Logo == null ? emptyArr : model.Logo,
                 Watermark = model.Watermark == null ? emptyArr : model.Watermark,
                 EnablePartPayment = model.EnablePartPayment,
@@ -64,6 +67,9 @@ namespace JenzHealth.Areas.Admin.Services
             bool hasSucceed = false;
             var model = _db.ApplicationSettings.FirstOrDefault(x => x.Id == Vmodel.ID);
             model.AppName = Vmodel.AppName;
+            model.Address = Vmodel.Address;
+            model.Email = Vmodel.Email;
+            model.PhoneNumber = Vmodel.PhoneNumber;
             model.EnableSpecimentCollectedBy = Vmodel.EnableSpecimentCollectedBy;
             model.EnablePartPayment = Vmodel.EnablePartPayment;
             model.CustomerNumberPrefix = Vmodel.CustomerNumberPrefix;

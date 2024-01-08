@@ -8,12 +8,13 @@ function GetDetails(billnumber) {
         success: function (response) {
             const { distinctServices, billedServices } = response;
             let content = '';
+
             $.each(distinctServices, function (i, data) {
-                const services = BillServices(billedServices, data.TemplateID);
+                const templateServices = BillServices(billedServices, data.TemplateID);
 
                 content += `<tr>
-                                <td>${data.Template}</td>
-                                ${services}
+                                <td colspan="12" style="text-align:center;background-color: #007bff; color:white">${data.Template}</td>
+                                ${templateServices}
                             </tr>`
             })
 
@@ -31,14 +32,24 @@ function GetDetails(billnumber) {
 
 function BillServices(billServices, templateID) {
     let content = '';
+    var HasBeenComputed = billServices[0].HasBeenComputed;
+    var ComputedBy = billServices[0].ComputedBy;
+    var DateComputed = billServices[0].DateComputed;
     $.each(billServices, function (i, service) {
         if (service.TemplateID == templateID) {
-            content += `<li class="list-group-item d-flex px-3">
-                <span class="text-semibold text-fiord-blue ">${service.Service}</span>  &emsp; &emsp;&emsp;
-                <p>${service.Approved ? "<i class='fa fa-check text-success'> READY</i>" : "<i class='fa fa-clock text-warning'> PROCESSING</i>"}</p>
-             </li>` 
+            content += `<tr>
+                <td>${service.Service}</td>
+                <td>${service.Approved ? "<i class='fa fa-check text-success'> READY</i>" : "<i class='fa fa-clock text-warning'> PENDING</i>"}</td>
+                <td>${HasBeenComputed ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>"}</td>
+                <td>${ComputedBy}</td>
+                <td>${DateComputed}</td>
+                <td>${service.Approved ? "<i class='fa fa-check text-success'></i>" : "<i class='fa fa-times text-danger'></i>"}</td>
+                <td>${service.ApprovedBy}</td>
+                <td>${service.DateApproved}</td>
+             </tr>`;
         }
     });
-    let services = `<td><ul class="list-group list-group-small list-group-flush">${content}</ul></td>`;
-    return services;
+
+    return content;
 }
+

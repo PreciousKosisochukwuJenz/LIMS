@@ -510,9 +510,11 @@ namespace JenzHealth.Areas.Admin.Services
                 CostPrice = b.CostPrice,
                 SellingPrice = b.SellingPrice,
             }).FirstOrDefault();
-
-            model.SellingPriceString = "₦" + model.SellingPrice.ToString("N", nfi);
-            model.CostPriceString = "₦" + model.CostPrice.ToString("N", nfi);
+            if(model != null)
+            {
+                model.SellingPriceString = "₦" + model.SellingPrice.ToString("N", nfi);
+                model.CostPriceString = "₦" + model.CostPrice.ToString("N", nfi);
+            }          
             return model;
         }
         public List<ServiceVM> GetServiceAutoComplete(string query)
