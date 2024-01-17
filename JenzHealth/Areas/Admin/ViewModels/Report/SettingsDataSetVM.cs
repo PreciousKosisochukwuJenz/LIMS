@@ -12,5 +12,8 @@ namespace JenzHealth.Areas.Admin.ViewModels.Report
         public byte[] Logo { get; set; }
         public byte[] Watermark { get; set; }
         public DateTime DateGenerated { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
     }
 }

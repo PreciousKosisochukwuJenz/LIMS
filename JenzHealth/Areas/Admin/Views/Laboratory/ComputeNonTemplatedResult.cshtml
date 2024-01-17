@@ -428,6 +428,7 @@
                                 <label for="socialGitHub">Incubation</label>
                                 <p>@Model.Incubatio</p>
                             </div>
+                          
                             <div class="card-body p-0 pb-3 text-center">
                                 <div id="OrganismTableLoader" style="display:none" class="col text-center">
                                     <img src="~/Content/images/Spinner.gif" style="width:50px;height:50px" />
@@ -436,7 +437,9 @@
                                     <table class="file-manager file-manager-list2 d-none table-responsive">
                                         <thead class="bg-light">
                                             <tr>
-                                                <th scope="col" class="border-0">Organism</th>
+                                                <th colspan="4" class="text-center">@Model.Organism</th>
+                                            </tr>
+                                            <tr>
                                                 <th scope="col" class="border-0">Anti Biotics</th>
                                                 <th scope="col" class="border-0">Senstive</th>
                                                 <th scope="col" class="border-0">Intermediate</th>

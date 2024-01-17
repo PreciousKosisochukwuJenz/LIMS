@@ -12,16 +12,16 @@
                 <Value>Generated on : </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
               <TextRun>
                 <Label>Date Generated</Label>
-                <Value>=First(Fields!DateGenerated.Value, "SettingDataSet")</Value>
+                <Value>=First(Fields!DateGenerated.Value, "SettingsDataSet")</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <Format>f</Format>
                   <Color>Red</Color>
@@ -32,10 +32,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>0.72444in</Top>
-        <Left>3.11333in</Left>
-        <Height>0.25in</Height>
-        <Width>4.22in</Width>
+        <Top>0.30556in</Top>
+        <Left>0.00819in</Left>
+        <Height>0.20833in</Height>
+        <Width>2.8162in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -56,7 +56,7 @@
                 <Value>Customer Bill Invoice</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -67,10 +67,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.28694in</Top>
-        <Left>1.82167in</Left>
-        <Height>0.32292in</Height>
-        <Width>3.875in</Width>
+        <Top>0.06944in</Top>
+        <Left>0.02369in</Left>
+        <Height>0.20834in</Height>
+        <Width>2.8007in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -93,7 +93,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -110,7 +110,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -127,7 +127,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -138,7 +138,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -155,7 +155,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -166,7 +166,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -183,7 +183,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -194,7 +194,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -211,7 +211,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -222,7 +222,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -239,7 +239,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -250,7 +250,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -262,10 +262,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.13069in</Top>
-        <Left>0.20708in</Left>
-        <Height>1.87153in</Height>
-        <Width>6.86223in</Width>
+        <Top>0.54167in</Top>
+        <Left>0.02369in</Left>
+        <Height>1.17361in</Height>
+        <Width>2.8007in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -293,7 +293,7 @@
                 <Value>BILL NUMBER: </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -302,7 +302,7 @@
                 <Value>=First(Fields!BillInvoiceNumber.Value, "BillingDetailsDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -310,7 +310,7 @@
                 <Value>             BILLED BY: </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -319,7 +319,7 @@
                 <Value>=First(Fields!BilledBy.Value, "BillingDetailsDataSet")</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>8pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -328,10 +328,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>3.14111in</Top>
-        <Left>0.19889in</Left>
-        <Height>0.33333in</Height>
-        <Width>6.88889in</Width>
+        <Top>1.74306in</Top>
+        <Left>0.02369in</Left>
+        <Height>0.22916in</Height>
+        <Width>2.8007in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -347,21 +347,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.29356in</Width>
+              <Width>0.95216in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.41856in</Width>
+              <Width>0.51922in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.51042in</Width>
+              <Width>0.61108in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.66634in</Width>
+              <Width>0.767in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.22917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -375,7 +375,7 @@
                               <Value>Service</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -407,10 +407,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Quantity</Value>
+                              <Value>Qty</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -445,7 +445,7 @@
                               <Value>Cost Amount</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -480,7 +480,7 @@
                               <Value>Gross Amount</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -506,7 +506,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.22917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -520,7 +520,7 @@
                               <Value>=Fields!ServiceName.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -554,7 +554,7 @@
                               <Value>=Fields!Quantity.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -588,7 +588,7 @@
                               <Value>=Fields!SellingPrice.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <Format>'₦'#,0.00;('₦'#,0.00)</Format>
                                 <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
                               </Style>
@@ -624,7 +624,7 @@
                               <Value>=Fields!GrossAmount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <Format>'₦'#,0.00;('₦'#,0.00)</Format>
                                 <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
                               </Style>
@@ -673,10 +673,10 @@
         <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <KeepTogether>true</KeepTogether>
         <DataSetName>BillingDataSet</DataSetName>
-        <Top>3.54389in</Top>
-        <Left>0.20708in</Left>
-        <Height>0.5in</Height>
-        <Width>6.88888in</Width>
+        <Top>2.04167in</Top>
+        <Left>0.03188in</Left>
+        <Height>0.45833in</Height>
+        <Width>2.84947in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -693,23 +693,24 @@
               <TextRun>
                 <Value>DISCLAIMER: BE INFORMED THAT IS NOT A PROOF OF PAYMENT</Value>
                 <Style>
+                  <FontStyle>Italic</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
                   <Color>Red</Color>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>6.27653in</Top>
-        <Left>0.19889in</Left>
-        <Height>0.3125in</Height>
-        <Width>6.88889in</Width>
+        <Top>3.29167in</Top>
+        <Left>0.02369in</Left>
+        <Height>0.26042in</Height>
+        <Width>2.85767in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -725,15 +726,15 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.51042in</Width>
+              <Width>0.62442in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.63968in</Width>
+              <Width>0.75368in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.23611in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -747,7 +748,7 @@
                               <Value>Net Amount</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -782,7 +783,7 @@
                               <Value>=Fields!NetAmount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>'₦'#,0.00;('₦'#,0.00)</Format>
                                 <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
@@ -810,7 +811,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.23611in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -824,7 +825,7 @@
                               <Value>Waived Amount</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -859,7 +860,7 @@
                               <Value>=Fields!WaivedAmount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>'₦'#,0.00;('₦'#,0.00)</Format>
                                 <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
@@ -887,7 +888,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.23611in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -901,7 +902,7 @@
                               <Value>Amount To Pay</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -936,7 +937,7 @@
                               <Value>=Fields!BalanceAmount.Value</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
-                                <FontSize>12pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>'₦'#,0.00;('₦'#,0.00)</Format>
                                 <rd:FormatSymbolCulture>en-NG</rd:FormatSymbolCulture>
@@ -984,10 +985,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>BillingDetailsDataSet</DataSetName>
-        <Top>4.07167in</Top>
-        <Left>3.91921in</Left>
-        <Height>0.75in</Height>
-        <Width>3.1501in</Width>
+        <Top>2.51389in</Top>
+        <Left>1.50326in</Left>
+        <Height>0.70833in</Height>
+        <Width>1.37809in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -996,22 +997,22 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.99875in</Height>
+    <Height>3.57167in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>
       </Border>
       <BackgroundImage>
         <Source>Database</Source>
-        <Value>=First(Fields!Watermark.Value, "SettingDataSet")</Value>
+        <Value>=First(Fields!Watermark.Value, "SettingsDataSet")</Value>
         <MIMEType>image/png</MIMEType>
       </BackgroundImage>
     </Style>
   </Body>
-  <Width>7.40028in</Width>
+  <Width>2.93141in</Width>
   <Page>
     <PageHeader>
-      <Height>2.05208in</Height>
+      <Height>2.03125in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <ReportItems>
         <Textbox Name="Textbox26">
@@ -1022,10 +1023,10 @@
               <TextRuns>
                 <TextRun>
                   <Label>Brand Name</Label>
-                  <Value>=First(Fields!BrandName.Value, "SettingDataSet")</Value>
+                  <Value>=First(Fields!BrandName.Value, "SettingsDataSet")</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
-                    <FontSize>20pt</FontSize>
+                    <FontSize>11pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1036,10 +1037,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox26</rd:DefaultName>
-          <Top>1.42236in</Top>
-          <Left>0.20708in</Left>
-          <Height>0.40625in</Height>
-          <Width>6.86223in</Width>
+          <Top>1.02652in</Top>
+          <Left>0.15305in</Left>
+          <Height>0.32292in</Height>
+          <Width>2.67134in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1052,13 +1053,13 @@
         </Textbox>
         <Image Name="Logo">
           <Source>Database</Source>
-          <Value>=First(Fields!Logo.Value, "SettingDataSet")</Value>
+          <Value>=First(Fields!Logo.Value, "SettingsDataSet")</Value>
           <MIMEType>image/jpeg</MIMEType>
           <Sizing>FitProportional</Sizing>
-          <Top>0.13763in</Top>
-          <Left>3.11333in</Left>
-          <Height>1.22917in</Height>
-          <Width>1.52083in</Width>
+          <Top>0.08208in</Top>
+          <Left>1.06227in</Left>
+          <Height>0.875in</Height>
+          <Width>1.05208in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1066,6 +1067,110 @@
             </Border>
           </Style>
         </Image>
+        <Textbox Name="Textbox7">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Label>Address</Label>
+                  <Value>=First(Fields!Address.Value, "SettingsDataSet")</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox5</rd:DefaultName>
+          <Top>1.39111in</Top>
+          <Left>0.15305in</Left>
+          <Height>0.17708in</Height>
+          <Width>2.67134in</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox29">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>     Email: </Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Label>Email</Label>
+                  <Value>=First(Fields!Email.Value, "SettingsDataSet")</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve">       </Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>     Phone number: </Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Label>Phone number</Label>
+                  <Value>=First(Fields!PhoneNumber.Value, "SettingsDataSet")</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox28</rd:DefaultName>
+          <Top>1.62375in</Top>
+          <Left>0.15305in</Left>
+          <Height>0.28597in</Height>
+          <Width>2.67134in</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -1082,13 +1187,6 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SettingsDataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>e8d44868-2a09-4cf4-aa8b-c0d33cad226a</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="CustomerDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
@@ -1117,44 +1215,15 @@
       </ConnectionProperties>
       <rd:DataSourceID>9e90864a-d1c3-4a86-a56c-5f768f0f50c8</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="SettingsDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>b6de96e6-8e94-4a79-9270-7926bf12dae3</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="SettingDataSet">
-      <Query>
-        <DataSourceName>SettingsDataSet</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DateGenerated">
-          <DataField>DateGenerated</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BrandName">
-          <DataField>BrandName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Logo">
-          <DataField>Logo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Watermark">
-          <DataField>Watermark</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>SettingsDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\SettingsDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>ApplicationSettingsRecords</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ApplicationSettingsRecordsTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
     <DataSet Name="CustomerDataSet">
       <Query>
         <DataSourceName>CustomerDataSet</DataSourceName>
@@ -1373,6 +1442,54 @@
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="SettingsDataSet">
+      <Query>
+        <DataSourceName>SettingsDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DateGenerated">
+          <DataField>DateGenerated</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BrandName">
+          <DataField>BrandName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Logo">
+          <DataField>Logo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Watermark">
+          <DataField>Watermark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PhoneNumber">
+          <DataField>PhoneNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>SettingsDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\SettingsDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>ApplicationSettingsRecords</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>ApplicationSettingsRecordsTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

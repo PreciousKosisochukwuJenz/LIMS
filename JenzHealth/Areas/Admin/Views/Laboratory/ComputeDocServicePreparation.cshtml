@@ -1,8 +1,8 @@
-﻿@using JenzHealth.DAL.Entity;
-@model IEnumerable<JenzHealth.Areas.Admin.ViewModels.TemplateServiceCompuationVM>
+﻿@model IEnumerable<JenzHealth.Areas.Admin.ViewModels.DocServiceComputationVM>
 @{
     ViewBag.Title = "Compute Result";
 }
+<link href="~/Content/css/richtext.min.css" rel="stylesheet" />
 <!-- Page Header -->
 <div class="page-header row no-gutters py-4">
     <div class="col-12 col-sm-11 text-center text-sm-left mb-0">
@@ -32,47 +32,18 @@
                                         <tr>
                                             <th scope="col">Parameter</th>
                                             <th scope="col">Value</th>
-                                            <th scope="col">Range</th>
-                                            <th scope="col">Unit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var paramater in billedService.Parameters)
                                         {
                                             <tr>
-                                                <td data-parent="@billedService.ServiceID" data-service="@billedService.Service" data-child="@paramater.Parameter.Id">@paramater.Parameter.Name</td>
-                                                <td><input type="text" class="form-control value" value="@paramater.Parameter.Value" required /></td>
-                                                <td>
-                                                    <select class="form-control rangeID">
-                                                        <option>-- Select range --</option>
-                                                        @foreach (var range in paramater.Ranges)
-                                                        {
-                                                            if (range.Range == paramater.Parameter.Range)
-                                                            {
-                                                                <option value="@range.Id" selected data-unit="@range.Unit">@range.Range</option>
-                                                            }
-                                                            else
-                                                            {
-                                                                <option value="@range.Id" data-unit="@range.Unit">@range.Range</option>
-                                                            }
-                                                        }
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control unit" value="@paramater.Parameter.Unit" required readonly />
-                                                </td>
+                                                <td style="width:15%" data-parent="@billedService.ServiceID" data-service="@billedService.Service" data-child="@paramater.Id">@paramater.Name</td>
+                                                <td style="width:85%" id="parameter-@paramater.Id">@paramater.Value</td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
-                                <div class="row">
-                                    <div class="form-group col-md-12"><hr />
-                                        <label for="FilmingReport">Film Report</label>
-                                        <div class="input-group input-group-seamless">
-                                            <textarea class="form-control" id="FilmingReport-@billedService.ServiceID">@billedService.FilmingReport</textarea>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div><hr />
 
@@ -114,7 +85,16 @@
 </div>
 <br />
 @section Scripts{
-    <script src="~/Areas/Admin/Scripts/Compute.js"></script>
+    <script src="~/Scripts/jquery.richtext.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/ComputeDocTemplated.js"></script>
+    <script>
+    $(function () {
+        var services = @Html.Raw(Json.Encode(Model));
+        $.each(services[0].Parameters, function (i, parameter) {
+                setEditor(parameter.Id);
+            });
+    });
+    </script>
 }
 
 

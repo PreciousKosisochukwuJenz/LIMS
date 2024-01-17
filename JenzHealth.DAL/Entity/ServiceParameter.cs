@@ -14,6 +14,8 @@ namespace JenzHealth.DAL.Entity
         public int? SpecimenID { get; set; }
         public int? TemplateID { get; set; }
         public bool RequireApproval { get; set; }
+        public bool UseFilmReport { get; set; }
+
         [ForeignKey("ServiceID")]
         public Service Service { get; set; }
         [ForeignKey("SpecimenID")]

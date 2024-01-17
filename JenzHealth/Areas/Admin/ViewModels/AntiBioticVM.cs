@@ -11,7 +11,5 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
-        public int? OrganismID { get; set; }
-        public string OrganismName { get; set; }
     }
 }

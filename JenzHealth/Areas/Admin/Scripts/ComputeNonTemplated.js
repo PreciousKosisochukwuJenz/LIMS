@@ -213,13 +213,14 @@ function UpdateOrganismTbl() {
         url: "GetComputedAntibioticsAndOrgansm/" + id,
         method: "GET",
         success: function (response) {
+            debugger
             let html = "";
-            $.each(response, function (i, data) {
-                html = `<tr>
+            if (response.length > 0) {
+                $.each(response, function (i, data) {
+                    html = `<tr>
                             <td>
                                 <button class='btn btn-danger' type='button' onclick='DeleteOrganism(this)'>Remove</button>
                             </td>
-                            <td data-orgranismid='${data.OrganismID}'>${data.Organism}</td>
                             <td data-antibioticsid='${data.AntiBioticID}'>
                              ${data.AntiBiotic}
                             </td>
@@ -235,11 +236,14 @@ function UpdateOrganismTbl() {
                                 <input type="text" class="form-control"  placeholder='Degree' value="${data.ResistanceDegree == null ? "" : data.ResistanceDegree}" ${!data.IsResistance ? "disabled" : ""}/>
                             </td>
                        </tr>`;
-                $("#OrganismBody").append(html);
-            })
+                    $("#OrganismBody").append(html);
+                })
 
-            $("#organismField").val("");
-            $("#OrganismTableLoader").hide();
+                $("#OrganismTableLoader").hide();
+            } else {
+                AddOrganism("");
+            }
+         
             //    $("#OrganismTableDiv").show();
         },
         error: function (e) {
@@ -478,7 +482,6 @@ function AddOrganism(organism) {
                             <td>
                                 <button class='btn btn-danger' type='button' onclick='DeleteOrganism(this)'>Remove</button>
                             </td>
-                            <td data-orgranismid='${data.OrganismID}'>${organism}</td>
                             <td data-antibioticsid='${data.Id}'>
                              ${data.Name}
                             </td>
@@ -516,23 +519,6 @@ function ToggleDegree(e) {
     field.disabled = !checkboxstate;
 }
 
-$("#organismField").on("blur", function (e) {
-    var organism = $("#organismField").val();
-
-    if (organism === "") {
-        $("#organismField").addClass("is-invalid");
-    }
-    else {
-        $("#organismField").removeClass("is-invalid");
-        $("#OrganismTableLoader").show();
-        //$("#OrganismTableDiv").hide();
-        setTimeout(function () {
-            organism = $("#organismField").val();
-            AddOrganism(organism);
-        }, 200);
-
-    }
-});
 
 function Update() {
     Swal.fire({
@@ -618,7 +604,8 @@ function Update() {
                 OthersResult: $("#OthersResult").val(),
                 Labnote: $("#Labnote").val(),
                 ServiceID: $("#ServiceID").val(),
-                ScienticComment: $("#ScienticComment").val()
+                ScienticComment: $("#ScienticComment").val(),
+                Organism: $("#organismField").val()
             }
             var specimencollectedID = $("#SpecimenCollectedID").val();
             let OrganismList = [];
@@ -626,13 +613,12 @@ function Update() {
             $.each(table, function (i, tr) {
                 // Create installment
                 let organism = {};
-                organism.OrganismID = tr.children[1].dataset.orgranismid;
-                organism.AntiBioticID = tr.children[2].dataset.antibioticsid;
-                organism.IsSensitive = tr.children[3].children[0].checked;
-                organism.SensitiveDegree = tr.children[3].children[1].value;
-                organism.IsIntermediate = tr.children[4].children[0].checked;
-                organism.IsResistance = tr.children[5].children[0].checked;
-                organism.ResistanceDegree = tr.children[5].children[1].value;
+                organism.AntiBioticID = tr.children[1].dataset.antibioticsid;
+                organism.IsSensitive = tr.children[2].children[0].checked;
+                organism.SensitiveDegree = tr.children[2].children[1].value;
+                organism.IsIntermediate = tr.children[3].children[0].checked;
+                organism.IsResistance = tr.children[4].children[0].checked;
+                organism.ResistanceDegree = tr.children[4].children[1].value;
 
                 // Add to Installment list
                 OrganismList.push(organism);

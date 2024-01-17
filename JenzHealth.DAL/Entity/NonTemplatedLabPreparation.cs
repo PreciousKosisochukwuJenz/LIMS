@@ -80,6 +80,7 @@ namespace JenzHealth.DAL.Entity
         public string PH { get; set; }
         public string KOHPrepareation { get; set; }
         public string KOHResult { get; set; }
+        public string Organism { get; set; }
         public string OtherStainResult { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
@@ -87,9 +88,9 @@ namespace JenzHealth.DAL.Entity
         public int? PreparedByID { get; set; }
         public int? ServiceID { get; set; }
 
-
         [ForeignKey("PreparedByID")]
         public User PreparedBy { get; set; }
+
         [ForeignKey("ServiceID")]
         public Service Service { get; set; }
     }

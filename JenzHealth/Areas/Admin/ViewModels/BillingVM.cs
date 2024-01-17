@@ -23,8 +23,11 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime DateCreated { get; set; }
         public int Quantity { get; set; }
         public decimal GrossAmount { get; set; }
+        public string GrossAmountString { get; set; }
         public decimal SellingPrice { get; set; }
         public string SellingPriceString { get; set; }
         public string BillBy { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

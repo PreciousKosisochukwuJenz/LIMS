@@ -14,38 +14,28 @@
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(model => model.Id)
                 <div class="modal-body">
-                    div class="modal-body">
-                    <div class="form-group col-md-12">
-                        <label for="socialGitHub">Organism</label>
-                        <div class="input-group input-group-seamless">
-                            @Html.DropDownListFor(model => model.OrganismID, (IEnumerable<SelectListItem>)ViewBag.Organisms, "-- Select organism --", new { @class = "form-control", required = true })
-                            <div class="invalid-feedback">
-                                Organism required
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="socialGitHub">Name</label>
-                        <div class="input-group input-group-seamless">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="material-icons">bloodtype</i>
+                        <div class="form-group col-md-12">
+                            <label for="socialGitHub">Name</label>
+                            <div class="input-group input-group-seamless">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="material-icons">bloodtype</i>
+                                    </div>
+                                </div>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter name", required = true } })
+                                <div class="invalid-feedback">
+                                    Name required
                                 </div>
                             </div>
-                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter name", required = true } })
-                            <div class="invalid-feedback">
-                                Name required
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="ladda-button btn btn-shadow btn-primary" data-style="zoom-in">
-                        <span class="ladda-label">Update changes</span>
-                        <span class="ladda-spinner"></span>
-                    </button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="ladda-button btn btn-shadow btn-primary" data-style="zoom-in">
+                            <span class="ladda-label">Update changes</span>
+                            <span class="ladda-spinner"></span>
+                        </button>
+                    </div>
             }
         </div>
     </div>

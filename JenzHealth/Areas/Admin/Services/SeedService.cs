@@ -247,7 +247,8 @@ namespace JenzHealth.Areas.Admin.Services
                 Name = b.Name,
                 ServiceDepartment = b.ServiceDepartment.Name,
                 ServiceDepartmentID = b.ServiceDepartmentID,
-                UseDefaultParameters = b.UseDefaultParameters
+                UseDefaultParameters = b.UseDefaultParameters,
+                UseDocParameter = b.UseDocParameter
             }).ToList();
             return model;
         }
@@ -261,6 +262,7 @@ namespace JenzHealth.Areas.Admin.Services
                 Name = vmodel.Name,
                 ServiceDepartmentID = vmodel.ServiceDepartmentID,
                 UseDefaultParameters = vmodel.UseDefaultParameters,
+                UseDocParameter = vmodel.UseDocParameter,
                 IsDeleted = false,
                 CreatedDate = DateTime.Now,
             };
@@ -278,12 +280,13 @@ namespace JenzHealth.Areas.Admin.Services
                 Id = b.Id,
                 Name = b.Name,
                 ServiceDepartmentID = b.ServiceDepartmentID,
-                UseDefaultParameters = b.UseDefaultParameters
+                UseDefaultParameters = b.UseDefaultParameters,
+                UseDocParameter = b.UseDocParameter
             }).FirstOrDefault();
             return model;
         }
 
-        // Editting and updating Priviledges
+        // Editting and updating Templates
         public bool EditTemplate(TemplateVM vmodel)
         {
             bool HasSaved = false;
@@ -291,6 +294,7 @@ namespace JenzHealth.Areas.Admin.Services
             model.Name = vmodel.Name;
             model.ServiceDepartmentID = vmodel.ServiceDepartmentID;
             model.UseDefaultParameters = vmodel.UseDefaultParameters;
+            model.UseDocParameter = vmodel.UseDocParameter;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();
@@ -690,14 +694,12 @@ namespace JenzHealth.Areas.Admin.Services
         //AntiBiotic
 
         // Fetching AntiBiotics
-        public List<AntiBioticVM> GetAntiBiotics(int OrganismID)
+        public List<AntiBioticVM> GetAntiBiotics()
         {
-            var model = _db.AntiBiotics.Where(x => x.IsDeleted == false && x.OrganismID == OrganismID).Select(b => new AntiBioticVM()
+            var model = _db.AntiBiotics.Where(x => x.IsDeleted == false).Select(b => new AntiBioticVM()
             {
                 Id = b.Id,
                 Name = b.Name,
-                OrganismID = b.OrganismID,
-                OrganismName = b.Organism.Name
             }).ToList();
             return model;
         }
@@ -708,7 +710,6 @@ namespace JenzHealth.Areas.Admin.Services
             AntiBiotic model = new AntiBiotic()
             {
                 Name = vmodel.Name,
-                OrganismID = vmodel.OrganismID,
                 IsDeleted = false,
                 DateCreated = DateTime.Now,
             };
@@ -724,19 +725,15 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 Id = b.Id,
                 Name = b.Name,
-                OrganismID = b.OrganismID,
-                OrganismName = b.Organism.Name
             }).FirstOrDefault();
             return model;
         }
         public List<AntiBioticVM> GetAntiBioticByOrganismName(string organismName)
         {
-            var model = _db.AntiBiotics.Where(x => x.Organism.Name == organismName).Select(b => new AntiBioticVM()
+            var model = _db.AntiBiotics.Where(x=> !x.IsDeleted).Select(b => new AntiBioticVM()
             {
                 Id = b.Id,
                 Name = b.Name,
-                OrganismID = b.OrganismID,
-                OrganismName = b.Organism.Name
             }).ToList();
             return model;
         }
@@ -747,7 +744,6 @@ namespace JenzHealth.Areas.Admin.Services
             bool HasSaved = false;
             var model = _db.AntiBiotics.Where(x => x.Id == vmodel.Id).FirstOrDefault();
             model.Name = vmodel.Name;
-            model.OrganismID = vmodel.OrganismID;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();

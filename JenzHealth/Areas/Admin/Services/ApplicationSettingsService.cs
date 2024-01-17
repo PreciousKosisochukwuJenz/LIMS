@@ -99,7 +99,10 @@ namespace JenzHealth.Areas.Admin.Services
                BrandName = b.AppName,
                Logo = b.Logo == null ? empty : b.Logo,
                Watermark = b.Watermark == null ? empty : b.Watermark,
-               DateGenerated = DateTime.Now
+               DateGenerated = DateTime.Now,
+               Address = b.Address,
+               PhoneNumber = b.PhoneNumber,
+               Email = b.Email
             }).ToList();
             return response;
         }

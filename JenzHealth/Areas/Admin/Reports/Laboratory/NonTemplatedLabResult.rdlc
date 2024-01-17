@@ -9,14 +9,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>DEPARTMENT OF </Value>
-                <Style>
-                  <FontFamily>Tahoma</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-              <TextRun>
                 <Label>Service Department</Label>
                 <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
                 <Style>
@@ -47,10 +39,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.64695in</Top>
-        <Left>1.64982in</Left>
+        <Top>0.9607in</Top>
+        <Left>1.69903in</Left>
         <Height>0.51958in</Height>
-        <Width>3.88479in</Width>
+        <Width>5.28584in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -665,7 +657,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Adult Warm</Value>
+                <Value>Adult Worm</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -1568,10 +1560,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>0.2407in</Top>
-        <Left>1.64982in</Left>
+        <Top>0.11917in</Top>
+        <Left>1.68514in</Left>
         <Height>0.40625in</Height>
-        <Width>3.8709in</Width>
+        <Width>4.65179in</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -1589,7 +1581,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>FitProportional</Sizing>
         <Top>0.11917in</Top>
-        <Left>5.5485in</Left>
+        <Left>0.12264in</Left>
         <Height>1.22917in</Height>
         <Width>1.52083in</Width>
         <ZIndex>8</ZIndex>
@@ -3730,6 +3722,98 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Address</Label>
+                <Value>=First(Fields!Address.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>0.55098in</Top>
+        <Left>1.66162in</Left>
+        <Height>0.17708in</Height>
+        <Width>4.87323in</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox28">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>       Email: </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Email</Label>
+                <Value>=First(Fields!Email.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>                      Phone number: </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Phone number</Label>
+                <Value>=First(Fields!PhoneNumber.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox28</rd:DefaultName>
+        <Top>0.75584in</Top>
+        <Left>1.70251in</Left>
+        <Height>0.17708in</Height>
+        <Width>5.28236in</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>25.8368in</Height>
     <Style>
@@ -3753,13 +3837,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SettingsDataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>e8d44868-2a09-4cf4-aa8b-c0d33cad226a</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="CustomerDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
@@ -3788,44 +3865,15 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
       </ConnectionProperties>
       <rd:DataSourceID>b64d35a5-38c0-49b0-9c16-205076c99ef5</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="SettingsDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>fd93fd49-fc5b-4428-b938-9fa0d46b4dab</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="SettingDataSet">
-      <Query>
-        <DataSourceName>SettingsDataSet</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="DateGenerated">
-          <DataField>DateGenerated</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BrandName">
-          <DataField>BrandName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Logo">
-          <DataField>Logo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Watermark">
-          <DataField>Watermark</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>SettingsDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\kc\Documents\WEB PROJECTS\LIMS\JenzHealth\SettingsDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>ApplicationSettingsRecords</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ApplicationSettingsRecordsTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
     <DataSet Name="CustomerDataSet">
       <Query>
         <DataSourceName>CustomerDataSet</DataSourceName>
@@ -4392,6 +4440,54 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
         <rd:TableAdapterName>SpecimenCollectionsTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="SettingDataSet">
+      <Query>
+        <DataSourceName>SettingsDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DateGenerated">
+          <DataField>DateGenerated</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BrandName">
+          <DataField>BrandName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Logo">
+          <DataField>Logo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Watermark">
+          <DataField>Watermark</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PhoneNumber">
+          <DataField>PhoneNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>SettingsDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\SettingsDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>ApplicationSettingsRecords</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>ApplicationSettingsRecordsTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

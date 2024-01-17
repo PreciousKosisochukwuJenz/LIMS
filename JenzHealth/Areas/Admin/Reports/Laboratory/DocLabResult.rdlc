@@ -266,7 +266,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.83333in</Height>
+              <Height>1.6875in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -279,16 +279,7 @@
                                 <Width>1.44444in</Width>
                               </TablixColumn>
                               <TablixColumn>
-                                <Width>1.21528in</Width>
-                              </TablixColumn>
-                              <TablixColumn>
-                                <Width>1.38194in</Width>
-                              </TablixColumn>
-                              <TablixColumn>
-                                <Width>1.26042in</Width>
-                              </TablixColumn>
-                              <TablixColumn>
-                                <Width>1.25in</Width>
+                                <Width>5.10764in</Width>
                               </TablixColumn>
                             </TablixColumns>
                             <TablixRows>
@@ -367,111 +358,6 @@
                                       </Textbox>
                                     </CellContents>
                                   </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Textbox20">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>RANGE</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                  <FontWeight>Bold</FontWeight>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Textbox20</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Textbox31">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>UNIT</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                  <FontWeight>Bold</FontWeight>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Textbox31</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Textbox33">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>STATUS</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                  <FontWeight>Bold</FontWeight>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Textbox33</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
                                 </TablixCells>
                               </TablixRow>
                               <TablixRow>
@@ -521,6 +407,7 @@
                                             <TextRuns>
                                               <TextRun>
                                                 <Value>=Fields!Value.Value</Value>
+                                                <MarkupType>HTML</MarkupType>
                                                 <Style>
                                                   <FontFamily>Calibri</FontFamily>
                                                   <FontSize>9pt</FontSize>
@@ -545,117 +432,12 @@
                                       </Textbox>
                                     </CellContents>
                                   </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Range">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Fields!Range.Value</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Range</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Unit">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Fields!Unit.Value</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Unit</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
-                                  <TablixCell>
-                                    <CellContents>
-                                      <Textbox Name="Status">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Fields!Status.Value</Value>
-                                                <Style>
-                                                  <FontFamily>Calibri</FontFamily>
-                                                  <FontSize>9pt</FontSize>
-                                                </Style>
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style>
-                                              <TextAlign>Center</TextAlign>
-                                            </Style>
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>Status</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixCell>
                                 </TablixCells>
                               </TablixRow>
                             </TablixRows>
                           </TablixBody>
                           <TablixColumnHierarchy>
                             <TablixMembers>
-                              <TablixMember />
-                              <TablixMember />
-                              <TablixMember />
                               <TablixMember />
                               <TablixMember />
                             </TablixMembers>
@@ -809,14 +591,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.25932in</Top>
+                          <Top>1.08222in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.21875in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>3</ZIndex>
-                          <Visibility>
-                            <Hidden>=First(Fields!ApprovedBy.Value, "TemplatedDataSet") = ""</Hidden>
-                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -854,58 +633,11 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.47807in</Top>
+                          <Top>1.30097in</Top>
                           <Left>0.15628in</Left>
                           <Height>0.25in</Height>
                           <Width>6.55208in</Width>
                           <ZIndex>4</ZIndex>
-                          <Visibility>
-                            <Hidden>=First(Fields!DateApproved.Value, "TemplatedDataSet") = Nothing</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                        <Textbox Name="Textbox24">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>FILM REPORT: </Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                                <TextRun>
-                                  <Label>Film Report</Label>
-                                  <Value>=Fields!FilmingReport.Value</Value>
-                                  <Style>
-                                    <FontFamily>Calibri</FontFamily>
-                                    <FontWeight>Normal</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox23</rd:DefaultName>
-                          <Top>1.04056in</Top>
-                          <Left>0.15628in</Left>
-                          <Height>0.20487in</Height>
-                          <Width>6.55208in</Width>
-                          <ZIndex>5</ZIndex>
-                          <Visibility>
-                            <Hidden>=First(Fields!FilmingReport.Value, "TemplatedDataSet") = ""</Hidden>
-                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -955,7 +687,7 @@
         <DataSetName>TemplatedDataSet</DataSetName>
         <Top>4.35528in</Top>
         <Left>0.10289in</Left>
-        <Height>1.83333in</Height>
+        <Height>1.6875in</Height>
         <Width>6.96708in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -987,7 +719,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>6.83445in</Top>
+        <Top>6.67472in</Top>
         <Left>1.36331in</Left>
         <Height>0.33333in</Height>
         <Width>4.89586in</Width>
@@ -1307,7 +1039,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>6.24417in</Top>
+        <Top>6.08444in</Top>
         <Left>0.25917in</Left>
         <Height>0.52083in</Height>
         <Width>6.55208in</Width>
@@ -1504,7 +1236,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>7.22681in</Height>
+    <Height>7.11223in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>

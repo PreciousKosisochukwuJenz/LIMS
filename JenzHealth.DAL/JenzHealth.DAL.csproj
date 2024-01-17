@@ -56,6 +56,7 @@
     <Compile Include="Entity\CashCollection.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\DepositeCollection.cs" />
+    <Compile Include="Entity\DocTemplateLabPreparation.cs" />
     <Compile Include="Entity\LabResultCollection.cs" />
     <Compile Include="Entity\NonTemplatedLabPreparation.cs" />
     <Compile Include="Entity\NonTemplatedLabResultOrganismXAntibiotics.cs" />

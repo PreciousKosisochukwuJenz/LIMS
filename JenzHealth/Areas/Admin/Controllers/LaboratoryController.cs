@@ -125,13 +125,21 @@ namespace JenzHealth.Areas.Admin.Controllers
             TempData["SpecimenCollectedID"] = SpecimenCollectionID;
             int[] serviceIDs = Array.ConvertAll(serviceIds.Split(','), element => int.Parse(element));
             var template = _seedService.GetTemplate(templateID);
-            switch (template.UseDefaultParameters)
+            if (!template.UseDocParameter)
             {
-                case true:
-                    return View("ComputeNonTemplatedServicePreparation", _laboratoryService.GetNonTemplatedLabPreparation(billNumber, serviceIDs[0]));
-                case false:
-                    return View("ComputeTemplatedServicePreparation", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
+                switch (template.UseDefaultParameters)
+                {
+                    case true:
+                        return View("ComputeNonTemplatedServicePreparation", _laboratoryService.GetNonTemplatedLabPreparation(billNumber, serviceIDs[0]));
+                    case false:
+                        return View("ComputeTemplatedServicePreparation", _laboratoryService.SetupTemplatedServiceForComputation(templateID, billNumber));
+                }
             }
+            else
+            {
+                return View("ComputeDocServicePreparation", _laboratoryService.SetupDocServiceForComputation(templateID, billNumber));
+            }
+
             return View();
         }
 
@@ -155,19 +163,33 @@ namespace JenzHealth.Areas.Admin.Controllers
         {
             var template = _seedService.GetTemplate(templateID);
             ViewBag.Id = Id;
-            switch (template.UseDefaultParameters)
+            if (!template.UseDocParameter)
             {
-                case false:
-                    return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber, serviceParameterID));
-                case true:
-                    return View("ComputeNonTemplatedResult", _laboratoryService.GetNonTemplatedLabPreparation(billnumber, serviceID));
+                switch (template.UseDefaultParameters)
+                {
+                    case false:
+                        return View("ComputeTemplatedResult", _laboratoryService.GetComputedResultForTemplatedService(billnumber, serviceParameterID));
+                    case true:
+                        return View("ComputeNonTemplatedResult", _laboratoryService.GetNonTemplatedLabPreparation(billnumber, serviceID));
+                }
             }
+            else
+            {
+                return View("ComputeDocResult", _laboratoryService.GetComputedResultForDocService(billnumber, serviceParameterID));
+            }
+          
             return View();
         }
 
         public JsonResult ApproveResult(int Id)
         {
             var status = _laboratoryService.ApproveTestResult(Id);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UnapproveResult(int Id)
+        {
+            var status = _laboratoryService.UnapproveTestResult(Id);
             return Json(status, JsonRequestBehavior.AllowGet);
         }
 
@@ -180,6 +202,11 @@ namespace JenzHealth.Areas.Admin.Controllers
         public JsonResult UpdateLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
         {
             var status = _laboratoryService.UpdateLabResults(results, labnote, comment);
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateDocLabResults(List<RequestComputedResultVM> results, string labnote, string comment)
+        {
+            var status = _laboratoryService.UpdateDocLabResults(results, labnote, comment);
             return Json(status, JsonRequestBehavior.AllowGet);
         }
         public JsonResult UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)

@@ -63,6 +63,8 @@ namespace JenzHealth.Areas.Admin.Components
             new Menu(url: "#",stringText:"Report Management", icon: "money", isMenu: true,claim: "Report", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
                 new Menu(url: "/Admin/Report/LabResultCollectors",stringText:"Lab Result Collectors", icon: null ?? defaultIcon, isMenu: true,claim: "report.labresultcollectors", childMenus: null),
+                new Menu(url: "/Admin/Report/FinancialReport",stringText:"Financial Report", icon: null ?? defaultIcon, isMenu: true,claim: "report.financialreport", childMenus: null),
+                new Menu(url: "/Admin/Report/ServiceReport",stringText:"Serivce Report", icon: null ?? defaultIcon, isMenu: true,claim: "report.servicereport", childMenus: null),
             }),
 
               // User
@@ -123,6 +125,8 @@ namespace JenzHealth.Areas.Admin.Components
             new Menu(url: "#",stringText:"Report Management", icon: "money", isMenu: true,claim: "Report", childMenus: new List<Menu>(){
                 new Menu(url: "/Admin/Report/RequestTracker",stringText:"Request Tracker", icon: null ?? defaultIcon, isMenu: true,claim: "report.managerequesttracker", childMenus: null),
                 new Menu(url: "/Admin/Report/LabResultCollectors",stringText:"Lab Result Collectors", icon: null ?? defaultIcon, isMenu: true,claim: "report.labresultcollectors", childMenus: null),
+                new Menu(url: "/Admin/Report/FinancialReport",stringText:"Financial Report", icon: null ?? defaultIcon, isMenu: true,claim: "report.financialreport", childMenus: null),
+                new Menu(url: "/Admin/Report/ServiceReport",stringText:"Serivce Report", icon: null ?? defaultIcon, isMenu: true,claim: "report.servicereport", childMenus: null),
             }),
 
               // User

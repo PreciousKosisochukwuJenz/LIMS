@@ -33,5 +33,7 @@ namespace JenzHealth.Areas.Admin.Interfaces
         List<CashCollectionVM> GetPaymentDetails(string recieptnumber);
         decimal GetTotalPaidBillAmount(string billnumber);
         bool CheckIfPaymentIsCompleted(string billnumber);
+        List<CashCollectionVM> GetFinancialReport(CashCollectionVM vmodel);
+        List<BillingVM> GetBillServicesForReport(BillingVM vmodel);
     }
 }

@@ -97,5 +97,7 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public DateTime? DateApproved { get; set; }
         public string Service { get; set; }
         public int? ServiceID { get; set; }
+
+        public string Organism { get; set; }
     }
 }

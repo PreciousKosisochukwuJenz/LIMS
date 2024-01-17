@@ -13,6 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using JenzHealth.Areas.Admin.ViewModels.Report;
+using System.Globalization;
 
 namespace JenzHealth.Areas.Admin.Controllers
 {
@@ -128,22 +129,26 @@ namespace JenzHealth.Areas.Admin.Controllers
         {
             LocalReport lr = new LocalReport();
             string path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Payment"), "BillInvoice.rdlc");
+
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
             }
             else
             {
-                throw new Exception(String.Format("Report path not found in the specified directory: {0", path));
+                throw new Exception($"Report path not found in the specified directory: {path}");
             }
+
             var header = _settingService.GetReportHeader();
             var customer = _paymentService.GetCustomerForReport(billnumber);
             var billServices = _paymentService.GetBillServices(billnumber);
             var billDetails = _paymentService.GetBillingDetails(billnumber);
-            ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
+
+            ReportDataSource Header = new ReportDataSource("SettingsDataSet", header);
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
             ReportDataSource BilledService = new ReportDataSource("BillingDataSet", billServices);
             ReportDataSource BillDetails = new ReportDataSource("BillingDetailsDataSet", billDetails);
+
             if (Header != null && Customer != null && BilledService != null && BillDetails != null)
             {
                 lr.DataSources.Add(Header);
@@ -151,19 +156,20 @@ namespace JenzHealth.Areas.Admin.Controllers
                 lr.DataSources.Add(BilledService);
                 lr.DataSources.Add(BillDetails);
             }
+
             string reportType = "PDF";
             string mimeType;
             string encoding;
             string fileNameExtension;
             string deviceInfo = "<DeviceInfo>" +
-                    "  <PageWidth>8.27in</PageWidth>" +
-                    "  <PageHeight>11.69in</PageHeight>" +
-                    "  <MarginTop>0.25in</MarginTop>" +
-                    "  <MarginLeft>0.4in</MarginLeft>" +
-                    "  <MarginRight>0.4in</MarginRight>" +
-                    "  <MarginBottom>0.25in</MarginBottom>" +
-                    "  <EmbedFonts>None</EmbedFonts>" +
-                    "</DeviceInfo>";
+                                "  <PageWidth>80mm</PageWidth>" +
+                                "  <PageHeight>200mm</PageHeight>" +
+                                "  <MarginTop>0.25in</MarginTop>" +
+                                "  <MarginLeft>0.1in</MarginLeft>" +
+                                "  <MarginRight>0.1in</MarginRight>" +
+                                "  <MarginBottom>0.25in</MarginBottom>" +
+                                "  <EmbedFonts>None</EmbedFonts>" +
+                                "</DeviceInfo>";
 
             Warning[] warnings;
             string[] streams;
@@ -177,8 +183,10 @@ namespace JenzHealth.Areas.Admin.Controllers
                 out fileNameExtension,
                 out streams,
                 out warnings);
+
             return File(renderedBytes, mimeType);
         }
+
         public ActionResult PaymentReciept(string recieptnumber, string billnumber)
         {
             LocalReport lr = new LocalReport();
@@ -195,7 +203,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             var customer = _paymentService.GetCustomerForReport(billnumber);
             var billServices = _paymentService.GetBillServices(billnumber);
             var paymentDetail = _paymentService.GetPaymentDetails(recieptnumber);
-            ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
+            ReportDataSource Header = new ReportDataSource("SettingsDataSet", header);
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
             ReportDataSource BilledService = new ReportDataSource("BillingDataSet", billServices);
             ReportDataSource PaymentDetails = new ReportDataSource("PaymentDataSet", paymentDetail);
@@ -211,14 +219,14 @@ namespace JenzHealth.Areas.Admin.Controllers
             string encoding;
             string fileNameExtension;
             string deviceInfo = "<DeviceInfo>" +
-                    "  <PageWidth>8.27in</PageWidth>" +
-                    "  <PageHeight>11.69in</PageHeight>" +
-                    "  <MarginTop>0.25in</MarginTop>" +
-                    "  <MarginLeft>0.4in</MarginLeft>" +
-                    "  <MarginRight>0.4in</MarginRight>" +
-                    "  <MarginBottom>0.25in</MarginBottom>" +
-                    "  <EmbedFonts>None</EmbedFonts>" +
-                    "</DeviceInfo>";
+                                 "  <PageWidth>80mm</PageWidth>" +
+                                 "  <PageHeight>300mm</PageHeight>" +
+                                 "  <MarginTop>0.25in</MarginTop>" +
+                                 "  <MarginLeft>0.1in</MarginLeft>" +
+                                 "  <MarginRight>0.1in</MarginRight>" +
+                                 "  <MarginBottom>0.25in</MarginBottom>" +
+                                 "  <EmbedFonts>None</EmbedFonts>" +
+                                 "</DeviceInfo>";
 
             Warning[] warnings;
             string[] streams;
@@ -234,6 +242,48 @@ namespace JenzHealth.Areas.Admin.Controllers
                 out warnings);
             return File(renderedBytes, mimeType);
         }
+
+        public ActionResult FinancialReport()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            var model = new CashCollectionVM();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult FinancialReport(CashCollectionVM vmodel)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+            var payments = _paymentService.GetFinancialReport(vmodel);
+            ViewBag.Payments = payments;
+            ViewBag.PaymentTotal = "₦" + payments.Sum(x=>x.AmountPaid).ToString("N", nfi);
+            return View(vmodel);
+        }
+
+        public ActionResult ServiceReport()
+        {
+            if (!Nav.CheckAuthorization(Request.Url.AbsolutePath))
+            {
+                throw new UnauthorizedAccessException();
+            }
+            var model = new BillingVM();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ServiceReport(BillingVM vmodel)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+            var billServices = _paymentService.GetBillServicesForReport(vmodel);
+            ViewBag.BillServices = billServices;
+            ViewBag.GrossTotal = "₦" + billServices.Sum(x => x.GrossAmount).ToString("N", nfi);
+            return View(vmodel);
+        }
         #endregion
 
         #region Laboratory report
@@ -241,7 +291,18 @@ namespace JenzHealth.Areas.Admin.Controllers
         public ActionResult LabReport(string billnumber, int templateID, bool templated)
         {
             LocalReport lr = new LocalReport();
-            string path = !templated ? Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "TemplatedLabResult.rdlc") : Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
+            DatabaseEntities db = new DatabaseEntities();
+            string path;
+            var template = db.Templates.FirstOrDefault(x => x.Id == templateID);
+            if (template == null) throw new Exception("Template not found");
+            if (!template.UseDocParameter)
+            {
+                 path = !template.UseDefaultParameters ? Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "TemplatedLabResult.rdlc") : Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
+            }
+            else
+            {
+                path = Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "DocLabResult.rdlc");
+            }
             if (System.IO.File.Exists(path))
             {
                 lr.ReportPath = path;
@@ -263,7 +324,16 @@ namespace JenzHealth.Areas.Admin.Controllers
                 lr.DataSources.Add(SpecimenCollection);
             }
 
-            if (!templated)
+            if (template.UseDocParameter)
+            {
+                var templatedResult = _laboratoryService.GetDocLabResultForReport(templateID, billnumber);
+                ReportDataSource TemplatedLabResult = new ReportDataSource("TemplatedDataSet", templatedResult);
+                if (TemplatedLabResult != null)
+                {
+                    lr.DataSources.Add(TemplatedLabResult);
+                }
+            }
+            else if (!template.UseDefaultParameters)
             {
                 var templatedResult = _laboratoryService.GetTemplatedLabResultForReport(templateID, billnumber);
                 ReportDataSource TemplatedLabResult = new ReportDataSource("TemplatedDataSet", templatedResult);

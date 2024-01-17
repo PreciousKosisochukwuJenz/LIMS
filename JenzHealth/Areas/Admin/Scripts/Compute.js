@@ -1,5 +1,5 @@
 ﻿$("#FinishBtn").click(function () {
-    if (CheckValidity()) {
+    //if (CheckValidity()) {
 
         Swal.fire({
             title: 'Confirmation',
@@ -70,7 +70,7 @@
                 )
             }
         })
-    }
+//    }
 })
 
 $(".rangeID").on("change", function (e) {
@@ -79,43 +79,43 @@ $(".rangeID").on("change", function (e) {
     select.parentElement.parentElement.children[3].children[0].value = unit;
 })
 
-function CheckValidity() {
-    let states = [];
-    var inputs = $("input");
-    var selects = $("select");
-    $.each(inputs, function (i, input) {
-        if (input.value === "" && input.required) {
-            input.classList.add("is-invalid");
-            states.push(false);
-        }
-        else {
-            input.classList.remove("is-invalid");
-            states.push(true);
-        }
-    });
+//function CheckValidity() {
+//    let states = [];
+//    var inputs = $("input");
+//    var selects = $("select");
+//    $.each(inputs, function (i, input) {
+//        if (input.value === "" && input.required) {
+//            input.classList.add("is-invalid");
+//            states.push(false);
+//        }
+//        else {
+//            input.classList.remove("is-invalid");
+//            states.push(true);
+//        }
+//    });
 
-    $.each(selects, function (i, select) {
-        if (select.value === "-- Select range --") {
-            select.classList.add("is-invalid");
-            states.push(false);
-        }
-        else {
-            select.classList.remove("is-invalid");
-            states.push(true);
-        }
-    });
+//    $.each(selects, function (i, select) {
+//        if (select.value === "-- Select range --") {
+//            select.classList.add("is-invalid");
+//            states.push(false);
+//        }
+//        else {
+//            select.classList.remove("is-invalid");
+//            states.push(true);
+//        }
+//    });
 
 
-    return states.every(hasAllPassed);
-}
+//    return states.every(hasAllPassed);
+//}
 
-function hasAllPassed(status) {
-    return status ? true : false;
-}
-document.addEventListener("keyup change", function (e) {
-    if (e.target.value === "") {
-        e.target.classList.add("is-invalid");
-    } else {
-        e.target.classList.remove("is-invalid");
-    }
-})
+//function hasAllPassed(status) {
+//    return status ? true : false;
+//}
+//document.addEventListener("keyup change", function (e) {
+//    if (e.target.value === "") {
+//        e.target.classList.add("is-invalid");
+//    } else {
+//        e.target.classList.remove("is-invalid");
+//    }
+//})

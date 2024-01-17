@@ -559,19 +559,13 @@ namespace JenzHealth.Areas.Admin.Controllers
                 TempData["AlertType"] = "alert-primary";
                 TempData["AlertMessage"] = "AntiBotic updated successfully.";
             }
-            var data = (AntiBioticVM)TempData["AntiBiotic"];
-            if(data != null)
-            {
-                ViewBag.AntiBiotics = _seedService.GetAntiBiotics((int)data.OrganismID);
-            }
-            ViewBag.Organisms = new SelectList(db.Organisms.Where(x => x.IsDeleted == false), "Id", "Name");
-            return View(data);
+            ViewBag.AntiBiotics = _seedService.GetAntiBiotics();
+            return View();
         }
         [HttpPost]
         public ActionResult ManageAntiBiotics(AntiBioticVM vmodel)
         {
-            ViewBag.AntiBiotics = _seedService.GetAntiBiotics((int)vmodel.OrganismID);
-            ViewBag.Organisms = new SelectList(db.Organisms.Where(x => x.IsDeleted == false), "Id", "Name");
+            ViewBag.AntiBiotics = _seedService.GetAntiBiotics();
             return View();
         }
         [ValidateAntiForgeryToken]

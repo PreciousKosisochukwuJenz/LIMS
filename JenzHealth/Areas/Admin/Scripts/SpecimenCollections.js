@@ -47,8 +47,8 @@ $("#Search").click(function (e) {
                                     contentType: "application/json;charset=utf-8",
                                     dataType: "json",
                                     success: function (datas) {
-                                        var date = new Date(+datas.RequestingDate.replace(/\D/g, '') + 3600 * 1000 * 24);
-                                        $("#RequestingDate").val(date.toISOString().substr(0, 10))
+                                        var date = datas.RequestingDate != null ?new Date(+datas.RequestingDate.replace(/\D/g, '') + 3600 * 1000 * 24): null;
+                                        $("#RequestingDate").val(date != null ? date.toISOString().substr(0, 10): "")
                                         $("#RequestingPhysician").val(datas.RequestingPhysician)
                                         $("#ClinicalSummary").val(datas.ClinicalSummary)
                                         $("#ProvitionalDiagnosis").val(datas.ProvitionalDiagnosis)

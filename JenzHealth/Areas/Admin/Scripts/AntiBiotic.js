@@ -1,13 +1,12 @@
 ﻿function Edit(Id) {
     $.ajax({
-        url: "/Seed/GetOrganism/" + Id,
+        url: "/Seed/GetAntiBiotic/" + Id,
         type: "GET",
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (result) {
             $('#Id').val(result.Id);
             $('#Name').val(result.Name);
-            $('#OrganismID').val(result.OrganismID);
         },
         error: function (errormessage) {
             var message = errormessage.responseText;
@@ -34,7 +33,7 @@ function Prompt(ID) {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url: "/Seed/DeleteOrganism/" + ID,
+                url: "/Seed/DeleteAntiBiotic/" + ID,
                 type: "Post",
                 contentType: "application/json;charset=UTF-8",
                 dataType: "json",

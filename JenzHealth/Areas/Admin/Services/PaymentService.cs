@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 
 namespace JenzHealth.Areas.Admin.Services
@@ -137,6 +138,26 @@ namespace JenzHealth.Areas.Admin.Services
             {
                 each.GrossAmount = (each.Quantity * each.SellingPrice);
                 each.SellingPriceString = "₦" + each.SellingPrice.ToString("N", nfi);
+            }
+            return model;
+        }
+
+        public List<BillingVM> GetBillServicesForReport(BillingVM vmodel)
+        {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var model = _db.Billings.Where(x => !x.IsDeleted && (x.DateCreated >= vmodel.StartDate && x.DateCreated <= vmodel.EndDate) &&x.Service.Description == vmodel.ServiceName).Select(b => new BillingVM()
+            {
+                Id = b.ServiceID,
+                ServiceName = b.Service.Description,
+                Quantity = b.Quantity,
+                SellingPrice = b.Service.SellingPrice,
+                InvoiceNumber = b.InvoiceNumber
+            }).ToList();
+            foreach (var each in model)
+            {
+                each.GrossAmount = (each.Quantity * each.SellingPrice);
+                each.SellingPriceString = "₦" + each.SellingPrice.ToString("N", nfi);
+                each.GrossAmountString = "₦" + (each.Quantity * each.SellingPrice).ToString("N", nfi);
             }
             return model;
         }
@@ -442,6 +463,31 @@ namespace JenzHealth.Areas.Admin.Services
                 payment.BalanceAmount = (payment.NetAmount - (payment.WaivedAmount + totalPaidBills));
             }
             return payments;
+        }
+
+        public List<CashCollectionVM> GetFinancialReport(CashCollectionVM vmodel) {
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+            var cashcollections = _db.CashCollections.Where(x => !x.IsDeleted && !x.IsCancelled &&  (x.DatePaid >= vmodel.StartDate && x.DatePaid <= vmodel.EndDate)).Select(b => new CashCollectionVM()
+            {
+                Id = b.Id,
+                AmountPaid = b.AmountPaid,
+                PaymentReciept = b.PaymentReciept,
+                InstallmentType = b.InstallmentType,
+                
+                TransactionReferenceNumber = b.TransactionReferenceNumber == null ? " - " : b.TransactionReferenceNumber,
+                PaymentType = (PaymentType)b.PaymentType,
+                BillInvoiceNumber = b.BillInvoiceNumber,
+                CustomerName = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
+                CustomerGender = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerGender,
+                CustomerUniqueID = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID == null ? " - " : _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
+                CustomerPhoneNumber = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
+                CustomerType = ((CustomerType)_db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerType).ToString(),
+            }).ToList();
+            foreach (var cashcollection in cashcollections)
+            {
+                cashcollection.AmountPaidString = "₦" + cashcollection.AmountPaid.ToString("N", nfi);
+            }
+            return cashcollections;
         }
         public TransactionVM GetTransactionReports(TransactionVM vmodel)
         {

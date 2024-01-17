@@ -277,7 +277,9 @@ namespace JenzHealth.Areas.Admin.Services
         {
             var model = _db.Shifts.FirstOrDefault(x => x.Id == Id);
             model.HasExpired = true;
-            model.ClosedBy = _db.Users.FirstOrDefault(x => x.Id == GetCurrentUser().Id).Username;
+            var currentUser = GetCurrentUser();
+            if (currentUser == null) throw new Exception("Invalid Identity, kindly logout and re-login");
+            model.ClosedBy = _db.Users.FirstOrDefault(x => x.Id == currentUser.Id).Username;
 
             _db.Entry(model).State = System.Data.Entity.EntityState.Modified;
             _db.SaveChanges();

@@ -289,6 +289,12 @@ namespace JenzHealth {
             
             private global::System.Data.DataColumn columnWatermark;
             
+            private global::System.Data.DataColumn columnEmail;
+            
+            private global::System.Data.DataColumn columnPhoneNumber;
+            
+            private global::System.Data.DataColumn columnAddress;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ApplicationSettingsRecordsDataTable() {
@@ -364,6 +370,30 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PhoneNumberColumn {
+                get {
+                    return this.columnPhoneNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn AddressColumn {
+                get {
+                    return this.columnAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +429,17 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ApplicationSettingsRecordsRow AddApplicationSettingsRecordsRow(string DateGenerated, string BrandName, string Logo, string Watermark) {
+            public ApplicationSettingsRecordsRow AddApplicationSettingsRecordsRow(string DateGenerated, string BrandName, string Logo, string Watermark, string Email, string PhoneNumber, string Address) {
                 ApplicationSettingsRecordsRow rowApplicationSettingsRecordsRow = ((ApplicationSettingsRecordsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         DateGenerated,
                         BrandName,
                         Logo,
-                        Watermark};
+                        Watermark,
+                        Email,
+                        PhoneNumber,
+                        Address};
                 rowApplicationSettingsRecordsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowApplicationSettingsRecordsRow);
                 return rowApplicationSettingsRecordsRow;
@@ -441,6 +474,9 @@ namespace JenzHealth {
                 this.columnBrandName = base.Columns["BrandName"];
                 this.columnLogo = base.Columns["Logo"];
                 this.columnWatermark = base.Columns["Watermark"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnPhoneNumber = base.Columns["PhoneNumber"];
+                this.columnAddress = base.Columns["Address"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -456,6 +492,12 @@ namespace JenzHealth {
                 base.Columns.Add(this.columnLogo);
                 this.columnWatermark = new global::System.Data.DataColumn("Watermark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWatermark);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnPhoneNumber = new global::System.Data.DataColumn("PhoneNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhoneNumber);
+                this.columnAddress = new global::System.Data.DataColumn("Address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddress);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -684,6 +726,55 @@ namespace JenzHealth {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Email {
+                get {
+                    try {
+                        return ((string)(this[this.tableApplicationSettingsRecords.EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'ApplicationSettingsRecords\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableApplicationSettingsRecords.EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PhoneNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableApplicationSettingsRecords.PhoneNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PhoneNumber\' in table \'ApplicationSettingsRecords\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableApplicationSettingsRecords.PhoneNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Address {
+                get {
+                    try {
+                        return ((string)(this[this.tableApplicationSettingsRecords.AddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Address\' in table \'ApplicationSettingsRecords\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableApplicationSettingsRecords.AddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDateGeneratedNull() {
                 return this.IsNull(this.tableApplicationSettingsRecords.DateGeneratedColumn);
             }
@@ -728,6 +819,42 @@ namespace JenzHealth {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetWatermarkNull() {
                 this[this.tableApplicationSettingsRecords.WatermarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEmailNull() {
+                return this.IsNull(this.tableApplicationSettingsRecords.EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEmailNull() {
+                this[this.tableApplicationSettingsRecords.EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPhoneNumberNull() {
+                return this.IsNull(this.tableApplicationSettingsRecords.PhoneNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPhoneNumberNull() {
+                this[this.tableApplicationSettingsRecords.PhoneNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAddressNull() {
+                return this.IsNull(this.tableApplicationSettingsRecords.AddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAddressNull() {
+                this[this.tableApplicationSettingsRecords.AddressColumn] = global::System.Convert.DBNull;
             }
         }
         

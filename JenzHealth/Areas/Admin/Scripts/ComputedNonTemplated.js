@@ -174,7 +174,6 @@ function UpdateOrganismTbl() {
             let html = "";
             $.each(response, function (i, data) {
                 html = `<tr>
-                            <td data-orgranismid='${data.OrganismID}'>${data.Organism}</td>
                             <td data-antibioticsid='${data.AntiBioticID}'>
                              ${data.AntiBiotic}
                             </td>

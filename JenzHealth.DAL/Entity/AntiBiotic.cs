@@ -10,12 +10,8 @@ namespace JenzHealth.DAL.Entity
     public class AntiBiotic
     {
         public int Id { get; set; }
-        public int? OrganismID { get; set; }
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; }
-
-        [ForeignKey("OrganismID")]
-        public Organism Organism { get; set; }
     }
 }

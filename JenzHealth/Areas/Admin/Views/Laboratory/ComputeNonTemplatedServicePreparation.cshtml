@@ -28,7 +28,7 @@
         <button type="button" id="close" class="btn btn-white fa-pull-right" title="Click to close all">close</button>
     </div>
 </div>
-@using (Html.BeginForm("Transactions", "Payment", FormMethod.Post, new { area = "Admin", @class = "validate", novalidate = true }))
+@using (Html.BeginForm("Transactions", "Payment", FormMethod.Post, new { area = "Admin" }))
 {
     <div class="row">
         <div class="col">
@@ -66,11 +66,11 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="socialGitHub">Adult Warm</label>
+                                <label for="socialGitHub">Adult Worm</label>
                                 <div class="input-group input-group-seamless">
                                     @Html.EditorFor(model => model.AdultWarm, new { htmlAttributes = new { @class = "form-control", placeholder = "", required = true } })
                                     <div class="invalid-feedback">
-                                        Adult warm required
+                                        Adult worm required
                                     </div>
                                 </div>
                             </div>
@@ -752,12 +752,13 @@
                                     </div>
                                 </div>
                             </div>
+                        
                             <div class="form-group col-md-12">
                                 <label for="socialGitHub">Line Organism</label>
                                 <div class="input-group input-group-seamless">
-                                    <input type="text" class="form-control" id="organismField" />
+                                    @Html.EditorFor(model => model.Organism, new { htmlAttributes = new { @class = "form-control", placeholder = "", id= "organismField", required = true } })
                                     <div class="invalid-feedback">
-                                        Organims required
+                                        Organism required
                                     </div>
                                 </div>
                             </div>
@@ -770,7 +771,6 @@
                                         <thead class="bg-light">
                                             <tr>
                                                 <th scope="col" class="border-0"></th>
-                                                <th scope="col" class="border-0">Organism</th>
                                                 <th scope="col" class="border-0">Anti Biotics</th>
                                                 <th scope="col" class="border-0">Senstive</th>
                                                 <th scope="col" class="border-0">Intermediate</th>
