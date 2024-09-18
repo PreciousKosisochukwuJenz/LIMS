@@ -25,8 +25,6 @@ function readWatermarkURL(input) {
 }
 
 
-
-
 // logo
 $("#LogoInp").change(function () {
   readURL(this);

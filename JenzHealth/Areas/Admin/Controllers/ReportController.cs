@@ -207,7 +207,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             ReportDataSource Customer = new ReportDataSource("CustomerDataSet", customer);
             ReportDataSource BilledService = new ReportDataSource("BillingDataSet", billServices);
             ReportDataSource PaymentDetails = new ReportDataSource("PaymentDataSet", paymentDetail);
-            if (Header != null && Customer != null && BilledService != null && PaymentDetails!= null)
+            if (Header != null && Customer != null && BilledService != null && PaymentDetails != null)
             {
                 lr.DataSources.Add(Header);
                 lr.DataSources.Add(Customer);
@@ -254,13 +254,27 @@ namespace JenzHealth.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult FinancialReport(CashCollectionVM vmodel)
+        public ActionResult FinancialReport(CashCollectionVM vmodel, string command)
         {
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
 
-            var payments = _paymentService.GetFinancialReport(vmodel);
-            ViewBag.Payments = payments;
-            ViewBag.PaymentTotal = "₦" + payments.Sum(x=>x.AmountPaid).ToString("N", nfi);
+            switch (command)
+            {
+                case "Search":
+                    var payments = _paymentService.GetFinancialReport(vmodel);
+                    ViewBag.Payments = payments;
+                    ViewBag.PaymentTotal = "₦" + payments.Sum(x => x.AmountPaid).ToString("N", nfi);
+                    TempData["Filter"] = vmodel;
+                    return View(vmodel);
+
+                case "Print":
+                    var filter = TempData["Filter"] as CashCollectionVM;
+                    if (filter != null)
+                    {
+                        vmodel = filter;
+                    }
+                    return PrintFinanicalReport(vmodel);
+            }
             return View(vmodel);
         }
 
@@ -288,7 +302,7 @@ namespace JenzHealth.Areas.Admin.Controllers
 
         #region Laboratory report
 
-        public ActionResult LabReport(string billnumber, int templateID, bool templated)
+        public ActionResult LabReport(string billnumber, int templateID, bool templated, string serviceIds)
         {
             LocalReport lr = new LocalReport();
             DatabaseEntities db = new DatabaseEntities();
@@ -297,7 +311,7 @@ namespace JenzHealth.Areas.Admin.Controllers
             if (template == null) throw new Exception("Template not found");
             if (!template.UseDocParameter)
             {
-                 path = !template.UseDefaultParameters ? Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "TemplatedLabResult.rdlc") : Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
+                path = !template.UseDefaultParameters ? Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "TemplatedLabResult.rdlc") : Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Laboratory"), "NonTemplatedLabResult.rdlc");
             }
             else
             {
@@ -344,7 +358,8 @@ namespace JenzHealth.Areas.Admin.Controllers
             }
             else
             {
-                var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber);
+                int[] serviceIDs = Array.ConvertAll(serviceIds.Split(','), element => int.Parse(element));
+                var nonTemplateResult = _laboratoryService.GetNonTemplatedLabPreparationForReport(billnumber, serviceIDs[0]);
                 var nonTemplateOrganism = _laboratoryService.GetComputedOrganismXAntibiotics(nonTemplateResult.FirstOrDefault().Id);
 
                 ReportDataSource NonTemplateResult = new ReportDataSource("NonTemplatedLabResultDataSet", nonTemplateResult);
@@ -356,7 +371,59 @@ namespace JenzHealth.Areas.Admin.Controllers
                     lr.DataSources.Add(NonTemplateOrganism);
                 }
             }
-         
+
+            string reportType = "PDF";
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string deviceInfo = "<DeviceInfo>" +
+                    "  <PageWidth>8.27in</PageWidth>" +
+                    "  <PageHeight>11.69in</PageHeight>" +
+                    "  <MarginTop>0.25in</MarginTop>" +
+                    "  <MarginLeft>0.4in</MarginLeft>" +
+                    "  <MarginRight>0.4in</MarginRight>" +
+                    "  <MarginBottom>0.25in</MarginBottom>" +
+                    "  <EmbedFonts>None</EmbedFonts>" +
+                    "</DeviceInfo>";
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = lr.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings);
+            return File(renderedBytes, mimeType);
+        }
+        public ActionResult PrintFinanicalReport(CashCollectionVM vmodel)
+        {
+            LocalReport lr = new LocalReport();
+            DatabaseEntities db = new DatabaseEntities();
+            string path =  Path.Combine(Server.MapPath("~/Areas/Admin/Reports/Payment"), "PaymentReport.rdlc");
+            if (System.IO.File.Exists(path))
+            {
+                lr.ReportPath = path;
+            }
+            else
+            {
+                throw new Exception(String.Format("Report path not found in the specified directory: {0}", path));
+            }
+            var header = _settingService.GetReportHeader();
+            var payments = _paymentService.GetFinancialReport(vmodel);
+
+            ReportDataSource Header = new ReportDataSource("SettingDataSet", header);
+            ReportDataSource Payments = new ReportDataSource("PaymentReportDataset", payments);
+            if (Header != null && Payments != null)
+            {
+                lr.DataSources.Add(Header);
+                lr.DataSources.Add(Payments);
+            }
+
             string reportType = "PDF";
             string mimeType;
             string encoding;

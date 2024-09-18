@@ -438,6 +438,7 @@ $("#FinishBtn").click(function () {
                     data: { vmodel: data, serviceList: serviceArr },
                     success: function (response) {
                         if (response.PaymentReciept != null) {
+                            debugger
                             Swal.fire({
                                 title: 'Cash collected successfully',
                                 showCancelButton: false,

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using PowerfulExtensions.Linq;
 using JenzHealth.Areas.Admin.ViewModels.Report;
+using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace JenzHealth.Areas.Admin.Services
 {
@@ -406,24 +408,45 @@ namespace JenzHealth.Areas.Admin.Services
 
         public List<SpecimenCollectionVM> GetLabPreparations(SpecimenCollectionVM vmodel)
         {
-            var preparations = _db.SpecimenCollections.Where(x => (x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == vmodel.BillInvoiceNumber) || (x.DateTimeCreated >= vmodel.StartDate && x.DateTimeCreated <= vmodel.EndDate) && !x.IsDeleted)
-                .Select(b => new SpecimenCollectionVM()
-                {
-                    Id = b.Id,
-                    LabNumber = b.LabNumber,
-                    BillInvoiceNumber = b.BillInvoiceNumber,
-                    CustomerName = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerName,
-                    CustomerPhoneNumber = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerPhoneNumber,
-                    CustomerUniqueID = _db.Billings.FirstOrDefault(x => x.InvoiceNumber == b.BillInvoiceNumber).CustomerUniqueID,
-                }).ToList();
-            List<SpecimenCollectionVM> DataToRemoveFromList = new List<SpecimenCollectionVM>();
-            foreach (var record in preparations)
+            var query = _db.SpecimenCollections.AsQueryable();
+
+            if (!string.IsNullOrEmpty(vmodel.BillInvoiceNumber))
             {
-                record.HasPaidAllBill = _paymentService.CheckIfPaymentIsCompleted(record.BillInvoiceNumber);
+                query = query.Where(x => x.BillInvoiceNumber == vmodel.BillInvoiceNumber || x.LabNumber == vmodel.BillInvoiceNumber);
             }
-            preparations.RemoveAll(x => !x.HasPaidAllBill);
+
+            if (vmodel.StartDate.HasValue && vmodel.EndDate.HasValue)
+            {
+                var startDate = vmodel.StartDate.Value;
+                var endDate = vmodel.EndDate.Value;
+
+                query = query.Where(x => DbFunctions.TruncateTime(x.DateTimeCreated) >= startDate &&
+                                         DbFunctions.TruncateTime(x.DateTimeCreated) <= endDate);
+            }
+
+            query = query.Where(x => !x.IsDeleted);
+
+            var preparations = query.Select(b => new SpecimenCollectionVM()
+            {
+                Id = b.Id,
+                LabNumber = b.LabNumber,
+                BillInvoiceNumber = b.BillInvoiceNumber,
+                CustomerName = _db.Billings.Where(x => x.InvoiceNumber == b.BillInvoiceNumber).Select(x => x.CustomerName).FirstOrDefault(),
+                CustomerPhoneNumber = _db.Billings.Where(x => x.InvoiceNumber == b.BillInvoiceNumber).Select(x => x.CustomerPhoneNumber).FirstOrDefault(),
+                CustomerUniqueID = _db.Billings.Where(x => x.InvoiceNumber == b.BillInvoiceNumber).Select(x => x.CustomerUniqueID).FirstOrDefault(),
+            }).ToList();
+
+            preparations = preparations
+                .Where(record =>
+                {
+                    record.HasPaidAllBill = _paymentService.CheckIfPaymentIsCompleted(record.BillInvoiceNumber);
+                    return record.HasPaidAllBill;
+                })
+                .ToList();
+
             return preparations;
         }
+
         public SpecimenCollectionVM GetSpecimensForPreparation(int Id)
         {
             var model = _db.SpecimenCollections.Where(x => x.Id == Id).Select(b => new SpecimenCollectionVM()
@@ -449,6 +472,11 @@ namespace JenzHealth.Areas.Admin.Services
             }).ToList();
             foreach (var item in model)
             {
+                var data = CheckIfTestServiceHasBeenComputed((int)item.TemplateID, item.BillNumber, item.ServiceID.Value);
+                item.HasBeenComputed = data.HasBeenComputed;
+                item.DateComputed = data.DateComputed;
+                item.ComputedBy = data.ComputedBy;
+
                 var serviceParameter = _db.ServiceParameters.FirstOrDefault(x => x.ServiceID == item.ServiceID);
                 var checkApproval = _db.ResultApprovals.FirstOrDefault(x => x.ServiceParameterID == serviceParameter.Id && x.BillNumber == item.BillNumber);
 
@@ -527,6 +555,66 @@ namespace JenzHealth.Areas.Admin.Services
                 DateComputed = "N/A"
             };
         }
+        public ServiceParameterVM CheckIfTestServiceHasBeenComputed(int templateID, string billnumber, int serviceId)
+        {
+            var template = _db.Templates.FirstOrDefault(x => x.Id == templateID);
+            if (!template.UseDocParameter)
+            {
+                if (!template.UseDefaultParameters)
+                {
+                    var exist = _db.TemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID && x.ServiceParameter.ServiceID == serviceId).FirstOrDefault();
+                    if (exist != null)
+                    {
+                        var preparedBy = _db.Users.FirstOrDefault(x => x.Id == exist.PreparedByID);
+                        return new ServiceParameterVM()
+                        {
+                            HasBeenComputed = true,
+                            ComputedBy = string.Format("{0} {1}", preparedBy.Firstname, preparedBy.Lastname),
+                            DateComputed = exist.DateCreated.ToShortDateString()
+                        };
+                    }
+
+                }
+                else
+                {
+                    var exist = _db.NonTemplatedLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceID == serviceId).FirstOrDefault();
+                    if (exist != null)
+                    {
+                        var preparedBy = _db.Users.FirstOrDefault(x => x.Id == exist.PreparedByID);
+
+                        return new ServiceParameterVM()
+                        {
+                            HasBeenComputed = true,
+                            ComputedBy = string.Format("{0} {1}", preparedBy.Firstname, preparedBy.Lastname),
+                            DateComputed = exist.DateCreated.ToShortDateString()
+                        };
+                    }
+
+                }
+            }
+            else
+            {
+                var exist = _db.DocTemplateLabPreparations.Where(x => x.BillInvoiceNumber == billnumber && x.ServiceParameterSetup.ServiceParameter.TemplateID == templateID && x.ServiceParameter.ServiceID == serviceId).FirstOrDefault();
+                if (exist != null)
+                {
+                    var preparedBy = _db.Users.FirstOrDefault(x => x.Id == exist.PreparedByID);
+                    return new ServiceParameterVM()
+                    {
+                        HasBeenComputed = true,
+                        ComputedBy = string.Format("{0} {1}", preparedBy.Firstname, preparedBy.Lastname),
+                        DateComputed = exist.DateCreated.ToShortDateString()
+                    };
+                }
+            }
+
+            return new ServiceParameterVM()
+            {
+                HasBeenComputed = false,
+                ComputedBy = "N/A",
+                DateComputed = "N/A"
+            };
+        }
+
         public List<ServiceParameterVM> GetDistinctTemplateForBilledServices(List<ServiceParameterVM> billedServices)
         {
             var distinctTemplate = billedServices.Distinct(o => o.TemplateID).ToList();
@@ -1036,9 +1124,9 @@ namespace JenzHealth.Areas.Admin.Services
 
             return model;
         }
-        public List<NonTemplatedLabPreparationVM> GetNonTemplatedLabPreparationForReport(string billnumber)
+        public List<NonTemplatedLabPreparationVM> GetNonTemplatedLabPreparationForReport(string billnumber, int serviceId)
         {
-            var model = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber).Select(b => new NonTemplatedLabPreparationVM()
+            var model = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == billnumber && x.ServiceID == serviceId).Select(b => new NonTemplatedLabPreparationVM()
             {
                 Id = b.Id,
                 Temperature = b.Temperature,
@@ -1163,11 +1251,11 @@ namespace JenzHealth.Areas.Admin.Services
 
         public bool UpdateNonTemplatedLabResults(NonTemplatedLabPreparationVM vmodel, List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> organisms)
         {
-            var checkResultIfExist = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == vmodel.BillInvoiceNumber).FirstOrDefault();
+            var checkResultIfExist = _db.NonTemplatedLabPreparations.Where(x => x.IsDeleted == false && x.BillInvoiceNumber == vmodel.BillInvoiceNumber && x.ServiceID == vmodel.ServiceID).FirstOrDefault();
             if (checkResultIfExist != null)
             {
                 checkResultIfExist.IsDeleted = true;
-                _db.Entry(checkResultIfExist).State = System.Data.Entity.EntityState.Modified;
+                _db.Entry(checkResultIfExist).State = EntityState.Modified;
                 _db.SaveChanges();
             }
             var model = new NonTemplatedLabPreparation()
@@ -1397,7 +1485,6 @@ namespace JenzHealth.Areas.Admin.Services
           
             return record;
         }
-
         public bool ApproveTestResult(int Id)
         {
             var test = _db.ResultApprovals.FirstOrDefault(x => x.Id == Id);
@@ -1410,7 +1497,6 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-
         public bool UnapproveTestResult(int Id)
         {
             var test = _db.ResultApprovals.FirstOrDefault(x => x.Id == Id);
@@ -1423,7 +1509,6 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-
         public bool UpdateCollector(LabResultCollection model)
         {
             var currentUser = _userService.GetCurrentUser();
@@ -1445,24 +1530,37 @@ namespace JenzHealth.Areas.Admin.Services
 
             return true;
         }
-
         public List<LabResultCollectionVM> GetLabResultCollections(LabResultCollectionVM vmodel)
         {
-            var records = _db.LabResultCollections.Where(x => x.BillNumber == vmodel.BillNumber || (x.DateCollected >= vmodel.StartDate && x.DateCollected <= vmodel.EndDate))
-                .Select(b => new LabResultCollectionVM()
-                {
-                    Id = b.Id,
-                    DateCollected = b.DateCollected,
-                    BillNumber = b.BillNumber,
+            var query = _db.LabResultCollections.AsQueryable();
 
-                    CollectorName = b.Collector.ToUpper(),
-                    TemplateID = b.TemplateID,
-                    Template = b.Template.Name
-                }).ToList();
+            if (!string.IsNullOrEmpty(vmodel.BillNumber))
+            {
+                query = query.Where(x => x.BillNumber == vmodel.BillNumber);
+            }
+
+            if (vmodel.StartDate.HasValue && vmodel.EndDate.HasValue)
+            {
+                query = query.Where(x => DbFunctions.TruncateTime(x.DateCollected) >= vmodel.StartDate.Value &&
+                                               DbFunctions.TruncateTime(x.DateCollected) <= vmodel.EndDate.Value);
+            }
+
+            var records = query.Select(b => new LabResultCollectionVM()
+            {
+                Id = b.Id,
+                DateCollected = b.DateCollected,
+                BillNumber = b.BillNumber,
+                CollectorName = b.Collector.ToUpper(),
+                TemplateID = b.TemplateID,
+                Template = b.Template.Name,
+            }).ToList();
 
             foreach (var record in records)
             {
-                record.PatientName = _paymentService.GetCustomerForBill(record.BillNumber).CustomerName;
+                if(record.BillNumber != null)
+                {
+                    record.PatientName = _paymentService.GetCustomerForBill(record.BillNumber).CustomerName;
+                }
             }
             return records;
         }

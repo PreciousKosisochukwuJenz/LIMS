@@ -30,7 +30,6 @@
                     results.push(result);
                 });
             });
-            debugger
             //Send ajax call to server
             $.ajax({
                 url: 'UpdateDocLabResults',

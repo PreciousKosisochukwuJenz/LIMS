@@ -516,6 +516,7 @@
     <Content Include="Areas\Admin\Views\Report\FinancialReport.cshtml" />
     <Content Include="Areas\Admin\Views\Report\_ViewServiceReport.cshtml" />
     <Content Include="Areas\Admin\Views\Report\ServiceReport.cshtml" />
+    <Content Include="Areas\Admin\Reports\Payment\PaymentReport.rdlc" />
     <None Include="BillingDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BillingDataSet.Designer.cs</LastGenOutput>
@@ -542,6 +543,7 @@
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Content\css\richtext.min.css.map" />
     <Content Include="Content\css\richtext.scss" />
+    <Content Include="Connection.config" />
     <None Include="CustomerDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CustomerDataSet.Designer.cs</LastGenOutput>

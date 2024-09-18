@@ -2,57 +2,6 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Textbox3">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Label>Service Department</Label>
-                <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
-                <Style>
-                  <FontFamily>Tahoma</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>LABORATORY REPORT</Value>
-                <Style>
-                  <FontFamily>Tahoma</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.9607in</Top>
-        <Left>1.69903in</Left>
-        <Height>0.51958in</Height>
-        <Width>5.28584in</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox4">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -60,28 +9,11 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>CUSTOMER'S BASIC INFORMATION</Value>
+                <Value>CUSTOMER'S BASIC INFORMATIO</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                 </Style>
@@ -223,11 +155,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.53584in</Top>
-        <Left>0.12267in</Left>
-        <Height>1.65278in</Height>
+        <Top>1.37612in</Top>
+        <Left>0.13446in</Left>
+        <Height>1.04861in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -255,21 +186,6 @@
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -332,7 +248,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ON:                                                 </Value>
+                <Value>COLLECTED ON:                            </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -429,7 +345,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ON:                                                 </Value>
+                <Value>COLLECTED ON:                             </Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -451,11 +367,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.93167in</Top>
-        <Left>0.12853in</Left>
-        <Height>1.71529in</Height>
+        <Top>2.43862in</Top>
+        <Left>0.1345in</Left>
+        <Height>1.37154in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>2</ZIndex>
+        <ZIndex>1</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -511,37 +427,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
                 <Value>MACROSCOPY</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
@@ -744,11 +630,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>4.64696in</Top>
-        <Left>0.12853in</Left>
-        <Height>1.77777in</Height>
+        <Top>3.81016in</Top>
+        <Left>0.12264in</Left>
+        <Height>1.22569in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>3</ZIndex>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -775,19 +661,6 @@
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -918,19 +791,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
                 <Value>Line Organisms:</Value>
                 <Style>
                   <FontFamily>Calibri</FontFamily>
@@ -943,11 +803,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>21.8878in</Top>
-        <Left>0.12857in</Left>
-        <Height>1.80208in</Height>
+        <Top>17.05447in</Top>
+        <Left>0.09818in</Left>
+        <Height>1.21875in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1127,7 +987,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.60417in</Height>
+              <Height>0.30209in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1469,11 +1329,11 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>NonTemplatedOrganismDataSet</DataSetName>
-        <Top>23.70378in</Top>
-        <Left>0.1345in</Left>
-        <Height>0.90626in</Height>
+        <Top>18.27322in</Top>
+        <Left>0.09773in</Left>
+        <Height>0.60418in</Height>
         <Width>6.86222in</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1499,18 +1359,6 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
                 <Label>Scientist Comment</Label>
                 <Value>=First(Fields!ScienticComment.Value, "NonTemplatedLabResultDataSet")</Value>
                 <Style>
@@ -1523,11 +1371,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>24.63781in</Top>
-        <Left>0.12857in</Left>
-        <Height>0.59375in</Height>
+        <Top>18.94684in</Top>
+        <Left>0.09772in</Left>
+        <Height>0.375in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1558,13 +1406,139 @@
               <TextAlign>Center</TextAlign>
             </Style>
           </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Address</Label>
+                <Value>=First(Fields!Address.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve">     </Value>
+                <Style>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Email: </Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Email</Label>
+                <Value>=First(Fields!Email.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>                      Phone number: </Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Label>Phone number</Label>
+                <Value>=First(Fields!PhoneNumber.Value, "SettingDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value />
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Label>Service Department</Label>
+                <Value>=First(Fields!ServiceDepartment.Value, "SpecimenCollectionDataSet")</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> LABORATORY REPORT</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
         <Top>0.11917in</Top>
         <Left>1.68514in</Left>
-        <Height>0.40625in</Height>
-        <Width>4.65179in</Width>
-        <ZIndex>7</ZIndex>
+        <Height>1.1875in</Height>
+        <Width>5.29973in</Width>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1584,7 +1558,7 @@
         <Left>0.12264in</Left>
         <Height>1.22917in</Height>
         <Width>1.52083in</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1602,7 +1576,7 @@
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Calibri</FontFamily>
-                  <FontSize>14pt</FontSize>
+                  <FontSize>11pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                   <Color>Red</Color>
                 </Style>
@@ -1614,11 +1588,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>25.28712in</Top>
-        <Left>0.33693in</Left>
-        <Height>0.34375in</Height>
+        <Top>19.34962in</Top>
+        <Left>0.63493in</Left>
+        <Height>0.19792in</Height>
         <Width>6in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2009,11 +1983,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>8.80668in</Top>
+        <Top>7.29627in</Top>
         <Left>0.12266in</Left>
         <Height>2.2443in</Height>
         <Width>6.86221in</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>9</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Wet mount"</Hidden>
         </Visibility>
@@ -2038,18 +2012,6 @@
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -2335,11 +2297,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>6.42473in</Top>
+        <Top>5.04974in</Top>
         <Left>0.12266in</Left>
-        <Height>2.07292in</Height>
+        <Height>1.9375in</Height>
         <Width>6.86222in</Width>
-        <ZIndex>11</ZIndex>
+        <ZIndex>10</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!SpecificGravity.Value, "NonTemplatedLabResultDataSet") = ""</Hidden>
         </Visibility>
@@ -2381,11 +2343,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>8.51154in</Top>
+        <Top>7.00113in</Top>
         <Left>0.12266in</Left>
         <Height>0.28125in</Height>
         <Width>6.86222in</Width>
-        <ZIndex>12</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -2417,18 +2379,6 @@
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2610,11 +2560,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>11.06487in</Top>
-        <Left>0.12264in</Left>
-        <Height>1.625in</Height>
+        <Top>9.55446in</Top>
+        <Left>0.1345in</Left>
+        <Height>1.35417in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>12</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Grain Stain", true, false))</Hidden>
@@ -2650,19 +2600,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2729,11 +2666,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gra
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>12.68987in</Top>
-        <Left>0.1286in</Left>
-        <Height>0.94792in</Height>
+        <Top>10.92251in</Top>
+        <Left>0.12264in</Left>
+        <Height>0.5625in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>13</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Giemsa Stain", true, false))</Hidden>
@@ -2769,19 +2706,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2849,11 +2773,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Gie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>13.65167in</Top>
-        <Left>0.1286in</Left>
-        <Height>0.94792in</Height>
+        <Top>11.51279in</Top>
+        <Left>0.1345in</Left>
+        <Height>0.5625in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>14</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ziehl Neelson Stain", true, false))</Hidden>
@@ -2889,19 +2813,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2948,11 +2859,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Zie
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>14.62737in</Top>
-        <Left>0.13446in</Left>
-        <Height>0.94792in</Height>
+        <Top>12.08919in</Top>
+        <Left>0.1163in</Left>
+        <Height>0.42709in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>15</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "India Ink Stain", true, false))</Hidden>
@@ -2988,19 +2899,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>12pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -3056,11 +2954,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Ind
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>15.57529in</Top>
-        <Left>0.13446in</Left>
-        <Height>0.94792in</Height>
+        <Top>12.51627in</Top>
+        <Left>0.1163in</Left>
+        <Height>0.47917in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>16</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iodine Stain", true, false))</Hidden>
@@ -3096,19 +2994,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -3155,11 +3040,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Iod
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>16.52321in</Top>
-        <Left>0.1286in</Left>
-        <Height>0.94792in</Height>
+        <Top>13.00933in</Top>
+        <Left>0.11634in</Left>
+        <Height>0.42709in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>17</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Methylene Blue Stain", true, false))</Hidden>
@@ -3195,19 +3080,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
                   <FontWeight>Normal</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -3263,11 +3135,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Met
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>17.47113in</Top>
-        <Left>0.1286in</Left>
-        <Height>0.94792in</Height>
+        <Top>13.45031in</Top>
+        <Left>0.10448in</Left>
+        <Height>0.5in</Height>
         <Width>6.86223in</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>18</ZIndex>
         <Visibility>
           <Hidden>=iif(First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Stain", true,
 iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Others", true, false))</Hidden>
@@ -3293,18 +3165,6 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
                 <Style>
                   <FontFamily>Calibri</FontFamily>
                   <FontSize>11pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value />
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -3596,11 +3456,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>18.47461in</Top>
-        <Left>0.13446in</Left>
-        <Height>2.66666in</Height>
+        <Top>13.95031in</Top>
+        <Left>0.10448in</Left>
+        <Height>2.43749in</Height>
         <Width>6.85635in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>19</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "SFA"</Hidden>
         </Visibility>
@@ -3660,11 +3520,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>21.14128in</Top>
-        <Left>0.1345in</Left>
+        <Top>16.41558in</Top>
+        <Left>0.09864in</Left>
         <Height>0.4375in</Height>
         <Width>6.86219in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>20</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "KOH"</Hidden>
         </Visibility>
@@ -3704,11 +3564,11 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>21.57878in</Top>
-        <Left>0.12857in</Left>
-        <Height>0.28125in</Height>
+        <Top>16.85308in</Top>
+        <Left>0.11041in</Left>
+        <Height>0.1875in</Height>
         <Width>6.86812in</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>21</ZIndex>
         <Visibility>
           <Hidden>=First(Fields!MicroscopyTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Others"</Hidden>
         </Visibility>
@@ -3722,100 +3582,8 @@ iif(First(Fields!StainTypee.Value, "NonTemplatedLabResultDataSet") &lt;&gt; "Oth
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox5">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Label>Address</Label>
-                <Value>=First(Fields!Address.Value, "SettingDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.55098in</Top>
-        <Left>1.66162in</Left>
-        <Height>0.17708in</Height>
-        <Width>4.87323in</Width>
-        <ZIndex>23</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox28">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>       Email: </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Email</Label>
-                <Value>=First(Fields!Email.Value, "SettingDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Value>                      Phone number: </Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-              <TextRun>
-                <Label>Phone number</Label>
-                <Value>=First(Fields!PhoneNumber.Value, "SettingDataSet")</Value>
-                <Style>
-                  <FontFamily>Calibri</FontFamily>
-                  <FontSize>9pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox28</rd:DefaultName>
-        <Top>0.75584in</Top>
-        <Left>1.70251in</Left>
-        <Height>0.17708in</Height>
-        <Width>5.28236in</Width>
-        <ZIndex>24</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
     </ReportItems>
-    <Height>25.8368in</Height>
+    <Height>19.67013in</Height>
     <Style>
       <Border>
         <Style>Dashed</Style>

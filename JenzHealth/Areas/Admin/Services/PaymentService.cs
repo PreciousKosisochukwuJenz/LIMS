@@ -6,6 +6,7 @@ using JenzHealth.DAL.DataConnection;
 using JenzHealth.DAL.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -334,6 +335,7 @@ namespace JenzHealth.Areas.Admin.Services
             };
                     _db.CashCollections.Add(billCashCollection);
                     vmodel.PaymentReciept = billCashCollection.PaymentReciept;
+                    billInvoiceNumber = vmodel.BillInvoiceNumber;
                     break;
                 case CollectionType.UNBILLED:
                     // Create bill for registered customer
@@ -467,7 +469,19 @@ namespace JenzHealth.Areas.Admin.Services
 
         public List<CashCollectionVM> GetFinancialReport(CashCollectionVM vmodel) {
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
-            var cashcollections = _db.CashCollections.Where(x => !x.IsDeleted && !x.IsCancelled &&  (x.DatePaid >= vmodel.StartDate && x.DatePaid <= vmodel.EndDate)).Select(b => new CashCollectionVM()
+            var query = _db.CashCollections.AsQueryable();
+
+            if (vmodel.StartDate.HasValue && vmodel.EndDate.HasValue)
+            {
+                var startDate = vmodel.StartDate.Value;
+                var endDate = vmodel.EndDate.Value;
+
+                query = query.Where(x => DbFunctions.TruncateTime(x.DatePaid) >= startDate &&
+                                         DbFunctions.TruncateTime(x.DatePaid) <= endDate);
+            }
+
+            query = query.Where(x => !x.IsDeleted && !x.IsCancelled);
+            var cashcollections = query.Select(b => new CashCollectionVM()
             {
                 Id = b.Id,
                 AmountPaid = b.AmountPaid,

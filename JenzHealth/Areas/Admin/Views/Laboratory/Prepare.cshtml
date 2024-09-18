@@ -79,17 +79,46 @@
                                     </ul>
                                 </td>
                                 <td>
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
-                                        <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = serviceIds })" class="btn btn-primary" title="Click to compute">
-                                            <i class="material-icons">&#xE870;</i> Compute
-                                        </a>
-                                        @if (row.HasBeenComputed)
-                                        {
-                                            <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-success print" title="Click to print">
-                                                <i class="material-icons">print</i> Print result
+                                    @if (!row.Templated)
+                                    {
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+
+                                            <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = serviceIds })" class="btn btn-primary" title="Click to compute">
+                                                <i class="material-icons">&#xE870;</i> Compute
                                             </a>
-                                        }
-                                    </div>
+                                            @if (row.HasBeenComputed)
+                                            {
+                                                <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated, serviceIds = serviceIds})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-success print" title="Click to print">
+                                                    <i class="material-icons">print</i> Print result
+                                                </a>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="Table row actions">
+                                            <ul class="list-group list-group-small list-group-flush">
+                                                @foreach (var service in ViewBag.Services)
+                                                {
+                                                    if (service.TemplateID == row.TemplateID)
+                                                    {
+                                                        <li class="list-group-item d-flex px-3">
+                                                            <a href="@Url.Action("Compute",new{templateID = row.TemplateID, billNumber=row.BillNumber,serviceIDs = service.ServiceID.ToString() })" class="btn btn-primary" title="Click to compute">
+                                                                <i class="material-icons">&#xE870;</i> Compute
+                                                            </a>
+                                                            @if (service.HasBeenComputed)
+                                                            {
+                                                                <a href="@Url.Action("LabReport","Report",new{billnumber = row.BillNumber, templateID = row.TemplateID, templated = row.Templated,serviceIDs = service.ServiceID.ToString()})" data-templateID="@row.TemplateID" data-billnumber="@row.BillNumber" target="_blank" class="btn btn-success print" title="Click to print">
+                                                                    <i class="material-icons">print</i> Print result
+                                                                </a>
+                                                            }
+                                                        </li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    }
                                 </td>
                             </tr>
                         }

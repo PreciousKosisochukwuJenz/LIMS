@@ -23,5 +23,6 @@ namespace JenzHealth.Areas.Admin.ViewModels
         public string DateApproved { get; set; }
         public string ComputedBy { get; set; }
         public string ApprovedBy { get; set; }
+        public List<int> ComputedServiceIds { get; set; }
     }
 }
