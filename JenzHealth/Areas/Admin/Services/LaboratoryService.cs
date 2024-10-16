@@ -1376,6 +1376,12 @@ namespace JenzHealth.Areas.Admin.Services
                 }
             }
 
+            UpdateApproval(vmodel, model);
+            return true;
+        }
+
+        private void UpdateApproval(NonTemplatedLabPreparationVM vmodel, NonTemplatedLabPreparation model)
+        {
             var service = _seedService.GetService((int)model.ServiceID).Description;
             var serviceParameter = GetServiceParameter(service);
             if (serviceParameter.RequireApproval)
@@ -1392,8 +1398,8 @@ namespace JenzHealth.Areas.Admin.Services
                     _db.SaveChanges();
                 }
             }
-            return true;
         }
+
         public List<NonTemplatedLabPreparationOrganismXAntiBioticsVM> GetComputedOrganismXAntibiotics(int nonTemplatedId)
         {
             var results = _db.NonTemplatedLabResultOrganismXAntibiotics.Where(x => x.IsDeleted == false && x.NonTemplateLabResultID == nonTemplatedId)
