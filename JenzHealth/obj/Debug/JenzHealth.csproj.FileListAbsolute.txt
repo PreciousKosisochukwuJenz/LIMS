@@ -96,7 +96,6 @@ C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\Syst
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\System.Web.Helpers.xml
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\System.Web.Mvc.xml
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\EnvDTE.xml
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\de\Microsoft.ReportViewer.Common.resources.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\es\Microsoft.ReportViewer.Common.resources.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\fr\Microsoft.ReportViewer.Common.resources.dll
@@ -158,7 +157,7 @@ C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\ru\M
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.csproj.CopyComplete
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.pdb
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.csproj.AssemblyReference.cache
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth\obj\Debug\JenzHealth.csproj.Up2Date

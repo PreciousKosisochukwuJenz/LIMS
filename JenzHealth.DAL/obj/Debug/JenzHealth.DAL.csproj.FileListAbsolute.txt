@@ -41,7 +41,7 @@ C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.xml
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CoreCompileInputs.cache
-C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.CopyComplete
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.dll
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.pdb
 C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHealth.DAL.csproj.AssemblyReference.cache
+C:\Users\DELL\Documents\PERSONAL\laboratory-managment-system\JenzHealth.DAL\obj\Debug\JenzHeal.6CC567B0.Up2Date
